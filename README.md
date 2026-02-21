@@ -49,4 +49,9 @@ python train.py --agent ppo --config circuitrl/configs/opamp_default.yaml
 
 # cs amp (3 parameters only)
 python train.py --agent ppo --config circuitrl/configs/cs_amp.yaml
-```
+
+# Plot a single run example
+python plot.py --run-dir runs/ppo_cs_amp_seed0
+
+# Plot (and overlay) multiple runs
+python plot.py --run-dir runs/ppo_seed0 runs/ppo_seed1 runs/ppo_seed2

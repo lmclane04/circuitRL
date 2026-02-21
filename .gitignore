@@ -20,7 +20,7 @@ env/
 *.swo
 
 # Training runs & checkpoints
-runs/
+# /runs #include them for now
 logs/
 *.zip
 
