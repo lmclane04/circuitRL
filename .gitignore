@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+*.so
+
+# Virtual environments
+.env
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Training runs & checkpoints
+runs/
+logs/
+*.zip
+
+# NGSpice temp files
+*.raw
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
