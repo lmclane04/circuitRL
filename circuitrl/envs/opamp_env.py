@@ -1,5 +1,3 @@
-"""Gymnasium environment for two-stage op-amp circuit sizing."""
-
 import os
 
 import gymnasium as gym

@@ -60,19 +60,21 @@ target_specs:
 
 # Environment settings
 env:
-  max_steps: 50
-  action_step_size: 0.05  # fraction of parameter range per discrete action
+  max_steps: 100
+  action_step_size: 0.1  # fraction of parameter range per discrete action
   sim_timeout: 30         # seconds
 
-# RL hyperparameters
+# ppo hyperparameters
 ppo:
   learning_rate: 3.0e-4
-  n_steps: 2048
-  batch_size: 64
+  n_steps: 256
+  batch_size: 32
   n_epochs: 10
   gamma: 0.99
   total_timesteps: 100000
 
+
+# --------- not yet implemented ----------- #
 sac:
   learning_rate: 3.0e-4
   batch_size: 256

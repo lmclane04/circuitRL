@@ -1,5 +1,3 @@
-"""Tests for NGSpice subprocess runner."""
-
 import numpy as np
 
 from circuitrl.simulators.ngspice_runner import NGSpiceRunner

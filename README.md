@@ -43,5 +43,5 @@ print('reward:', reward)
 "
 
 # Run training (coming soon)
-# python train.py --agent ppo --config circuitrl/configs/opamp_default.yaml
+python train.py --agent ppo --config circuitrl/configs/opamp_default.yaml
 ```

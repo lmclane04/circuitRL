@@ -1,5 +1,3 @@
-"""Tests for OpAmpEnv Gymnasium environment."""
-
 import numpy as np
 
 from circuitrl.envs.opamp_env import OpAmpEnv
