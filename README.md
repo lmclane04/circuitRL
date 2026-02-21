@@ -1,6 +1,6 @@
 # CircuitRL
 
-Goal-conditioned RL for analog circuit sizing. An agent learns to size a two-stage op-amp to hit target performance specs (gain, bandwidth, phase margin, power) using NGSpice simulation as a reward signal.
+RL for analog circuit sizing. An agent learns to size a circuit to hit target performance specs (gain, bandwidth, phase margin, power) using NGSpice simulation for a reward signal.
 
 ## Setup
 
