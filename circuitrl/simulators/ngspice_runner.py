@@ -10,12 +10,11 @@ class NGSpiceRunner:
     """Fills a parameterized SPICE netlist template, runs NGSpice in batch mode,
     and parses measurement results from stdout."""
 
-    METRIC_KEYS = ("gain_db", "ugbw", "phase_margin", "power")
-
-    def __init__(self, template_path: str, timeout: int = 30):
+    def __init__(self, template_path: str, timeout: int = 30, expected_metrics: tuple | None = None):
         with open(template_path) as f:
             self._template = f.read()
         self._timeout = timeout
+        self._expected_metrics = expected_metrics
 
     def run(self, params: dict) -> dict | None:
         """Run a simulation with the given parameters.
@@ -66,7 +65,13 @@ class NGSpiceRunner:
             value = float(match.group(2))
             parsed[name] = value
 
-        if not all(k in parsed for k in self.METRIC_KEYS):
+        if not parsed:
             return None
 
-        return {k: parsed[k] for k in self.METRIC_KEYS}
+        # If expected metrics specified, validate and return only those
+        if self._expected_metrics:
+            if not all(k in parsed for k in self._expected_metrics):
+                return None
+            return {k: parsed[k] for k in self._expected_metrics}
+
+        return parsed

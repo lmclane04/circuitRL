@@ -1,37 +1,40 @@
+"""Validate PPO components"""
+
 import numpy as np
 import torch
 
 from circuitrl.agents.ppo_agent import ActorCritic, PPOAgent, RolloutBuffer
-from circuitrl.envs.opamp_env import OpAmpEnv
+from circuitrl.envs.circuit_env import CircuitEnv
+
+N_PARAMS = 10  # 10 circuit parameters
+OBS_DIM = 18   # 10 params + 4 metrics + 4 targets
 
 
 def test_actor_critic_forward():
-    obs_dim, n_actions = 18, 20
-    net = ActorCritic(obs_dim, n_actions)
-    obs = torch.randn(4, obs_dim)
+    net = ActorCritic(OBS_DIM, N_PARAMS)
+    obs = torch.randn(4, OBS_DIM)
 
-    logits, values = net(obs)
-    assert logits.shape == (4, n_actions)
+    logits_list, values = net(obs)
+    assert len(logits_list) == N_PARAMS
+    assert logits_list[0].shape == (4, 3)  # 3 choices per param
     assert values.shape == (4,)
 
 
 def test_actor_critic_get_action():
-    obs_dim, n_actions = 18, 20
-    net = ActorCritic(obs_dim, n_actions)
-    obs = torch.randn(1, obs_dim)
+    net = ActorCritic(OBS_DIM, N_PARAMS)
+    obs = torch.randn(1, OBS_DIM)
 
-    action, log_prob, value = net.get_action(obs)
-    assert action.shape == (1,)
-    assert 0 <= action.item() < n_actions
+    actions, log_prob, value = net.get_action(obs)
+    assert actions.shape == (1, N_PARAMS)
+    assert torch.all((actions >= 0) & (actions < 3))
     assert log_prob.shape == (1,)
     assert value.shape == (1,)
 
 
 def test_actor_critic_evaluate():
-    obs_dim, n_actions = 18, 20
-    net = ActorCritic(obs_dim, n_actions)
-    obs = torch.randn(8, obs_dim)
-    actions = torch.randint(0, n_actions, (8,))
+    net = ActorCritic(OBS_DIM, N_PARAMS)
+    obs = torch.randn(8, OBS_DIM)
+    actions = torch.randint(0, 3, (8, N_PARAMS))
 
     log_probs, entropy, values = net.evaluate(obs, actions)
     assert log_probs.shape == (8,)
@@ -41,13 +44,12 @@ def test_actor_critic_evaluate():
 
 
 def test_rollout_buffer_gae():
-    obs_dim = 18
-    buf = RolloutBuffer(n_steps=10, obs_dim=obs_dim)
+    buf = RolloutBuffer(n_steps=10, obs_dim=OBS_DIM, n_params=N_PARAMS)
 
     for i in range(10):
         buf.store(
-            obs=np.random.randn(obs_dim).astype(np.float32),
-            action=np.random.randint(0, 20),
+            obs=np.random.randn(OBS_DIM).astype(np.float32),
+            action=np.random.randint(0, 3, size=N_PARAMS),
             log_prob=-1.5,
             reward=-0.5,
             done=float(i == 9),
@@ -62,20 +64,20 @@ def test_rollout_buffer_gae():
 
 
 def test_rollout_buffer_batches():
-    obs_dim = 18
-    buf = RolloutBuffer(n_steps=10, obs_dim=obs_dim)
+    buf = RolloutBuffer(n_steps=10, obs_dim=OBS_DIM, n_params=N_PARAMS)
     for i in range(10):
-        buf.store(np.zeros(obs_dim, dtype=np.float32), 0, -1.0, -0.5, 0.0, 0.0)
+        buf.store(np.zeros(OBS_DIM, dtype=np.float32), np.zeros(N_PARAMS, dtype=np.int64), -1.0, -0.5, 0.0, 0.0)
     buf.compute_gae(0.0, 0.99, 0.95)
 
     batches = list(buf.get_batches(batch_size=4))
     total_samples = sum(b[0].shape[0] for b in batches)
     assert total_samples == 10  # 4 + 4 + 2
+    assert batches[0][1].shape == (4, N_PARAMS)  # actions are 2D
 
 
 def test_ppo_collect_and_update():
     """Integration test: 1 collect + 1 update with the real env."""
-    env = OpAmpEnv()
+    env = CircuitEnv()
     config = {
         "ppo": {
             "learning_rate": 3e-4,

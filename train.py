@@ -4,7 +4,7 @@ import time
 
 import yaml
 
-from circuitrl.envs.opamp_env import OpAmpEnv
+from circuitrl.envs.circuit_env import CircuitEnv
 
 
 def make_callback(log_interval: int = 1):
@@ -46,7 +46,7 @@ def main():
     run_dir = os.path.join("runs", run_name)
     os.makedirs(run_dir, exist_ok=True)
 
-    env = OpAmpEnv(config_path=args.config)
+    env = CircuitEnv(config_path=args.config)
 
     if args.agent == "ppo":
         from circuitrl.agents.ppo_agent import PPOAgent

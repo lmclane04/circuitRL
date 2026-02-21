@@ -7,11 +7,11 @@ import yaml
 from circuitrl.simulators.ngspice_runner import NGSpiceRunner
 
 
-class OpAmpEnv(gym.Env):
-    """Op-amp sizing environment.
+class CircuitEnv(gym.Env):
+    """Config-driven circuit sizing environment.
 
     State:  [normalized_params | normalized_metrics | normalized_targets]
-    Action: Discrete(2 * n_params) — for each param: +step or -step
+    Action: MultiDiscrete([3] * n_params) — per param: 0=decrease, 1=no-op, 2=increase
     Reward: -mean(|metric_i - target_i| / target_i)
     """
 
@@ -50,17 +50,21 @@ class OpAmpEnv(gym.Env):
         self._step_size = env_cfg["action_step_size"]
         sim_timeout = env_cfg["sim_timeout"]
 
-        # Simulator
-        template_dir = os.path.dirname(os.path.abspath(__file__))
-        template_path = os.path.join(template_dir, "netlist_template.sp")
-        self._runner = NGSpiceRunner(template_path, timeout=sim_timeout)
+        # Simulator — netlist path is relative to config file location
+        netlist_rel = cfg.get("netlist", "../envs/netlist_template.sp")
+        config_dir = os.path.dirname(os.path.abspath(config_path))
+        template_path = os.path.normpath(os.path.join(config_dir, netlist_rel))
+        self._runner = NGSpiceRunner(
+            template_path, timeout=sim_timeout,
+            expected_metrics=tuple(self._metric_names),
+        )
 
         # Spaces
         obs_dim = self._n_params + self._n_metrics + self._n_metrics
         self.observation_space = gym.spaces.Box(
             low=-np.inf, high=np.inf, shape=(obs_dim,), dtype=np.float32
         )
-        self.action_space = gym.spaces.Discrete(2 * self._n_params)
+        self.action_space = gym.spaces.MultiDiscrete([3] * self._n_params)
 
         # State
         self._params_norm = None
@@ -74,15 +78,12 @@ class OpAmpEnv(gym.Env):
         self._metrics = self._simulate()
         return self._build_obs(), self._build_info()
 
-    def step(self, action: int):
+    def step(self, action):
         self._step_count += 1
 
-        # Decode action: param index and direction
-        param_idx = action // 2
-        direction = 1.0 if action % 2 == 0 else -1.0
-        self._params_norm[param_idx] = np.clip(
-            self._params_norm[param_idx] + direction * self._step_size, 0.0, 1.0
-        )
+        # Decode action: 0=decrease, 1=no-op, 2=increase (per param)
+        deltas = (np.asarray(action) - 1).astype(np.float64) * self._step_size
+        self._params_norm = np.clip(self._params_norm + deltas, 0.0, 1.0)
 
         # Simulate
         self._metrics = self._simulate()
@@ -154,3 +155,7 @@ class OpAmpEnv(gym.Env):
         params_si = self._denormalize_params()
         info["params"] = dict(zip(self._param_names, params_si.tolist()))
         return info
+
+
+# Backward-compatible alias.
+OpAmpEnv = CircuitEnv

@@ -1,3 +1,5 @@
+"""Validate ngspice wrapper (it should return expected metrics and not timeout)"""
+
 import numpy as np
 
 from circuitrl.simulators.ngspice_runner import NGSpiceRunner
@@ -17,7 +19,8 @@ def test_run_default_params():
     runner = NGSpiceRunner(TEMPLATE)
     result = runner.run(DEFAULT_PARAMS)
     assert result is not None, "Simulation returned None"
-    for key in NGSpiceRunner.METRIC_KEYS:
+    expected_keys = ("gain_db", "ugbw", "phase_margin", "power")
+    for key in expected_keys:
         assert key in result, f"Missing metric: {key}"
         assert np.isfinite(result[key]), f"Non-finite value for {key}: {result[key]}"
 

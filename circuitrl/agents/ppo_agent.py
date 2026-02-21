@@ -5,42 +5,59 @@ from torch.distributions import Categorical
 
 
 class ActorCritic(nn.Module):
-    def __init__(self, obs_dim: int, n_actions: int, hidden: int = 256):
+    """Shared-trunk actor-critic with independent per-parameter policy heads."""
+
+    def __init__(self, obs_dim: int, n_params: int, actions_per_param: int = 3, hidden: int = 256):
         super().__init__()
+        self.n_params = n_params
         self.trunk = nn.Sequential(
             nn.Linear(obs_dim, hidden),
             nn.Tanh(),
             nn.Linear(hidden, hidden),
             nn.Tanh(),
         )
-        self.policy_head = nn.Linear(hidden, n_actions)
+        # One head per parameter, each outputs logits for {decrease, no-op, increase}
+        self.policy_heads = nn.ModuleList([
+            nn.Linear(hidden, actions_per_param) for _ in range(n_params)
+        ])
         self.value_head = nn.Linear(hidden, 1)
 
     def forward(self, obs: torch.Tensor):
         h = self.trunk(obs)
-        return self.policy_head(h), self.value_head(h).squeeze(-1)
+        logits = [head(h) for head in self.policy_heads]  # list of (batch, 3)
+        return logits, self.value_head(h).squeeze(-1)
 
     def get_action(self, obs: torch.Tensor):
-        """Sample an action and return (action, log_prob, value)."""
-        logits, value = self(obs)
-        dist = Categorical(logits=logits)
-        action = dist.sample()
-        return action, dist.log_prob(action), value
+        """Sample an action per parameter. Returns (actions, summed_log_prob, value)."""
+        logits_list, value = self(obs)
+        actions = []
+        log_prob_sum = torch.zeros(obs.shape[0], device=obs.device)
+        for logits in logits_list:
+            dist = Categorical(logits=logits)
+            a = dist.sample()
+            log_prob_sum = log_prob_sum + dist.log_prob(a)
+            actions.append(a)
+        actions = torch.stack(actions, dim=-1)  # (batch, n_params)
+        return actions, log_prob_sum, value
 
     def evaluate(self, obs: torch.Tensor, actions: torch.Tensor):
-        """Evaluate given actions and return (log_prob, entropy, value)."""
-        logits, value = self(obs)
-        dist = Categorical(logits=logits)
-        return dist.log_prob(actions), dist.entropy(), value
+        """Evaluate given actions. Returns (summed_log_prob, mean_entropy, value)."""
+        logits_list, value = self(obs)
+        log_prob_sum = torch.zeros(obs.shape[0], device=obs.device)
+        entropy_sum = torch.zeros(obs.shape[0], device=obs.device)
+        for i, logits in enumerate(logits_list):
+            dist = Categorical(logits=logits)
+            log_prob_sum = log_prob_sum + dist.log_prob(actions[:, i])
+            entropy_sum = entropy_sum + dist.entropy()
+        mean_entropy = entropy_sum / self.n_params
+        return log_prob_sum, mean_entropy, value
 
 
 class RolloutBuffer:
-    """Stores rollout data and computes GAE."""
-
-    def __init__(self, n_steps: int, obs_dim: int):
+    def __init__(self, n_steps: int, obs_dim: int, n_params: int):
         self.n_steps = n_steps
         self.obs = np.zeros((n_steps, obs_dim), dtype=np.float32)
-        self.actions = np.zeros(n_steps, dtype=np.int64)
+        self.actions = np.zeros((n_steps, n_params), dtype=np.int64)
         self.log_probs = np.zeros(n_steps, dtype=np.float32)
         self.rewards = np.zeros(n_steps, dtype=np.float32)
         self.dones = np.zeros(n_steps, dtype=np.float32)
@@ -85,7 +102,7 @@ class RolloutBuffer:
                 torch.tensor(self.log_probs[batch_idx]),
                 torch.tensor(self.returns[batch_idx]),
                 torch.tensor(self.advantages[batch_idx]),
-            ) # yield gives one mini-batch at a time
+            )
 
     def reset(self):
         self.ptr = 0
@@ -95,7 +112,7 @@ class PPOAgent:
     def __init__(self, env, config: dict):
         self.env = env
         obs_dim = env.observation_space.shape[0]
-        n_actions = env.action_space.n
+        n_params = env.action_space.shape[0]  # MultiDiscrete → .shape[0] = n_params
 
         ppo_cfg = config["ppo"]
         self.lr = float(ppo_cfg["learning_rate"])
@@ -112,9 +129,9 @@ class PPOAgent:
         self.gae_lambda = 0.95
         self.max_grad_norm = 0.5
 
-        self.network = ActorCritic(obs_dim, n_actions)
+        self.network = ActorCritic(obs_dim, n_params)
         self.optimizer = torch.optim.Adam(self.network.parameters(), lr=self.lr)
-        self.buffer = RolloutBuffer(self.n_steps, obs_dim)
+        self.buffer = RolloutBuffer(self.n_steps, obs_dim, n_params)
 
     def collect_rollouts(self) -> list[dict]:
         """Run environment for n_steps, fill self.buffer. Return list of episode stats."""
@@ -129,10 +146,11 @@ class PPOAgent:
                 obs_t = torch.tensor(obs, dtype=torch.float32).unsqueeze(0)
                 action, log_prob, value = self.network.get_action(obs_t)
 
-            next_obs, reward, terminated, truncated, info = self.env.step(action.item())
+            action_np = action.squeeze(0).numpy()  # (n_params,)
+            next_obs, reward, terminated, truncated, info = self.env.step(action_np)
             done = terminated or truncated
 
-            self.buffer.store(obs, action.item(), log_prob.item(), reward, float(done), value.item())
+            self.buffer.store(obs, action_np, log_prob.item(), reward, float(done), value.item())
 
             ep_reward += reward
             ep_len += 1
@@ -192,18 +210,12 @@ class PPOAgent:
                 n_updates += 1
 
         return {
-            "policy_loss": total_policy_loss / n_updates, # trying to minimize this
-            "value_loss": total_value_loss / n_updates, # MSE between predicted values and computed returns
-            "entropy": total_entropy / n_updates, # how random the policy is
+            "policy_loss": total_policy_loss / n_updates,
+            "value_loss": total_value_loss / n_updates,
+            "entropy": total_entropy / n_updates,
         }
 
     def train(self, total_timesteps: int | None = None, callback=None):
-        """Main training loop.
-
-        Args:
-            total_timesteps: override from config if provided.
-            callback: optional fn(timestep, episode_stats, loss_stats) called each iteration.
-        """
         total = total_timesteps or self.total_timesteps
         timesteps_done = 0
         iteration = 0

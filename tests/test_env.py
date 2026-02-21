@@ -1,10 +1,12 @@
+"""Validate Gym environment (reset/step outputs, action space shape, etc)"""
+
 import numpy as np
 
-from circuitrl.envs.opamp_env import OpAmpEnv
+from circuitrl.envs.circuit_env import CircuitEnv
 
 
 def test_reset():
-    env = OpAmpEnv()
+    env = CircuitEnv()
     obs, info = env.reset()
     assert obs.shape == env.observation_space.shape
     assert env.observation_space.contains(obs)
@@ -13,7 +15,7 @@ def test_reset():
 
 
 def test_step():
-    env = OpAmpEnv()
+    env = CircuitEnv()
     env.reset()
     action = env.action_space.sample()
     obs, reward, terminated, truncated, info = env.step(action)
@@ -24,14 +26,15 @@ def test_step():
 
 
 def test_action_space_size():
-    env = OpAmpEnv()
-    # 10 params × 2 directions (up/down)
-    assert env.action_space.n == 20
+    env = CircuitEnv()
+    # MultiDiscrete: 10 params, each with 3 choices (decrease/no-op/increase)
+    assert env.action_space.shape == (10,)
+    assert all(n == 3 for n in env.action_space.nvec)
 
 
 def test_reward_negative():
     """Reward should be non-positive (negative distance to target)."""
-    env = OpAmpEnv()
+    env = CircuitEnv()
     env.reset()
     _, reward, _, _, _ = env.step(env.action_space.sample())
     assert reward <= 0.0, f"Expected non-positive reward, got {reward}"

@@ -22,7 +22,7 @@ pip install -r requirements.txt
 # Run all tests
 pytest tests/ -v
 
-# Smoke-test the NGSpice runner
+# Smoke-test the NGSpice runner (runs on simulation with some random parameters and prints returned metrics)
 python -c "
 from circuitrl.simulators.ngspice_runner import NGSpiceRunner
 runner = NGSpiceRunner('circuitrl/envs/netlist_template.sp')
@@ -32,16 +32,21 @@ result = runner.run({'W1': '10u', 'L1': '0.5u', 'W3': '20u', 'L3': '0.5u',
 print(result)
 "
 
-# Smoke-test the Gym environment
+# Smoke-test the Gym environment (creates a circuit environment, calls reset, samples action, takes one step, prints observation shape and reward)
 python -c "
-from circuitrl.envs.opamp_env import OpAmpEnv
-env = OpAmpEnv()
+from circuitrl.envs.circuit_env import CircuitEnv
+env = CircuitEnv()
 obs, info = env.reset()
 print('obs shape:', obs.shape, 'metrics:', info['metrics'])
 obs, reward, term, trunc, info = env.step(env.action_space.sample())
 print('reward:', reward)
 "
 
-# Run training (coming soon)
+# Run training
+
+# 2 stage op amp (10 parameters)
 python train.py --agent ppo --config circuitrl/configs/opamp_default.yaml
+
+# cs amp (3 parameters only)
+python train.py --agent ppo --config circuitrl/configs/cs_amp.yaml
 ```
