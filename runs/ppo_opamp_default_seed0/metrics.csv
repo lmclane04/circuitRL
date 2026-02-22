@@ -40,3 +40,11 @@ timestep,elapsed,episodes,circuit,mean_reward,mean_len,policy_loss,value_loss,en
 9984,297.7,2,Two-Stage Op-Amp Configuration,-100.2422,100.0,0.0068,160.8058,0.8078
 10240,304.3,2,Two-Stage Op-Amp Configuration,-97.3721,100.0,-0.0060,166.1718,0.7846
 10496,311.3,2,Two-Stage Op-Amp Configuration,-95.4773,100.0,-0.0040,161.9616,0.7516
+10752,318.0,2,Two-Stage Op-Amp Configuration,-101.8301,100.0,0.0149,164.7856,0.7458
+11008,324.7,2,Two-Stage Op-Amp Configuration,-102.6897,100.0,0.0072,168.6203,0.7544
+11264,331.7,2,Two-Stage Op-Amp Configuration,-104.1543,100.0,0.0056,173.4200,0.7714
+11520,338.0,2,Two-Stage Op-Amp Configuration,-102.1765,100.0,0.0108,173.8040,0.7658
+11776,345.4,2,Two-Stage Op-Amp Configuration,-103.0313,100.0,-0.0033,178.9484,0.7672
+12032,352.3,2,Two-Stage Op-Amp Configuration,-99.5537,100.0,-0.0049,179.2779,0.7520
+12288,359.1,2,Two-Stage Op-Amp Configuration,-97.5144,100.0,0.0035,173.9321,0.7216
+12544,365.8,2,Two-Stage Op-Amp Configuration,-97.4808,100.0,0.0079,174.2502,0.7333
