@@ -8,42 +8,59 @@ parameters:
     min: 1.0e-6
     max: 100.0e-6
     default: 10.0e-6
+    step: 1.0e-6          # 1µm increments → 100 levels
   L1:  # NMOS input pair length
     min: 0.18e-6
     max: 5.0e-6
     default: 0.5e-6
+    step: 0.1e-6           # 100nm increments → 49 levels
   W3:  # PMOS load width
     min: 1.0e-6
     max: 200.0e-6
     default: 20.0e-6
+    step: 1.0e-6           # 1µm increments → 200 levels
   L3:  # PMOS load length
     min: 0.18e-6
     max: 5.0e-6
     default: 0.5e-6
+    step: 0.1e-6           # 100nm increments → 49 levels
   W5:  # Tail current source width
     min: 1.0e-6
     max: 100.0e-6
     default: 10.0e-6
+    step: 1.0e-6           # 1µm increments → 100 levels
   L5:  # Tail current source length
     min: 0.18e-6
     max: 5.0e-6
     default: 0.5e-6
+    step: 0.1e-6           # 100nm increments → 49 levels
   W7:  # Second stage NMOS width
     min: 1.0e-6
     max: 200.0e-6
     default: 1.0e-6
+    step: 1.0e-6           # 1µm increments → 200 levels
   L7:  # Second stage NMOS length
     min: 0.18e-6
     max: 5.0e-6
     default: 2.0e-6
+    step: 0.1e-6           # 100nm increments → 49 levels
   Cc:  # Compensation capacitor
     min: 0.1e-12
     max: 10.0e-12
     default: 1.0e-12
+    step: 0.1e-12          # 0.1pF increments → 99 levels
   Ib:  # Bias current
     min: 1.0e-6
     max: 100.0e-6
     default: 10.0e-6
+    step: 1.0e-6           # 1µA increments → 100 levels
+
+# Physical constraints (evaluated on SI values)
+constraints:
+  - "W1 >= 2 * L1"      # Input pair W/L >= 2
+  - "W3 >= 2 * L3"      # PMOS load W/L >= 2
+  - "W5 >= 2 * L5"      # Tail current source W/L >= 2
+  - "W7 >= 2 * L7"      # Second stage W/L >= 2
 
 # Target specifications
 target_specs:
@@ -63,7 +80,6 @@ target_specs:
 # Environment settings
 env:
   max_steps: 100
-  action_step_size: 0.1  # fraction of parameter range per discrete action
   sim_timeout: 30         # seconds
 
 # ppo hyperparameters

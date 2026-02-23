@@ -8,7 +8,10 @@ from circuitrl.simulators.ngspice_runner import NGSpiceRunner
 
 
 class CircuitEnv(gym.Env):
-    """Config-driven circuit sizing environment.
+    """Config-driven circuit sizing environment (discrete index-based).
+
+    Each parameter is discretized into a lookup array via np.arange(min, max, step)
+    in SI units. The agent moves an integer index per parameter.
 
     State:  [normalized_params | normalized_metrics | normalized_targets]
     Action: MultiDiscrete([3] * n_params) — per param: 0=decrease, 1=no-op, 2=increase
@@ -23,16 +26,22 @@ class CircuitEnv(gym.Env):
         with open(config_path) as f:
             cfg = yaml.safe_load(f)
 
-        # Parameter info
+        # Build discrete lookup arrays per parameter
         self._param_names = list(cfg["parameters"].keys())
-        self._param_bounds = np.array(
-            [[float(p["min"]), float(p["max"])] for p in cfg["parameters"].values()]
-        )
-        self._param_defaults_norm = np.array([
-            (float(p["default"]) - float(p["min"])) / (float(p["max"]) - float(p["min"]))
-            for p in cfg["parameters"].values()
-        ])
         self._n_params = len(self._param_names)
+        self._param_arrays = []
+        for p in cfg["parameters"].values():
+            lo, hi, step = float(p["min"]), float(p["max"]), float(p["step"])
+            arr = np.arange(lo, hi + step * 0.5, step)
+            self._param_arrays.append(arr)
+
+        self._max_indices = np.array([len(a) - 1 for a in self._param_arrays])
+
+        # Default index: closest array entry to the configured default
+        self._default_indices = np.array([
+            int(np.argmin(np.abs(arr - float(p["default"]))))
+            for arr, p in zip(self._param_arrays, cfg["parameters"].values())
+        ])
 
         # Target specs (cast to float — PyYAML may leave scientific notation as str)
         self._metric_names = list(cfg["target_specs"].keys())
@@ -47,8 +56,10 @@ class CircuitEnv(gym.Env):
         # Env settings
         env_cfg = cfg["env"]
         self._max_steps = env_cfg["max_steps"]
-        self._step_size = env_cfg["action_step_size"]
         sim_timeout = env_cfg["sim_timeout"]
+
+        # Optional parameter constraints (evaluated on SI values)
+        self._constraints = cfg.get("constraints", [])
 
         # Simulator — netlist path is relative to config file location
         netlist_rel = cfg.get("netlist", "../envs/netlist_template.sp")
@@ -67,13 +78,13 @@ class CircuitEnv(gym.Env):
         self.action_space = gym.spaces.MultiDiscrete([3] * self._n_params)
 
         # State
-        self._params_norm = None
+        self._param_indices = None
         self._metrics = None
         self._step_count = 0
 
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
-        self._params_norm = self._param_defaults_norm.copy()
+        self._param_indices = self._default_indices.copy()
         self._step_count = 0
         self._metrics = self._simulate()
         return self._build_obs(), self._build_info()
@@ -82,8 +93,13 @@ class CircuitEnv(gym.Env):
         self._step_count += 1
 
         # Decode action: 0=decrease, 1=no-op, 2=increase (per param)
-        deltas = (np.asarray(action) - 1).astype(np.float64) * self._step_size
-        self._params_norm = np.clip(self._params_norm + deltas, 0.0, 1.0)
+        self._prev_indices = self._param_indices.copy()
+        deltas = np.asarray(action) - 1
+        self._param_indices = np.clip(self._param_indices + deltas, 0, self._max_indices)
+
+        # Revert if constraints violated
+        if self._constraints:
+            self._enforce_constraints()
 
         # Simulate
         self._metrics = self._simulate()
@@ -102,7 +118,7 @@ class CircuitEnv(gym.Env):
 
     def _simulate(self) -> np.ndarray | None:
         """Run NGSpice and return metrics as an array, or None on failure."""
-        params_si = self._denormalize_params()
+        params_si = self._get_params_si()
         param_dict = {}
         for name, val in zip(self._param_names, params_si):
             param_dict[name] = f"{val:.6e}"
@@ -113,11 +129,23 @@ class CircuitEnv(gym.Env):
 
         return np.array([result[m] for m in self._metric_names])
 
-    def _denormalize_params(self) -> np.ndarray:
-        """Convert normalized [0,1] params to SI values."""
-        lo = self._param_bounds[:, 0]
-        hi = self._param_bounds[:, 1]
-        return lo + self._params_norm * (hi - lo)
+    def _get_params_si(self) -> np.ndarray:
+        """Look up SI values from current indices."""
+        return np.array([arr[idx] for arr, idx in zip(self._param_arrays, self._param_indices)])
+
+    def _enforce_constraints(self):
+        """Check constraints on SI values; revert move if any violated."""
+        params_si = self._get_params_si()
+        local_vars = dict(zip(self._param_names, params_si.tolist()))
+        for expr in self._constraints:
+            if not eval(expr, {"__builtins__": {}}, local_vars):
+                # Constraint violated — revert entire move
+                self._param_indices = self._prev_indices.copy()
+                return
+
+    def _normalize_params(self) -> np.ndarray:
+        """Normalize params as index / max_index → [0, 1]."""
+        return (self._param_indices / self._max_indices).astype(np.float32)
 
     def _normalize_metrics(self) -> np.ndarray:
         """Normalize metrics by target values for the observation."""
@@ -127,13 +155,10 @@ class CircuitEnv(gym.Env):
 
     def _build_obs(self) -> np.ndarray:
         """Concatenate [normalized_params | normalized_metrics | normalized_targets]."""
+        norm_params = self._normalize_params()
         norm_metrics = self._normalize_metrics()
         norm_targets = np.ones(self._n_metrics, dtype=np.float32)  # targets / targets = 1
-        return np.concatenate([
-            self._params_norm.astype(np.float32),
-            norm_metrics,
-            norm_targets,
-        ])
+        return np.concatenate([norm_params, norm_metrics, norm_targets])
 
     def _compute_reward(self) -> float:
         """Dense reward: negative mean relative error across specs."""
@@ -152,7 +177,7 @@ class CircuitEnv(gym.Env):
         info = {"step": self._step_count}
         if self._metrics is not None:
             info["metrics"] = dict(zip(self._metric_names, self._metrics.tolist()))
-        params_si = self._denormalize_params()
+        params_si = self._get_params_si()
         info["params"] = dict(zip(self._param_names, params_si.tolist()))
         return info
 
