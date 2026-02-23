@@ -55,3 +55,9 @@ python plot.py --run-dir runs/ppo_cs_amp_seed0
 
 # Plot (and overlay) multiple runs
 python plot.py --run-dir runs/ppo_seed0 runs/ppo_seed1 runs/ppo_seed2
+
+# evaluate a trained agent, see final params + specs
+python evaluate.py --run-dir runs/ppo_cs_amp_seed0
+
+# See every step's action and reward
+python evaluate.py --run-dir runs/ppo_cs_amp_seed0 --verbose
