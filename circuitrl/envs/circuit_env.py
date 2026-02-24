@@ -8,14 +8,18 @@ from circuitrl.simulators.ngspice_runner import NGSpiceRunner
 
 
 class CircuitEnv(gym.Env):
-    """Config-driven circuit sizing environment (discrete index-based).
+    """Circuit sizing environment driven by a YAML config.
 
-    Each parameter is discretized into a lookup array via np.arange(min, max, step)
-    in SI units. The agent moves an integer index per parameter.
+    Each circuit parameter is discretized into a lookup array of SI values via
+    np.arange(min, max, step). The agent selects {decrease, no-op, increase} for
+    every parameter simultaneously each step, moving integer indices through the grid.
 
     State:  [normalized_params | normalized_metrics | normalized_targets]
-    Action: MultiDiscrete([3] * n_params) — per param: 0=decrease, 1=no-op, 2=increase
-    Reward: -mean(|metric_i - target_i| / target_i)
+              params:   index / max_index        → [0, 1]
+              metrics:  metric / target          → ~1.0 when on-spec
+              targets:  target / nominal_target  → 1.0 at nominal, varies when randomized
+    Action: MultiDiscrete([3] * n_params) —> per param: 0=decrease, 1=no-op, 2=increase
+    Reward: asymmetric — only penalize specs that are violated (see _compute_reward)
     """
 
     metadata = {"render_modes": []}
@@ -32,52 +36,52 @@ class CircuitEnv(gym.Env):
         self._param_arrays = []
         for p in cfg["parameters"].values():
             lo, hi, step = float(p["min"]), float(p["max"]), float(p["step"])
-            arr = np.arange(lo, hi + step * 0.5, step)
-            self._param_arrays.append(arr)
+            self._param_arrays.append(np.arange(lo, hi + step * 0.5, step))
 
         self._max_indices = np.array([len(a) - 1 for a in self._param_arrays])
-
-        # Default index: closest array entry to the configured default
+        # Starting index per parameter: closest grid point to the configured default
         self._default_indices = np.array([
             int(np.argmin(np.abs(arr - float(p["default"]))))
             for arr, p in zip(self._param_arrays, cfg["parameters"].values())
         ])
 
-        # Target specs (cast to float — PyYAML may leave scientific notation as str)
         self._metric_names = list(cfg["target_specs"].keys())
-        self._targets = np.array(
+        self._n_metrics = len(self._metric_names)
+        self._target_nominals = np.array(
             [float(cfg["target_specs"][m]["value"]) for m in self._metric_names]
         )
         self._tolerances = np.array(
             [float(cfg["target_specs"][m]["tolerance"]) for m in self._metric_names]
         )
-        self._n_metrics = len(self._metric_names)
+        self._spec_directions = [
+            cfg["target_specs"][m].get("direction", "equal")
+            for m in self._metric_names
+        ]
+        self._target_ranges = [
+            (float(s["range"][0]), float(s["range"][1])) if "range" in (s := cfg["target_specs"][m]) else None
+            for m in self._metric_names
+        ]
+        self._targets = self._target_nominals.copy()  # re-sampled each reset()
 
         # Env settings
-        env_cfg = cfg["env"]
-        self._max_steps = env_cfg["max_steps"]
-        sim_timeout = env_cfg["sim_timeout"]
-
-        # Optional parameter constraints (evaluated on SI values)
+        self._max_steps = cfg["env"]["max_steps"]
         self._constraints = cfg.get("constraints", [])
 
-        # Simulator — netlist path is relative to config file location
+        # Simulator 
         netlist_rel = cfg.get("netlist", "../envs/netlist_template.sp")
         config_dir = os.path.dirname(os.path.abspath(config_path))
-        template_path = os.path.normpath(os.path.join(config_dir, netlist_rel))
         self._runner = NGSpiceRunner(
-            template_path, timeout=sim_timeout,
+            os.path.normpath(os.path.join(config_dir, netlist_rel)),
+            timeout=cfg["env"]["sim_timeout"],
             expected_metrics=tuple(self._metric_names),
         )
 
-        # Spaces
+        # Gym spaces 
         obs_dim = self._n_params + self._n_metrics + self._n_metrics
         self.observation_space = gym.spaces.Box(
             low=-np.inf, high=np.inf, shape=(obs_dim,), dtype=np.float32
         )
         self.action_space = gym.spaces.MultiDiscrete([3] * self._n_params)
-
-        # State
         self._param_indices = None
         self._metrics = None
         self._step_count = 0
@@ -85,6 +89,7 @@ class CircuitEnv(gym.Env):
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
         self._param_indices = self._default_indices.copy()
+        self._targets = self._sample_targets()
         self._step_count = 0
         self._metrics = self._simulate()
         return self._build_obs(), self._build_info()
@@ -101,12 +106,11 @@ class CircuitEnv(gym.Env):
         if self._constraints:
             self._enforce_constraints()
 
-        # Simulate
         self._metrics = self._simulate()
 
         # Reward and termination
         if self._metrics is None:
-            reward = -10.0
+            reward = -2.0   # penalize simulation failure
             terminated = False
             truncated = True
         else:
@@ -115,6 +119,14 @@ class CircuitEnv(gym.Env):
             truncated = self._step_count >= self._max_steps
 
         return self._build_obs(), reward, terminated, truncated, self._build_info()
+
+    def _sample_targets(self) -> np.ndarray:
+        """Sample target values from configured ranges, or return nominals."""
+        targets = self._target_nominals.copy()
+        for i, r in enumerate(self._target_ranges):
+            if r is not None:
+                targets[i] = float(self.np_random.uniform(r[0], r[1]))
+        return targets
 
     def _simulate(self) -> np.ndarray | None:
         """Run NGSpice and return metrics as an array, or None on failure."""
@@ -139,7 +151,6 @@ class CircuitEnv(gym.Env):
         local_vars = dict(zip(self._param_names, params_si.tolist()))
         for expr in self._constraints:
             if not eval(expr, {"__builtins__": {}}, local_vars):
-                # Constraint violated — revert entire move
                 self._param_indices = self._prev_indices.copy()
                 return
 
@@ -148,30 +159,50 @@ class CircuitEnv(gym.Env):
         return (self._param_indices / self._max_indices).astype(np.float32)
 
     def _normalize_metrics(self) -> np.ndarray:
-        """Normalize metrics by target values for the observation."""
+        """Normalize metrics by current target values for the observation."""
         if self._metrics is None:
             return np.zeros(self._n_metrics, dtype=np.float32)
         return (self._metrics / np.where(self._targets != 0, self._targets, 1.0)).astype(np.float32)
 
     def _build_obs(self) -> np.ndarray:
         """Concatenate [normalized_params | normalized_metrics | normalized_targets]."""
-        norm_params = self._normalize_params()
-        norm_metrics = self._normalize_metrics()
-        norm_targets = np.ones(self._n_metrics, dtype=np.float32)  # targets / targets = 1
-        return np.concatenate([norm_params, norm_metrics, norm_targets])
+        norm_targets = (self._targets / np.where(self._target_nominals != 0, self._target_nominals, 1.0)).astype(np.float32)
+        return np.concatenate([self._normalize_params(), self._normalize_metrics(), norm_targets])
 
     def _compute_reward(self) -> float:
-        """Dense reward: negative mean relative error across specs."""
-        rel_errors = np.abs(self._metrics - self._targets) / np.abs(
-            np.where(self._targets != 0, self._targets, 1.0)
-        )
-        return -float(np.mean(rel_errors))
+        """Asymmetric reward: only penalize specs that are violated.
+
+        direction='max': penalize if metric < target (e.g. gain, bandwidth)
+        direction='min': penalize if metric > target (e.g. power)
+        direction='equal': symmetric penalty (default)
+        """
+        penalties = []
+        for m, t, d in zip(self._metrics, self._targets, self._spec_directions):
+            denom = abs(t) if t != 0 else 1.0
+            if d == 'max':
+                penalty = max(0.0, (t - m) / denom)
+            elif d == 'min':
+                penalty = max(0.0, (m - t) / denom)
+            else:
+                penalty = abs(m - t) / denom
+            penalties.append(penalty)
+        return -float(np.mean(penalties))
 
     def _check_specs_met(self) -> bool:
-        """Check if all metrics are within tolerance of targets."""
+        """Check if all specs are satisfied, accounting for direction."""
         if self._metrics is None:
             return False
-        return bool(np.all(np.abs(self._metrics - self._targets) <= self._tolerances))
+        for m, t, tol, d in zip(self._metrics, self._targets, self._tolerances, self._spec_directions):
+            if d == 'max':
+                if m < t - tol:
+                    return False
+            elif d == 'min':
+                if m > t + tol:
+                    return False
+            else:
+                if abs(m - t) > tol:
+                    return False
+        return True
 
     def _build_info(self) -> dict:
         info = {"step": self._step_count}
@@ -179,8 +210,6 @@ class CircuitEnv(gym.Env):
             info["metrics"] = dict(zip(self._metric_names, self._metrics.tolist()))
         params_si = self._get_params_si()
         info["params"] = dict(zip(self._param_names, params_si.tolist()))
+        info["targets"] = dict(zip(self._metric_names, self._targets.tolist()))
         return info
 
-
-# Backward-compatible alias.
-OpAmpEnv = CircuitEnv

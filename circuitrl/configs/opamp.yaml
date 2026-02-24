@@ -7,52 +7,52 @@ parameters:
   W1:  # NMOS input pair width
     min: 1.0e-6
     max: 100.0e-6
-    default: 10.0e-6
+    default: 50.0e-6      # midpoint of range (index 49 / 100 levels)
     step: 1.0e-6          # 1µm increments → 100 levels
   L1:  # NMOS input pair length
     min: 0.18e-6
     max: 5.0e-6
-    default: 0.5e-6
+    default: 2.5e-6       # midpoint of range (index ~23 / 49 levels)
     step: 0.1e-6           # 100nm increments → 49 levels
   W3:  # PMOS load width
     min: 1.0e-6
     max: 200.0e-6
-    default: 20.0e-6
+    default: 100.0e-6     # midpoint of range (index 99 / 200 levels)
     step: 1.0e-6           # 1µm increments → 200 levels
   L3:  # PMOS load length
     min: 0.18e-6
     max: 5.0e-6
-    default: 0.5e-6
+    default: 2.5e-6       # midpoint of range
     step: 0.1e-6           # 100nm increments → 49 levels
   W5:  # Tail current source width
     min: 1.0e-6
     max: 100.0e-6
-    default: 10.0e-6
+    default: 50.0e-6      # midpoint of range
     step: 1.0e-6           # 1µm increments → 100 levels
   L5:  # Tail current source length
     min: 0.18e-6
     max: 5.0e-6
-    default: 0.5e-6
+    default: 2.5e-6       # midpoint of range
     step: 0.1e-6           # 100nm increments → 49 levels
   W7:  # Second stage NMOS width
     min: 1.0e-6
     max: 200.0e-6
-    default: 1.0e-6
+    default: 100.0e-6     # midpoint of range
     step: 1.0e-6           # 1µm increments → 200 levels
   L7:  # Second stage NMOS length
     min: 0.18e-6
     max: 5.0e-6
-    default: 2.0e-6
+    default: 2.5e-6       # midpoint of range
     step: 0.1e-6           # 100nm increments → 49 levels
   Cc:  # Compensation capacitor
     min: 0.1e-12
     max: 10.0e-12
-    default: 1.0e-12
+    default: 5.0e-12      # midpoint of range (index 49 / 99 levels)
     step: 0.1e-12          # 0.1pF increments → 99 levels
   Ib:  # Bias current
     min: 1.0e-6
     max: 100.0e-6
-    default: 10.0e-6
+    default: 50.0e-6      # midpoint of range (index 49 / 100 levels)
     step: 1.0e-6           # 1µA increments → 100 levels
 
 # Physical constraints (evaluated on SI values)
@@ -66,21 +66,30 @@ constraints:
 target_specs:
   gain_db:
     value: 60.0
-    tolerance: 2.0    # dB
+    tolerance: 2.0
+    range: [58.0, 63.0]   # tight range around nominal
+    direction: max        # only penalize if gain < target
   ugbw:
-    value: 50.0e6     # 50 MHz unity-gain bandwidth
+    value: 50.0e6
     tolerance: 5.0e6
+    range: [45.0e6, 55.0e6]  # tight range around nominal
+    direction: max        # only penalize if UGBW < target
   phase_margin:
-    value: 60.0       # degrees
+    value: 60.0
     tolerance: 5.0
+    range: [58.0, 65.0]   # tight range around nominal
+    direction: max        # only penalize if PM < target
   power:
-    value: 1.0e-3     # 1 mW max
+    value: 1.0e-3
     tolerance: 0.1e-3
+    range: [0.8e-3, 1.2e-3]  # tight range around nominal
+    direction: min        # only penalize if power > target
 
 # Environment settings
 env:
   max_steps: 100
-  sim_timeout: 30         # seconds
+  sim_timeout: 30
+  randomize_start: false
 
 # ppo hyperparameters
 ppo:

@@ -44,20 +44,20 @@ print('reward:', reward)
 
 # Run training
 
-# 2 stage op amp (10 parameters)
-python train.py --agent ppo --config circuitrl/configs/opamp_default.yaml
+# CS amp (3 parameters)
+python train.py --agent ppo --config circuitrl/configs/cs_amp.yaml --seed 1
 
-# cs amp (3 parameters only)
-python train.py --agent ppo --config circuitrl/configs/cs_amp.yaml
+# Two-stage op-amp (10 parameters)
+python train.py --agent ppo --config circuitrl/configs/opamp.yaml --seed 1
 
-# Plot a single run example
+# Plot a single run
 python plot.py --run-dir runs/ppo_cs_amp_seed0
 
 # Plot (and overlay) multiple runs
 python plot.py --run-dir runs/ppo_seed0 runs/ppo_seed1 runs/ppo_seed2
 
 # evaluate a trained agent, see final params + specs
-python evaluate.py --run-dir runs/ppo_cs_amp_seed0
+python evaluate.py --run-dir runs/ppo_cs_amp_seed0 --episodes 10 --seed 1
 
 # See every step's action and reward
 python evaluate.py --run-dir runs/ppo_cs_amp_seed0 --verbose

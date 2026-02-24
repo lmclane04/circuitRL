@@ -4,6 +4,8 @@ import os
 import shutil
 import time
 
+import numpy as np
+import torch
 import yaml
 
 from circuitrl.envs.circuit_env import CircuitEnv
@@ -90,7 +92,11 @@ def main():
     os.makedirs(run_dir)
     shutil.copy2(args.config, os.path.join(run_dir, "config.yaml"))
 
+    torch.manual_seed(args.seed)
+    np.random.seed(args.seed)
+
     env = CircuitEnv(config_path=args.config)
+    env.reset(seed=args.seed)  # seeds env's np_random for _sample_targets
 
     if args.agent == "ppo":
         from circuitrl.agents.ppo_agent import PPOAgent
