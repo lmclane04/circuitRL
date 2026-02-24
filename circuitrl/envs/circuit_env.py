@@ -114,8 +114,8 @@ class CircuitEnv(gym.Env):
             terminated = False
             truncated = True
         else:
-            reward = self._compute_reward()
             terminated = self._check_specs_met()
+            reward = 10.0 if terminated else self._compute_reward()
             truncated = self._step_count >= self._max_steps
 
         return self._build_obs(), reward, terminated, truncated, self._build_info()
