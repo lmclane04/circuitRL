@@ -57,7 +57,15 @@ python plot.py --run-dir runs/ppo_cs_amp_seed0
 python plot.py --run-dir runs/ppo_seed0 runs/ppo_seed1 runs/ppo_seed2
 
 # evaluate a trained agent, see final params + specs
-python evaluate.py --run-dir runs/ppo_cs_amp_seed0 --episodes 10 --seed 1
+python evaluate.py --run-dir runs/ppo_cs_amp_seed0 --episodes 50 --seed 1
 
 # See every step's action and reward
 python evaluate.py --run-dir runs/ppo_cs_amp_seed0 --verbose
+
+# Plot evaluation results
+python plot.py --run-dir runs/ppo_cs_amp_seed1 --eval
+
+# generate target specs and saves them in circuitrl/configs/cs_amp_specs_pool.json
+# these are using in training to make sure we have diverse achieveable specs 
+# may also use this for supervised learning pretraining
+python generate_specs.py --config circuitrl/configs/cs_amp.yaml --n 500
