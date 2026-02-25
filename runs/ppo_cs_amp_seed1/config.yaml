@@ -6,39 +6,44 @@ parameters:
   W1:  # NMOS width
     min: 1.0e-6
     max: 50.0e-6
-    default: 10.0e-6
+    default: 25.0e-6      # midpoint of range (index 24 / 49 levels)
     step: 1.0e-6          # 1µm increments → 50 levels
   L1:  # NMOS length
     min: 0.18e-6
     max: 5.0e-6
-    default: 0.5e-6
+    default: 2.5e-6       # midpoint of range (index ~23 / 49 levels)
     step: 0.1e-6           # 100nm increments → 49 levels
   RD:  # Drain resistor (ohms)
     min: 1000
     max: 50000
-    default: 10000
+    default: 25000         # midpoint of range (index 48 / 98 levels)
     step: 500               # 500Ω increments → 98 levels
 
-# Physical constraints (evaluated on SI values)
-constraints:
-  - "W1 >= 5 * L1"      # W/L ratio >= 5 for reasonable transconductance
+# Spec pool: run `python generate_specs.py --config circuitrl/configs/cs_amp.yaml --n 500`
+# to create this file before training.
+target_spec_file: cs_amp_specs_pool.json
 
 target_specs:
   gain_db:
-    value: 20.0
     tolerance: 2.0
+    direction: max      
   bandwidth:
-    value: 50000000.0  # 50 MHz
     tolerance: 10000000.0
+    direction: max 
+  power:
+    tolerance: 0.05e-3
+    direction: min 
+
 
 env:
-  max_steps: 30
+  max_steps: 50
   sim_timeout: 10
+  randomize_start: false
 
 ppo:
   learning_rate: 3.0e-4
-  n_steps: 128
-  batch_size: 32
+  n_steps: 1024
+  batch_size: 64
   n_epochs: 10
   gamma: 0.99
-  total_timesteps: 10000
+  total_timesteps: 100000

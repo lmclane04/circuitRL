@@ -54,7 +54,7 @@ python train.py --agent ppo --config circuitrl/configs/opamp.yaml --seed 1
 python plot.py --run-dir runs/ppo_cs_amp_seed0
 
 # Plot (and overlay) multiple runs
-python plot.py --run-dir runs/ppo_seed0 runs/ppo_seed1 runs/ppo_seed2
+python plot.py --run-dir runs/ppo_cs_amp_seed0 rppo_cs_amp_seed1
 
 # evaluate a trained agent, see final params + specs
 python evaluate.py --run-dir runs/ppo_cs_amp_seed0 --episodes 50 --seed 1
