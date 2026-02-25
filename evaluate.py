@@ -1,5 +1,6 @@
 """Load a trained agent and run it on a circuit to see what it produces."""
 import argparse
+import csv
 import os
 
 import torch
@@ -122,6 +123,7 @@ def main():
     all_successes = []
     all_steps = []
     spec_successes = {name: [] for name in spec_names}
+    csv_rows = []
 
     for ep in range(args.episodes):
         steps, total_reward, success, episode_targets = run_episode(env, network)
@@ -137,6 +139,12 @@ def main():
                                tolerances[name], directions[name])
                 per_spec[name] = met
                 spec_successes[name].append(met)
+
+        row = {"total_reward": total_reward, "success": int(success), "n_steps": len(steps)}
+        for name in spec_names:
+            row[f"target_{name}"] = episode_targets.get(name, float("nan"))
+            row[f"final_{name}"] = final_metrics.get(name, float("nan"))
+        csv_rows.append(row)
 
         # Always print episode summary; verbose adds per-step trace
         if args.verbose:
@@ -160,6 +168,15 @@ def main():
                 print(f"    {name}: {val:.4g}  (target: {tgt:.4g}, tol: {tol:.3g})  "
                       f"[{'OK  ' if met else 'MISS'}]")
         print()
+
+    # Save eval results CSV for plot.py --eval
+    if csv_rows:
+        csv_path = os.path.join(args.run_dir, "eval_results.csv")
+        with open(csv_path, "w", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=csv_rows[0].keys())
+            writer.writeheader()
+            writer.writerows(csv_rows)
+        print(f"Saved eval results to {csv_path}\n")
 
     # Aggregate summary
     n = args.episodes
