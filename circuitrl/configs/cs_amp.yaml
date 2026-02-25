@@ -19,31 +19,31 @@ parameters:
     default: 25000         # midpoint of range (index 48 / 98 levels)
     step: 500               # 500Ω increments → 98 levels
 
-# Physical constraints (evaluated on SI values)
-constraints:
-  - "W1 >= 5 * L1"      # W/L ratio >= 5 for reasonable transconductance
+# Spec pool: run `python generate_specs.py --config circuitrl/configs/cs_amp.yaml --n 500`
+# to create this file before training.
+target_spec_file: cs_amp_specs_pool.json
 
 target_specs:
   gain_db:
-    value: 20.0
     tolerance: 2.0
-    range: [17.0, 24.0]   # tighter range around nominal
-    direction: max        # only penalize if gain < target
+    direction: equal      
   bandwidth:
-    value: 50000000.0  # 50 MHz
     tolerance: 10000000.0
-    range: [35000000.0, 65000000.0]  # 35–65 MHz
-    direction: max        # only penalize if bandwidth < target
+    direction: equal 
+  power:
+    tolerance: 0.05e-3
+    direction: equal 
+
 
 env:
-  max_steps: 30
+  max_steps: 50
   sim_timeout: 10
   randomize_start: false
 
 ppo:
   learning_rate: 3.0e-4
-  n_steps: 128
-  batch_size: 32
+  n_steps: 256
+  batch_size: 64
   n_epochs: 10
   gamma: 0.99
-  total_timesteps: 10000
+  total_timesteps: 100000

@@ -1,0 +1,1982 @@
+[
+  {
+    "gain_db": 22.374,
+    "bandwidth": 12879700.0,
+    "power": 9.59534e-05
+  },
+  {
+    "gain_db": 0.534547,
+    "bandwidth": 106275000.0,
+    "power": 6.40637e-05
+  },
+  {
+    "gain_db": 18.5582,
+    "bandwidth": 34555900.0,
+    "power": 0.000165916
+  },
+  {
+    "gain_db": -1.18488,
+    "bandwidth": 89062800.0,
+    "power": 6.66196e-05
+  },
+  {
+    "gain_db": 12.1048,
+    "bandwidth": 22837400.0,
+    "power": 5.98601e-05
+  },
+  {
+    "gain_db": 21.8799,
+    "bandwidth": 12138600.0,
+    "power": 8.54316e-05
+  },
+  {
+    "gain_db": 11.1712,
+    "bandwidth": 22204300.0,
+    "power": 4.55463e-05
+  },
+  {
+    "gain_db": -5.71124,
+    "bandwidth": 318171000.0,
+    "power": 9.34442e-05
+  },
+  {
+    "gain_db": 18.87,
+    "bandwidth": 65740300.0,
+    "power": 0.00032718
+  },
+  {
+    "gain_db": -25.0724,
+    "bandwidth": 1903150000.0,
+    "power": 0.000117122
+  },
+  {
+    "gain_db": -0.905815,
+    "bandwidth": 159315000.0,
+    "power": 8.13615e-05
+  },
+  {
+    "gain_db": 10.8466,
+    "bandwidth": 38443900.0,
+    "power": 8.9169e-05
+  },
+  {
+    "gain_db": 10.5159,
+    "bandwidth": 26219000.0,
+    "power": 5.89037e-05
+  },
+  {
+    "gain_db": 16.3163,
+    "bandwidth": 16703200.0,
+    "power": 6.19537e-05
+  },
+  {
+    "gain_db": 19.6492,
+    "bandwidth": 9994910.0,
+    "power": 5.44119e-05
+  },
+  {
+    "gain_db": 7.49191,
+    "bandwidth": 49692100.0,
+    "power": 8.37061e-05
+  },
+  {
+    "gain_db": 22.2371,
+    "bandwidth": 7872280.0,
+    "power": 5.77307e-05
+  },
+  {
+    "gain_db": 18.8254,
+    "bandwidth": 20540000.0,
+    "power": 0.000101701
+  },
+  {
+    "gain_db": 21.9729,
+    "bandwidth": 9150860.0,
+    "power": 6.50972e-05
+  },
+  {
+    "gain_db": -25.2532,
+    "bandwidth": 1136500000.0,
+    "power": 6.85371e-05
+  },
+  {
+    "gain_db": 3.02272,
+    "bandwidth": 79996300.0,
+    "power": 8.87507e-05
+  },
+  {
+    "gain_db": 22.5072,
+    "bandwidth": 20313500.0,
+    "power": 0.000153673
+  },
+  {
+    "gain_db": 21.3217,
+    "bandwidth": 13047000.0,
+    "power": 8.61087e-05
+  },
+  {
+    "gain_db": 12.4415,
+    "bandwidth": 16547700.0,
+    "power": 3.92887e-05
+  },
+  {
+    "gain_db": -6.82229,
+    "bandwidth": 182529000.0,
+    "power": 7.90759e-05
+  },
+  {
+    "gain_db": 2.29117,
+    "bandwidth": 72986800.0,
+    "power": 7.56397e-05
+  },
+  {
+    "gain_db": 21.9011,
+    "bandwidth": 95387400.0,
+    "power": 0.000672974
+  },
+  {
+    "gain_db": -0.361229,
+    "bandwidth": 130310000.0,
+    "power": 0.000105355
+  },
+  {
+    "gain_db": 23.4451,
+    "bandwidth": 9505590.0,
+    "power": 8.01107e-05
+  },
+  {
+    "gain_db": -4.75004,
+    "bandwidth": 116816000.0,
+    "power": 6.20597e-05
+  },
+  {
+    "gain_db": 3.36545,
+    "bandwidth": 58470800.0,
+    "power": 6.6973e-05
+  },
+  {
+    "gain_db": -15.3133,
+    "bandwidth": 459844000.0,
+    "power": 8.2764e-05
+  },
+  {
+    "gain_db": -19.4446,
+    "bandwidth": 1467230000.0,
+    "power": 0.000168681
+  },
+  {
+    "gain_db": -12.3066,
+    "bandwidth": 492385000.0,
+    "power": 0.000121854
+  },
+  {
+    "gain_db": 23.286,
+    "bandwidth": 7248180.0,
+    "power": 5.99767e-05
+  },
+  {
+    "gain_db": 18.9312,
+    "bandwidth": 13699400.0,
+    "power": 6.86621e-05
+  },
+  {
+    "gain_db": -11.4067,
+    "bandwidth": 456165000.0,
+    "power": 0.000123996
+  },
+  {
+    "gain_db": -7.74271,
+    "bandwidth": 158515000.0,
+    "power": 6.26405e-05
+  },
+  {
+    "gain_db": -7.62142,
+    "bandwidth": 212033000.0,
+    "power": 4.99788e-05
+  },
+  {
+    "gain_db": 18.9312,
+    "bandwidth": 8539910.0,
+    "power": 4.28023e-05
+  },
+  {
+    "gain_db": 17.0261,
+    "bandwidth": 15183600.0,
+    "power": 6.1113e-05
+  },
+  {
+    "gain_db": -7.44652,
+    "bandwidth": 194617000.0,
+    "power": 7.92234e-05
+  },
+  {
+    "gain_db": 22.6325,
+    "bandwidth": 9318310.0,
+    "power": 7.15182e-05
+  },
+  {
+    "gain_db": 12.4052,
+    "bandwidth": 32265800.0,
+    "power": 7.6288e-05
+  },
+  {
+    "gain_db": 20.9567,
+    "bandwidth": 8973410.0,
+    "power": 5.67863e-05
+  },
+  {
+    "gain_db": 22.7114,
+    "bandwidth": 9871830.0,
+    "power": 7.64575e-05
+  },
+  {
+    "gain_db": -2.90522,
+    "bandwidth": 212272000.0,
+    "power": 8.61162e-05
+  },
+  {
+    "gain_db": -1.15379,
+    "bandwidth": 85091500.0,
+    "power": 6.38365e-05
+  },
+  {
+    "gain_db": -1.0789,
+    "bandwidth": 152998000.0,
+    "power": 0.000115597
+  },
+  {
+    "gain_db": -11.813,
+    "bandwidth": 269901000.0,
+    "power": 7.03289e-05
+  },
+  {
+    "gain_db": 16.7169,
+    "bandwidth": 26089500.0,
+    "power": 0.000101336
+  },
+  {
+    "gain_db": 10.769,
+    "bandwidth": 42901100.0,
+    "power": 8.40174e-05
+  },
+  {
+    "gain_db": 14.8704,
+    "bandwidth": 23171800.0,
+    "power": 7.27672e-05
+  },
+  {
+    "gain_db": 20.3919,
+    "bandwidth": 9881320.0,
+    "power": 5.85954e-05
+  },
+  {
+    "gain_db": -12.3527,
+    "bandwidth": 273727000.0,
+    "power": 6.74154e-05
+  },
+  {
+    "gain_db": -26.6508,
+    "bandwidth": 1525700000.0,
+    "power": 7.86322e-05
+  },
+  {
+    "gain_db": -11.7882,
+    "bandwidth": 390761000.0,
+    "power": 0.000102085
+  },
+  {
+    "gain_db": -25.0647,
+    "bandwidth": 1124540000.0,
+    "power": 6.92656e-05
+  },
+  {
+    "gain_db": 2.69767,
+    "bandwidth": 212792000.0,
+    "power": 0.000164548
+  },
+  {
+    "gain_db": 20.3577,
+    "bandwidth": 7117580.0,
+    "power": 4.20406e-05
+  },
+  {
+    "gain_db": -5.47014,
+    "bandwidth": 251271000.0,
+    "power": 0.000124412
+  },
+  {
+    "gain_db": 7.15743,
+    "bandwidth": 80075800.0,
+    "power": 0.000103473
+  },
+  {
+    "gain_db": 18.983,
+    "bandwidth": 27404900.0,
+    "power": 0.000138176
+  },
+  {
+    "gain_db": 19.7147,
+    "bandwidth": 6802730.0,
+    "power": 3.73138e-05
+  },
+  {
+    "gain_db": 13.1544,
+    "bandwidth": 25850700.0,
+    "power": 6.66263e-05
+  },
+  {
+    "gain_db": 12.992,
+    "bandwidth": 46146700.0,
+    "power": 0.000116733
+  },
+  {
+    "gain_db": -9.86802,
+    "bandwidth": 244158000.0,
+    "power": 7.7782e-05
+  },
+  {
+    "gain_db": 17.7762,
+    "bandwidth": 11689300.0,
+    "power": 5.12919e-05
+  },
+  {
+    "gain_db": 4.18843,
+    "bandwidth": 79874400.0,
+    "power": 7.33302e-05
+  },
+  {
+    "gain_db": 17.3826,
+    "bandwidth": 21789400.0,
+    "power": 9.13756e-05
+  },
+  {
+    "gain_db": 20.3512,
+    "bandwidth": 13238200.0,
+    "power": 7.81352e-05
+  },
+  {
+    "gain_db": 21.729,
+    "bandwidth": 10422000.0,
+    "power": 7.20866e-05
+  },
+  {
+    "gain_db": 19.7529,
+    "bandwidth": 10153600.0,
+    "power": 5.59394e-05
+  },
+  {
+    "gain_db": -8.75633,
+    "bandwidth": 314420000.0,
+    "power": 0.000112177
+  },
+  {
+    "gain_db": 9.58882,
+    "bandwidth": 40151400.0,
+    "power": 6.86429e-05
+  },
+  {
+    "gain_db": 7.91834,
+    "bandwidth": 106853000.0,
+    "power": 0.000150716
+  },
+  {
+    "gain_db": 1.77406,
+    "bandwidth": 106341000.0,
+    "power": 7.3936e-05
+  },
+  {
+    "gain_db": 21.025,
+    "bandwidth": 8303530.0,
+    "power": 5.29625e-05
+  },
+  {
+    "gain_db": 18.1185,
+    "bandwidth": 54619400.0,
+    "power": 0.000249302
+  },
+  {
+    "gain_db": 14.2882,
+    "bandwidth": 71987400.0,
+    "power": 0.000211408
+  },
+  {
+    "gain_db": 20.3716,
+    "bandwidth": 8379510.0,
+    "power": 4.95738e-05
+  },
+  {
+    "gain_db": -10.9099,
+    "bandwidth": 253697000.0,
+    "power": 7.26033e-05
+  },
+  {
+    "gain_db": -13.4597,
+    "bandwidth": 591292000.0,
+    "power": 0.000129621
+  },
+  {
+    "gain_db": 17.8272,
+    "bandwidth": 14880000.0,
+    "power": 6.56773e-05
+  },
+  {
+    "gain_db": 16.3546,
+    "bandwidth": 13030000.0,
+    "power": 4.85434e-05
+  },
+  {
+    "gain_db": -0.160495,
+    "bandwidth": 95014000.0,
+    "power": 7.82829e-05
+  },
+  {
+    "gain_db": 19.461,
+    "bandwidth": 7575810.0,
+    "power": 4.03586e-05
+  },
+  {
+    "gain_db": 8.62962,
+    "bandwidth": 35646800.0,
+    "power": 5.45701e-05
+  },
+  {
+    "gain_db": 15.3404,
+    "bandwidth": 18044700.0,
+    "power": 5.98169e-05
+  },
+  {
+    "gain_db": 18.7237,
+    "bandwidth": 8878440.0,
+    "power": 4.34487e-05
+  },
+  {
+    "gain_db": 22.2,
+    "bandwidth": 33449100.0,
+    "power": 0.000244253
+  },
+  {
+    "gain_db": -9.10446,
+    "bandwidth": 268499000.0,
+    "power": 9.24678e-05
+  },
+  {
+    "gain_db": 16.4823,
+    "bandwidth": 11237200.0,
+    "power": 4.24842e-05
+  },
+  {
+    "gain_db": 22.9258,
+    "bandwidth": 8846060.0,
+    "power": 7.02249e-05
+  },
+  {
+    "gain_db": 22.9112,
+    "bandwidth": 6722300.0,
+    "power": 5.32763e-05
+  },
+  {
+    "gain_db": 10.2184,
+    "bandwidth": 35721500.0,
+    "power": 6.566e-05
+  },
+  {
+    "gain_db": -6.05164,
+    "bandwidth": 148090000.0,
+    "power": 6.9246e-05
+  },
+  {
+    "gain_db": 7.32819,
+    "bandwidth": 62891900.0,
+    "power": 0.00010432
+  },
+  {
+    "gain_db": 5.86201,
+    "bandwidth": 55110600.0,
+    "power": 7.9667e-05
+  },
+  {
+    "gain_db": 19.1411,
+    "bandwidth": 20567600.0,
+    "power": 0.000105607
+  },
+  {
+    "gain_db": 18.5249,
+    "bandwidth": 12157000.0,
+    "power": 5.81463e-05
+  },
+  {
+    "gain_db": 12.4891,
+    "bandwidth": 19558100.0,
+    "power": 4.66914e-05
+  },
+  {
+    "gain_db": -4.46464,
+    "bandwidth": 306778000.0,
+    "power": 0.000167569
+  },
+  {
+    "gain_db": 13.8843,
+    "bandwidth": 30823000.0,
+    "power": 8.64061e-05
+  },
+  {
+    "gain_db": 1.45517,
+    "bandwidth": 68086400.0,
+    "power": 6.52666e-05
+  },
+  {
+    "gain_db": 22.253,
+    "bandwidth": 6899110.0,
+    "power": 5.06869e-05
+  },
+  {
+    "gain_db": 20.4074,
+    "bandwidth": 12982400.0,
+    "power": 7.71223e-05
+  },
+  {
+    "gain_db": 22.0147,
+    "bandwidth": 8909170.0,
+    "power": 6.36832e-05
+  },
+  {
+    "gain_db": -0.737211,
+    "bandwidth": 113645000.0,
+    "power": 8.86811e-05
+  },
+  {
+    "gain_db": 15.0002,
+    "bandwidth": 23179600.0,
+    "power": 7.3887e-05
+  },
+  {
+    "gain_db": 14.834,
+    "bandwidth": 27031400.0,
+    "power": 8.45317e-05
+  },
+  {
+    "gain_db": 22.7647,
+    "bandwidth": 7299280.0,
+    "power": 5.68812e-05
+  },
+  {
+    "gain_db": 18.8025,
+    "bandwidth": 46944200.0,
+    "power": 0.000231826
+  },
+  {
+    "gain_db": 7.64224,
+    "bandwidth": 248346000.0,
+    "power": 0.000424308
+  },
+  {
+    "gain_db": 1.55217,
+    "bandwidth": 63360500.0,
+    "power": 6.12892e-05
+  },
+  {
+    "gain_db": -6.9304,
+    "bandwidth": 810026000.0,
+    "power": 0.000347169
+  },
+  {
+    "gain_db": -7.67721,
+    "bandwidth": 218677000.0,
+    "power": 8.69842e-05
+  },
+  {
+    "gain_db": 21.3428,
+    "bandwidth": 8318490.0,
+    "power": 5.50347e-05
+  },
+  {
+    "gain_db": 9.64141,
+    "bandwidth": 91781200.0,
+    "power": 0.000157862
+  },
+  {
+    "gain_db": 18.9165,
+    "bandwidth": 31311000.0,
+    "power": 0.000156667
+  },
+  {
+    "gain_db": 7.94127,
+    "bandwidth": 35176000.0,
+    "power": 6.18203e-05
+  },
+  {
+    "gain_db": 5.04006,
+    "bandwidth": 45208400.0,
+    "power": 6.05241e-05
+  },
+  {
+    "gain_db": 22.7587,
+    "bandwidth": 24870500.0,
+    "power": 0.000193675
+  },
+  {
+    "gain_db": -26.824,
+    "bandwidth": 1575100000.0,
+    "power": 7.96105e-05
+  },
+  {
+    "gain_db": -0.562515,
+    "bandwidth": 91766800.0,
+    "power": 7.27986e-05
+  },
+  {
+    "gain_db": -0.131882,
+    "bandwidth": 121154000.0,
+    "power": 0.000100089
+  },
+  {
+    "gain_db": 21.063,
+    "bandwidth": 13288500.0,
+    "power": 8.51294e-05
+  },
+  {
+    "gain_db": 4.80211,
+    "bandwidth": 79910400.0,
+    "power": 7.8734e-05
+  },
+  {
+    "gain_db": 3.05129,
+    "bandwidth": 63851300.0,
+    "power": 5.14266e-05
+  },
+  {
+    "gain_db": 14.6798,
+    "bandwidth": 19073600.0,
+    "power": 5.8597e-05
+  },
+  {
+    "gain_db": 14.7897,
+    "bandwidth": 17070500.0,
+    "power": 5.3111e-05
+  },
+  {
+    "gain_db": -14.3738,
+    "bandwidth": 639535000.0,
+    "power": 0.000127247
+  },
+  {
+    "gain_db": 5.6003,
+    "bandwidth": 63969100.0,
+    "power": 6.90938e-05
+  },
+  {
+    "gain_db": 17.1432,
+    "bandwidth": 21069300.0,
+    "power": 8.59538e-05
+  },
+  {
+    "gain_db": 22.168,
+    "bandwidth": 8257330.0,
+    "power": 6.00747e-05
+  },
+  {
+    "gain_db": -3.4436,
+    "bandwidth": 165278000.0,
+    "power": 9.96533e-05
+  },
+  {
+    "gain_db": 14.5942,
+    "bandwidth": 27015200.0,
+    "power": 8.21806e-05
+  },
+  {
+    "gain_db": 23.4337,
+    "bandwidth": 9640540.0,
+    "power": 8.11406e-05
+  },
+  {
+    "gain_db": 20.3859,
+    "bandwidth": 12036900.0,
+    "power": 7.13283e-05
+  },
+  {
+    "gain_db": -17.5267,
+    "bandwidth": 485056000.0,
+    "power": 6.87567e-05
+  },
+  {
+    "gain_db": -0.794499,
+    "bandwidth": 318644000.0,
+    "power": 0.000164829
+  },
+  {
+    "gain_db": 11.5014,
+    "bandwidth": 20783100.0,
+    "power": 4.42827e-05
+  },
+  {
+    "gain_db": 21.3364,
+    "bandwidth": 44363600.0,
+    "power": 0.000293294
+  },
+  {
+    "gain_db": 11.1556,
+    "bandwidth": 20771300.0,
+    "power": 4.25303e-05
+  },
+  {
+    "gain_db": -30.0296,
+    "bandwidth": 1854230000.0,
+    "power": 6.52315e-05
+  },
+  {
+    "gain_db": -3.32737,
+    "bandwidth": 103358000.0,
+    "power": 6.30206e-05
+  },
+  {
+    "gain_db": 15.4963,
+    "bandwidth": 15113600.0,
+    "power": 5.10075e-05
+  },
+  {
+    "gain_db": 23.2748,
+    "bandwidth": 8868740.0,
+    "power": 7.32917e-05
+  },
+  {
+    "gain_db": 7.98615,
+    "bandwidth": 30531800.0,
+    "power": 4.34023e-05
+  },
+  {
+    "gain_db": -6.03783,
+    "bandwidth": 152982000.0,
+    "power": 7.16307e-05
+  },
+  {
+    "gain_db": 23.4188,
+    "bandwidth": 8763130.0,
+    "power": 7.36301e-05
+  },
+  {
+    "gain_db": 4.88365,
+    "bandwidth": 51054700.0,
+    "power": 6.73612e-05
+  },
+  {
+    "gain_db": -18.5965,
+    "bandwidth": 1103420000.0,
+    "power": 0.000139203
+  },
+  {
+    "gain_db": -21.405,
+    "bandwidth": 1576090000.0,
+    "power": 0.000145978
+  },
+  {
+    "gain_db": 19.6682,
+    "bandwidth": 20616300.0,
+    "power": 0.000112479
+  },
+  {
+    "gain_db": 5.02808,
+    "bandwidth": 45671100.0,
+    "power": 4.61848e-05
+  },
+  {
+    "gain_db": -6.35404,
+    "bandwidth": 165608000.0,
+    "power": 7.5157e-05
+  },
+  {
+    "gain_db": 18.805,
+    "bandwidth": 10111200.0,
+    "power": 4.99465e-05
+  },
+  {
+    "gain_db": 2.17343,
+    "bandwidth": 127637000.0,
+    "power": 9.29181e-05
+  },
+  {
+    "gain_db": -16.3517,
+    "bandwidth": 477769000.0,
+    "power": 7.69091e-05
+  },
+  {
+    "gain_db": 17.8804,
+    "bandwidth": 24253700.0,
+    "power": 0.000107709
+  },
+  {
+    "gain_db": -6.20456,
+    "bandwidth": 135374000.0,
+    "power": 6.23513e-05
+  },
+  {
+    "gain_db": 21.9572,
+    "bandwidth": 8246260.0,
+    "power": 5.85555e-05
+  },
+  {
+    "gain_db": 12.9491,
+    "bandwidth": 16149900.0,
+    "power": 4.06517e-05
+  },
+  {
+    "gain_db": 23.445,
+    "bandwidth": 8436200.0,
+    "power": 7.10966e-05
+  },
+  {
+    "gain_db": 18.4199,
+    "bandwidth": 10936700.0,
+    "power": 5.16815e-05
+  },
+  {
+    "gain_db": -7.30684,
+    "bandwidth": 459251000.0,
+    "power": 0.000189578
+  },
+  {
+    "gain_db": 2.48629,
+    "bandwidth": 197574000.0,
+    "power": 0.000208512
+  },
+  {
+    "gain_db": -18.8845,
+    "bandwidth": 524001000.0,
+    "power": 6.40562e-05
+  },
+  {
+    "gain_db": -14.0281,
+    "bandwidth": 540417000.0,
+    "power": 0.000111549
+  },
+  {
+    "gain_db": 18.6115,
+    "bandwidth": 10592000.0,
+    "power": 5.11687e-05
+  },
+  {
+    "gain_db": 6.15071,
+    "bandwidth": 63999500.0,
+    "power": 7.36489e-05
+  },
+  {
+    "gain_db": 7.17424,
+    "bandwidth": 33716700.0,
+    "power": 4.36526e-05
+  },
+  {
+    "gain_db": 16.9038,
+    "bandwidth": 27192900.0,
+    "power": 0.000107919
+  },
+  {
+    "gain_db": 12.2401,
+    "bandwidth": 18974000.0,
+    "power": 4.40167e-05
+  },
+  {
+    "gain_db": 14.3846,
+    "bandwidth": 17053600.0,
+    "power": 5.06407e-05
+  },
+  {
+    "gain_db": 16.52,
+    "bandwidth": 12535200.0,
+    "power": 4.75974e-05
+  },
+  {
+    "gain_db": -22.3885,
+    "bandwidth": 1190950000.0,
+    "power": 9.89039e-05
+  },
+  {
+    "gain_db": 12.3194,
+    "bandwidth": 26883800.0,
+    "power": 6.29384e-05
+  },
+  {
+    "gain_db": 21.3364,
+    "bandwidth": 15475700.0,
+    "power": 0.000102312
+  },
+  {
+    "gain_db": 20.7346,
+    "bandwidth": 6837460.0,
+    "power": 4.21775e-05
+  },
+  {
+    "gain_db": 20.5564,
+    "bandwidth": 10687300.0,
+    "power": 6.45862e-05
+  },
+  {
+    "gain_db": -10.2826,
+    "bandwidth": 333190000.0,
+    "power": 0.000101724
+  },
+  {
+    "gain_db": -0.380998,
+    "bandwidth": 130563000.0,
+    "power": 0.000105362
+  },
+  {
+    "gain_db": 3.81567,
+    "bandwidth": 78721800.0,
+    "power": 9.40285e-05
+  },
+  {
+    "gain_db": -2.03356,
+    "bandwidth": 95790500.0,
+    "power": 6.61057e-05
+  },
+  {
+    "gain_db": 21.1946,
+    "bandwidth": 9498760.0,
+    "power": 6.17802e-05
+  },
+  {
+    "gain_db": 0.662887,
+    "bandwidth": 379949000.0,
+    "power": 0.000338198
+  },
+  {
+    "gain_db": -1.64336,
+    "bandwidth": 119056000.0,
+    "power": 8.52667e-05
+  },
+  {
+    "gain_db": 15.3242,
+    "bandwidth": 25983200.0,
+    "power": 8.59723e-05
+  },
+  {
+    "gain_db": 16.2599,
+    "bandwidth": 21010100.0,
+    "power": 7.74246e-05
+  },
+  {
+    "gain_db": 16.4952,
+    "bandwidth": 13301600.0,
+    "power": 5.03637e-05
+  },
+  {
+    "gain_db": 18.7042,
+    "bandwidth": 47305000.0,
+    "power": 0.000241347
+  },
+  {
+    "gain_db": -20.9345,
+    "bandwidth": 865810000.0,
+    "power": 8.44751e-05
+  },
+  {
+    "gain_db": 18.0411,
+    "bandwidth": 15981500.0,
+    "power": 7.22979e-05
+  },
+  {
+    "gain_db": -9.45762,
+    "bandwidth": 321089000.0,
+    "power": 0.000106673
+  },
+  {
+    "gain_db": -0.863805,
+    "bandwidth": 122146000.0,
+    "power": 9.4182e-05
+  },
+  {
+    "gain_db": 1.33818,
+    "bandwidth": 76242600.0,
+    "power": 7.22906e-05
+  },
+  {
+    "gain_db": 21.5534,
+    "bandwidth": 17084600.0,
+    "power": 0.000115806
+  },
+  {
+    "gain_db": -0.357657,
+    "bandwidth": 419743000.0,
+    "power": 0.000339472
+  },
+  {
+    "gain_db": 18.5561,
+    "bandwidth": 16413900.0,
+    "power": 7.87898e-05
+  },
+  {
+    "gain_db": -15.5913,
+    "bandwidth": 528930000.0,
+    "power": 9.24024e-05
+  },
+  {
+    "gain_db": 19.4429,
+    "bandwidth": 9153360.0,
+    "power": 4.86606e-05
+  },
+  {
+    "gain_db": 21.6503,
+    "bandwidth": 9524100.0,
+    "power": 6.52821e-05
+  },
+  {
+    "gain_db": -1.60873,
+    "bandwidth": 449621000.0,
+    "power": 0.000323075
+  },
+  {
+    "gain_db": 22.7021,
+    "bandwidth": 6992090.0,
+    "power": 5.40959e-05
+  },
+  {
+    "gain_db": -10.7474,
+    "bandwidth": 233286000.0,
+    "power": 6.78929e-05
+  },
+  {
+    "gain_db": 21.1174,
+    "bandwidth": 7070480.0,
+    "power": 4.55798e-05
+  },
+  {
+    "gain_db": -4.57277,
+    "bandwidth": 717183000.0,
+    "power": 0.000387644
+  },
+  {
+    "gain_db": 19.2666,
+    "bandwidth": 7747350.0,
+    "power": 4.03588e-05
+  },
+  {
+    "gain_db": 21.2929,
+    "bandwidth": 7920080.0,
+    "power": 5.20991e-05
+  },
+  {
+    "gain_db": -12.1942,
+    "bandwidth": 266301000.0,
+    "power": 6.6683e-05
+  },
+  {
+    "gain_db": 22.8371,
+    "bandwidth": 6998710.0,
+    "power": 5.49953e-05
+  },
+  {
+    "gain_db": 22.9354,
+    "bandwidth": 7728130.0,
+    "power": 6.14182e-05
+  },
+  {
+    "gain_db": 1.11194,
+    "bandwidth": 112875000.0,
+    "power": 0.000104784
+  },
+  {
+    "gain_db": 16.1336,
+    "bandwidth": 14153600.0,
+    "power": 5.14044e-05
+  },
+  {
+    "gain_db": -11.2753,
+    "bandwidth": 290409000.0,
+    "power": 8.0024e-05
+  },
+  {
+    "gain_db": -6.08684,
+    "bandwidth": 361514000.0,
+    "power": 0.000168455
+  },
+  {
+    "gain_db": 21.7874,
+    "bandwidth": 8554400.0,
+    "power": 5.95678e-05
+  },
+  {
+    "gain_db": 13.7114,
+    "bandwidth": 28131900.0,
+    "power": 7.73077e-05
+  },
+  {
+    "gain_db": 21.6087,
+    "bandwidth": 12118600.0,
+    "power": 8.26686e-05
+  },
+  {
+    "gain_db": 7.45098,
+    "bandwidth": 53399900.0,
+    "power": 7.13745e-05
+  },
+  {
+    "gain_db": 22.4968,
+    "bandwidth": 10811300.0,
+    "power": 8.16902e-05
+  },
+  {
+    "gain_db": 17.0327,
+    "bandwidth": 19785100.0,
+    "power": 7.96939e-05
+  },
+  {
+    "gain_db": 20.5982,
+    "bandwidth": 8956170.0,
+    "power": 5.43856e-05
+  },
+  {
+    "gain_db": 7.28231,
+    "bandwidth": 61031900.0,
+    "power": 0.000100798
+  },
+  {
+    "gain_db": 13.4108,
+    "bandwidth": 21553800.0,
+    "power": 5.72157e-05
+  },
+  {
+    "gain_db": 5.362,
+    "bandwidth": 85065800.0,
+    "power": 0.000117357
+  },
+  {
+    "gain_db": 21.5751,
+    "bandwidth": 9519800.0,
+    "power": 6.46897e-05
+  },
+  {
+    "gain_db": 16.4163,
+    "bandwidth": 16708300.0,
+    "power": 6.26901e-05
+  },
+  {
+    "gain_db": -28.0188,
+    "bandwidth": 2148240000.0,
+    "power": 9.48878e-05
+  },
+  {
+    "gain_db": 1.1906,
+    "bandwidth": 63785100.0,
+    "power": 4.14671e-05
+  },
+  {
+    "gain_db": 19.7747,
+    "bandwidth": 13201000.0,
+    "power": 7.29111e-05
+  },
+  {
+    "gain_db": -1.14744,
+    "bandwidth": 111831000.0,
+    "power": 8.39475e-05
+  },
+  {
+    "gain_db": 8.82429,
+    "bandwidth": 37752600.0,
+    "power": 5.91037e-05
+  },
+  {
+    "gain_db": 20.0425,
+    "bandwidth": 8365800.0,
+    "power": 4.76526e-05
+  },
+  {
+    "gain_db": -13.6208,
+    "bandwidth": 427249000.0,
+    "power": 9.20782e-05
+  },
+  {
+    "gain_db": 14.84,
+    "bandwidth": 17072700.0,
+    "power": 5.34262e-05
+  },
+  {
+    "gain_db": 20.7514,
+    "bandwidth": 11636700.0,
+    "power": 7.19204e-05
+  },
+  {
+    "gain_db": 8.09914,
+    "bandwidth": 35624900.0,
+    "power": 5.13055e-05
+  },
+  {
+    "gain_db": 22.3482,
+    "bandwidth": 7200340.0,
+    "power": 5.3483e-05
+  },
+  {
+    "gain_db": 22.6957,
+    "bandwidth": 111869000.0,
+    "power": 0.000864861
+  },
+  {
+    "gain_db": 22.4136,
+    "bandwidth": 33496100.0,
+    "power": 0.000250685
+  },
+  {
+    "gain_db": -22.7294,
+    "bandwidth": 1005330000.0,
+    "power": 8.03826e-05
+  },
+  {
+    "gain_db": 16.0282,
+    "bandwidth": 40679000.0,
+    "power": 0.000145961
+  },
+  {
+    "gain_db": 14.2216,
+    "bandwidth": 28164600.0,
+    "power": 8.208e-05
+  },
+  {
+    "gain_db": -9.98954,
+    "bandwidth": 351417000.0,
+    "power": 0.000110566
+  },
+  {
+    "gain_db": -5.63347,
+    "bandwidth": 638670000.0,
+    "power": 0.000311194
+  },
+  {
+    "gain_db": -16.5098,
+    "bandwidth": 537957000.0,
+    "power": 8.51332e-05
+  },
+  {
+    "gain_db": 5.95541,
+    "bandwidth": 49350000.0,
+    "power": 7.19655e-05
+  },
+  {
+    "gain_db": 5.8275,
+    "bandwidth": 90155200.0,
+    "power": 0.000129907
+  },
+  {
+    "gain_db": 18.9636,
+    "bandwidth": 22678000.0,
+    "power": 0.000114088
+  },
+  {
+    "gain_db": -9.66813,
+    "bandwidth": 193665000.0,
+    "power": 6.29712e-05
+  },
+  {
+    "gain_db": 19.3098,
+    "bandwidth": 12197200.0,
+    "power": 6.38561e-05
+  },
+  {
+    "gain_db": -3.81523,
+    "bandwidth": 171531000.0,
+    "power": 9.97811e-05
+  },
+  {
+    "gain_db": 19.8711,
+    "bandwidth": 9711050.0,
+    "power": 5.42346e-05
+  },
+  {
+    "gain_db": 3.77999,
+    "bandwidth": 91259200.0,
+    "power": 7.99337e-05
+  },
+  {
+    "gain_db": 23.1135,
+    "bandwidth": 10686000.0,
+    "power": 8.66846e-05
+  },
+  {
+    "gain_db": 14.7229,
+    "bandwidth": 12717100.0,
+    "power": 3.92634e-05
+  },
+  {
+    "gain_db": 13.293,
+    "bandwidth": 20201700.0,
+    "power": 5.29044e-05
+  },
+  {
+    "gain_db": 21.4307,
+    "bandwidth": 10739000.0,
+    "power": 7.17719e-05
+  },
+  {
+    "gain_db": 3.00046,
+    "bandwidth": 126779000.0,
+    "power": 0.000140361
+  },
+  {
+    "gain_db": 2.38458,
+    "bandwidth": 58448000.0,
+    "power": 6.11021e-05
+  },
+  {
+    "gain_db": 9.89975,
+    "bandwidth": 64269600.0,
+    "power": 0.00011388
+  },
+  {
+    "gain_db": -11.2356,
+    "bandwidth": 846146000.0,
+    "power": 0.000234123
+  },
+  {
+    "gain_db": -21.9708,
+    "bandwidth": 1846890000.0,
+    "power": 0.00016066
+  },
+  {
+    "gain_db": 17.9251,
+    "bandwidth": 32747800.0,
+    "power": 0.000146182
+  },
+  {
+    "gain_db": 19.7799,
+    "bandwidth": 12942500.0,
+    "power": 7.15264e-05
+  },
+  {
+    "gain_db": -8.2018,
+    "bandwidth": 171364000.0,
+    "power": 6.46625e-05
+  },
+  {
+    "gain_db": 19.7194,
+    "bandwidth": 7855700.0,
+    "power": 4.31129e-05
+  },
+  {
+    "gain_db": 20.8347,
+    "bandwidth": 7059480.0,
+    "power": 4.40517e-05
+  },
+  {
+    "gain_db": 16.4938,
+    "bandwidth": 29626300.0,
+    "power": 0.000112155
+  },
+  {
+    "gain_db": 22.2092,
+    "bandwidth": 13118100.0,
+    "power": 9.58924e-05
+  },
+  {
+    "gain_db": -14.9375,
+    "bandwidth": 369470000.0,
+    "power": 6.92255e-05
+  },
+  {
+    "gain_db": 17.045,
+    "bandwidth": 11257500.0,
+    "power": 4.54095e-05
+  },
+  {
+    "gain_db": 19.9408,
+    "bandwidth": 13481100.0,
+    "power": 7.58955e-05
+  },
+  {
+    "gain_db": 6.53852,
+    "bandwidth": 113848000.0,
+    "power": 0.000175339
+  },
+  {
+    "gain_db": 20.9005,
+    "bandwidth": 10212700.0,
+    "power": 6.4213e-05
+  },
+  {
+    "gain_db": -8.58963,
+    "bandwidth": 173049000.0,
+    "power": 6.27904e-05
+  },
+  {
+    "gain_db": 16.9491,
+    "bandwidth": 21757600.0,
+    "power": 8.67999e-05
+  },
+  {
+    "gain_db": 17.7115,
+    "bandwidth": 24238700.0,
+    "power": 0.000105569
+  },
+  {
+    "gain_db": -13.3512,
+    "bandwidth": 485374000.0,
+    "power": 0.000107628
+  },
+  {
+    "gain_db": 5.34991,
+    "bandwidth": 98714400.0,
+    "power": 0.000136033
+  },
+  {
+    "gain_db": -8.70688,
+    "bandwidth": 317991000.0,
+    "power": 6.61492e-05
+  },
+  {
+    "gain_db": -4.36292,
+    "bandwidth": 142219000.0,
+    "power": 7.8455e-05
+  },
+  {
+    "gain_db": 19.3808,
+    "bandwidth": 12670400.0,
+    "power": 6.68781e-05
+  },
+  {
+    "gain_db": 13.9187,
+    "bandwidth": 16598300.0,
+    "power": 4.67144e-05
+  },
+  {
+    "gain_db": 7.96192,
+    "bandwidth": 40071900.0,
+    "power": 5.68053e-05
+  },
+  {
+    "gain_db": 21.148,
+    "bandwidth": 11461000.0,
+    "power": 7.41445e-05
+  },
+  {
+    "gain_db": 0.220126,
+    "bandwidth": 72128200.0,
+    "power": 6.1591e-05
+  },
+  {
+    "gain_db": 16.6762,
+    "bandwidth": 15527400.0,
+    "power": 6.00292e-05
+  },
+  {
+    "gain_db": 22.2348,
+    "bandwidth": 8921780.0,
+    "power": 6.54102e-05
+  },
+  {
+    "gain_db": 6.17199,
+    "bandwidth": 60772000.0,
+    "power": 9.04362e-05
+  },
+  {
+    "gain_db": 21.7082,
+    "bandwidth": 20841300.0,
+    "power": 0.000143809
+  },
+  {
+    "gain_db": -18.5775,
+    "bandwidth": 1808970000.0,
+    "power": 0.000228686
+  },
+  {
+    "gain_db": 19.6027,
+    "bandwidth": 11371100.0,
+    "power": 6.15727e-05
+  },
+  {
+    "gain_db": 19.567,
+    "bandwidth": 10303400.0,
+    "power": 5.55628e-05
+  },
+  {
+    "gain_db": 20.6837,
+    "bandwidth": 8611100.0,
+    "power": 5.28079e-05
+  },
+  {
+    "gain_db": -23.0772,
+    "bandwidth": 844702000.0,
+    "power": 6.4974e-05
+  },
+  {
+    "gain_db": 18.9636,
+    "bandwidth": 43844200.0,
+    "power": 0.000220569
+  },
+  {
+    "gain_db": 8.60002,
+    "bandwidth": 160405000.0,
+    "power": 0.000244722
+  },
+  {
+    "gain_db": 20.4537,
+    "bandwidth": 14396900.0,
+    "power": 8.59826e-05
+  },
+  {
+    "gain_db": -1.18488,
+    "bandwidth": 356251000.0,
+    "power": 0.000266478
+  },
+  {
+    "gain_db": 16.2939,
+    "bandwidth": 15148400.0,
+    "power": 5.60418e-05
+  },
+  {
+    "gain_db": 18.597,
+    "bandwidth": 16416600.0,
+    "power": 7.91747e-05
+  },
+  {
+    "gain_db": 17.6971,
+    "bandwidth": 10067900.0,
+    "power": 4.37772e-05
+  },
+  {
+    "gain_db": 21.0001,
+    "bandwidth": 9913290.0,
+    "power": 6.30491e-05
+  },
+  {
+    "gain_db": 1.89294,
+    "bandwidth": 144493000.0,
+    "power": 0.000144286
+  },
+  {
+    "gain_db": 19.6733,
+    "bandwidth": 8915370.0,
+    "power": 4.86699e-05
+  },
+  {
+    "gain_db": 6.32476,
+    "bandwidth": 45721100.0,
+    "power": 5.36795e-05
+  },
+  {
+    "gain_db": -15.3942,
+    "bandwidth": 476284000.0,
+    "power": 8.49825e-05
+  },
+  {
+    "gain_db": -0.0334562,
+    "bandwidth": 116185000.0,
+    "power": 9.68763e-05
+  },
+  {
+    "gain_db": -14.9803,
+    "bandwidth": 726589000.0,
+    "power": 0.000135515
+  },
+  {
+    "gain_db": 23.1779,
+    "bandwidth": 9354680.0,
+    "power": 7.64501e-05
+  },
+  {
+    "gain_db": 9.31013,
+    "bandwidth": 35677000.0,
+    "power": 5.90675e-05
+  },
+  {
+    "gain_db": 19.7337,
+    "bandwidth": 23568700.0,
+    "power": 0.000129561
+  },
+  {
+    "gain_db": -22.7558,
+    "bandwidth": 2122750000.0,
+    "power": 0.00016923
+  },
+  {
+    "gain_db": 20.1682,
+    "bandwidth": 9725080.0,
+    "power": 5.62025e-05
+  },
+  {
+    "gain_db": -13.395,
+    "bandwidth": 479539000.0,
+    "power": 0.000105843
+  },
+  {
+    "gain_db": -14.2638,
+    "bandwidth": 319177000.0,
+    "power": 6.42535e-05
+  },
+  {
+    "gain_db": -9.37627,
+    "bandwidth": 317959000.0,
+    "power": 6.12366e-05
+  },
+  {
+    "gain_db": -9.55036,
+    "bandwidth": 210210000.0,
+    "power": 6.9178e-05
+  },
+  {
+    "gain_db": 14.3667,
+    "bandwidth": 16615600.0,
+    "power": 4.92382e-05
+  },
+  {
+    "gain_db": 3.32391,
+    "bandwidth": 377397000.0,
+    "power": 0.000430605
+  },
+  {
+    "gain_db": 19.3408,
+    "bandwidth": 10456200.0,
+    "power": 5.49374e-05
+  },
+  {
+    "gain_db": -10.5456,
+    "bandwidth": 223562000.0,
+    "power": 6.64312e-05
+  },
+  {
+    "gain_db": 15.4721,
+    "bandwidth": 27076700.0,
+    "power": 9.11287e-05
+  },
+  {
+    "gain_db": 15.8174,
+    "bandwidth": 92924000.0,
+    "power": 0.000325425
+  },
+  {
+    "gain_db": -9.98954,
+    "bandwidth": 294570000.0,
+    "power": 9.26806e-05
+  },
+  {
+    "gain_db": 21.3442,
+    "bandwidth": 14159200.0,
+    "power": 9.36919e-05
+  },
+  {
+    "gain_db": 19.9649,
+    "bandwidth": 6954200.0,
+    "power": 3.92594e-05
+  },
+  {
+    "gain_db": 21.1505,
+    "bandwidth": 9496390.0,
+    "power": 6.14522e-05
+  },
+  {
+    "gain_db": 21.8336,
+    "bandwidth": 7254710.0,
+    "power": 5.07872e-05
+  },
+  {
+    "gain_db": 23.0827,
+    "bandwidth": 8856120.0,
+    "power": 7.15866e-05
+  },
+  {
+    "gain_db": 9.12177,
+    "bandwidth": 160508000.0,
+    "power": 0.000260039
+  },
+  {
+    "gain_db": -14.468,
+    "bandwidth": 362972000.0,
+    "power": 7.14995e-05
+  },
+  {
+    "gain_db": -2.59142,
+    "bandwidth": 127221000.0,
+    "power": 8.32442e-05
+  },
+  {
+    "gain_db": 17.3604,
+    "bandwidth": 27234700.0,
+    "power": 0.000113919
+  },
+  {
+    "gain_db": 19.541,
+    "bandwidth": 8909930.0,
+    "power": 4.79047e-05
+  },
+  {
+    "gain_db": -5.55921,
+    "bandwidth": 144063000.0,
+    "power": 7.0709e-05
+  },
+  {
+    "gain_db": 21.3773,
+    "bandwidth": 15479300.0,
+    "power": 0.000102819
+  },
+  {
+    "gain_db": 17.7986,
+    "bandwidth": 32732600.0,
+    "power": 0.000144
+  },
+  {
+    "gain_db": -9.87202,
+    "bandwidth": 282644000.0,
+    "power": 9.00058e-05
+  },
+  {
+    "gain_db": 1.1737,
+    "bandwidth": 73118500.0,
+    "power": 6.82708e-05
+  },
+  {
+    "gain_db": 15.3892,
+    "bandwidth": 34194500.0,
+    "power": 0.000113991
+  },
+  {
+    "gain_db": 4.89024,
+    "bandwidth": 71036300.0,
+    "power": 7.07043e-05
+  },
+  {
+    "gain_db": 2.9839,
+    "bandwidth": 682528000.0,
+    "power": 0.000754487
+  },
+  {
+    "gain_db": 12.6332,
+    "bandwidth": 15746200.0,
+    "power": 3.822e-05
+  },
+  {
+    "gain_db": 18.2407,
+    "bandwidth": 12372500.0,
+    "power": 5.72725e-05
+  },
+  {
+    "gain_db": -6.87328,
+    "bandwidth": 318094000.0,
+    "power": 8.17231e-05
+  },
+  {
+    "gain_db": 9.69436,
+    "bandwidth": 76853800.0,
+    "power": 0.000159563
+  },
+  {
+    "gain_db": -10.6688,
+    "bandwidth": 457795000.0,
+    "power": 0.000134316
+  },
+  {
+    "gain_db": 16.315,
+    "bandwidth": 15504900.0,
+    "power": 6.18569e-05
+  },
+  {
+    "gain_db": -11.8699,
+    "bandwidth": 814632000.0,
+    "power": 0.000211013
+  },
+  {
+    "gain_db": 11.6077,
+    "bandwidth": 28017100.0,
+    "power": 6.04311e-05
+  },
+  {
+    "gain_db": 20.6789,
+    "bandwidth": 8500490.0,
+    "power": 5.21004e-05
+  },
+  {
+    "gain_db": 14.9752,
+    "bandwidth": 19087800.0,
+    "power": 6.06697e-05
+  },
+  {
+    "gain_db": -1.26563,
+    "bandwidth": 318586000.0,
+    "power": 0.000156098
+  },
+  {
+    "gain_db": 23.2333,
+    "bandwidth": 13751300.0,
+    "power": 0.0001131
+  },
+  {
+    "gain_db": -10.8079,
+    "bandwidth": 299105000.0,
+    "power": 8.65063e-05
+  },
+  {
+    "gain_db": 23.3242,
+    "bandwidth": 9111820.0,
+    "power": 7.573e-05
+  },
+  {
+    "gain_db": -10.8633,
+    "bandwidth": 422366000.0,
+    "power": 0.000121458
+  },
+  {
+    "gain_db": -18.9825,
+    "bandwidth": 630613000.0,
+    "power": 7.62665e-05
+  },
+  {
+    "gain_db": 17.0113,
+    "bandwidth": 14192600.0,
+    "power": 5.70269e-05
+  },
+  {
+    "gain_db": 19.8661,
+    "bandwidth": 7768660.0,
+    "power": 4.33618e-05
+  },
+  {
+    "gain_db": 18.1612,
+    "bandwidth": 22604800.0,
+    "power": 0.000103685
+  },
+  {
+    "gain_db": -4.5628,
+    "bandwidth": 115792000.0,
+    "power": 6.26475e-05
+  },
+  {
+    "gain_db": 15.1575,
+    "bandwidth": 18661600.0,
+    "power": 6.62169e-05
+  },
+  {
+    "gain_db": 10.567,
+    "bandwidth": 214439000.0,
+    "power": 0.000410304
+  },
+  {
+    "gain_db": -0.445265,
+    "bandwidth": 81940000.0,
+    "power": 6.57253e-05
+  },
+  {
+    "gain_db": 8.386,
+    "bandwidth": 63398100.0,
+    "power": 0.000116208
+  },
+  {
+    "gain_db": 21.3731,
+    "bandwidth": 9244370.0,
+    "power": 6.1374e-05
+  },
+  {
+    "gain_db": 22.2027,
+    "bandwidth": 31856900.0,
+    "power": 0.000232697
+  },
+  {
+    "gain_db": 1.22055,
+    "bandwidth": 95264600.0,
+    "power": 8.9339e-05
+  },
+  {
+    "gain_db": 22.5919,
+    "bandwidth": 7799200.0,
+    "power": 5.95801e-05
+  },
+  {
+    "gain_db": 20.238,
+    "bandwidth": 12481800.0,
+    "power": 7.27158e-05
+  },
+  {
+    "gain_db": -5.40863,
+    "bandwidth": 135712000.0,
+    "power": 6.76019e-05
+  },
+  {
+    "gain_db": 10.2703,
+    "bandwidth": 45931100.0,
+    "power": 8.49332e-05
+  },
+  {
+    "gain_db": 22.994,
+    "bandwidth": 7006570.0,
+    "power": 5.60604e-05
+  },
+  {
+    "gain_db": 11.7341,
+    "bandwidth": 23019000.0,
+    "power": 5.03787e-05
+  },
+  {
+    "gain_db": 2.42745,
+    "bandwidth": 78936700.0,
+    "power": 8.28514e-05
+  },
+  {
+    "gain_db": 22.6625,
+    "bandwidth": 7435480.0,
+    "power": 5.76482e-05
+  },
+  {
+    "gain_db": 10.567,
+    "bandwidth": 80414700.0,
+    "power": 0.000153864
+  },
+  {
+    "gain_db": -10.9479,
+    "bandwidth": 461676000.0,
+    "power": 0.000131605
+  },
+  {
+    "gain_db": 1.91523,
+    "bandwidth": 106349000.0,
+    "power": 7.51532e-05
+  },
+  {
+    "gain_db": -19.6485,
+    "bandwidth": 581939000.0,
+    "power": 6.5422e-05
+  },
+  {
+    "gain_db": 19.7439,
+    "bandwidth": 16096500.0,
+    "power": 8.85888e-05
+  },
+  {
+    "gain_db": 20.9504,
+    "bandwidth": 15442100.0,
+    "power": 9.76518e-05
+  },
+  {
+    "gain_db": -6.38047,
+    "bandwidth": 336162000.0,
+    "power": 0.00015216
+  },
+  {
+    "gain_db": 15.0183,
+    "bandwidth": 23180600.0,
+    "power": 7.40445e-05
+  },
+  {
+    "gain_db": 23.0777,
+    "bandwidth": 7826050.0,
+    "power": 6.32241e-05
+  },
+  {
+    "gain_db": 14.5208,
+    "bandwidth": 30869000.0,
+    "power": 9.31138e-05
+  },
+  {
+    "gain_db": -21.448,
+    "bandwidth": 1055780000.0,
+    "power": 9.73227e-05
+  },
+  {
+    "gain_db": -3.97245,
+    "bandwidth": 131752000.0,
+    "power": 7.54848e-05
+  },
+  {
+    "gain_db": 1.56769,
+    "bandwidth": 156581000.0,
+    "power": 0.000151682
+  },
+  {
+    "gain_db": 17.1186,
+    "bandwidth": 24188700.0,
+    "power": 9.83999e-05
+  }
+]

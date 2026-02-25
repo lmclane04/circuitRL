@@ -35,7 +35,6 @@ def generate(config_path: str, n_samples: int, seed: int = 0):
         param_arrays.append(np.arange(lo, hi + step * 0.5, step))
     max_indices = np.array([len(a) - 1 for a in param_arrays])
 
-    constraints = cfg.get("constraints", [])
     metric_names = list(cfg["target_specs"].keys())
 
     netlist_rel = cfg.get("netlist", "../envs/netlist_template.sp")
@@ -51,16 +50,8 @@ def generate(config_path: str, n_samples: int, seed: int = 0):
 
     print(f"Generating {n_samples} spec targets from random simulations...")
     for i in range(n_samples):
-        # Sample random parameter indices
         indices = np.array([rng.integers(0, max_idx + 1) for max_idx in max_indices])
         params_si = np.array([arr[idx] for arr, idx in zip(param_arrays, indices)])
-
-        # Skip constraint-violating combinations
-        local_vars = dict(zip(param_names, params_si.tolist()))
-        if not all(eval(expr, {"__builtins__": {}}, local_vars) for expr in constraints):
-            failed += 1
-            continue
-
         param_dict = {name: f"{val:.6e}" for name, val in zip(param_names, params_si)}
         result = runner.run(param_dict)
         if result is None:
