@@ -8,6 +8,7 @@ import yaml
 
 from circuitrl.envs.circuit_env import CircuitEnv
 from circuitrl.agents.ppo_agent import ActorCritic
+from circuitrl.agents.grpo_agent import Actor
 
 
 def find_original_config(run_dir: str) -> str | None:
@@ -27,7 +28,7 @@ def find_original_config(run_dir: str) -> str | None:
     return None
 
 
-def load_agent(run_dir: str, config_override: str | None = None):
+def load_agent(run_dir: str, agent:str, config_override: str | None = None):
     """Load config and network from a run directory."""
     checkpoint_path = os.path.join(run_dir, "model.pt")
 
@@ -45,7 +46,10 @@ def load_agent(run_dir: str, config_override: str | None = None):
     obs_dim = env.observation_space.shape[0]
     n_params = len(config["parameters"])
 
-    network = ActorCritic(obs_dim, n_params)
+    if agent == "ppo":
+        network = ActorCritic(obs_dim, n_params)
+    elif agent == "grpo":
+        network = Actor(obs_dim, n_params)
     checkpoint = torch.load(checkpoint_path, weights_only=True)
     network.load_state_dict(checkpoint["network"])
     network.eval()
@@ -63,7 +67,7 @@ def spec_met(metric_val: float, target: float, tolerance: float, direction: str)
         return abs(metric_val - target) <= tolerance
 
 
-def run_episode(env, network):
+def run_episode(env, network, agent):
     """Run one greedy episode. Returns (steps, total_reward, success, episode_targets)."""
     obs, info = env.reset()
     episode_targets = info["targets"]  # targets sampled for this episode
@@ -73,7 +77,10 @@ def run_episode(env, network):
     for _ in range(env._max_steps):
         obs_t = torch.FloatTensor(obs).unsqueeze(0)
         with torch.no_grad():
-            logits_list, _ = network(obs_t)
+            if agent == "ppo":
+                logits_list, _ = network(obs_t)
+            elif agent == "grpo":   
+                logits_list = network(obs_t)
 
         actions = torch.stack([logits.argmax(dim=-1) for logits in logits_list], dim=-1)
         action = actions.squeeze(0).numpy()
@@ -106,9 +113,10 @@ def main():
                         help="Print every step, not just episode summary")
     parser.add_argument("--seed", type=int, default=0,
                         help="RNG seed for target sampling")
+    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "grpo"])
     args = parser.parse_args()
 
-    env, network, config = load_agent(args.run_dir, config_override=args.config)
+    env, network, config = load_agent(args.run_dir, args.agent, config_override=args.config)
     env.reset(seed=args.seed)  # seed env's np_random for reproducible target sampling
 
     spec_names = list(config["target_specs"].keys())
@@ -126,7 +134,7 @@ def main():
     csv_rows = []
 
     for ep in range(args.episodes):
-        steps, total_reward, success, episode_targets = run_episode(env, network)
+        steps, total_reward, success, episode_targets = run_episode(env, network, args.agent)
         all_rewards.append(total_reward)
         all_successes.append(success)
         all_steps.append(len(steps))
