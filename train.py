@@ -4,21 +4,27 @@ import os
 import shutil
 import time
 
+import numpy as np
 import yaml
 
 from circuitrl.envs.circuit_env import CircuitEnv
 
-CSV_FIELDS = [
+BASE_CSV_FIELDS = [
     "timestep", "elapsed", "episodes", "circuit", "mean_reward", "mean_len",
     "policy_loss", "value_loss", "entropy",
 ]
 
 
-def make_callback(run_dir: str, circuit_name: str):
+def make_callback(run_dir: str, circuit_name: str, env):
     start_time = time.time()
+    metric_names = env._metric_names
+    targets = np.array(env._targets)
+    pct_err_fields = [f"pct_err_{m}" for m in metric_names]
+    csv_fields = BASE_CSV_FIELDS + pct_err_fields
+
     csv_path = os.path.join(run_dir, "metrics.csv")
     csv_file = open(csv_path, "w", newline="")
-    writer = csv.DictWriter(csv_file, fieldnames=CSV_FIELDS)
+    writer = csv.DictWriter(csv_file, fieldnames=csv_fields)
     writer.writeheader()
 
     def callback(timesteps_done, episode_stats, loss_stats):
@@ -30,6 +36,19 @@ def make_callback(run_dir: str, circuit_name: str):
         mean_reward = sum(rewards) / len(rewards)
         mean_len = sum(lengths) / len(lengths)
 
+        # Compute per-metric % errors from final step of each episode
+        all_final = [ep["final_metrics"] for ep in episode_stats if ep.get("final_metrics")]
+        pct_errs = {}
+        if all_final:
+            for i, m in enumerate(metric_names):
+                vals = [fm[m] for fm in all_final if m in fm]
+                if vals:
+                    mean_val = np.mean(vals)
+                    t = targets[i]
+                    pct_errs[m] = 100.0 * abs(mean_val - t) / abs(t) if t != 0 else float("inf")
+
+        err_str = "  ".join(f"{m}:{pct_errs[m]:>6.1f}%" for m in metric_names if m in pct_errs)
+
         print(
             f"[{timesteps_done:>7d} steps | {elapsed:6.1f}s] "
             f"episodes: {len(episode_stats):>3d}  "
@@ -38,9 +57,10 @@ def make_callback(run_dir: str, circuit_name: str):
             f"policy_loss: {loss_stats['policy_loss']:.4f}  "
             f"value_loss: {loss_stats['value_loss']:.4f}  "
             f"entropy: {loss_stats['entropy']:.4f}"
+            + (f"  | %err: {err_str}" if err_str else "")
         )
 
-        writer.writerow({
+        row = {
             "timestep": timesteps_done,
             "elapsed": f"{elapsed:.1f}",
             "episodes": len(episode_stats),
@@ -50,7 +70,10 @@ def make_callback(run_dir: str, circuit_name: str):
             "policy_loss": f"{loss_stats['policy_loss']:.4f}",
             "value_loss": f"{loss_stats['value_loss']:.4f}",
             "entropy": f"{loss_stats['entropy']:.4f}",
-        })
+        }
+        for m in metric_names:
+            row[f"pct_err_{m}"] = f"{pct_errs[m]:.2f}" if m in pct_errs else "nan"
+        writer.writerow(row)
         csv_file.flush()
 
     def close():
@@ -103,7 +126,7 @@ def main():
     print()
 
     total = args.timesteps or int(config[args.agent]["total_timesteps"])
-    cb = make_callback(run_dir, circuit_name)
+    cb = make_callback(run_dir, circuit_name, env)
     agent.train(total_timesteps=total, callback=cb)
     cb.close()
 

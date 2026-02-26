@@ -112,7 +112,8 @@ class PPOAgent:
     def __init__(self, env, config: dict):
         self.env = env
         obs_dim = env.observation_space.shape[0]
-        n_params = env.action_space.shape[0]  # MultiDiscrete → .shape[0] = n_params
+        n_params = env.action_space.shape[0]   # MultiDiscrete → .shape[0] = n_params
+        actions_per_param = int(env.action_space.nvec[0])
 
         ppo_cfg = config["ppo"]
         self.lr = float(ppo_cfg["learning_rate"])
@@ -129,7 +130,7 @@ class PPOAgent:
         self.gae_lambda = 0.95
         self.max_grad_norm = 0.5
 
-        self.network = ActorCritic(obs_dim, n_params)
+        self.network = ActorCritic(obs_dim, n_params, actions_per_param)
         self.optimizer = torch.optim.Adam(self.network.parameters(), lr=self.lr)
         self.buffer = RolloutBuffer(self.n_steps, obs_dim, n_params)
 
@@ -156,7 +157,7 @@ class PPOAgent:
             ep_len += 1
 
             if done:
-                episode_stats.append({"reward": ep_reward, "length": ep_len})
+                episode_stats.append({"reward": ep_reward, "length": ep_len, "final_metrics": info.get("metrics", {})})
                 ep_reward = 0.0
                 ep_len = 0
                 obs, _ = self.env.reset()

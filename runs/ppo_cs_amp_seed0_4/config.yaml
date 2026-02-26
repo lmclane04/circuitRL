@@ -32,13 +32,13 @@ target_specs:
     tolerance: 10000000.0
 
 env:
-  max_steps: 50
+  max_steps: 30
   sim_timeout: 10
 
 ppo:
   learning_rate: 3.0e-4
-  n_steps: 512
-  batch_size: 64
+  n_steps: 128
+  batch_size: 32
   n_epochs: 10
   gamma: 0.99
-  total_timesteps: 100000
+  total_timesteps: 10000

@@ -14,9 +14,12 @@ class CircuitEnv(gym.Env):
     in SI units. The agent moves an integer index per parameter.
 
     State:  [normalized_params | normalized_metrics | normalized_targets]
-    Action: MultiDiscrete([3] * n_params) — per param: 0=decrease, 1=no-op, 2=increase
-    Reward: -mean(|metric_i - target_i| / target_i)
+    Action: MultiDiscrete([5] * n_params) — per param: 0=-5, 1=-1, 2=no-op, 3=+1, 4=+5
+    Reward: -mean(rel_errors) + per-spec tolerance bonus
     """
+
+    # Maps discrete action index → index delta (coarse + fine steps)
+    _ACTION_DELTAS = np.array([-5, -1, 0, 1, 5])
 
     metadata = {"render_modes": []}
 
@@ -75,7 +78,7 @@ class CircuitEnv(gym.Env):
         self.observation_space = gym.spaces.Box(
             low=-np.inf, high=np.inf, shape=(obs_dim,), dtype=np.float32
         )
-        self.action_space = gym.spaces.MultiDiscrete([3] * self._n_params)
+        self.action_space = gym.spaces.MultiDiscrete([5] * self._n_params)
 
         # State
         self._param_indices = None
@@ -84,7 +87,21 @@ class CircuitEnv(gym.Env):
 
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
-        self._param_indices = self._default_indices.copy()
+        # Random start: rejection-sample until constraints are satisfied (fallback to default)
+        for _ in range(100):
+            indices = np.array([
+                int(self.np_random.integers(0, max_idx + 1))
+                for max_idx in self._max_indices
+            ])
+            if not self._constraints:
+                break
+            params_si = np.array([arr[idx] for arr, idx in zip(self._param_arrays, indices)])
+            local_vars = dict(zip(self._param_names, params_si.tolist()))
+            if all(eval(expr, {"__builtins__": {}}, local_vars) for expr in self._constraints):
+                break
+        else:
+            indices = self._default_indices.copy()
+        self._param_indices = indices
         self._step_count = 0
         self._metrics = self._simulate()
         return self._build_obs(), self._build_info()
@@ -92,9 +109,9 @@ class CircuitEnv(gym.Env):
     def step(self, action):
         self._step_count += 1
 
-        # Decode action: 0=decrease, 1=no-op, 2=increase (per param)
+        # Decode action: 0→-5, 1→-1, 2→0, 3→+1, 4→+5
         self._prev_indices = self._param_indices.copy()
-        deltas = np.asarray(action) - 1
+        deltas = self._ACTION_DELTAS[np.asarray(action)]
         self._param_indices = np.clip(self._param_indices + deltas, 0, self._max_indices)
 
         # Revert if constraints violated
@@ -161,11 +178,28 @@ class CircuitEnv(gym.Env):
         return np.concatenate([norm_params, norm_metrics, norm_targets])
 
     def _compute_reward(self) -> float:
-        """Dense reward: negative mean relative error across specs."""
+        """Multiplicative smooth reward + per-spec tolerance bonus.
+
+        Smooth term: product of per-spec satisfaction (1 - clamped_rel_error) - 1.
+        Any spec at 100% error drives the product to 0 (worst), so a single bad
+        spec can never be hidden behind a perfect one. Range: [-1, 0].
+
+        Bonus tiers (each spec met adds 1/n_metrics):
+          0 specs met: +0.0
+          1 spec  met: +0.5  (for 2-metric circuits)
+          all specs met: +1.0
+
+        Example (gain 0% err, BW 80% err):
+          smooth = (1.0 * 0.2) - 1 = -0.80  →  total = -0.30  (old: +0.10 trap)
+        """
         rel_errors = np.abs(self._metrics - self._targets) / np.abs(
             np.where(self._targets != 0, self._targets, 1.0)
         )
-        return -float(np.mean(rel_errors))
+        clamped = np.minimum(rel_errors, 1.0)
+        smooth = float(np.prod(1.0 - clamped)) - 1.0
+        within = np.abs(self._metrics - self._targets) <= self._tolerances
+        bonus = float(np.sum(within)) / self._n_metrics
+        return smooth + bonus
 
     def _check_specs_met(self) -> bool:
         """Check if all metrics are within tolerance of targets."""
