@@ -38,7 +38,7 @@ def make_callback(run_dir: str, circuit_name: str):
             f"mean_reward: {mean_reward:>8.3f}  "
             f"mean_len: {mean_len:>5.1f}  "
             f"policy_loss: {loss_stats['policy_loss']:.4f}  "
-            f"value_loss: {loss_stats['value_loss']:.4f}  "
+            # f"value_loss: {loss_stats['value_loss']:.4f}  "
             f"entropy: {loss_stats['entropy']:.4f}"
         )
 
@@ -50,7 +50,7 @@ def make_callback(run_dir: str, circuit_name: str):
             "mean_reward": f"{mean_reward:.4f}",
             "mean_len": f"{mean_len:.1f}",
             "policy_loss": f"{loss_stats['policy_loss']:.4f}",
-            "value_loss": f"{loss_stats['value_loss']:.4f}",
+            # "value_loss": f"{loss_stats['value_loss']:.4f}",
             "entropy": f"{loss_stats['entropy']:.4f}",
         })
         csv_file.flush()
@@ -64,7 +64,7 @@ def make_callback(run_dir: str, circuit_name: str):
 
 def main():
     parser = argparse.ArgumentParser(description="Train a CircuitRL agent")
-    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo"])
+    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "grpo"])
     parser.add_argument("--config", type=str, default="circuitrl/configs/opamp_default.yaml")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--run-name", type=str, default=None)
@@ -97,10 +97,13 @@ def main():
 
     env = CircuitEnv(config_path=args.config)
     env.reset(seed=args.seed)  # seeds env's np_random for _sample_targets
-
+    
     if args.agent == "ppo":
         from circuitrl.agents.ppo_agent import PPOAgent
         agent = PPOAgent(env, config)
+    elif args.agent == "grpo":
+        from circuitrl.agents.grpo_agent import GRPOAgent
+        agent = GRPOAgent(env, config)
     else:
         raise ValueError(f"Unknown agent: {args.agent}")
 

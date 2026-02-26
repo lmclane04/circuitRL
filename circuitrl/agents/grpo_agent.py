@@ -53,25 +53,23 @@ class Actor(nn.Module):
 
 
 class RolloutBuffer:
-    def __init__(self, n_steps: int, obs_dim: int, n_params: int):
+    def __init__(self, n_steps: int, group_size: int, obs_dim: int, n_params: int):
         self.n_steps = n_steps
-        self.obs = np.zeros((n_steps, obs_dim), dtype=np.float32)
-        self.actions = np.zeros((n_steps, n_params), dtype=np.int64)
-        self.log_probs = np.zeros(n_steps, dtype=np.float32)
-        self.rewards = np.zeros(n_steps, dtype=np.float32)
-        self.dones = np.zeros(n_steps, dtype=np.float32)
-        self.values = np.zeros(n_steps, dtype=np.float32)
-        self.advantages = np.zeros(n_steps, dtype=np.float32)
-        self.returns = np.zeros(n_steps, dtype=np.float32)
+        self.group_size = group_size
+        self.obs = np.zeros((n_steps * group_size, obs_dim), dtype=np.float32)
+        self.actions = np.zeros((n_steps * group_size, n_params), dtype=np.int64)
+        self.log_probs = np.zeros(n_steps * group_size, dtype=np.float32)
+        self.rewards = np.zeros(n_steps * group_size, dtype=np.float32)
+        self.dones = np.zeros(n_steps * group_size, dtype=np.float32)
+        self.advantages = np.zeros(n_steps * group_size, dtype=np.float32)
         self.ptr = 0
 
-    def store(self, obs, action, log_prob, reward, done, value):
+    def store(self, obs, action, log_prob, reward, done):
         self.obs[self.ptr] = obs
         self.actions[self.ptr] = action
         self.log_probs[self.ptr] = log_prob
         self.rewards[self.ptr] = reward
         self.dones[self.ptr] = done
-        self.values[self.ptr] = value
         self.ptr += 1
 
     def compute_grpo_advantages(self):
@@ -95,7 +93,6 @@ class RolloutBuffer:
                 torch.tensor(self.obs[batch_idx]),
                 torch.tensor(self.actions[batch_idx]),
                 torch.tensor(self.log_probs[batch_idx]),
-                torch.tensor(self.returns[batch_idx]),
                 torch.tensor(self.advantages[batch_idx]),
             )
 
@@ -103,19 +100,19 @@ class RolloutBuffer:
         self.ptr = 0
 
 
-class PPOAgent:
+class GRPOAgent:
     def __init__(self, env, config: dict):
         self.env = env
         obs_dim = env.observation_space.shape[0]
         n_params = env.action_space.shape[0]  # MultiDiscrete → .shape[0] = n_params
 
-        ppo_cfg = config["ppo"]
-        self.lr = float(ppo_cfg["learning_rate"])
-        self.n_steps = int(ppo_cfg["n_steps"])
-        self.batch_size = int(ppo_cfg["batch_size"])
-        self.n_epochs = int(ppo_cfg["n_epochs"])
-        self.gamma = float(ppo_cfg["gamma"])
-        self.total_timesteps = int(ppo_cfg["total_timesteps"])
+        grpo_cfg = config["grpo"]
+        self.lr = float(grpo_cfg["learning_rate"])
+        self.n_steps = int(grpo_cfg["n_steps"])
+        self.group_size = int(grpo_cfg["group_size"])
+        self.batch_size = int(grpo_cfg["batch_size"])
+        self.n_epochs = int(grpo_cfg["n_epochs"])
+        self.total_timesteps = int(grpo_cfg["total_timesteps"])
 
         # PPO-specific (fixed, not in config right now but we could add them)
         self.clip_eps = 0.2
@@ -124,9 +121,9 @@ class PPOAgent:
         self.gae_lambda = 0.95
         self.max_grad_norm = 0.5
 
-        self.network = ActorCritic(obs_dim, n_params)
+        self.network = Actor(obs_dim, n_params)
         self.optimizer = torch.optim.Adam(self.network.parameters(), lr=self.lr)
-        self.buffer = RolloutBuffer(self.n_steps, obs_dim, n_params)
+        self.buffer = RolloutBuffer(self.n_steps, self.group_size, obs_dim, n_params)
 
     def collect_rollouts(self) -> list[dict]:
         """Run environment for n_steps, fill self.buffer. Return list of episode stats."""
@@ -141,7 +138,7 @@ class PPOAgent:
             for g in range(self.group_size):
                 with torch.no_grad():
                     obs_t = torch.tensor(obs, dtype=torch.float32).unsqueeze(0)
-                    action, log_prob, value = self.network.get_action(obs_t)
+                    action, log_prob = self.network.get_action(obs_t)
 
                 action_np = action.squeeze(0).numpy()  # (n_params,)
                 next_obs, reward, terminated, truncated, info = self.env.step(action_np)
@@ -149,7 +146,7 @@ class PPOAgent:
 
                 any_done = any_done or done
 
-                self.buffer.store(obs, action_np, log_prob.item(), reward, float(done), value.item())
+                self.buffer.store(obs, action_np, log_prob.item(), reward, float(done))
 
             self.buffer.compute_grpo_advantages()
 
@@ -167,18 +164,18 @@ class PPOAgent:
         return episode_stats
 
     def update(self) -> dict:
-        """Run clipped PPO update. Returns loss."""
+        """Run clipped GRPO update. Returns loss."""
         total_policy_loss = 0.0
-        total_value_loss = 0.0
+        # total_value_loss = 0.0
         total_entropy = 0.0
         n_updates = 0
 
         for _ in range(self.n_epochs):
-            for obs_b, act_b, old_lp_b, ret_b, adv_b in self.buffer.get_batches( self.batch_size):
+            for obs_b, act_b, old_lp_b, adv_b in self.buffer.get_batches(self.batch_size):
                 # Normalize advantages
                 adv_b = (adv_b - adv_b.mean()) / (adv_b.std() + 1e-8)
 
-                new_lp, entropy, values = self.network.evaluate(obs_b, act_b)
+                new_lp, entropy = self.network.evaluate(obs_b, act_b)
 
                 # Policy loss (clipped)
                 ratio = torch.exp(new_lp - old_lp_b)
@@ -187,12 +184,12 @@ class PPOAgent:
                 policy_loss = -torch.min(surr1, surr2).mean()
 
                 # Value loss
-                value_loss = nn.functional.mse_loss(values, ret_b)
+                # value_loss = nn.functional.mse_loss(values, ret_b)
 
                 # Entropy bonus
                 entropy_loss = -entropy.mean()
 
-                loss = policy_loss + self.vf_coef * value_loss + self.ent_coef * entropy_loss
+                loss = policy_loss + self.ent_coef * entropy_loss
 
                 self.optimizer.zero_grad()
                 loss.backward()
@@ -200,13 +197,13 @@ class PPOAgent:
                 self.optimizer.step()
 
                 total_policy_loss += policy_loss.item()
-                total_value_loss += value_loss.item()
+                # total_value_loss += value_loss.item()
                 total_entropy += entropy.mean().item()
                 n_updates += 1
 
         return {
             "policy_loss": total_policy_loss / n_updates,
-            "value_loss": total_value_loss / n_updates,
+            # "value_loss": total_value_loss / n_updates,
             "entropy": total_entropy / n_updates,
         }
 
