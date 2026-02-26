@@ -114,11 +114,9 @@ class GRPOAgent:
         self.n_epochs = int(grpo_cfg["n_epochs"])
         self.total_timesteps = int(grpo_cfg["total_timesteps"])
 
-        # PPO-specific (fixed, not in config right now but we could add them)
+        # GRPO-specific 
         self.clip_eps = 0.2
-        self.vf_coef = 0.5
         self.ent_coef = 0.01
-        self.gae_lambda = 0.95
         self.max_grad_norm = 0.5
 
         self.network = Actor(obs_dim, n_params)
@@ -135,6 +133,7 @@ class GRPOAgent:
 
         for _ in range(self.n_steps):
             any_done = 0
+            # Collect a group of possible actions, rewards, and next states for the same initial observation
             for g in range(self.group_size):
                 with torch.no_grad():
                     obs_t = torch.tensor(obs, dtype=torch.float32).unsqueeze(0)
@@ -146,19 +145,26 @@ class GRPOAgent:
 
                 any_done = any_done or done
 
+                # Store each (obs, action, log_prob, reward, done) tuple in the buffer
                 self.buffer.store(obs, action_np, log_prob.item(), reward, float(done))
 
+            # Compute the advantages for the whole group by normalizing the rewards
             self.buffer.compute_grpo_advantages()
 
+            # Just track the average of the group reward
             ep_reward += self.buffer.get_group_reward()
             ep_len += 1
 
+            # If any of the actions resulted in a termination, reset the simulation and start a new episode
             if any_done:
                 episode_stats.append({"reward": ep_reward, "length": ep_len})
                 ep_reward = 0.0
                 ep_len = 0
                 obs, _ = self.env.reset()
             else:
+                # Otherwise, set the next observation to the next_obs from the last action in the group
+                # This is arbitrary right now, could be changed to something else like a random next_obs from the group
+                # or the next_obs from the action with the highest reward in the group, etc.
                 obs = next_obs
 
         return episode_stats
@@ -183,9 +189,6 @@ class GRPOAgent:
                 surr2 = torch.clamp(ratio, 1.0 - self.clip_eps, 1.0 + self.clip_eps) * adv_b
                 policy_loss = -torch.min(surr1, surr2).mean()
 
-                # Value loss
-                # value_loss = nn.functional.mse_loss(values, ret_b)
-
                 # Entropy bonus
                 entropy_loss = -entropy.mean()
 
@@ -197,13 +200,11 @@ class GRPOAgent:
                 self.optimizer.step()
 
                 total_policy_loss += policy_loss.item()
-                # total_value_loss += value_loss.item()
                 total_entropy += entropy.mean().item()
                 n_updates += 1
 
         return {
             "policy_loss": total_policy_loss / n_updates,
-            # "value_loss": total_value_loss / n_updates,
             "entropy": total_entropy / n_updates,
         }
 
