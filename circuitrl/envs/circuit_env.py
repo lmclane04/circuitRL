@@ -103,6 +103,14 @@ class CircuitEnv(gym.Env):
         self._step_count = 0
         self._metrics = self._simulate()
         return self._build_obs(), self._build_info()
+    
+    def reset_with_target_idx(self, seed=None, target_idx=0):
+        super().reset(seed=seed)
+        self._param_indices = self._default_indices.copy()
+        self._targets = self._spec_pool[target_idx].copy()
+        self._step_count = 0
+        self._metrics = self._simulate()
+        return self._build_obs(), self._build_info()
 
     def step(self, action):
         self._step_count += 1
