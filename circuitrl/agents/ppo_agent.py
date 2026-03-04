@@ -180,34 +180,35 @@ class PPOAgent:
 
         for _ in range(self.n_epochs):
             for obs_b, act_b, old_lp_b, ret_b, adv_b in self.buffer.get_batches(self.batch_size):
-                # Normalize advantages
-                adv_b = (adv_b - adv_b.mean()) / (adv_b.std() + 1e-8)
+                for k in range(2):
+                    # Normalize advantages
+                    adv_b = (adv_b - adv_b.mean()) / (adv_b.std() + 1e-8)
 
-                new_lp, entropy, values = self.network.evaluate(obs_b, act_b)
+                    new_lp, entropy, values = self.network.evaluate(obs_b, act_b)
 
-                # Policy loss (clipped)
-                ratio = torch.exp(new_lp - old_lp_b)
-                surr1 = ratio * adv_b
-                surr2 = torch.clamp(ratio, 1.0 - self.clip_eps, 1.0 + self.clip_eps) * adv_b
-                policy_loss = -torch.min(surr1, surr2).mean()
+                    # Policy loss (clipped)
+                    ratio = torch.exp(new_lp - old_lp_b)
+                    surr1 = ratio * adv_b
+                    surr2 = torch.clamp(ratio, 1.0 - self.clip_eps, 1.0 + self.clip_eps) * adv_b
+                    policy_loss = -torch.min(surr1, surr2).mean()
 
-                # Value loss
-                value_loss = nn.functional.mse_loss(values, ret_b)
+                    # Value loss
+                    value_loss = nn.functional.mse_loss(values, ret_b)
 
-                # Entropy bonus
-                entropy_loss = -entropy.mean()
+                    # Entropy bonus
+                    entropy_loss = -entropy.mean()
 
-                loss = policy_loss + self.vf_coef * value_loss + self.ent_coef * entropy_loss
+                    loss = policy_loss + self.vf_coef * value_loss + self.ent_coef * entropy_loss
 
-                self.optimizer.zero_grad()
-                loss.backward()
-                nn.utils.clip_grad_norm_(self.network.parameters(), self.max_grad_norm)
-                self.optimizer.step()
+                    self.optimizer.zero_grad()
+                    loss.backward()
+                    nn.utils.clip_grad_norm_(self.network.parameters(), self.max_grad_norm)
+                    self.optimizer.step()
 
-                total_policy_loss += policy_loss.item()
-                total_value_loss += value_loss.item()
-                total_entropy += entropy.mean().item()
-                n_updates += 1
+                    total_policy_loss += policy_loss.item()
+                    total_value_loss += value_loss.item()
+                    total_entropy += entropy.mean().item()
+                    n_updates += 1
 
         return {
             "policy_loss": total_policy_loss / n_updates,
