@@ -95,9 +95,13 @@ def main():
     # Make sure to overwrite timesteps if needed
     if args.timesteps:
         with open(os.path.join(run_dir, "config.yaml"), "r") as f:
+            first_line = f.readline().strip()
             dup_config = yaml.safe_load(f)
         dup_config["ppo"]["total_timesteps"] = args.timesteps
         with open(os.path.join(run_dir, "config.yaml"), "w") as f:
+            # Need to keep first comment because the eval scripts 
+            # use it to find the original config
+            f.write(first_line + "\n")
             yaml.dump(dup_config, f, sort_keys=False)
 
     torch.manual_seed(args.seed)
