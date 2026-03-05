@@ -94,9 +94,10 @@ def main():
 
     # Make sure to overwrite timesteps if needed
     if args.timesteps:
-        with open(os.path.join(run_dir, "config.yaml"), "r+") as f:
+        with open(os.path.join(run_dir, "config.yaml"), "r") as f:
             dup_config = yaml.safe_load(f)
-            dup_config["ppo"]["total_timesteps"] = args.timesteps
+        dup_config["ppo"]["total_timesteps"] = args.timesteps
+        with open(os.path.join(run_dir, "config.yaml"), "w") as f:
             yaml.dump(dup_config, f, sort_keys=False)
 
     torch.manual_seed(args.seed)
