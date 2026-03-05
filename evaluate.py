@@ -27,7 +27,7 @@ def find_original_config(run_dir: str) -> str | None:
     return None
 
 
-def load_agent(run_dir: str, config_override: str | None = None):
+def load_agent(run_dir: str, spec_pool_test: str, config_override: str | None = None):
     """Load config and network from a run directory."""
     checkpoint_path = os.path.join(run_dir, "model.pt")
 
@@ -42,6 +42,11 @@ def load_agent(run_dir: str, config_override: str | None = None):
         config = yaml.safe_load(f)
 
     env = CircuitEnv(config_path=config_path)
+
+    # If specified spec pool to test on, set the new spec pool
+    if spec_pool_test:
+        env.set_spec_pool(spec_pool_test)
+
     obs_dim = env.observation_space.shape[0]
     n_params = len(config["parameters"])
 
@@ -106,9 +111,10 @@ def main():
                         help="Print every step, not just episode summary")
     parser.add_argument("--seed", type=int, default=0,
                         help="RNG seed for target sampling")
+    parser.add_argument("--spec_pool_test", type=str, help="Spec pool to evaluate on")
     args = parser.parse_args()
 
-    env, network, config = load_agent(args.run_dir, config_override=args.config)
+    env, network, config = load_agent(args.run_dir, args.spec_pool_test, config_override=args.config)
     env.reset(seed=args.seed)  # seed env's np_random for reproducible target sampling
 
     spec_names = list(config["target_specs"].keys())

@@ -61,19 +61,11 @@ class CircuitEnv(gym.Env):
         # Load spec pool (created by generate_specs.py).
         # Training targets are sampled from this pool, so all targets are
         # guaranteed to be physically achievable by the circuit.
+
+        # By default load the spec file specified by the config
         spec_file = cfg["target_spec_file"]
         pool_path = os.path.normpath(os.path.join(config_dir, spec_file))
-        with open(pool_path) as f:
-            raw = json.load(f)
-        self._spec_pool = np.array([
-            [float(entry[m]) for m in self._metric_names]
-            for entry in raw
-        ])
-        # Per-metric min/max from the pool — used to normalize the target
-        # component of the observation to [0, 1] without any hand-tuned nominal.
-        self._pool_min = self._spec_pool.min(axis=0)
-        self._pool_max = self._spec_pool.max(axis=0)
-        print(f"Loaded {len(self._spec_pool)} spec targets from {pool_path}")
+        self.set_spec_pool(pool_path)
 
         # Env settings
         self._max_steps = cfg["env"]["max_steps"]
@@ -95,6 +87,22 @@ class CircuitEnv(gym.Env):
         self._param_indices = None
         self._metrics = None
         self._step_count = 0
+
+    # Method to set the spec pool
+    def set_spec_pool(self, pool_path=str):
+        with open(pool_path) as f:
+            raw = json.load(f)
+        self._spec_pool = np.array([
+            [float(entry[m]) for m in self._metric_names]
+            for entry in raw
+        ])
+
+        # Per-metric min/max from the pool — used to normalize the target
+        # component of the observation to [0, 1] without any hand-tuned nominal.
+        self._pool_min = self._spec_pool.min(axis=0)
+        self._pool_max = self._spec_pool.max(axis=0)
+        print(f"Loaded {len(self._spec_pool)} spec targets from {pool_path}")
+
 
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
