@@ -92,6 +92,13 @@ def main():
     os.makedirs(run_dir)
     shutil.copy2(args.config, os.path.join(run_dir, "config.yaml"))
 
+    # Make sure to overwrite timesteps if needed
+    if args.timesteps:
+        with open(os.path.join(run_dir, "config.yaml"), "r+") as f:
+            dup_config = yaml.safe_load(f)
+            dup_config["ppo"]["total_timesteps"] = args.timesteps
+            yaml.dump(dup_config, f, sort_keys=False)
+
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
 
