@@ -85,6 +85,6 @@ ppo:
   learning_rate: 1.0e-4
   n_steps: 1024
   batch_size: 64
-  n_epochs: 5
+  n_epochs: 10
   gamma: 0.99
   total_timesteps: 200000
