@@ -156,7 +156,12 @@ class PPOAgent:
             ep_len += 1
 
             if done:
-                episode_stats.append({"reward": ep_reward, "length": ep_len})
+                episode_stats.append({
+                    "reward":       ep_reward,
+                    "length":       ep_len,
+                    "final_metrics": info.get("metrics", {}),
+                    "ep_targets":   info.get("targets", {}),
+                })
                 ep_reward = 0.0
                 ep_len = 0
                 obs, _ = self.env.reset()
@@ -228,6 +233,34 @@ class PPOAgent:
 
             if callback:
                 callback(timesteps_done, episode_stats, loss_stats)
+
+    def evaluate(self, n_episodes: int = 20) -> list[dict]:
+        """Run n_episodes using the current policy and return episode stats.
+
+        Each episode gets a freshly-sampled target (if specs_range is configured).
+        """
+        results = []
+        for _ in range(n_episodes):
+            obs, _ = self.env.reset()
+            ep_reward = 0.0
+            ep_len    = 0
+            for _ in range(self.env._max_steps):
+                obs_t = torch.tensor(obs, dtype=torch.float32).unsqueeze(0)
+                with torch.no_grad():
+                    action, _, _ = self.network.get_action(obs_t)
+                action_np = action.squeeze(0).numpy()
+                obs, reward, terminated, truncated, info = self.env.step(action_np)
+                ep_reward += reward
+                ep_len    += 1
+                if terminated or truncated:
+                    break
+            results.append({
+                "reward":        ep_reward,
+                "length":        ep_len,
+                "final_metrics": info.get("metrics", {}),
+                "ep_targets":    info.get("targets", {}),
+            })
+        return results
 
     def save(self, path: str):
         torch.save({

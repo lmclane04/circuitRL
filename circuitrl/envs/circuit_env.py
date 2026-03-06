@@ -1,3 +1,4 @@
+import math
 import os
 
 import gymnasium as gym
@@ -5,6 +6,12 @@ import numpy as np
 import yaml
 
 from circuitrl.simulators.ngspice_runner import NGSpiceRunner
+
+# ── CS-amp physics constants (from cs_amp_template.sp) ────────────────────────
+# Used only when specs_range is configured for feasibility-checking.
+_LAMBDA  = 0.04      # V⁻¹  (channel-length modulation)
+_CL      = 0.5e-12   # F    (output load cap)
+_VGS_VT  = 0.2       # V    (VG - VTO = 0.7 - 0.5)
 
 
 class CircuitEnv(gym.Env):
@@ -45,13 +52,29 @@ class CircuitEnv(gym.Env):
 
         # Target specs (cast to float — PyYAML may leave scientific notation as str)
         self._metric_names = list(cfg["target_specs"].keys())
-        self._targets = np.array(
+        self._default_targets = np.array(
             [float(cfg["target_specs"][m]["value"]) for m in self._metric_names]
         )
+        self._targets = self._default_targets.copy()
         self._tolerances = np.array(
             [float(cfg["target_specs"][m]["tolerance"]) for m in self._metric_names]
         )
         self._n_metrics = len(self._metric_names)
+
+        # Optional per-episode target randomisation
+        specs_range = cfg.get("specs_range", {})
+        if specs_range:
+            self._target_range_min = np.array(
+                [float(specs_range[m]["min"]) for m in self._metric_names]
+            )
+            self._target_range_max = np.array(
+                [float(specs_range[m]["max"]) for m in self._metric_names]
+            )
+            self._randomize_specs = True
+        else:
+            self._target_range_min = self._default_targets.copy()
+            self._target_range_max = self._default_targets.copy()
+            self._randomize_specs = False
 
         # Env settings
         env_cfg = cfg["env"]
@@ -84,6 +107,8 @@ class CircuitEnv(gym.Env):
 
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
+        if self._randomize_specs:
+            self._targets = self._sample_feasible_targets()
         self._param_indices = self._default_indices.copy()
         self._step_count = 0
         self._metrics = self._simulate()
@@ -153,12 +178,47 @@ class CircuitEnv(gym.Env):
             return np.zeros(self._n_metrics, dtype=np.float32)
         return (self._metrics / np.where(self._targets != 0, self._targets, 1.0)).astype(np.float32)
 
+    def _sample_feasible_targets(self) -> np.ndarray:
+        """Sample a random (gain_db, bandwidth) pair that is physically achievable.
+
+        Feasibility condition from small-signal analysis (same as solve.py):
+            ro = 1 / (λ·π·B·CL·G·VGS_VT) > Rout = 1 / (2π·B·CL)
+        which simplifies to: λ·G·VGS_VT < 2, i.e. gain < ~48 dB for these constants.
+        All targets in our range satisfy this, but we also need RD to land on the grid
+        (1–50 kΩ), so we check ro > 0 and Rout > 0 as a quick sanity guard.
+        """
+        gain_idx = self._metric_names.index("gain_db")
+        bw_idx   = self._metric_names.index("bandwidth")
+
+        for _ in range(50):
+            t = np.array([
+                float(self.np_random.uniform(lo, hi))
+                for lo, hi in zip(self._target_range_min, self._target_range_max)
+            ])
+            G    = 10 ** (t[gain_idx] / 20.0)
+            B    = t[bw_idx]
+            Rout = 1.0 / (2 * math.pi * B * _CL)
+            ro   = 1.0 / (_LAMBDA * math.pi * B * _CL * G * _VGS_VT)
+            if ro > Rout > 0:
+                return t
+
+        return self._default_targets.copy()  # fallback
+
     def _build_obs(self) -> np.ndarray:
-        """Concatenate [normalized_params | normalized_metrics | normalized_targets]."""
-        norm_params = self._normalize_params()
+        """Concatenate [normalized_params | normalized_metrics | norm_target_values].
+
+        norm_target_values encodes the *current* targets (important when specs are
+        randomised) as a [0, 1] value over the configured specs_range:
+            norm = (target - range_min) / (range_max - range_min)
+        When specs are fixed (no randomisation), this collapses to [1, 1] as before.
+        """
+        norm_params  = self._normalize_params()
         norm_metrics = self._normalize_metrics()
-        norm_targets = np.ones(self._n_metrics, dtype=np.float32)  # targets / targets = 1
-        return np.concatenate([norm_params, norm_metrics, norm_targets])
+        denom = self._target_range_max - self._target_range_min
+        # Avoid divide-by-zero when range_min == range_max (fixed target case)
+        safe_denom = np.where(denom != 0, denom, 1.0)
+        norm_target_values = ((self._targets - self._target_range_min) / safe_denom).astype(np.float32)
+        return np.concatenate([norm_params, norm_metrics, norm_target_values])
 
     def _compute_reward(self) -> float:
         """Dense reward: negative mean relative error across specs."""
@@ -178,7 +238,8 @@ class CircuitEnv(gym.Env):
         if self._metrics is not None:
             info["metrics"] = dict(zip(self._metric_names, self._metrics.tolist()))
         params_si = self._get_params_si()
-        info["params"] = dict(zip(self._param_names, params_si.tolist()))
+        info["params"]   = dict(zip(self._param_names, params_si.tolist()))
+        info["targets"]  = dict(zip(self._metric_names, self._targets.tolist()))
         return info
 
 

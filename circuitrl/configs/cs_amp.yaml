@@ -31,14 +31,41 @@ target_specs:
     value: 50000000.0  # 50 MHz
     tolerance: 10000000.0
 
+# Range of specs sampled uniformly each episode during training.
+# Feasibility (ro > Rout) is verified analytically before each reset.
+# Remove this section to train on fixed targets only.
+specs_range:
+  gain_db:
+    min: 14.0
+    max: 26.0
+  bandwidth:
+    min: 25000000.0   # 25 MHz
+    max: 100000000.0  # 100 MHz
+
 env:
-  max_steps: 30
+  max_steps: 100   # must be >= max grid size (RD=98 levels) so agent can reach any target from any start
   sim_timeout: 10
 
 ppo:
   learning_rate: 3.0e-4
-  n_steps: 128
-  batch_size: 32
+  n_steps: 256
+  batch_size: 64
   n_epochs: 10
   gamma: 0.99
-  total_timesteps: 10000
+  total_timesteps: 30000   # ~30k sim calls for standalone train.py runs
+
+bo:
+  n_initial: 20         # random points to seed the GP
+  kappa: 2.576          # UCB exploration weight (~99% confidence)
+  n_candidates: 1000    # random candidates evaluated per acquisition step
+  gp_update_freq: 5     # refit GP every N evaluations
+  total_timesteps: 500  # total simulator calls
+
+grpo:
+  learning_rate: 3.0e-4
+  group_size: 8         # G episodes per update, all from same start state
+  clip_eps: 0.2
+  n_epochs: 1           # single epoch per group (GRPO is typically 1-pass)
+  ent_coef: 0.05        # higher than PPO — no critic, entropy is main exploration
+  max_grad_norm: 0.5
+  total_timesteps: 100000  # ~100k sim calls for standalone train.py runs
