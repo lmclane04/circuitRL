@@ -12,7 +12,6 @@ class Actor(nn.Module):
         """
 
         super().__init__()
-
         self.n_params = n_params
         self.actions_per_param = actions_per_param
 
@@ -35,11 +34,6 @@ class Actor(nn.Module):
     def forward(self, obs: torch.Tensor):
         logits = self.network(obs)
         return logits
-    
-    def action_distribution(self, obs: torch.Tensor):
-        logits = self(obs)
-        distribution = Categorical(logits=logits)
-        return distribution
 
     def sample_action(self, obs: torch.Tensor):
         sampled_actions = []
@@ -47,21 +41,20 @@ class Actor(nn.Module):
 
         logits = self(obs)
         for i in range(self.n_params):
-            cur_logits = logits[i:i+self.actions_per_param]
+            cur_logits = logits[:, i:i+self.actions_per_param]
             distribution = Categorical(logits=cur_logits)
             cur_action = distribution.sample()
             sampled_actions.append(cur_action)
             log_probs = log_probs + distribution.log_prob(cur_action)
 
         sampled_actions = torch.stack(sampled_actions, dim=-1)
-
         return sampled_actions, log_probs
     
     def evaluate_action(self, obs: torch.Tensor, act: torch.Tensor):
         logits = self(obs)
         log_probs = torch.zeros((obs.shape[0])) 
         for i in range(self.n_params):
-            cur_logits = logits[i:i+self.actions_per_param]
+            cur_logits = logits[:, i:i+self.actions_per_param]
             distribution = Categorical(logits=cur_logits)
             log_probs = log_probs + distribution.log_prob(act[:,i])
         
@@ -70,7 +63,7 @@ class Actor(nn.Module):
 class Critic(nn.Module):
     """Critic policy (to estimate value function)"""
 
-    def __init__(self, obs_dim: int, n_layers: int = 2, hidden_size: int = 64, lr: int = 3e-2):
+    def __init__(self, obs_dim: int, n_layers: int = 2, hidden_size: int = 256, lr: int = 3e-2):
         """
         Initializing baseline network 
         """
@@ -89,7 +82,6 @@ class Critic(nn.Module):
 
         # Output layer (output a single value)
         model.append(nn.Linear(in_features=hidden_size, out_features=1))
-
         self.network = model
 
         self.optimizer = torch.optim.Adam(self.network.parameters(), lr=lr)
@@ -104,6 +96,7 @@ class Critic(nn.Module):
         """
        
         output_val = self.network(obs).squeeze(-1)
+        assert output_val.ndim == 1
         return output_val
 
     def calculate_advantage(self, ret: torch.Tensor, obs: torch.Tensor):
@@ -115,11 +108,11 @@ class Critic(nn.Module):
         Returns:
             advantages: np.array of shape [batch size]
         """
-        obs = torch.tensor(obs)
+        obs = torch.tensor(obs, dtype=torch.float32)
 
         # Get baseline by running NN on observations
         baseline = self(obs)
-        advantages = ret - baseline
+        advantages = ret - baseline.detach().numpy()
         return advantages
 
     def update_baseline(self, returns, observations):
@@ -130,8 +123,8 @@ class Critic(nn.Module):
             observations: np.array of shape [batch size, dim(observation space)]
         """
 
-        returns = torch.tensor(returns)
-        observations = torch.tensor(observations)
+        returns = torch.tensor(returns, dtype=torch.float32)
+        observations = torch.tensor(observations, dtype=torch.float32)
 
         # Get baseline by running NN on observations
         baseline = self(observations)
@@ -144,7 +137,7 @@ class Critic(nn.Module):
         loss.backward()
         self.optimizer.step()
 
-class PPOAgent:
+class PPOAgentNonShared:
     def __init__(self, env, config: dict):
         self.env = env
         obs_dim = env.observation_space.shape[0]
@@ -190,7 +183,7 @@ class PPOAgent:
 
         total_steps = 0
 
-        while total_steps < self.n_steps:
+        while total_steps < self.batch_size:
             obs, _ = self.env.reset()
             
             episode_reward = 0.0
@@ -198,7 +191,7 @@ class PPOAgent:
 
             observations, actions, rewards, log_probs, dones = [], [], [], [], []
 
-            for step in range(self.n_steps):
+            for step in range(self.batch_size):
                 with torch.no_grad():
                     obs_tensor = torch.tensor(obs, dtype=torch.float32).unsqueeze(0)
                     action, log_prob = self.actor_network.sample_action(obs_tensor)
@@ -218,10 +211,10 @@ class PPOAgent:
 
                 total_steps += 1
 
-                if ep_done or step == self.n_steps - 1:
+                if ep_done or step == self.batch_size - 1:
                     episode_stats.append({"reward": episode_reward, "length": episode_length})
                     break
-                elif total_steps == self.n_steps:
+                elif total_steps == self.batch_size:
                     break
                 else:
                     obs = next_obs
@@ -262,7 +255,7 @@ class PPOAgent:
             # Loop backwards to calculate returns
             for idx in range(path_length - 1):
                 reverse_idx = path_length - 2 - idx
-                returns[reverse_idx] = rewards[reverse_idx] + (self.config.gamma * returns[reverse_idx + 1])
+                returns[reverse_idx] = rewards[reverse_idx] + (self.gamma * returns[reverse_idx + 1])
 
             all_returns.append(returns)
         returns = np.concatenate(all_returns)
@@ -310,10 +303,10 @@ class PPOAgent:
         Perform one update on the policy using the provided data using the PPO clipped
         objective function.
         """
-        observations = torch.tensor(observations)
-        actions = torch.tensor(actions)
-        advantages = torch.tensor(advantages)
-        old_logprobs = torch.tensor(old_logprobs)
+        observations = torch.tensor(observations, dtype=torch.float32)
+        actions = torch.tensor(actions, dtype=torch.float32)
+        advantages = torch.tensor(advantages, dtype=torch.float32)
+        old_logprobs = torch.tensor(old_logprobs, dtype=torch.float32)
 
         # Get distribution and log probs
         log_probs = self.actor_network.evaluate_action(observations, actions)
@@ -353,24 +346,25 @@ class PPOAgent:
 
         while timesteps_done < total:
             paths, episode_stats = self.collect_rollouts()
+            
             observations = np.concatenate([path["observation"] for path in paths])
             actions = np.concatenate([path["action"] for path in paths])
-            log_probs = np.concatenate([path["log_probs"] for path in paths])
+            log_probs = np.concatenate([path["log_prob"] for path in paths])
 
             returns = self.get_returns(paths)
             advantages = self.calculate_advantage(returns, observations)
 
             # run training operations
             total_policy_loss = 0
-            for k in range(self.update_freq):
+            for k in range(self.n_epochs):
                 self.critic_network.update_baseline(returns, observations)
-                total_loss += self.update_policy(observations, actions, advantages, 
+                total_policy_loss += self.update_policy(observations, actions, advantages, 
                                    log_probs)
 
-            loss_stats = {"policy_loss": total_policy_loss / self.update_freq, 
+            loss_stats = {"policy_loss": total_policy_loss / self.n_epochs, 
                           "value_loss": -1,
                           "entropy": -1}
-            timesteps_done += self.n_steps
+            timesteps_done += self.batch_size
             iteration += 1
 
             if callback:
