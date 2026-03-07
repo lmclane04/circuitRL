@@ -8,6 +8,7 @@ import yaml
 
 from circuitrl.envs.circuit_env import CircuitEnv
 from circuitrl.agents.ppo_agent import ActorCritic
+from circuitrl.agents.ppo_agent_non_shared_v2 import Actor
 
 
 def find_original_config(run_dir: str) -> str | None:
@@ -50,9 +51,9 @@ def load_agent(run_dir: str, spec_pool_test: str, config_override: str | None = 
     obs_dim = env.observation_space.shape[0]
     n_params = len(config["parameters"])
 
-    network = ActorCritic(obs_dim, n_params)
+    network = Actor(obs_dim, n_params)
     checkpoint = torch.load(checkpoint_path, weights_only=True)
-    network.load_state_dict(checkpoint["network"])
+    network.load_state_dict(checkpoint["actor_network"])
     network.eval()
 
     return env, network, config
@@ -78,7 +79,7 @@ def run_episode(env, network, seed, target_idx):
     for _ in range(env._max_steps):
         obs_t = torch.FloatTensor(obs).unsqueeze(0)
         with torch.no_grad():
-            logits_list, _ = network(obs_t)
+            logits_list = network(obs_t)
 
         actions = torch.stack([logits.argmax(dim=-1) for logits in logits_list], dim=-1)
         action = actions.squeeze(0).numpy()
