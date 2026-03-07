@@ -43,7 +43,7 @@ env:
 ppo:
   learning_rate: 3.0e-4
   n_steps: 3072
-  batch_size: 64 
+  batch_size: 64
   n_epochs: 10
   gamma: 0.99
   total_timesteps: 300000

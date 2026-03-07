@@ -25,7 +25,7 @@ class CircuitEnv(gym.Env):
 
     metadata = {"render_modes": []}
 
-    def __init__(self, config_path: str = "circuitrl/configs/opamp.yaml"):
+    def __init__(self, config_path: str = "circuitrl/configs/opamp.yaml", sequential: bool | None = None):
         super().__init__()
 
         with open(config_path) as f:
@@ -78,12 +78,22 @@ class CircuitEnv(gym.Env):
             expected_metrics=tuple(self._metric_names),
         )
 
+        # Sequential mode: cycle through one parameter per step
+        # kwarg overrides the config value (so --agent ppo-seq doesn't need a separate YAML)
+        self._sequential = sequential if sequential is not None else cfg["env"].get("sequential", False)
+        self._active_param_idx = 0  # only used in sequential mode
+
         # Gym spaces
         obs_dim = self._n_params + self._n_metrics + self._n_metrics
+        if self._sequential:
+            obs_dim += self._n_params  # one-hot for active parameter
         self.observation_space = gym.spaces.Box(
             low=-np.inf, high=np.inf, shape=(obs_dim,), dtype=np.float32
         )
-        self.action_space = gym.spaces.MultiDiscrete([3] * self._n_params)
+        if self._sequential:
+            self.action_space = gym.spaces.Discrete(3)
+        else:
+            self.action_space = gym.spaces.MultiDiscrete([3] * self._n_params)
         self._param_indices = None
         self._metrics = None
         self._step_count = 0
@@ -109,6 +119,7 @@ class CircuitEnv(gym.Env):
         self._param_indices = self._default_indices.copy()
         self._targets = self._sample_targets()
         self._step_count = 0
+        self._active_param_idx = 0
         self._metrics = self._simulate()
         return self._build_obs(), self._build_info()
     
@@ -117,15 +128,25 @@ class CircuitEnv(gym.Env):
         self._param_indices = self._default_indices.copy()
         self._targets = self._spec_pool[target_idx].copy()
         self._step_count = 0
+        self._active_param_idx = 0
         self._metrics = self._simulate()
         return self._build_obs(), self._build_info()
 
     def step(self, action):
         self._step_count += 1
 
-        # Decode action: 0=decrease, 1=no-op, 2=increase (per param)
-        deltas = np.asarray(action) - 1
-        self._param_indices = np.clip(self._param_indices + deltas, 0, self._max_indices)
+        if self._sequential:
+            # Move only the active parameter, then advance to the next
+            delta = int(action) - 1
+            idx = self._active_param_idx
+            self._param_indices[idx] = np.clip(
+                self._param_indices[idx] + delta, 0, self._max_indices[idx]
+            )
+            self._active_param_idx = (self._active_param_idx + 1) % self._n_params
+        else:
+            # Decode action: 0=decrease, 1=no-op, 2=increase (per param)
+            deltas = np.asarray(action) - 1
+            self._param_indices = np.clip(self._param_indices + deltas, 0, self._max_indices)
 
         self._metrics = self._simulate()
 
@@ -181,7 +202,12 @@ class CircuitEnv(gym.Env):
         pool_range = np.where(self._pool_max != self._pool_min,
                               self._pool_max - self._pool_min, 1.0)
         norm_targets = ((self._targets - self._pool_min) / pool_range).astype(np.float32)
-        return np.concatenate([self._normalize_params(), self._normalize_metrics(), norm_targets])
+        parts = [self._normalize_params(), self._normalize_metrics(), norm_targets]
+        if self._sequential:
+            one_hot = np.zeros(self._n_params, dtype=np.float32)
+            one_hot[self._active_param_idx] = 1.0
+            parts.append(one_hot)
+        return np.concatenate(parts)
 
     def _compute_reward(self) -> float:
         """Asymmetric reward: only penalize specs that are violated.
