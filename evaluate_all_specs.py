@@ -52,6 +52,9 @@ def load_agent(agent: str, run_dir: str, spec_pool_test: str, config_override: s
     elif agent == "ppo_non_shared":
         from circuitrl.agents.ppo_agent_non_shared import PPOAgentNonShared
         agent = PPOAgentNonShared(env, config)
+    elif agent == "grpo":
+        from circuitrl.agents.grpo_agent import GRPOAgent
+        agent = GRPOAgent(env, config)
     else:
         raise ValueError(f"Unknown agent: {agent}")
 
@@ -111,7 +114,7 @@ def main():
     parser.add_argument("--seed", type=int, default=0,
                         help="RNG seed for env sampling")
     parser.add_argument("--spec_pool_test", type=str, help="Spec pool to evaluate on")
-    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "ppo_non_shared"], help="Agent to evaluate on")
+    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "ppo_non_shared", "grpo"], help="Agent to evaluate on")
     args = parser.parse_args()
 
     env, network, config = load_agent(args.agent, args.run_dir, args.spec_pool_test, config_override=args.config)
