@@ -3,146 +3,168 @@ import torch
 import torch.nn as nn
 from torch.distributions import Categorical
 
+
 class Actor(nn.Module):
-    """Categorical actor policy"""
+    """Actor model with per-parameter policy heads."""
 
-    def __init__(self, obs_dim: int, n_params: int, actions_per_param: int = 3, n_layers: int = 2, hidden_size: int = 256):
-        """
-        Initializing categorical actor policy for use in PPO
-        """
-
+    def __init__(self, obs_dim: int, n_params: int, actions_per_param: int = 3, hidden_size: int = 256):
+        """Initialize Actor model, setup trunk and all policy heads."""
         super().__init__()
-        self.n_params = n_params
-        self.actions_per_param = actions_per_param
 
-        # Initialize the network
-        model = nn.Sequential(
+        # Set up number of parameters
+        self.n_params = n_params
+
+        # Create base trunk model
+        self.trunk = nn.Sequential(
             nn.Linear(in_features=obs_dim, out_features=hidden_size),
-            nn.ReLU()
+            nn.Tanh(),
+            nn.Linear(in_features=hidden_size, out_features=hidden_size),
+            nn.Tanh(),
         )
 
-        # Hidden layers
-        for _ in range(n_layers - 1):
-            model.append(nn.Linear(in_features=hidden_size, out_features=hidden_size))
-            model.append(nn.ReLU())
-
-        # Output layer
-        model.append(nn.Linear(in_features=hidden_size, out_features=(n_params * actions_per_param)))
-
-        self.network = model
+        # Create one head per parameter, the action space is categorical {decrease, no-op, increase}
+        self.policy_heads = nn.ModuleList([nn.Linear(in_features=hidden_size, out_features=actions_per_param) for _ in range(n_params)])
 
     def forward(self, obs: torch.Tensor):
-        logits = self.network(obs)
-        return logits
+        """Step the model forward and produce action logits for each head. Returns list of logits each with size (batch_size, actions_per_param)"""
+        base = self.trunk(obs)
+        logits_list = [head(base) for head in self.policy_heads]
+        return logits_list
 
     def sample_action(self, obs: torch.Tensor):
+        """Sample an action per parameter. Returns (actions, summed_log_prob, value)."""
         sampled_actions = []
-        log_probs = torch.zeros((obs.shape[0])) 
+        log_prob_sum = torch.zeros(obs.shape[0], device=obs.device)
 
-        logits = self(obs)
-        for i in range(self.n_params):
-            cur_logits = logits[:, i:i+self.actions_per_param]
-            distribution = Categorical(logits=cur_logits)
-            cur_action = distribution.sample()
-            sampled_actions.append(cur_action)
-            log_probs = log_probs + distribution.log_prob(cur_action)
-
-        sampled_actions = torch.stack(sampled_actions, dim=-1)
-        return sampled_actions, log_probs
-    
-    def evaluate_action(self, obs: torch.Tensor, act: torch.Tensor):
-        logits = self(obs)
-        log_probs = torch.zeros((obs.shape[0])) 
-        for i in range(self.n_params):
-            cur_logits = logits[:, i:i+self.actions_per_param]
-            distribution = Categorical(logits=cur_logits)
-            log_probs = log_probs + distribution.log_prob(act[:,i])
+        logits_list = self(obs)
+        for logits in logits_list:
+            distribution = Categorical(logits=logits)
+            sampled_action = distribution.sample()
+            log_prob_sum = log_prob_sum + distribution.log_prob(sampled_action)
+            sampled_actions.append(sampled_action)
         
-        return log_probs
+        # Reshape sampled actions to be size (batch, n_params)
+        sampled_actions = torch.stack(sampled_actions, dim=-1)
+        return sampled_actions, log_prob_sum
+
+    def evaluate_action(self, obs: torch.Tensor, actions: torch.Tensor):
+        """Evaluate given actions to determine log probability and entropy. Returns (log_prob_sum, mean_entropy)."""
+        log_prob_sum = torch.zeros(obs.shape[0], device=obs.device)
+        entropy_sum = torch.zeros(obs.shape[0], device=obs.device)
+
+        logits_list = self(obs)
+        for i, logits in enumerate(logits_list):
+            distribution = Categorical(logits=logits)
+            log_prob_sum = log_prob_sum + distribution.log_prob(actions[:, i])
+            entropy_sum = entropy_sum + distribution.entropy()
+
+        mean_entropy = entropy_sum / self.n_params
+        return log_prob_sum, mean_entropy
+
 
 class Critic(nn.Module):
-    """Critic policy (to estimate value function)"""
+    """Critic model to estimate value function."""
 
-    def __init__(self, obs_dim: int, n_layers: int = 2, hidden_size: int = 256, lr: int = 3e-2):
-        """
-        Initializing baseline network 
-        """
+    def __init__(self, obs_dim: int, hidden_size: int = 256):
+        """Initialize Critic model, setup network"""
         super().__init__()
 
-        # Initialize the network
-        model = nn.Sequential(
-            nn.Linear(in_features=obs_dim, out_features=hidden_size),
-            nn.ReLU()
-        )
-
-        # Hidden layers
-        for _ in range(n_layers - 1):
-            model.append(nn.Linear(in_features=hidden_size, out_features=hidden_size))
-            model.append(nn.ReLU())
-
-        # Output layer (output a single value)
-        model.append(nn.Linear(in_features=hidden_size, out_features=1))
-        self.network = model
-
-        self.optimizer = torch.optim.Adam(self.network.parameters(), lr=lr)
-    
+        # Use same size/number of layers as Actor
+        # Output will be (batch_size, 1)
+        self.network = nn.Sequential(
+            nn.Linear(obs_dim, hidden_size),
+            nn.Tanh(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.Tanh(),
+            nn.Linear(hidden_size, 1)
+        )    
 
     def forward(self, obs: torch.Tensor):
-        """
-        Args:
-            observations: torch.Tensor of shape [batch size, dim(observation space)]
-        Returns:
-            output: torch.Tensor of shape [batch size]
-        """
-       
+        """Step critic model forward to get value estimate"""
         output_val = self.network(obs).squeeze(-1)
         assert output_val.ndim == 1
         return output_val
 
-    def calculate_advantage(self, ret: torch.Tensor, obs: torch.Tensor):
-        """
-        Args:
-            returns: np.array of shape [batch size]
-                all discounted future returns for each step
-            observations: np.array of shape [batch size, dim(observation space)]
-        Returns:
-            advantages: np.array of shape [batch size]
-        """
-        obs = torch.tensor(obs, dtype=torch.float32)
 
-        # Get baseline by running NN on observations
-        baseline = self(obs)
-        advantages = ret - baseline.detach().numpy()
-        return advantages
+class RolloutBuffer:
+    """Buffer to store all needed variables from rollouts."""
 
-    def update_baseline(self, returns, observations):
-        """
-        Args:
-            returns: np.array of shape [batch size], containing all discounted
-                future returns for each step
-            observations: np.array of shape [batch size, dim(observation space)]
-        """
+    def __init__(self, n_steps: int, obs_dim: int, n_params: int):
+        """Initialize buffer as numpy arrays of size n_steps."""
+        self.n_steps = n_steps
+        self.obs = np.zeros((n_steps, obs_dim), dtype=np.float32)
+        self.actions = np.zeros((n_steps, n_params), dtype=np.int64)
+        self.log_probs = np.zeros(n_steps, dtype=np.float32)
+        self.rewards = np.zeros(n_steps, dtype=np.float32)
+        self.dones = np.zeros(n_steps, dtype=np.float32)
+        self.values = np.zeros(n_steps, dtype=np.float32)
+        self.advantages = np.zeros(n_steps, dtype=np.float32)
+        self.returns = np.zeros(n_steps, dtype=np.float32)
 
-        returns = torch.tensor(returns, dtype=torch.float32)
-        observations = torch.tensor(observations, dtype=torch.float32)
+        # Index to keep track of current location in the buffer and start of current episode in buffer
+        self.ep_begin_ptr = 0
+        self.ptr = 0
 
-        # Get baseline by running NN on observations
-        baseline = self(observations)
+    def store(self, obs, action, log_prob, reward, done, value):
+        """Add a new set of data to the buffer, and increment the index."""
+        self.obs[self.ptr] = obs
+        self.actions[self.ptr] = action
+        self.log_probs[self.ptr] = log_prob
+        self.rewards[self.ptr] = reward
+        self.dones[self.ptr] = done
+        self.values[self.ptr] = value
+        self.ptr += 1
 
-        # Loss function is MSE loss
-        loss = nn.functional.mse_loss(baseline, returns)
+    def compute_gae(self, last_value: float, gamma: float, gae_lambda: float):
+        """Compute advantages and returns using generalized advantage estimator (GAE)"""
+        last_adv = 0.0
+        for t in reversed(range(self.ep_begin_ptr, self.ptr)):
+            if t == self.ptr - 1:
+                next_value = last_value
+                next_non_terminal = 1.0 - self.dones[t]
+            else:
+                next_value = self.values[t + 1]
+                next_non_terminal = 1.0 - self.dones[t]
 
-        # Reset gradient, backpropogate, then step the optimizer
-        self.optimizer.zero_grad()
-        loss.backward()
-        self.optimizer.step()
+            delta = self.rewards[t] + gamma * next_value * next_non_terminal - self.values[t]
+            self.advantages[t] = last_adv = delta + gamma * gae_lambda * next_non_terminal * last_adv
 
-class PPOAgentNonShared:
+        self.returns[self.ep_begin_ptr:self.ptr] = self.advantages[self.ep_begin_ptr:self.ptr] + self.values[self.ep_begin_ptr:self.ptr]
+
+    def get_batches(self, batch_size: int):
+        """Divide buffer randomly into batches of size batch_size, provide each batch one at a time."""
+        indices = np.arange(self.ptr)
+        np.random.shuffle(indices)
+        for start in range(0, self.ptr, batch_size):
+            batch_idx = indices[start:start + batch_size]
+            yield (
+                torch.tensor(self.obs[batch_idx]),
+                torch.tensor(self.actions[batch_idx]),
+                torch.tensor(self.log_probs[batch_idx]),
+                torch.tensor(self.returns[batch_idx]),
+                torch.tensor(self.advantages[batch_idx]),
+            )
+    
+    def next_episode(self):
+        """Indicate that we have started a new episode."""
+        self.ep_begin_ptr = self.ptr
+
+    def reset(self):
+        """Reset current index and beginning of episode to 0."""
+        self.ep_begin_ptr = 0
+        self.ptr = 0
+
+
+class PPOAgentNonSharedV2:
+    """PPO agent that utilizes separate Actor and Critic networks (not shared trunk implementation)."""
+
     def __init__(self, env, config: dict):
+        """Use given config and environment to set up necessary variables."""
         self.env = env
         obs_dim = env.observation_space.shape[0]
-        n_params = env.action_space.shape[0]
+        n_params = env.action_space.shape[0] 
 
+        # PPO configurations from the config file
         ppo_cfg = config["ppo"]
         self.lr = float(ppo_cfg["learning_rate"])
         self.n_steps = int(ppo_cfg["n_steps"])
@@ -151,236 +173,165 @@ class PPOAgentNonShared:
         self.gamma = float(ppo_cfg["gamma"])
         self.total_timesteps = int(ppo_cfg["total_timesteps"])
 
-        # PPO-specific
+        # Hardcoded PPO parameters
         self.clip_eps = 0.2
         self.vf_coef = 0.5
         self.ent_coef = 0.01
         self.gae_lambda = 0.95
         self.max_grad_norm = 0.5
 
+        # Set up the Actor and Critic networks and their optimizers
         self.actor_network = Actor(obs_dim, n_params)
-        self.optimizer = torch.optim.Adam(self.actor_network.parameters(), lr=self.lr)
         self.critic_network = Critic(obs_dim)
+        self.actor_optimizer = torch.optim.Adam(self.actor_network.parameters(), lr=self.lr)
+        self.critic_optimizer = torch.optim.Adam(self.critic_network.parameters(), lr=self.lr)
 
-    def collect_rollouts(self):
-        """
-        Sample paths (trajectories) from the environment.
+        # Create buffer to hold rollouts
+        self.buffer = RolloutBuffer(self.n_steps, obs_dim, n_params)
 
-        Args:
-            num_episodes: the number of episodes to be sampled
-                if none, sample one batch (size indicated by config file)
-            env: open AI Gym envinronment
-
-        Returns:
-            paths: a list of paths. Each path in paths is a dictionary with
-                path["observation"] a numpy array of ordered observations in the path
-                path["actions"] a numpy array of the corresponding actions in the path
-                path["reward"] a numpy array of the corresponding rewards in the path
-            total_rewards: the sum of all rewards encountered during this "path"
-        """
-        episode_stats = [] 
-        paths = []
-
+    def collect_rollouts(self) -> list[dict]:
+        """Run environment for n_steps, fill self.buffer. Return list of episode stats."""
+        self.buffer.reset()
+        
+        episode_stats = []
         total_steps = 0
 
-        while total_steps < self.batch_size:
+        # Step until we've filled up the buffer
+        while total_steps < self.n_steps:
+            # For each new episode, reset the environment and the counts
             obs, _ = self.env.reset()
-            
-            episode_reward = 0.0
-            episode_length = 0
 
-            observations, actions, rewards, log_probs, dones = [], [], [], [], []
+            ep_reward = 0.0
+            ep_len = 0
 
-            for step in range(self.batch_size):
+            # Take at most max_steps number of steps per episode
+            for step in range(self.env._max_steps):
+                # Sample an action and get the value
                 with torch.no_grad():
-                    obs_tensor = torch.tensor(obs, dtype=torch.float32).unsqueeze(0)
-                    action, log_prob = self.actor_network.sample_action(obs_tensor)
+                    obs_t = torch.tensor(obs, dtype=torch.float32).unsqueeze(0)
+                    action, log_prob = self.actor_network.sample_action(obs_t)
+                    value = self.critic_network(obs_t)
 
-                action_np = action.squeeze(0).numpy()
+                action_np = action.squeeze(0).numpy() 
+
+                # Step the environment to get next observation and reward
                 next_obs, reward, terminated, truncated, info = self.env.step(action_np)
-                ep_done = terminated or truncated
-                
-                observations.append(obs)
-                actions.append(action_np)
-                log_probs.append(log_prob.item())
-                rewards.append(reward)
-                dones.append(float(ep_done))
-                
-                episode_reward += reward
-                episode_length += 1
+                done = terminated or truncated
+
+                # Store all the data into the buffer
+                self.buffer.store(obs, action_np, log_prob.item(), reward, float(done), value.item())
+
+                # Increment counts
+                ep_reward += reward
+                ep_len += 1
 
                 total_steps += 1
 
-                if ep_done or step == self.batch_size - 1:
-                    episode_stats.append({"reward": episode_reward, "length": episode_length})
-                    break
-                elif total_steps == self.batch_size:
+                # If episode is done (terminated or has reached horizon), or we've reached buffer size
+                if done or step == self.env._max_steps - 1 or total_steps == self.n_steps:
+                    episode_stats.append({"reward": ep_reward, "length": ep_len})
+
+                    # Bootstrap value for last state
+                    with torch.no_grad():
+                        obs_t = torch.tensor(obs, dtype=torch.float32).unsqueeze(0)
+                        last_value = self.critic_network(obs_t)
+
+                    # Calculate advantges and returns for the episode using GAE
+                    self.buffer.compute_gae(last_value.item(), self.gamma, self.gae_lambda)
+                    self.buffer.next_episode()
                     break
                 else:
                     obs = next_obs
 
-            path = {
-                "observation": np.array(observations),
-                "reward": np.array(rewards),
-                "action": np.array(actions),
-                "log_prob": np.array(log_probs),
-                "done": np.array(dones),
-            }
-            paths.append(path)
+        return episode_stats
 
-        return paths, episode_stats
-    
+    def update(self) -> dict:
+        """Run PPO update for a group of batches (number of batches is buffer_size / batch_size)"""
+        total_policy_loss = 0.0
+        total_value_loss = 0.0
+        total_entropy = 0.0
+        n_updates = 0
 
-    def get_returns(self, paths):
-        """
-        Calculate the returns G_t for each timestep
+        # Loop for n_epochs to perform update
+        for _ in range(self.n_epochs):
+            # Split buffer into mini batches and before PPO clipped update
+            for obs_b, act_b, old_lp_b, ret_b, adv_b in self.buffer.get_batches(self.batch_size):
+                # Normalize advantages
+                adv_b = (adv_b - adv_b.mean()) / (adv_b.std() + 1e-8)
 
-        Args:
-            paths: recorded sample paths. See sample_path() for details.
+                # Value loss
+                values = self.critic_network(obs_b)
+                value_loss = nn.functional.mse_loss(values, ret_b)
 
-        Return:
-            returns: return G_t for each timestep
-        """
-        all_returns = []
-        for path in paths:
-            rewards = path["reward"]
+                # Update Critic
+                self.critic_optimizer.zero_grad()
+                value_loss.backward()
+                nn.utils.clip_grad_norm_(self.critic_network.parameters(), self.max_grad_norm)
+                self.critic_optimizer.step()
 
-            # Initialize returns array and path length
-            returns = np.zeros_like(rewards)
-            path_length = returns.shape[0]
+                # Policy loss (clipped)
 
-            # Initialize last return
-            returns[path_length - 1] = rewards[path_length - 1]
+                # Get new log_probs 
+                new_lp, entropy = self.actor_network.evaluate_action(obs_b, act_b)
 
-            # Loop backwards to calculate returns
-            for idx in range(path_length - 1):
-                reverse_idx = path_length - 2 - idx
-                returns[reverse_idx] = rewards[reverse_idx] + (self.gamma * returns[reverse_idx + 1])
+                ratio = torch.exp(new_lp - old_lp_b)
+                surr1 = ratio * adv_b
+                surr2 = torch.clamp(ratio, 1.0 - self.clip_eps, 1.0 + self.clip_eps) * adv_b
+                policy_loss = -torch.min(surr1, surr2).mean()
 
-            all_returns.append(returns)
-        returns = np.concatenate(all_returns)
+                # Entropy bonus
+                entropy_loss = -entropy.mean()
 
-        return returns
-    
-    def normalize_advantage(self, advantages):
-        """
-        Args:
-            advantages: np.array of shape [batch size]
-        Returns:
-            normalized_advantages: np.array of shape [batch size]
-        """
-        mean = np.mean(advantages)
-        std = np.std(advantages)
+                # Total loss
+                loss = policy_loss + self.ent_coef * entropy_loss
 
-        normalized_advantages = (advantages - mean) / std
-        return normalized_advantages
+                # Update Actor 
+                self.actor_optimizer.zero_grad()
+                loss.backward()
+                nn.utils.clip_grad_norm_(self.actor_network.parameters(), self.max_grad_norm)
+                self.actor_optimizer.step()
 
-    def calculate_advantage(self, returns, observations):
-        """
-        Calculates the advantage for each of the observations
-        Args:
-            returns: np.array of shape [batch size]
-            observations: np.array of shape [batch size, dim(observation space)]
-        Returns:
-            advantages: np.array of shape [batch size]
-        """
+                # Update statistics
+                total_policy_loss += policy_loss.item()
+                total_value_loss += value_loss.item()
+                total_entropy += entropy.mean().item()
+                n_updates += 1
 
-        advantages = self.critic_network.calculate_advantage(returns, observations)
-        advantages = self.normalize_advantage(advantages)
-
-        return advantages
-
-    def update_policy(self, observations, actions, advantages, old_logprobs):
-        """
-        Args:
-            observations: np.array of shape [batch size, dim(observation space)]
-            actions: np.array of shape
-                [batch size, dim(action space)] if continuous
-                [batch size] (and integer type) if discrete
-            advantages: np.array of shape [batch size, 1]
-            old_logprobs: np.array of shape [batch size]
-
-        Perform one update on the policy using the provided data using the PPO clipped
-        objective function.
-        """
-        observations = torch.tensor(observations, dtype=torch.float32)
-        actions = torch.tensor(actions, dtype=torch.float32)
-        advantages = torch.tensor(advantages, dtype=torch.float32)
-        old_logprobs = torch.tensor(old_logprobs, dtype=torch.float32)
-
-        # Get distribution and log probs
-        log_probs = self.actor_network.evaluate_action(observations, actions)
-
-        # Determine z_ratior
-        z_ratio = torch.exp(log_probs - old_logprobs)
-
-        # Perform clipping
-        op_1 = torch.clamp(z_ratio, 1.0 - self.clip_eps, 1.0 + self.clip_eps) * advantages
-        op_2 = z_ratio * advantages
-
-        # Calculate min for each element
-        clip_vals = torch.min(op_1, op_2)
-
-        # Set objective function
-        loss = -torch.mean(clip_vals)
-
-        # Set loss function, zero gradient, backpropogate, and step optimizer
-        self.optimizer.zero_grad()
-        loss.backward()
-        nn.utils.clip_grad_norm_(self.actor_network.parameters(), self.max_grad_norm)
-        self.optimizer.step()
-
-        return loss.item()
-
+        return {
+            "policy_loss": total_policy_loss / n_updates,
+            "value_loss": total_value_loss / n_updates,
+            "entropy": total_entropy / n_updates,
+        }
 
     def train(self, total_timesteps: int | None = None, callback=None):
-        """
-        Performs training
-
-        You do not have to change or use anything here, but take a look
-        to see how all the code you've written fits together!
-        """
+        """"Train PPO Agent using Actor and Critic models."""
         total = total_timesteps or self.total_timesteps
         timesteps_done = 0
         iteration = 0
 
+        # Loop until reached max number of interactions with environment
         while timesteps_done < total:
-            paths, episode_stats = self.collect_rollouts()
-            
-            observations = np.concatenate([path["observation"] for path in paths])
-            actions = np.concatenate([path["action"] for path in paths])
-            log_probs = np.concatenate([path["log_prob"] for path in paths])
-
-            returns = self.get_returns(paths)
-            advantages = self.calculate_advantage(returns, observations)
-
-            # run training operations
-            total_policy_loss = 0
-            for k in range(self.n_epochs):
-                self.critic_network.update_baseline(returns, observations)
-                total_policy_loss += self.update_policy(observations, actions, advantages, 
-                                   log_probs)
-
-            loss_stats = {"policy_loss": total_policy_loss / self.n_epochs, 
-                          "value_loss": -1,
-                          "entropy": -1}
-            timesteps_done += self.batch_size
+            episode_stats = self.collect_rollouts()
+            loss_stats = self.update()
+            timesteps_done += self.n_steps
             iteration += 1
 
             if callback:
                 callback(timesteps_done, episode_stats, loss_stats)
 
     def save(self, path: str):
+        """Save all state to path."""
         torch.save({
             "actor_network": self.actor_network.state_dict(),
             "critic_network": self.critic_network.state_dict(),
-            "optimizer": self.optimizer.state_dict(),
+            "actor_optimizer": self.actor_optimizer.state_dict(),
+            "critic_optimizer": self.critic_optimizer.state_dict(),
         }, path)
 
     def load(self, path: str):
+        """Load all state from path."""
         checkpoint = torch.load(path, weights_only=True)
         self.actor_network.load_state_dict(checkpoint["actor_network"])
         self.critic_network.load_state_dict(checkpoint["critic_network"])
-        self.optimizer.load_state_dict(checkpoint["optimizer"])
-
-
+        self.actor_optimizer.load_state_dict(checkpoint["actor_optimizer"])
+        self.critic_optimizer.load_state_dict(checkpoint["critic_optimizer"])
