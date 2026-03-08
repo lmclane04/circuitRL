@@ -113,15 +113,9 @@ def main():
     if args.agent == "ppo":
         from circuitrl.agents.ppo_agent import PPOAgent
         agent = PPOAgent(env, config)
-<<<<<<< HEAD
-    elif args.agent == "grpo":
-        from circuitrl.agents.grpo_agent import GRPOAgent
-        agent = GRPOAgent(env, config)
-=======
     elif args.agent == "ppo_non_shared":
         from circuitrl.agents.ppo_agent_non_shared import PPOAgentNonShared
         agent = PPOAgentNonShared(env, config)
->>>>>>> origin/master
     else:
         raise ValueError(f"Unknown agent: {args.agent}")
 

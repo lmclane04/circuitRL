@@ -70,7 +70,7 @@ def spec_met(metric_val: float, target: float, tolerance: float, direction: str)
         return abs(metric_val - target) <= tolerance
 
 
-def run_episode(env, network, agent):
+def run_episode(env, network):
     """Run one greedy episode. Returns (steps, total_reward, success, episode_targets)."""
     obs, info = env.reset()
     episode_targets = info["targets"]  # targets sampled for this episode
@@ -135,7 +135,7 @@ def main():
     csv_rows = []
 
     for ep in range(args.episodes):
-        steps, total_reward, success, episode_targets = run_episode(env, network, args.agent)
+        steps, total_reward, success, episode_targets = run_episode(env, network)
         all_rewards.append(total_reward)
         all_successes.append(success)
         all_steps.append(len(steps))
