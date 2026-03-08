@@ -129,6 +129,7 @@ class RolloutBuffer:
         self.values = np.zeros(n_steps, dtype=np.float32)
         self.advantages = np.zeros(n_steps, dtype=np.float32)
         self.returns = np.zeros(n_steps, dtype=np.float32)
+        self.ep_begin_ptr = 0
         self.ptr = 0
 
     def store(self, obs, action, log_prob, reward, done, value):
@@ -142,7 +143,7 @@ class RolloutBuffer:
 
     def compute_gae(self, last_value: float, gamma: float, gae_lambda: float):
         last_adv = 0.0
-        for t in reversed(range(self.ptr)):
+        for t in reversed(range(self.ep_begin_ptr, self.ptr)):
             if t == self.ptr - 1:
                 next_value = last_value
                 next_non_terminal = 1.0 - self.dones[t]
@@ -153,7 +154,7 @@ class RolloutBuffer:
             delta = self.rewards[t] + gamma * next_value * next_non_terminal - self.values[t]
             self.advantages[t] = last_adv = delta + gamma * gae_lambda * next_non_terminal * last_adv
 
-        self.returns[:self.ptr] = self.advantages[:self.ptr] + self.values[:self.ptr]
+        self.returns[self.ep_begin_ptr:self.ptr] = self.advantages[self.ep_begin_ptr:self.ptr] + self.values[self.ep_begin_ptr:self.ptr]
 
     def get_batches(self, batch_size: int):
         """Sample random mini-batches"""
@@ -168,8 +169,12 @@ class RolloutBuffer:
                 torch.tensor(self.returns[batch_idx]),
                 torch.tensor(self.advantages[batch_idx]),
             )
+    
+    def next_episode(self):
+        self.ep_begin_ptr = self.ptr
 
     def reset(self):
+        self.ep_begin_ptr = 0
         self.ptr = 0
 
 
@@ -225,18 +230,23 @@ class PPOAgentNonSharedV2:
 
             if done:
                 episode_stats.append({"reward": ep_reward, "length": ep_len})
+
+                # Bootstrap value for last state
+                with torch.no_grad():
+                    obs_t = torch.tensor(obs, dtype=torch.float32).unsqueeze(0)
+                    last_value = self.critic_network(obs_t)
+
+                self.buffer.compute_gae(last_value.item(), self.gamma, self.gae_lambda)
+
+                self.buffer.next_episode()
+
                 ep_reward = 0.0
                 ep_len = 0
                 obs, _ = self.env.reset()
             else:
                 obs = next_obs
 
-        # Bootstrap value for last state
-        with torch.no_grad():
-            obs_t = torch.tensor(obs, dtype=torch.float32).unsqueeze(0)
-            last_value = self.critic_network(obs_t)
-
-        self.buffer.compute_gae(last_value.item(), self.gamma, self.gae_lambda)
+        
         return episode_stats
 
     def update(self) -> dict:
