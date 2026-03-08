@@ -116,9 +116,6 @@ def main():
     elif args.agent == "ppo-non-shared":
         from circuitrl.agents.ppo_agent_non_shared import PPOAgentNonShared
         agent = PPOAgentNonShared(env, config)
-    elif args.agent == "ppo-non-shared-v2":
-        from circuitrl.agents.ppo_agent_non_shared_v2 import PPOAgentNonSharedV2
-        agent = PPOAgentNonSharedV2(env, config)
     else:
         raise ValueError(f"Unknown agent: {args.agent}")
 

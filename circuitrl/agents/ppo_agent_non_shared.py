@@ -155,7 +155,7 @@ class RolloutBuffer:
         self.ptr = 0
 
 
-class PPOAgentNonSharedV2:
+class PPOAgentNonShared:
     """PPO agent that utilizes separate Actor and Critic networks (not shared trunk implementation)."""
 
     def __init__(self, env, config: dict):
