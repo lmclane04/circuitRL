@@ -26,6 +26,10 @@ class ActorCritic(nn.Module):
         h = self.trunk(obs)
         logits = [head(h) for head in self.policy_heads]  # list of (batch, 3)
         return logits, self.value_head(h).squeeze(-1)
+    
+    def get_logits_list(self, obs: torch.Tensor):
+        logits_list, _ = self(obs)
+        return logits_list
 
     def get_action(self, obs: torch.Tensor):
         """Sample an action per parameter. Returns (actions, summed_log_prob, value)."""
@@ -239,3 +243,10 @@ class PPOAgent:
         checkpoint = torch.load(path, weights_only=True)
         self.network.load_state_dict(checkpoint["network"])
         self.optimizer.load_state_dict(checkpoint["optimizer"])
+
+    def load_actor_network(self, path: str):
+        network = self.network
+        checkpoint = torch.load(path, weights_only=True)
+        network.load_state_dict(checkpoint["network"])
+        network.eval()
+        return network

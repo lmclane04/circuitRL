@@ -10,7 +10,7 @@ Usage:
     python generate_specs.py --config circuitrl/configs/cs_amp.yaml --n 500
     python generate_specs.py --config circuitrl/configs/opamp.yaml --n 1000
 
-The output is saved next to the config file as <circuit>_specs_pool.json.
+The output is saved next to the config file as <circuit>_specs_pool.json, or given spec_pool name.
 """
 import argparse
 import json
@@ -22,7 +22,7 @@ import yaml
 from circuitrl.simulators.ngspice_runner import NGSpiceRunner
 
 
-def generate(config_path: str, n_samples: int, seed: int = 0):
+def generate(config_path: str, n_samples: int, spec_name: str, seed: int = 0):
     config_dir = os.path.dirname(os.path.abspath(config_path))
     with open(config_path) as f:
         cfg = yaml.safe_load(f)
@@ -77,7 +77,10 @@ def generate(config_path: str, n_samples: int, seed: int = 0):
               f"  max={max(vals):.4g}")
 
     circuit_name = os.path.splitext(os.path.basename(config_path))[0]
-    out_path = os.path.join(config_dir, f"{circuit_name}_specs_pool.json")
+    if spec_name:
+        out_path = os.path.join(config_dir, f"{spec_name}.json")
+    else:
+        out_path = os.path.join(config_dir, f"{circuit_name}_specs_pool.json")
     with open(out_path, "w") as f:
         json.dump(pool, f, indent=2)
     print(f"\nSaved {len(pool)} spec targets to {out_path}")
@@ -89,8 +92,9 @@ def main():
     parser.add_argument("--n", type=int, default=500,
                         help="Number of random parameter combinations to simulate (default: 500)")
     parser.add_argument("--seed", type=int, default=0, help="RNG seed")
+    parser.add_argument("--spec_name", type=str, help="Name to save spec pool as")
     args = parser.parse_args()
-    generate(args.config, args.n, args.seed)
+    generate(args.config, args.n, args.spec_name, args.seed)
 
 
 if __name__ == "__main__":

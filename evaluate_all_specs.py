@@ -1,4 +1,4 @@
-"""Load a trained agent and run it on a circuit to see what it produces."""
+"""Load a trained agent, and run it on every single circuit in the spec pool."""
 import argparse
 import csv
 import os
@@ -41,7 +41,7 @@ def load_agent(agent: str, run_dir: str, spec_pool_test: str, config_override: s
         config = yaml.safe_load(f)
 
     env = CircuitEnv(config_path=config_path)
-
+    
     # If specified spec pool to test on, set the new spec pool
     if spec_pool_test:
         env.set_spec_pool(spec_pool_test)
@@ -56,7 +56,6 @@ def load_agent(agent: str, run_dir: str, spec_pool_test: str, config_override: s
         raise ValueError(f"Unknown agent: {agent}")
 
     network = agent.load_actor_network(checkpoint_path)
-
     return env, network, config
 
 
@@ -70,9 +69,9 @@ def spec_met(metric_val: float, target: float, tolerance: float, direction: str)
         return abs(metric_val - target) <= tolerance
 
 
-def run_episode(env, network, agent):
+def run_episode(env, network, seed, target_idx):
     """Run one greedy episode. Returns (steps, total_reward, success, episode_targets)."""
-    obs, info = env.reset()
+    obs, info = env.reset_with_target_idx(seed=seed, target_idx=target_idx)
     episode_targets = info["targets"]  # targets sampled for this episode
     steps = []
     total_reward = 0.0
@@ -107,25 +106,23 @@ def main():
                         help="Path to run directory (contains model.pt and config.yaml)")
     parser.add_argument("--config", type=str, default=None,
                         help="Path to original config YAML (auto-detected if omitted)")
-    parser.add_argument("--episodes", type=int, default=10,
-                        help="Number of episodes to evaluate across")
     parser.add_argument("--verbose", action="store_true",
                         help="Print every step, not just episode summary")
     parser.add_argument("--seed", type=int, default=0,
-                        help="RNG seed for target sampling")
+                        help="RNG seed for env sampling")
     parser.add_argument("--spec_pool_test", type=str, help="Spec pool to evaluate on")
     parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "ppo_non_shared"], help="Agent to evaluate on")
     args = parser.parse_args()
 
     env, network, config = load_agent(args.agent, args.run_dir, args.spec_pool_test, config_override=args.config)
-    env.reset(seed=args.seed)  # seed env's np_random for reproducible target sampling
+    env.reset_with_target_idx(seed=args.seed, target_idx=0)  # seed env's np_random for reproducible target sampling
 
     spec_names = list(config["target_specs"].keys())
     tolerances = {name: float(spec["tolerance"]) for name, spec in config["target_specs"].items()}
     directions = {name: spec.get("direction", "equal") for name, spec in config["target_specs"].items()}
 
     print(f"Loaded agent from {args.run_dir}")
-    print(f"Evaluating {args.episodes} episodes  (seed={args.seed})")
+    print(f"Evaluating {len(env._spec_pool)} episodes  (seed={args.seed})")
     print()
 
     all_rewards = []
@@ -134,8 +131,9 @@ def main():
     spec_successes = {name: [] for name in spec_names}
     csv_rows = []
 
-    for ep in range(args.episodes):
-        steps, total_reward, success, episode_targets = run_episode(env, network, args.agent)
+    # Loop through everything in the spec pool
+    for ep in range(len(env._spec_pool)):
+        steps, total_reward, success, episode_targets = run_episode(env, network, args.seed, ep)
         all_rewards.append(total_reward)
         all_successes.append(success)
         all_steps.append(len(steps))
@@ -188,9 +186,9 @@ def main():
         print(f"Saved eval results to {csv_path}\n")
 
     # Aggregate summary
-    n = args.episodes
+    n = len(env._spec_pool)
     print("=" * 60)
-    print(f"Summary over {n} episodes:")
+    print(f"Summary over full spec pool:")
     print(f"  Success rate:      {sum(all_successes)}/{n}  ({100*sum(all_successes)/n:.1f}%)")
     print(f"  Mean total reward: {sum(all_rewards)/n:.3f}")
     print(f"  Mean episode len:  {sum(all_steps)/n:.1f}")

@@ -64,7 +64,7 @@ def make_callback(run_dir: str, circuit_name: str):
 
 def main():
     parser = argparse.ArgumentParser(description="Train a CircuitRL agent")
-    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "grpo"])
+    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "ppo_non_shared"])
     parser.add_argument("--config", type=str, default="circuitrl/configs/opamp_default.yaml")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--run-name", type=str, default=None)
@@ -92,6 +92,18 @@ def main():
     os.makedirs(run_dir)
     shutil.copy2(args.config, os.path.join(run_dir, "config.yaml"))
 
+    # Make sure to overwrite timesteps if needed
+    if args.timesteps:
+        with open(os.path.join(run_dir, "config.yaml"), "r") as f:
+            first_line = f.readline().strip()
+            dup_config = yaml.safe_load(f)
+        dup_config["ppo"]["total_timesteps"] = args.timesteps
+        with open(os.path.join(run_dir, "config.yaml"), "w") as f:
+            # Need to keep first comment because the eval scripts 
+            # use it to find the original config
+            f.write(first_line + "\n")
+            yaml.dump(dup_config, f, sort_keys=False)
+
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
 
@@ -101,9 +113,15 @@ def main():
     if args.agent == "ppo":
         from circuitrl.agents.ppo_agent import PPOAgent
         agent = PPOAgent(env, config)
+<<<<<<< HEAD
     elif args.agent == "grpo":
         from circuitrl.agents.grpo_agent import GRPOAgent
         agent = GRPOAgent(env, config)
+=======
+    elif args.agent == "ppo_non_shared":
+        from circuitrl.agents.ppo_agent_non_shared import PPOAgentNonShared
+        agent = PPOAgentNonShared(env, config)
+>>>>>>> origin/master
     else:
         raise ValueError(f"Unknown agent: {args.agent}")
 
