@@ -1,0 +1,5002 @@
+[
+  {
+    "transimpedance_db": 52.1414,
+    "bandwidth": 111817000.0,
+    "power": 0.000292175
+  },
+  {
+    "transimpedance_db": 84.2185,
+    "bandwidth": 46340300.0,
+    "power": 0.00014027
+  },
+  {
+    "transimpedance_db": 39.819,
+    "bandwidth": 262251000.0,
+    "power": 0.000166033
+  },
+  {
+    "transimpedance_db": 70.8087,
+    "bandwidth": 12564300.0,
+    "power": 0.000334366
+  },
+  {
+    "transimpedance_db": 18.0176,
+    "bandwidth": 424397000.0,
+    "power": 0.000147774
+  },
+  {
+    "transimpedance_db": 27.9241,
+    "bandwidth": 212928000.0,
+    "power": 0.000355538
+  },
+  {
+    "transimpedance_db": 30.2768,
+    "bandwidth": 326589000.0,
+    "power": 0.000111709
+  },
+  {
+    "transimpedance_db": 88.3024,
+    "bandwidth": 71565100.0,
+    "power": 0.000224732
+  },
+  {
+    "transimpedance_db": 59.9827,
+    "bandwidth": 171960000.0,
+    "power": 0.000153537
+  },
+  {
+    "transimpedance_db": 70.2758,
+    "bandwidth": 145743000.0,
+    "power": 0.00016476
+  },
+  {
+    "transimpedance_db": 40.3908,
+    "bandwidth": 167862000.0,
+    "power": 0.000213566
+  },
+  {
+    "transimpedance_db": 70.2475,
+    "bandwidth": 76325600.0,
+    "power": 0.00038571
+  },
+  {
+    "transimpedance_db": 76.9661,
+    "bandwidth": 17276800.0,
+    "power": 0.000209925
+  },
+  {
+    "transimpedance_db": 55.3274,
+    "bandwidth": 112594000.0,
+    "power": 0.00048532
+  },
+  {
+    "transimpedance_db": 84.2938,
+    "bandwidth": 96807300.0,
+    "power": 0.000338048
+  },
+  {
+    "transimpedance_db": 39.8745,
+    "bandwidth": 566047000.0,
+    "power": 0.000992985
+  },
+  {
+    "transimpedance_db": 75.7608,
+    "bandwidth": 29294400.0,
+    "power": 0.000285607
+  },
+  {
+    "transimpedance_db": 32.5642,
+    "bandwidth": 95675400.0,
+    "power": 8.93787e-05
+  },
+  {
+    "transimpedance_db": 80.9022,
+    "bandwidth": 10243000.0,
+    "power": 0.000134105
+  },
+  {
+    "transimpedance_db": 87.5015,
+    "bandwidth": 9940080.0,
+    "power": 7.71326e-05
+  },
+  {
+    "transimpedance_db": 47.0676,
+    "bandwidth": 500527000.0,
+    "power": 0.000222187
+  },
+  {
+    "transimpedance_db": 63.3897,
+    "bandwidth": 7164270.0,
+    "power": 0.000147814
+  },
+  {
+    "transimpedance_db": 58.0951,
+    "bandwidth": 72998000.0,
+    "power": 0.000206864
+  },
+  {
+    "transimpedance_db": 78.8997,
+    "bandwidth": 28806600.0,
+    "power": 0.000274586
+  },
+  {
+    "transimpedance_db": 72.5102,
+    "bandwidth": 109666000.0,
+    "power": 0.000125993
+  },
+  {
+    "transimpedance_db": 87.0775,
+    "bandwidth": 7047490.0,
+    "power": 0.000513974
+  },
+  {
+    "transimpedance_db": 64.054,
+    "bandwidth": 7879130.0,
+    "power": 0.000102241
+  },
+  {
+    "transimpedance_db": 45.0897,
+    "bandwidth": 514276000.0,
+    "power": 0.000186105
+  },
+  {
+    "transimpedance_db": 63.6318,
+    "bandwidth": 103229000.0,
+    "power": 0.000214061
+  },
+  {
+    "transimpedance_db": 99.3963,
+    "bandwidth": 6854940.0,
+    "power": 8.45428e-05
+  },
+  {
+    "transimpedance_db": 44.099,
+    "bandwidth": 537454000.0,
+    "power": 0.000160959
+  },
+  {
+    "transimpedance_db": 69.3786,
+    "bandwidth": 12769800.0,
+    "power": 7.19728e-05
+  },
+  {
+    "transimpedance_db": 75.6709,
+    "bandwidth": 8933340.0,
+    "power": 0.000230201
+  },
+  {
+    "transimpedance_db": 49.5807,
+    "bandwidth": 502056000.0,
+    "power": 0.000194629
+  },
+  {
+    "transimpedance_db": 37.6656,
+    "bandwidth": 338125000.0,
+    "power": 0.000239674
+  },
+  {
+    "transimpedance_db": 28.495,
+    "bandwidth": 707338000.0,
+    "power": 0.000337719
+  },
+  {
+    "transimpedance_db": 100.813,
+    "bandwidth": 45548300.0,
+    "power": 0.000340945
+  },
+  {
+    "transimpedance_db": 76.1304,
+    "bandwidth": 71964200.0,
+    "power": 0.000154031
+  },
+  {
+    "transimpedance_db": 96.9748,
+    "bandwidth": 16024000.0,
+    "power": 0.00014015
+  },
+  {
+    "transimpedance_db": 53.9676,
+    "bandwidth": 161559000.0,
+    "power": 0.000192908
+  },
+  {
+    "transimpedance_db": 44.2235,
+    "bandwidth": 155274000.0,
+    "power": 0.000106192
+  },
+  {
+    "transimpedance_db": 69.3562,
+    "bandwidth": 7005450.0,
+    "power": 4.77351e-05
+  },
+  {
+    "transimpedance_db": 48.4129,
+    "bandwidth": 93208200.0,
+    "power": 0.000150723
+  },
+  {
+    "transimpedance_db": 96.7696,
+    "bandwidth": 24331900.0,
+    "power": 0.000194058
+  },
+  {
+    "transimpedance_db": 38.8898,
+    "bandwidth": 319401000.0,
+    "power": 0.000133605
+  },
+  {
+    "transimpedance_db": 28.3371,
+    "bandwidth": 1132480000.0,
+    "power": 0.000204394
+  },
+  {
+    "transimpedance_db": 68.449,
+    "bandwidth": 211771000.0,
+    "power": 0.000242998
+  },
+  {
+    "transimpedance_db": 25.6474,
+    "bandwidth": 1087210000.0,
+    "power": 0.000324809
+  },
+  {
+    "transimpedance_db": 108.151,
+    "bandwidth": 19355400.0,
+    "power": 0.00029652
+  },
+  {
+    "transimpedance_db": 85.1783,
+    "bandwidth": 24220400.0,
+    "power": 0.000252609
+  },
+  {
+    "transimpedance_db": 67.2427,
+    "bandwidth": 119295000.0,
+    "power": 0.000133425
+  },
+  {
+    "transimpedance_db": 42.3845,
+    "bandwidth": 199791000.0,
+    "power": 0.000145852
+  },
+  {
+    "transimpedance_db": 46.3069,
+    "bandwidth": 1493060000.0,
+    "power": 0.000591016
+  },
+  {
+    "transimpedance_db": 76.1087,
+    "bandwidth": 86335200.0,
+    "power": 0.000156503
+  },
+  {
+    "transimpedance_db": 76.2187,
+    "bandwidth": 12682200.0,
+    "power": 0.00013487
+  },
+  {
+    "transimpedance_db": 90.7563,
+    "bandwidth": 119250000.0,
+    "power": 0.000430557
+  },
+  {
+    "transimpedance_db": 27.5936,
+    "bandwidth": 303968000.0,
+    "power": 0.000182061
+  },
+  {
+    "transimpedance_db": 73.1112,
+    "bandwidth": 119616000.0,
+    "power": 0.000291732
+  },
+  {
+    "transimpedance_db": 54.7691,
+    "bandwidth": 109096000.0,
+    "power": 0.000195148
+  },
+  {
+    "transimpedance_db": 56.9558,
+    "bandwidth": 233732000.0,
+    "power": 0.000808903
+  },
+  {
+    "transimpedance_db": 63.1572,
+    "bandwidth": 83686700.0,
+    "power": 0.000180191
+  },
+  {
+    "transimpedance_db": 84.3251,
+    "bandwidth": 168175000.0,
+    "power": 0.000555421
+  },
+  {
+    "transimpedance_db": 66.1351,
+    "bandwidth": 73803400.0,
+    "power": 0.000177042
+  },
+  {
+    "transimpedance_db": 44.2367,
+    "bandwidth": 1050340000.0,
+    "power": 0.000882757
+  },
+  {
+    "transimpedance_db": 69.8848,
+    "bandwidth": 43678900.0,
+    "power": 0.00016375
+  },
+  {
+    "transimpedance_db": 87.5584,
+    "bandwidth": 52119900.0,
+    "power": 0.0002913
+  },
+  {
+    "transimpedance_db": 58.5155,
+    "bandwidth": 55338300.0,
+    "power": 8.83939e-05
+  },
+  {
+    "transimpedance_db": 51.9366,
+    "bandwidth": 332700000.0,
+    "power": 0.000191709
+  },
+  {
+    "transimpedance_db": 50.8985,
+    "bandwidth": 313033000.0,
+    "power": 0.000422676
+  },
+  {
+    "transimpedance_db": 23.4965,
+    "bandwidth": 400457000.0,
+    "power": 0.000155569
+  },
+  {
+    "transimpedance_db": 51.7753,
+    "bandwidth": 332392000.0,
+    "power": 0.000150052
+  },
+  {
+    "transimpedance_db": 92.3836,
+    "bandwidth": 12332500.0,
+    "power": 6.81907e-05
+  },
+  {
+    "transimpedance_db": 38.6236,
+    "bandwidth": 108216000.0,
+    "power": 0.000265791
+  },
+  {
+    "transimpedance_db": 8.39279,
+    "bandwidth": 2551380000.0,
+    "power": 0.0001522
+  },
+  {
+    "transimpedance_db": 73.9717,
+    "bandwidth": 141504000.0,
+    "power": 0.000245214
+  },
+  {
+    "transimpedance_db": 78.1676,
+    "bandwidth": 130714000.0,
+    "power": 0.000304447
+  },
+  {
+    "transimpedance_db": 66.6537,
+    "bandwidth": 16043200.0,
+    "power": 0.000131606
+  },
+  {
+    "transimpedance_db": 67.3446,
+    "bandwidth": 26233300.0,
+    "power": 7.62631e-05
+  },
+  {
+    "transimpedance_db": 29.2832,
+    "bandwidth": 127318000.0,
+    "power": 0.000174682
+  },
+  {
+    "transimpedance_db": 63.073,
+    "bandwidth": 10530200.0,
+    "power": 0.000212234
+  },
+  {
+    "transimpedance_db": 42.9839,
+    "bandwidth": 361305000.0,
+    "power": 0.000189108
+  },
+  {
+    "transimpedance_db": 65.2132,
+    "bandwidth": 7511440.0,
+    "power": 0.00011102
+  },
+  {
+    "transimpedance_db": 93.4278,
+    "bandwidth": 42721100.0,
+    "power": 0.000201792
+  },
+  {
+    "transimpedance_db": 76.8863,
+    "bandwidth": 178629000.0,
+    "power": 0.000279924
+  },
+  {
+    "transimpedance_db": 74.1295,
+    "bandwidth": 48370400.0,
+    "power": 0.000311823
+  },
+  {
+    "transimpedance_db": 74.5277,
+    "bandwidth": 11902700.0,
+    "power": 0.000178527
+  },
+  {
+    "transimpedance_db": 85.3903,
+    "bandwidth": 9687950.0,
+    "power": 0.000185796
+  },
+  {
+    "transimpedance_db": 48.867,
+    "bandwidth": 244572000.0,
+    "power": 0.000302349
+  },
+  {
+    "transimpedance_db": 94.2255,
+    "bandwidth": 34909800.0,
+    "power": 0.000194099
+  },
+  {
+    "transimpedance_db": 55.2006,
+    "bandwidth": 325390000.0,
+    "power": 0.000182707
+  },
+  {
+    "transimpedance_db": 42.277,
+    "bandwidth": 942810000.0,
+    "power": 0.000412604
+  },
+  {
+    "transimpedance_db": 98.1034,
+    "bandwidth": 17770600.0,
+    "power": 9.52206e-05
+  },
+  {
+    "transimpedance_db": 75.7928,
+    "bandwidth": 10061800.0,
+    "power": 0.000141689
+  },
+  {
+    "transimpedance_db": 84.9261,
+    "bandwidth": 124669000.0,
+    "power": 0.000364084
+  },
+  {
+    "transimpedance_db": 44.1732,
+    "bandwidth": 533657000.0,
+    "power": 0.000396073
+  },
+  {
+    "transimpedance_db": 56.9018,
+    "bandwidth": 614693000.0,
+    "power": 0.000276822
+  },
+  {
+    "transimpedance_db": 88.6154,
+    "bandwidth": 28806800.0,
+    "power": 0.000212074
+  },
+  {
+    "transimpedance_db": 89.638,
+    "bandwidth": 16109000.0,
+    "power": 0.000288029
+  },
+  {
+    "transimpedance_db": 74.0798,
+    "bandwidth": 76547000.0,
+    "power": 0.000457327
+  },
+  {
+    "transimpedance_db": 48.8046,
+    "bandwidth": 406155000.0,
+    "power": 0.000208224
+  },
+  {
+    "transimpedance_db": 103.448,
+    "bandwidth": 11656400.0,
+    "power": 0.000247778
+  },
+  {
+    "transimpedance_db": 99.4862,
+    "bandwidth": 36686200.0,
+    "power": 0.000250029
+  },
+  {
+    "transimpedance_db": 110.843,
+    "bandwidth": 26782600.0,
+    "power": 0.000297689
+  },
+  {
+    "transimpedance_db": 25.8731,
+    "bandwidth": 567144000.0,
+    "power": 0.00017874
+  },
+  {
+    "transimpedance_db": 62.6629,
+    "bandwidth": 11446200.0,
+    "power": 0.000121961
+  },
+  {
+    "transimpedance_db": 40.4215,
+    "bandwidth": 314243000.0,
+    "power": 0.000146612
+  },
+  {
+    "transimpedance_db": 68.427,
+    "bandwidth": 23055500.0,
+    "power": 0.000152166
+  },
+  {
+    "transimpedance_db": 30.3561,
+    "bandwidth": 680091000.0,
+    "power": 0.000291558
+  },
+  {
+    "transimpedance_db": 55.5634,
+    "bandwidth": 111243000.0,
+    "power": 0.000175715
+  },
+  {
+    "transimpedance_db": 90.7045,
+    "bandwidth": 22721500.0,
+    "power": 0.000202215
+  },
+  {
+    "transimpedance_db": 43.6652,
+    "bandwidth": 58115400.0,
+    "power": 0.000136832
+  },
+  {
+    "transimpedance_db": 43.9363,
+    "bandwidth": 141708000.0,
+    "power": 0.00017896
+  },
+  {
+    "transimpedance_db": 35.5777,
+    "bandwidth": 435760000.0,
+    "power": 0.000227616
+  },
+  {
+    "transimpedance_db": 54.5864,
+    "bandwidth": 62149700.0,
+    "power": 0.000139635
+  },
+  {
+    "transimpedance_db": 46.6691,
+    "bandwidth": 143045000.0,
+    "power": 0.000135259
+  },
+  {
+    "transimpedance_db": 51.7131,
+    "bandwidth": 688999000.0,
+    "power": 0.000224544
+  },
+  {
+    "transimpedance_db": 75.1168,
+    "bandwidth": 78862200.0,
+    "power": 0.000473357
+  },
+  {
+    "transimpedance_db": 54.4357,
+    "bandwidth": 220139000.0,
+    "power": 0.000137878
+  },
+  {
+    "transimpedance_db": 36.4565,
+    "bandwidth": 524221000.0,
+    "power": 0.00016823
+  },
+  {
+    "transimpedance_db": 49.7348,
+    "bandwidth": 45176400.0,
+    "power": 0.00017982
+  },
+  {
+    "transimpedance_db": 68.2245,
+    "bandwidth": 48177800.0,
+    "power": 0.000115692
+  },
+  {
+    "transimpedance_db": 76.9024,
+    "bandwidth": 156755000.0,
+    "power": 0.000290062
+  },
+  {
+    "transimpedance_db": 84.6784,
+    "bandwidth": 11026100.0,
+    "power": 0.000139014
+  },
+  {
+    "transimpedance_db": 66.3262,
+    "bandwidth": 131558000.0,
+    "power": 0.000282351
+  },
+  {
+    "transimpedance_db": 57.3952,
+    "bandwidth": 166907000.0,
+    "power": 0.000209084
+  },
+  {
+    "transimpedance_db": 81.2237,
+    "bandwidth": 105282000.0,
+    "power": 0.000195288
+  },
+  {
+    "transimpedance_db": 43.6964,
+    "bandwidth": 190012000.0,
+    "power": 0.000243938
+  },
+  {
+    "transimpedance_db": 24.8684,
+    "bandwidth": 516991000.0,
+    "power": 0.00015662
+  },
+  {
+    "transimpedance_db": 82.1228,
+    "bandwidth": 9712650.0,
+    "power": 0.000256034
+  },
+  {
+    "transimpedance_db": 68.4825,
+    "bandwidth": 18519900.0,
+    "power": 0.000229398
+  },
+  {
+    "transimpedance_db": 80.0486,
+    "bandwidth": 182953000.0,
+    "power": 0.00035796
+  },
+  {
+    "transimpedance_db": 80.168,
+    "bandwidth": 44480200.0,
+    "power": 0.000264654
+  },
+  {
+    "transimpedance_db": 20.8917,
+    "bandwidth": 1914960000.0,
+    "power": 0.00039416
+  },
+  {
+    "transimpedance_db": 64.0992,
+    "bandwidth": 180520000.0,
+    "power": 0.000248697
+  },
+  {
+    "transimpedance_db": 93.105,
+    "bandwidth": 43023700.0,
+    "power": 0.000163408
+  },
+  {
+    "transimpedance_db": 29.5907,
+    "bandwidth": 1634790000.0,
+    "power": 0.000404608
+  },
+  {
+    "transimpedance_db": 71.963,
+    "bandwidth": 22635700.0,
+    "power": 0.000235986
+  },
+  {
+    "transimpedance_db": 70.0707,
+    "bandwidth": 104164000.0,
+    "power": 0.000173971
+  },
+  {
+    "transimpedance_db": 49.7411,
+    "bandwidth": 158106000.0,
+    "power": 0.000193743
+  },
+  {
+    "transimpedance_db": 65.2281,
+    "bandwidth": 20854900.0,
+    "power": 0.000255015
+  },
+  {
+    "transimpedance_db": 55.4176,
+    "bandwidth": 310822000.0,
+    "power": 0.000233098
+  },
+  {
+    "transimpedance_db": 49.6579,
+    "bandwidth": 509231000.0,
+    "power": 0.000248078
+  },
+  {
+    "transimpedance_db": 65.9973,
+    "bandwidth": 174414000.0,
+    "power": 0.000189123
+  },
+  {
+    "transimpedance_db": 77.1024,
+    "bandwidth": 58037800.0,
+    "power": 0.000163326
+  },
+  {
+    "transimpedance_db": 48.9012,
+    "bandwidth": 305820000.0,
+    "power": 0.000463715
+  },
+  {
+    "transimpedance_db": 55.3373,
+    "bandwidth": 111537000.0,
+    "power": 0.000175
+  },
+  {
+    "transimpedance_db": 47.9934,
+    "bandwidth": 53977600.0,
+    "power": 0.000116482
+  },
+  {
+    "transimpedance_db": 75.3472,
+    "bandwidth": 142385000.0,
+    "power": 0.000335109
+  },
+  {
+    "transimpedance_db": 68.0548,
+    "bandwidth": 21764300.0,
+    "power": 0.000136565
+  },
+  {
+    "transimpedance_db": 37.8339,
+    "bandwidth": 1617150000.0,
+    "power": 0.000486955
+  },
+  {
+    "transimpedance_db": 72.7273,
+    "bandwidth": 112807000.0,
+    "power": 0.000249201
+  },
+  {
+    "transimpedance_db": 87.9352,
+    "bandwidth": 7607690.0,
+    "power": 0.000178558
+  },
+  {
+    "transimpedance_db": 97.2748,
+    "bandwidth": 32337800.0,
+    "power": 0.000136075
+  },
+  {
+    "transimpedance_db": 50.481,
+    "bandwidth": 326410000.0,
+    "power": 0.000318045
+  },
+  {
+    "transimpedance_db": 41.0829,
+    "bandwidth": 461766000.0,
+    "power": 0.000215495
+  },
+  {
+    "transimpedance_db": 42.4016,
+    "bandwidth": 125198000.0,
+    "power": 0.000167862
+  },
+  {
+    "transimpedance_db": 79.9013,
+    "bandwidth": 125805000.0,
+    "power": 0.000184774
+  },
+  {
+    "transimpedance_db": 64.869,
+    "bandwidth": 210056000.0,
+    "power": 0.000341963
+  },
+  {
+    "transimpedance_db": 68.2466,
+    "bandwidth": 136873000.0,
+    "power": 0.000597463
+  },
+  {
+    "transimpedance_db": 42.9065,
+    "bandwidth": 175779000.0,
+    "power": 0.000336037
+  },
+  {
+    "transimpedance_db": 83.8014,
+    "bandwidth": 38544100.0,
+    "power": 0.000322201
+  },
+  {
+    "transimpedance_db": 37.4662,
+    "bandwidth": 252599000.0,
+    "power": 0.000104621
+  },
+  {
+    "transimpedance_db": 80.5209,
+    "bandwidth": 169921000.0,
+    "power": 0.000966583
+  },
+  {
+    "transimpedance_db": 80.6351,
+    "bandwidth": 24139300.0,
+    "power": 0.000184042
+  },
+  {
+    "transimpedance_db": 50.568,
+    "bandwidth": 154968000.0,
+    "power": 0.00014589
+  },
+  {
+    "transimpedance_db": 72.826,
+    "bandwidth": 93792800.0,
+    "power": 0.000245324
+  },
+  {
+    "transimpedance_db": 98.496,
+    "bandwidth": 11551000.0,
+    "power": 0.000251968
+  },
+  {
+    "transimpedance_db": 25.8742,
+    "bandwidth": 306161000.0,
+    "power": 0.000153695
+  },
+  {
+    "transimpedance_db": 49.6795,
+    "bandwidth": 68786400.0,
+    "power": 0.000151016
+  },
+  {
+    "transimpedance_db": 75.0369,
+    "bandwidth": 21811800.0,
+    "power": 0.00012107
+  },
+  {
+    "transimpedance_db": 36.3133,
+    "bandwidth": 647960000.0,
+    "power": 0.000328886
+  },
+  {
+    "transimpedance_db": 40.62,
+    "bandwidth": 1550160000.0,
+    "power": 0.000390197
+  },
+  {
+    "transimpedance_db": 68.6466,
+    "bandwidth": 159620000.0,
+    "power": 0.000367259
+  },
+  {
+    "transimpedance_db": 43.4294,
+    "bandwidth": 217706000.0,
+    "power": 0.000347968
+  },
+  {
+    "transimpedance_db": 75.7258,
+    "bandwidth": 17931500.0,
+    "power": 0.000190438
+  },
+  {
+    "transimpedance_db": 60.0063,
+    "bandwidth": 210992000.0,
+    "power": 0.000208525
+  },
+  {
+    "transimpedance_db": 48.1515,
+    "bandwidth": 42083200.0,
+    "power": 0.000172307
+  },
+  {
+    "transimpedance_db": 31.2596,
+    "bandwidth": 301494000.0,
+    "power": 0.000226898
+  },
+  {
+    "transimpedance_db": 95.2292,
+    "bandwidth": 33951800.0,
+    "power": 0.000245533
+  },
+  {
+    "transimpedance_db": 46.8814,
+    "bandwidth": 285810000.0,
+    "power": 0.000239217
+  },
+  {
+    "transimpedance_db": 100.709,
+    "bandwidth": 60583100.0,
+    "power": 0.000682948
+  },
+  {
+    "transimpedance_db": 83.5384,
+    "bandwidth": 29219100.0,
+    "power": 7.96461e-05
+  },
+  {
+    "transimpedance_db": 71.8979,
+    "bandwidth": 45034200.0,
+    "power": 0.000279731
+  },
+  {
+    "transimpedance_db": 77.2191,
+    "bandwidth": 61574700.0,
+    "power": 0.000113543
+  },
+  {
+    "transimpedance_db": 70.6219,
+    "bandwidth": 55578400.0,
+    "power": 0.000134261
+  },
+  {
+    "transimpedance_db": 58.2106,
+    "bandwidth": 113519000.0,
+    "power": 0.000105038
+  },
+  {
+    "transimpedance_db": 73.5478,
+    "bandwidth": 37137200.0,
+    "power": 0.000357533
+  },
+  {
+    "transimpedance_db": 4.12575,
+    "bandwidth": 1040070000.0,
+    "power": 0.00021991
+  },
+  {
+    "transimpedance_db": 75.8116,
+    "bandwidth": 69462700.0,
+    "power": 0.000110636
+  },
+  {
+    "transimpedance_db": 73.2456,
+    "bandwidth": 50487200.0,
+    "power": 0.000152644
+  },
+  {
+    "transimpedance_db": 47.7273,
+    "bandwidth": 1032480000.0,
+    "power": 0.000393612
+  },
+  {
+    "transimpedance_db": 94.9852,
+    "bandwidth": 29083500.0,
+    "power": 0.000136913
+  },
+  {
+    "transimpedance_db": 45.9576,
+    "bandwidth": 82925300.0,
+    "power": 8.17852e-05
+  },
+  {
+    "transimpedance_db": 62.2379,
+    "bandwidth": 66193200.0,
+    "power": 0.000175314
+  },
+  {
+    "transimpedance_db": 45.5927,
+    "bandwidth": 26484200.0,
+    "power": 0.000183431
+  },
+  {
+    "transimpedance_db": 23.6854,
+    "bandwidth": 770313000.0,
+    "power": 0.000216379
+  },
+  {
+    "transimpedance_db": 52.3306,
+    "bandwidth": 92751100.0,
+    "power": 9.05905e-05
+  },
+  {
+    "transimpedance_db": 66.8417,
+    "bandwidth": 205538000.0,
+    "power": 0.000312601
+  },
+  {
+    "transimpedance_db": 59.807,
+    "bandwidth": 210981000.0,
+    "power": 0.000282254
+  },
+  {
+    "transimpedance_db": 71.4274,
+    "bandwidth": 16288500.0,
+    "power": 0.000201151
+  },
+  {
+    "transimpedance_db": 91.2474,
+    "bandwidth": 9119020.0,
+    "power": 0.000208973
+  },
+  {
+    "transimpedance_db": 56.6104,
+    "bandwidth": 186142000.0,
+    "power": 0.000210179
+  },
+  {
+    "transimpedance_db": 52.2096,
+    "bandwidth": 181208000.0,
+    "power": 0.000173736
+  },
+  {
+    "transimpedance_db": 32.1147,
+    "bandwidth": 272089000.0,
+    "power": 0.000208521
+  },
+  {
+    "transimpedance_db": 65.7358,
+    "bandwidth": 52760400.0,
+    "power": 0.000122833
+  },
+  {
+    "transimpedance_db": 37.7433,
+    "bandwidth": 869997000.0,
+    "power": 0.000596641
+  },
+  {
+    "transimpedance_db": 73.9635,
+    "bandwidth": 17337800.0,
+    "power": 0.000165726
+  },
+  {
+    "transimpedance_db": 62.6194,
+    "bandwidth": 56729000.0,
+    "power": 0.000106908
+  },
+  {
+    "transimpedance_db": 15.7084,
+    "bandwidth": 1162050000.0,
+    "power": 0.000156549
+  },
+  {
+    "transimpedance_db": 63.1952,
+    "bandwidth": 66050100.0,
+    "power": 0.0001008
+  },
+  {
+    "transimpedance_db": 61.918,
+    "bandwidth": 303490000.0,
+    "power": 0.000295271
+  },
+  {
+    "transimpedance_db": 56.477,
+    "bandwidth": 282905000.0,
+    "power": 0.000203627
+  },
+  {
+    "transimpedance_db": 61.5949,
+    "bandwidth": 132894000.0,
+    "power": 0.000196401
+  },
+  {
+    "transimpedance_db": 42.6806,
+    "bandwidth": 687293000.0,
+    "power": 0.000236544
+  },
+  {
+    "transimpedance_db": 36.5439,
+    "bandwidth": 224879000.0,
+    "power": 0.000162555
+  },
+  {
+    "transimpedance_db": 39.3723,
+    "bandwidth": 807840000.0,
+    "power": 0.000192918
+  },
+  {
+    "transimpedance_db": 52.0704,
+    "bandwidth": 174235000.0,
+    "power": 0.000349617
+  },
+  {
+    "transimpedance_db": 82.7895,
+    "bandwidth": 121787000.0,
+    "power": 0.000483051
+  },
+  {
+    "transimpedance_db": 52.0072,
+    "bandwidth": 190885000.0,
+    "power": 0.000195063
+  },
+  {
+    "transimpedance_db": 95.1902,
+    "bandwidth": 9632340.0,
+    "power": 9.08636e-05
+  },
+  {
+    "transimpedance_db": 42.8207,
+    "bandwidth": 744711000.0,
+    "power": 0.000291634
+  },
+  {
+    "transimpedance_db": 46.9375,
+    "bandwidth": 100420000.0,
+    "power": 0.000172354
+  },
+  {
+    "transimpedance_db": 54.9232,
+    "bandwidth": 39635300.0,
+    "power": 0.000522364
+  },
+  {
+    "transimpedance_db": 59.6549,
+    "bandwidth": 92604100.0,
+    "power": 0.000178338
+  },
+  {
+    "transimpedance_db": 42.3061,
+    "bandwidth": 538648000.0,
+    "power": 0.000137126
+  },
+  {
+    "transimpedance_db": 99.0651,
+    "bandwidth": 14750000.0,
+    "power": 0.000123144
+  },
+  {
+    "transimpedance_db": 104.175,
+    "bandwidth": 10086300.0,
+    "power": 0.000290928
+  },
+  {
+    "transimpedance_db": 32.2354,
+    "bandwidth": 628420000.0,
+    "power": 0.000262093
+  },
+  {
+    "transimpedance_db": 51.1265,
+    "bandwidth": 285552000.0,
+    "power": 0.000295431
+  },
+  {
+    "transimpedance_db": 57.8685,
+    "bandwidth": 293709000.0,
+    "power": 0.000419525
+  },
+  {
+    "transimpedance_db": 46.7706,
+    "bandwidth": 333026000.0,
+    "power": 0.000303471
+  },
+  {
+    "transimpedance_db": 63.4946,
+    "bandwidth": 17680000.0,
+    "power": 0.000118236
+  },
+  {
+    "transimpedance_db": 75.7737,
+    "bandwidth": 17525800.0,
+    "power": 0.000175413
+  },
+  {
+    "transimpedance_db": 82.7556,
+    "bandwidth": 32818400.0,
+    "power": 9.829e-05
+  },
+  {
+    "transimpedance_db": 48.844,
+    "bandwidth": 107727000.0,
+    "power": 0.000202606
+  },
+  {
+    "transimpedance_db": 36.9419,
+    "bandwidth": 356652000.0,
+    "power": 0.00019991
+  },
+  {
+    "transimpedance_db": 40.0546,
+    "bandwidth": 186158000.0,
+    "power": 0.000205151
+  },
+  {
+    "transimpedance_db": 69.9308,
+    "bandwidth": 23738600.0,
+    "power": 0.000184542
+  },
+  {
+    "transimpedance_db": 77.1668,
+    "bandwidth": 96223700.0,
+    "power": 0.000796298
+  },
+  {
+    "transimpedance_db": 84.0772,
+    "bandwidth": 6887600.0,
+    "power": 2.31985e-05
+  },
+  {
+    "transimpedance_db": 96.3968,
+    "bandwidth": 22428600.0,
+    "power": 0.000383097
+  },
+  {
+    "transimpedance_db": 89.0405,
+    "bandwidth": 93443300.0,
+    "power": 0.000293054
+  },
+  {
+    "transimpedance_db": 84.9048,
+    "bandwidth": 87128100.0,
+    "power": 0.000229982
+  },
+  {
+    "transimpedance_db": 83.5301,
+    "bandwidth": 8800890.0,
+    "power": 7.49271e-05
+  },
+  {
+    "transimpedance_db": 92.6069,
+    "bandwidth": 10108800.0,
+    "power": 7.42559e-05
+  },
+  {
+    "transimpedance_db": 77.2856,
+    "bandwidth": 65126700.0,
+    "power": 0.000223974
+  },
+  {
+    "transimpedance_db": 85.3087,
+    "bandwidth": 34605700.0,
+    "power": 0.000277039
+  },
+  {
+    "transimpedance_db": 71.5658,
+    "bandwidth": 56751500.0,
+    "power": 0.00025997
+  },
+  {
+    "transimpedance_db": 30.6606,
+    "bandwidth": 691842000.0,
+    "power": 0.000185987
+  },
+  {
+    "transimpedance_db": 57.1756,
+    "bandwidth": 150692000.0,
+    "power": 0.000275811
+  },
+  {
+    "transimpedance_db": 61.4634,
+    "bandwidth": 54977200.0,
+    "power": 9.15596e-05
+  },
+  {
+    "transimpedance_db": 41.9196,
+    "bandwidth": 271724000.0,
+    "power": 0.000227027
+  },
+  {
+    "transimpedance_db": 47.7732,
+    "bandwidth": 191391000.0,
+    "power": 0.000187739
+  },
+  {
+    "transimpedance_db": 63.8333,
+    "bandwidth": 177819000.0,
+    "power": 0.000185374
+  },
+  {
+    "transimpedance_db": 50.3468,
+    "bandwidth": 67468100.0,
+    "power": 0.000296905
+  },
+  {
+    "transimpedance_db": 100.496,
+    "bandwidth": 104680000.0,
+    "power": 0.000464224
+  },
+  {
+    "transimpedance_db": 29.4084,
+    "bandwidth": 1463160000.0,
+    "power": 0.000215534
+  },
+  {
+    "transimpedance_db": 41.3608,
+    "bandwidth": 379818000.0,
+    "power": 0.000213379
+  },
+  {
+    "transimpedance_db": 45.0911,
+    "bandwidth": 348233000.0,
+    "power": 0.000205183
+  },
+  {
+    "transimpedance_db": 73.1846,
+    "bandwidth": 152608000.0,
+    "power": 0.000350193
+  },
+  {
+    "transimpedance_db": 80.3984,
+    "bandwidth": 149701000.0,
+    "power": 0.000259654
+  },
+  {
+    "transimpedance_db": 78.0368,
+    "bandwidth": 82656000.0,
+    "power": 0.000196825
+  },
+  {
+    "transimpedance_db": 53.9514,
+    "bandwidth": 156912000.0,
+    "power": 0.00021987
+  },
+  {
+    "transimpedance_db": 79.1745,
+    "bandwidth": 285657000.0,
+    "power": 0.00130136
+  },
+  {
+    "transimpedance_db": 67.4155,
+    "bandwidth": 8703960.0,
+    "power": 0.000151773
+  },
+  {
+    "transimpedance_db": 70.8281,
+    "bandwidth": 35574100.0,
+    "power": 0.000231212
+  },
+  {
+    "transimpedance_db": 96.87,
+    "bandwidth": 15594200.0,
+    "power": 0.000180219
+  },
+  {
+    "transimpedance_db": 47.1342,
+    "bandwidth": 816952000.0,
+    "power": 0.000341978
+  },
+  {
+    "transimpedance_db": 71.3644,
+    "bandwidth": 193283000.0,
+    "power": 0.000333675
+  },
+  {
+    "transimpedance_db": 57.4595,
+    "bandwidth": 365171000.0,
+    "power": 0.000238749
+  },
+  {
+    "transimpedance_db": 28.6557,
+    "bandwidth": 1330280000.0,
+    "power": 0.000229144
+  },
+  {
+    "transimpedance_db": 78.7042,
+    "bandwidth": 9282270.0,
+    "power": 0.000435854
+  },
+  {
+    "transimpedance_db": 82.9583,
+    "bandwidth": 13811900.0,
+    "power": 0.000340368
+  },
+  {
+    "transimpedance_db": 84.9892,
+    "bandwidth": 108255000.0,
+    "power": 0.00092372
+  },
+  {
+    "transimpedance_db": 76.9585,
+    "bandwidth": 135244000.0,
+    "power": 0.000237538
+  },
+  {
+    "transimpedance_db": 78.5212,
+    "bandwidth": 22499200.0,
+    "power": 0.000155765
+  },
+  {
+    "transimpedance_db": 47.0438,
+    "bandwidth": 381958000.0,
+    "power": 0.000569565
+  },
+  {
+    "transimpedance_db": 34.4316,
+    "bandwidth": 887771000.0,
+    "power": 0.000190794
+  },
+  {
+    "transimpedance_db": 96.9805,
+    "bandwidth": 37703400.0,
+    "power": 0.000293814
+  },
+  {
+    "transimpedance_db": 54.3064,
+    "bandwidth": 14662900.0,
+    "power": 9.39651e-05
+  },
+  {
+    "transimpedance_db": 66.9064,
+    "bandwidth": 201346000.0,
+    "power": 0.000196808
+  },
+  {
+    "transimpedance_db": 88.6303,
+    "bandwidth": 12539200.0,
+    "power": 0.00010908
+  },
+  {
+    "transimpedance_db": 82.8087,
+    "bandwidth": 224384000.0,
+    "power": 0.00122402
+  },
+  {
+    "transimpedance_db": 51.4516,
+    "bandwidth": 10023100.0,
+    "power": 0.000226658
+  },
+  {
+    "transimpedance_db": 85.7568,
+    "bandwidth": 48177800.0,
+    "power": 0.000287171
+  },
+  {
+    "transimpedance_db": 31.6113,
+    "bandwidth": 131039000.0,
+    "power": 0.000427831
+  },
+  {
+    "transimpedance_db": 57.9965,
+    "bandwidth": 294602000.0,
+    "power": 0.000218208
+  },
+  {
+    "transimpedance_db": 40.149,
+    "bandwidth": 477118000.0,
+    "power": 0.000177052
+  },
+  {
+    "transimpedance_db": 51.5515,
+    "bandwidth": 83888600.0,
+    "power": 0.000313384
+  },
+  {
+    "transimpedance_db": 54.6002,
+    "bandwidth": 73267700.0,
+    "power": 0.000128603
+  },
+  {
+    "transimpedance_db": 82.749,
+    "bandwidth": 35427500.0,
+    "power": 6.68194e-05
+  },
+  {
+    "transimpedance_db": 60.8585,
+    "bandwidth": 167680000.0,
+    "power": 0.000338511
+  },
+  {
+    "transimpedance_db": 54.5158,
+    "bandwidth": 190105000.0,
+    "power": 0.000218483
+  },
+  {
+    "transimpedance_db": 59.4549,
+    "bandwidth": 237168000.0,
+    "power": 0.000288663
+  },
+  {
+    "transimpedance_db": 18.2484,
+    "bandwidth": 632291000.0,
+    "power": 0.000107419
+  },
+  {
+    "transimpedance_db": 43.9819,
+    "bandwidth": 240549000.0,
+    "power": 0.000221514
+  },
+  {
+    "transimpedance_db": 44.7273,
+    "bandwidth": 278661000.0,
+    "power": 0.000189922
+  },
+  {
+    "transimpedance_db": 51.2876,
+    "bandwidth": 185094000.0,
+    "power": 0.00019781
+  },
+  {
+    "transimpedance_db": 53.1493,
+    "bandwidth": 187494000.0,
+    "power": 0.000214419
+  },
+  {
+    "transimpedance_db": 35.9201,
+    "bandwidth": 1487100000.0,
+    "power": 0.00055769
+  },
+  {
+    "transimpedance_db": 59.1434,
+    "bandwidth": 328775000.0,
+    "power": 0.000324783
+  },
+  {
+    "transimpedance_db": 59.4471,
+    "bandwidth": 199498000.0,
+    "power": 0.000239366
+  },
+  {
+    "transimpedance_db": 99.1166,
+    "bandwidth": 8665770.0,
+    "power": 7.73009e-05
+  },
+  {
+    "transimpedance_db": 84.0973,
+    "bandwidth": 18326600.0,
+    "power": 0.000112736
+  },
+  {
+    "transimpedance_db": 42.937,
+    "bandwidth": 606138000.0,
+    "power": 0.000268196
+  },
+  {
+    "transimpedance_db": 32.0693,
+    "bandwidth": 504168000.0,
+    "power": 0.000184921
+  },
+  {
+    "transimpedance_db": 73.5713,
+    "bandwidth": 50558800.0,
+    "power": 0.000426183
+  },
+  {
+    "transimpedance_db": 54.1408,
+    "bandwidth": 126860000.0,
+    "power": 0.0001849
+  },
+  {
+    "transimpedance_db": 22.7817,
+    "bandwidth": 880665000.0,
+    "power": 0.000184167
+  },
+  {
+    "transimpedance_db": 75.4623,
+    "bandwidth": 23169000.0,
+    "power": 0.000245426
+  },
+  {
+    "transimpedance_db": 77.9784,
+    "bandwidth": 142202000.0,
+    "power": 0.000201721
+  },
+  {
+    "transimpedance_db": 32.9326,
+    "bandwidth": 762813000.0,
+    "power": 0.000141907
+  },
+  {
+    "transimpedance_db": 82.8594,
+    "bandwidth": 174427000.0,
+    "power": 0.000588683
+  },
+  {
+    "transimpedance_db": 94.683,
+    "bandwidth": 16162700.0,
+    "power": 0.000166679
+  },
+  {
+    "transimpedance_db": 86.1815,
+    "bandwidth": 11639900.0,
+    "power": 0.000101626
+  },
+  {
+    "transimpedance_db": 82.5861,
+    "bandwidth": 12018100.0,
+    "power": 0.000103455
+  },
+  {
+    "transimpedance_db": 44.0257,
+    "bandwidth": 42543000.0,
+    "power": 0.00024386
+  },
+  {
+    "transimpedance_db": 95.6245,
+    "bandwidth": 59252600.0,
+    "power": 0.000312987
+  },
+  {
+    "transimpedance_db": 71.6007,
+    "bandwidth": 64640400.0,
+    "power": 0.000341181
+  },
+  {
+    "transimpedance_db": 83.8557,
+    "bandwidth": 80452600.0,
+    "power": 0.000273624
+  },
+  {
+    "transimpedance_db": 34.0387,
+    "bandwidth": 57395300.0,
+    "power": 0.000219288
+  },
+  {
+    "transimpedance_db": 53.5343,
+    "bandwidth": 119551000.0,
+    "power": 0.000154601
+  },
+  {
+    "transimpedance_db": 69.2928,
+    "bandwidth": 8313640.0,
+    "power": 0.000142754
+  },
+  {
+    "transimpedance_db": 78.5737,
+    "bandwidth": 98982000.0,
+    "power": 0.000266817
+  },
+  {
+    "transimpedance_db": 65.9213,
+    "bandwidth": 11304700.0,
+    "power": 0.000152801
+  },
+  {
+    "transimpedance_db": 76.9444,
+    "bandwidth": 11510500.0,
+    "power": 8.97296e-05
+  },
+  {
+    "transimpedance_db": 39.5344,
+    "bandwidth": 211604000.0,
+    "power": 0.000266816
+  },
+  {
+    "transimpedance_db": 47.9,
+    "bandwidth": 52892200.0,
+    "power": 0.000300245
+  },
+  {
+    "transimpedance_db": 32.8205,
+    "bandwidth": 918653000.0,
+    "power": 0.000246364
+  },
+  {
+    "transimpedance_db": 69.2176,
+    "bandwidth": 73138000.0,
+    "power": 0.000139103
+  },
+  {
+    "transimpedance_db": 72.3786,
+    "bandwidth": 12361800.0,
+    "power": 0.000110631
+  },
+  {
+    "transimpedance_db": 73.5939,
+    "bandwidth": 253854000.0,
+    "power": 0.000377417
+  },
+  {
+    "transimpedance_db": 33.2659,
+    "bandwidth": 877549000.0,
+    "power": 0.000164499
+  },
+  {
+    "transimpedance_db": 76.2324,
+    "bandwidth": 127333000.0,
+    "power": 0.000249913
+  },
+  {
+    "transimpedance_db": 59.419,
+    "bandwidth": 293873000.0,
+    "power": 0.000239229
+  },
+  {
+    "transimpedance_db": 36.6603,
+    "bandwidth": 261330000.0,
+    "power": 0.000155347
+  },
+  {
+    "transimpedance_db": 88.0611,
+    "bandwidth": 21581600.0,
+    "power": 0.000191957
+  },
+  {
+    "transimpedance_db": 40.8991,
+    "bandwidth": 375890000.0,
+    "power": 0.000151901
+  },
+  {
+    "transimpedance_db": 45.3316,
+    "bandwidth": 331102000.0,
+    "power": 0.00027609
+  },
+  {
+    "transimpedance_db": 78.8925,
+    "bandwidth": 166605000.0,
+    "power": 0.000472947
+  },
+  {
+    "transimpedance_db": 39.6841,
+    "bandwidth": 29802600.0,
+    "power": 0.000180674
+  },
+  {
+    "transimpedance_db": 36.1093,
+    "bandwidth": 265225000.0,
+    "power": 0.000179705
+  },
+  {
+    "transimpedance_db": 58.5294,
+    "bandwidth": 48629000.0,
+    "power": 0.000231254
+  },
+  {
+    "transimpedance_db": 77.8138,
+    "bandwidth": 9574590.0,
+    "power": 0.000184428
+  },
+  {
+    "transimpedance_db": 49.6925,
+    "bandwidth": 258251000.0,
+    "power": 0.000182987
+  },
+  {
+    "transimpedance_db": 70.3903,
+    "bandwidth": 300430000.0,
+    "power": 0.000425251
+  },
+  {
+    "transimpedance_db": 58.6279,
+    "bandwidth": 277772000.0,
+    "power": 0.000194152
+  },
+  {
+    "transimpedance_db": 50.4789,
+    "bandwidth": 80732600.0,
+    "power": 0.000125658
+  },
+  {
+    "transimpedance_db": 88.1563,
+    "bandwidth": 54461900.0,
+    "power": 0.000169215
+  },
+  {
+    "transimpedance_db": 62.5787,
+    "bandwidth": 249977000.0,
+    "power": 0.000271446
+  },
+  {
+    "transimpedance_db": 50.9605,
+    "bandwidth": 174178000.0,
+    "power": 0.000137636
+  },
+  {
+    "transimpedance_db": 72.2171,
+    "bandwidth": 34718800.0,
+    "power": 0.00030787
+  },
+  {
+    "transimpedance_db": 57.9665,
+    "bandwidth": 519032000.0,
+    "power": 0.000323828
+  },
+  {
+    "transimpedance_db": 57.9271,
+    "bandwidth": 251467000.0,
+    "power": 0.000344341
+  },
+  {
+    "transimpedance_db": 28.6487,
+    "bandwidth": 389658000.0,
+    "power": 0.000210351
+  },
+  {
+    "transimpedance_db": 64.1758,
+    "bandwidth": 8466080.0,
+    "power": 0.000119444
+  },
+  {
+    "transimpedance_db": 81.4048,
+    "bandwidth": 75603100.0,
+    "power": 0.00056944
+  },
+  {
+    "transimpedance_db": 53.4035,
+    "bandwidth": 158092000.0,
+    "power": 0.000212183
+  },
+  {
+    "transimpedance_db": 57.611,
+    "bandwidth": 227124000.0,
+    "power": 0.000823892
+  },
+  {
+    "transimpedance_db": 69.919,
+    "bandwidth": 14280500.0,
+    "power": 0.000208998
+  },
+  {
+    "transimpedance_db": 68.5653,
+    "bandwidth": 13741800.0,
+    "power": 0.000145096
+  },
+  {
+    "transimpedance_db": 21.8269,
+    "bandwidth": 351790000.0,
+    "power": 0.000176656
+  },
+  {
+    "transimpedance_db": 97.2084,
+    "bandwidth": 31047200.0,
+    "power": 0.000123881
+  },
+  {
+    "transimpedance_db": 54.5729,
+    "bandwidth": 96428000.0,
+    "power": 0.000458663
+  },
+  {
+    "transimpedance_db": 104.573,
+    "bandwidth": 47166800.0,
+    "power": 0.000266459
+  },
+  {
+    "transimpedance_db": 35.8103,
+    "bandwidth": 230608000.0,
+    "power": 0.000150695
+  },
+  {
+    "transimpedance_db": 81.4631,
+    "bandwidth": 7459280.0,
+    "power": 0.000122921
+  },
+  {
+    "transimpedance_db": 19.0781,
+    "bandwidth": 2128220000.0,
+    "power": 0.000194133
+  },
+  {
+    "transimpedance_db": 91.6848,
+    "bandwidth": 11818400.0,
+    "power": 0.000142911
+  },
+  {
+    "transimpedance_db": 58.3489,
+    "bandwidth": 92002100.0,
+    "power": 0.00014995
+  },
+  {
+    "transimpedance_db": 9.87469,
+    "bandwidth": 445479000.0,
+    "power": 0.000162122
+  },
+  {
+    "transimpedance_db": 57.3295,
+    "bandwidth": 27481700.0,
+    "power": 0.000190426
+  },
+  {
+    "transimpedance_db": 88.2949,
+    "bandwidth": 46555400.0,
+    "power": 0.0004904
+  },
+  {
+    "transimpedance_db": 42.6942,
+    "bandwidth": 84948700.0,
+    "power": 0.000219323
+  },
+  {
+    "transimpedance_db": 52.727,
+    "bandwidth": 60727400.0,
+    "power": 0.000141251
+  },
+  {
+    "transimpedance_db": 65.1413,
+    "bandwidth": 26857200.0,
+    "power": 0.000265316
+  },
+  {
+    "transimpedance_db": 73.1811,
+    "bandwidth": 27441800.0,
+    "power": 0.000213443
+  },
+  {
+    "transimpedance_db": 64.6867,
+    "bandwidth": 9780090.0,
+    "power": 6.4372e-05
+  },
+  {
+    "transimpedance_db": 63.7275,
+    "bandwidth": 18121800.0,
+    "power": 0.000164402
+  },
+  {
+    "transimpedance_db": 51.7979,
+    "bandwidth": 913820000.0,
+    "power": 0.000328298
+  },
+  {
+    "transimpedance_db": 69.1937,
+    "bandwidth": 10881500.0,
+    "power": 0.000128328
+  },
+  {
+    "transimpedance_db": 65.3426,
+    "bandwidth": 67975000.0,
+    "power": 0.000362878
+  },
+  {
+    "transimpedance_db": 16.8371,
+    "bandwidth": 259813000.0,
+    "power": 0.000187029
+  },
+  {
+    "transimpedance_db": 70.1584,
+    "bandwidth": 175931000.0,
+    "power": 0.000217589
+  },
+  {
+    "transimpedance_db": 57.3754,
+    "bandwidth": 8359150.0,
+    "power": 0.000123389
+  },
+  {
+    "transimpedance_db": 109.965,
+    "bandwidth": 44476800.0,
+    "power": 0.000563629
+  },
+  {
+    "transimpedance_db": 47.8213,
+    "bandwidth": 14908100.0,
+    "power": 0.00023783
+  },
+  {
+    "transimpedance_db": 91.8763,
+    "bandwidth": 40773200.0,
+    "power": 0.000179986
+  },
+  {
+    "transimpedance_db": 60.2256,
+    "bandwidth": 331881000.0,
+    "power": 0.000261665
+  },
+  {
+    "transimpedance_db": 71.1213,
+    "bandwidth": 140152000.0,
+    "power": 0.000290448
+  },
+  {
+    "transimpedance_db": 83.652,
+    "bandwidth": 91869100.0,
+    "power": 0.000258065
+  },
+  {
+    "transimpedance_db": 84.401,
+    "bandwidth": 58181100.0,
+    "power": 0.000173295
+  },
+  {
+    "transimpedance_db": 36.5405,
+    "bandwidth": 1797170000.0,
+    "power": 0.000482505
+  },
+  {
+    "transimpedance_db": 75.0246,
+    "bandwidth": 167466000.0,
+    "power": 0.000542596
+  },
+  {
+    "transimpedance_db": 49.0176,
+    "bandwidth": 621855000.0,
+    "power": 0.00116476
+  },
+  {
+    "transimpedance_db": 54.7512,
+    "bandwidth": 13966400.0,
+    "power": 8.40759e-05
+  },
+  {
+    "transimpedance_db": 60.9517,
+    "bandwidth": 77420300.0,
+    "power": 0.000166903
+  },
+  {
+    "transimpedance_db": 78.5814,
+    "bandwidth": 9981150.0,
+    "power": 0.000117305
+  },
+  {
+    "transimpedance_db": 72.4232,
+    "bandwidth": 231896000.0,
+    "power": 0.00049178
+  },
+  {
+    "transimpedance_db": 70.7811,
+    "bandwidth": 60053700.0,
+    "power": 0.000102606
+  },
+  {
+    "transimpedance_db": 79.4039,
+    "bandwidth": 16530200.0,
+    "power": 0.000171889
+  },
+  {
+    "transimpedance_db": 83.0943,
+    "bandwidth": 26520700.0,
+    "power": 0.000199523
+  },
+  {
+    "transimpedance_db": 42.897,
+    "bandwidth": 64937400.0,
+    "power": 0.000150287
+  },
+  {
+    "transimpedance_db": 67.1776,
+    "bandwidth": 51144700.0,
+    "power": 9.66036e-05
+  },
+  {
+    "transimpedance_db": 49.4705,
+    "bandwidth": 124280000.0,
+    "power": 0.000224847
+  },
+  {
+    "transimpedance_db": 57.6224,
+    "bandwidth": 168936000.0,
+    "power": 0.00023444
+  },
+  {
+    "transimpedance_db": 32.6287,
+    "bandwidth": 432551000.0,
+    "power": 0.000162874
+  },
+  {
+    "transimpedance_db": 70.6994,
+    "bandwidth": 8466790.0,
+    "power": 0.000103048
+  },
+  {
+    "transimpedance_db": 101.126,
+    "bandwidth": 20439900.0,
+    "power": 0.000168373
+  },
+  {
+    "transimpedance_db": 33.3533,
+    "bandwidth": 63553600.0,
+    "power": 0.000136452
+  },
+  {
+    "transimpedance_db": 102.594,
+    "bandwidth": 53165900.0,
+    "power": 0.000295497
+  },
+  {
+    "transimpedance_db": 31.7974,
+    "bandwidth": 332405000.0,
+    "power": 0.000467502
+  },
+  {
+    "transimpedance_db": 70.3185,
+    "bandwidth": 48750600.0,
+    "power": 0.000130359
+  },
+  {
+    "transimpedance_db": 38.2133,
+    "bandwidth": 606914000.0,
+    "power": 0.000161012
+  },
+  {
+    "transimpedance_db": 64.6692,
+    "bandwidth": 40318400.0,
+    "power": 0.000237807
+  },
+  {
+    "transimpedance_db": 108.27,
+    "bandwidth": 9487120.0,
+    "power": 0.000577314
+  },
+  {
+    "transimpedance_db": 94.2822,
+    "bandwidth": 41533600.0,
+    "power": 0.000332854
+  },
+  {
+    "transimpedance_db": 80.3803,
+    "bandwidth": 93397500.0,
+    "power": 0.000304616
+  },
+  {
+    "transimpedance_db": 106.577,
+    "bandwidth": 8704430.0,
+    "power": 0.000268134
+  },
+  {
+    "transimpedance_db": 28.4382,
+    "bandwidth": 750160000.0,
+    "power": 0.000177764
+  },
+  {
+    "transimpedance_db": 73.9886,
+    "bandwidth": 34618200.0,
+    "power": 0.000255001
+  },
+  {
+    "transimpedance_db": 97.8105,
+    "bandwidth": 59851500.0,
+    "power": 0.000252202
+  },
+  {
+    "transimpedance_db": 25.3442,
+    "bandwidth": 355598000.0,
+    "power": 0.000147919
+  },
+  {
+    "transimpedance_db": 54.6411,
+    "bandwidth": 188329000.0,
+    "power": 0.000319832
+  },
+  {
+    "transimpedance_db": 55.961,
+    "bandwidth": 688231000.0,
+    "power": 0.000511357
+  },
+  {
+    "transimpedance_db": 75.7746,
+    "bandwidth": 66681500.0,
+    "power": 0.000125324
+  },
+  {
+    "transimpedance_db": 76.9815,
+    "bandwidth": 28365500.0,
+    "power": 0.000399072
+  },
+  {
+    "transimpedance_db": 45.6495,
+    "bandwidth": 353810000.0,
+    "power": 0.00015758
+  },
+  {
+    "transimpedance_db": 95.7545,
+    "bandwidth": 98881600.0,
+    "power": 0.000463004
+  },
+  {
+    "transimpedance_db": 33.8686,
+    "bandwidth": 675262000.0,
+    "power": 0.000350626
+  },
+  {
+    "transimpedance_db": 90.2536,
+    "bandwidth": 84460000.0,
+    "power": 0.0005384
+  },
+  {
+    "transimpedance_db": 35.0762,
+    "bandwidth": 83170900.0,
+    "power": 0.000164599
+  },
+  {
+    "transimpedance_db": 47.3933,
+    "bandwidth": 324300000.0,
+    "power": 0.000216588
+  },
+  {
+    "transimpedance_db": 64.7891,
+    "bandwidth": 14488900.0,
+    "power": 0.000133748
+  },
+  {
+    "transimpedance_db": 61.5499,
+    "bandwidth": 301874000.0,
+    "power": 0.000227978
+  },
+  {
+    "transimpedance_db": 72.4989,
+    "bandwidth": 81239800.0,
+    "power": 8.73273e-05
+  },
+  {
+    "transimpedance_db": 65.3905,
+    "bandwidth": 10193900.0,
+    "power": 0.000201813
+  },
+  {
+    "transimpedance_db": 61.7808,
+    "bandwidth": 67307700.0,
+    "power": 0.00012682
+  },
+  {
+    "transimpedance_db": 47.5702,
+    "bandwidth": 262052000.0,
+    "power": 0.000156666
+  },
+  {
+    "transimpedance_db": 72.0462,
+    "bandwidth": 14306600.0,
+    "power": 9.0878e-05
+  },
+  {
+    "transimpedance_db": 41.3626,
+    "bandwidth": 255296000.0,
+    "power": 7.77569e-05
+  },
+  {
+    "transimpedance_db": 39.5094,
+    "bandwidth": 490992000.0,
+    "power": 0.000140337
+  },
+  {
+    "transimpedance_db": 76.8887,
+    "bandwidth": 17248900.0,
+    "power": 0.000154514
+  },
+  {
+    "transimpedance_db": 48.2387,
+    "bandwidth": 337888000.0,
+    "power": 0.000288848
+  },
+  {
+    "transimpedance_db": 94.8245,
+    "bandwidth": 6874860.0,
+    "power": 4.93562e-05
+  },
+  {
+    "transimpedance_db": 85.7022,
+    "bandwidth": 86800800.0,
+    "power": 0.000259359
+  },
+  {
+    "transimpedance_db": 42.0336,
+    "bandwidth": 27788400.0,
+    "power": 9.64063e-05
+  },
+  {
+    "transimpedance_db": 87.3516,
+    "bandwidth": 47647800.0,
+    "power": 0.000106082
+  },
+  {
+    "transimpedance_db": 68.4822,
+    "bandwidth": 65297100.0,
+    "power": 0.000164191
+  },
+  {
+    "transimpedance_db": 79.7907,
+    "bandwidth": 17619200.0,
+    "power": 0.000236322
+  },
+  {
+    "transimpedance_db": 66.5038,
+    "bandwidth": 14102000.0,
+    "power": 0.000134744
+  },
+  {
+    "transimpedance_db": 109.332,
+    "bandwidth": 130164000.0,
+    "power": 0.00137172
+  },
+  {
+    "transimpedance_db": 48.4139,
+    "bandwidth": 253716000.0,
+    "power": 0.000187572
+  },
+  {
+    "transimpedance_db": 38.5063,
+    "bandwidth": 325350000.0,
+    "power": 0.000138329
+  },
+  {
+    "transimpedance_db": 36.7837,
+    "bandwidth": 362846000.0,
+    "power": 0.000163395
+  },
+  {
+    "transimpedance_db": 58.0389,
+    "bandwidth": 18443400.0,
+    "power": 0.000193832
+  },
+  {
+    "transimpedance_db": 62.9806,
+    "bandwidth": 112126000.0,
+    "power": 0.000192946
+  },
+  {
+    "transimpedance_db": 84.3237,
+    "bandwidth": 64171900.0,
+    "power": 0.000179039
+  },
+  {
+    "transimpedance_db": 78.0697,
+    "bandwidth": 100854000.0,
+    "power": 0.000326472
+  },
+  {
+    "transimpedance_db": 98.1948,
+    "bandwidth": 24096400.0,
+    "power": 0.000425015
+  },
+  {
+    "transimpedance_db": 65.2484,
+    "bandwidth": 228155000.0,
+    "power": 0.000210743
+  },
+  {
+    "transimpedance_db": 26.773,
+    "bandwidth": 701804000.0,
+    "power": 0.000328868
+  },
+  {
+    "transimpedance_db": 45.0572,
+    "bandwidth": 620110000.0,
+    "power": 0.000212814
+  },
+  {
+    "transimpedance_db": 57.6893,
+    "bandwidth": 6895020.0,
+    "power": 4.14523e-05
+  },
+  {
+    "transimpedance_db": 77.9023,
+    "bandwidth": 15516400.0,
+    "power": 0.000191606
+  },
+  {
+    "transimpedance_db": 101.449,
+    "bandwidth": 14040600.0,
+    "power": 0.000138937
+  },
+  {
+    "transimpedance_db": 66.5933,
+    "bandwidth": 351160000.0,
+    "power": 0.000535148
+  },
+  {
+    "transimpedance_db": 81.4308,
+    "bandwidth": 39221900.0,
+    "power": 0.000155348
+  },
+  {
+    "transimpedance_db": 75.6035,
+    "bandwidth": 99400700.0,
+    "power": 0.000200046
+  },
+  {
+    "transimpedance_db": 94.8066,
+    "bandwidth": 16116900.0,
+    "power": 0.000244838
+  },
+  {
+    "transimpedance_db": 45.9346,
+    "bandwidth": 75373400.0,
+    "power": 0.000110999
+  },
+  {
+    "transimpedance_db": 49.6053,
+    "bandwidth": 248137000.0,
+    "power": 0.000203271
+  },
+  {
+    "transimpedance_db": 82.8226,
+    "bandwidth": 27004500.0,
+    "power": 0.000268922
+  },
+  {
+    "transimpedance_db": 95.8232,
+    "bandwidth": 7937180.0,
+    "power": 0.000159163
+  },
+  {
+    "transimpedance_db": 89.7543,
+    "bandwidth": 22698700.0,
+    "power": 0.00024788
+  },
+  {
+    "transimpedance_db": 51.425,
+    "bandwidth": 50894000.0,
+    "power": 9.31592e-05
+  },
+  {
+    "transimpedance_db": 75.8032,
+    "bandwidth": 112134000.0,
+    "power": 0.000155638
+  },
+  {
+    "transimpedance_db": 25.3283,
+    "bandwidth": 276630000.0,
+    "power": 0.000207038
+  },
+  {
+    "transimpedance_db": 66.6223,
+    "bandwidth": 61268800.0,
+    "power": 0.00014646
+  },
+  {
+    "transimpedance_db": 50.106,
+    "bandwidth": 109128000.0,
+    "power": 0.000659515
+  },
+  {
+    "transimpedance_db": 86.8553,
+    "bandwidth": 13351100.0,
+    "power": 0.000424037
+  },
+  {
+    "transimpedance_db": 69.4964,
+    "bandwidth": 50270500.0,
+    "power": 0.000606671
+  },
+  {
+    "transimpedance_db": 40.5641,
+    "bandwidth": 244068000.0,
+    "power": 0.00030368
+  },
+  {
+    "transimpedance_db": 68.4768,
+    "bandwidth": 214614000.0,
+    "power": 0.000356906
+  },
+  {
+    "transimpedance_db": 62.2542,
+    "bandwidth": 147545000.0,
+    "power": 0.000131695
+  },
+  {
+    "transimpedance_db": 62.6503,
+    "bandwidth": 55659800.0,
+    "power": 0.000119017
+  },
+  {
+    "transimpedance_db": 80.278,
+    "bandwidth": 48590500.0,
+    "power": 0.00010947
+  },
+  {
+    "transimpedance_db": 49.0659,
+    "bandwidth": 189578000.0,
+    "power": 0.000219867
+  },
+  {
+    "transimpedance_db": 55.8719,
+    "bandwidth": 339521000.0,
+    "power": 0.000194638
+  },
+  {
+    "transimpedance_db": 34.4258,
+    "bandwidth": 1409530000.0,
+    "power": 0.000357266
+  },
+  {
+    "transimpedance_db": 85.4256,
+    "bandwidth": 46257400.0,
+    "power": 0.000360092
+  },
+  {
+    "transimpedance_db": 44.9705,
+    "bandwidth": 340316000.0,
+    "power": 0.00015949
+  },
+  {
+    "transimpedance_db": 60.5342,
+    "bandwidth": 19979000.0,
+    "power": 0.000229139
+  },
+  {
+    "transimpedance_db": 95.8688,
+    "bandwidth": 8494050.0,
+    "power": 0.000359871
+  },
+  {
+    "transimpedance_db": 60.2426,
+    "bandwidth": 450211000.0,
+    "power": 0.000505989
+  },
+  {
+    "transimpedance_db": 30.1484,
+    "bandwidth": 783351000.0,
+    "power": 0.000191653
+  },
+  {
+    "transimpedance_db": 40.1116,
+    "bandwidth": 878621000.0,
+    "power": 0.000258845
+  },
+  {
+    "transimpedance_db": 84.6557,
+    "bandwidth": 21131300.0,
+    "power": 8.68349e-05
+  },
+  {
+    "transimpedance_db": 61.0619,
+    "bandwidth": 343892000.0,
+    "power": 0.000335164
+  },
+  {
+    "transimpedance_db": 61.0623,
+    "bandwidth": 273172000.0,
+    "power": 0.00019977
+  },
+  {
+    "transimpedance_db": 62.2021,
+    "bandwidth": 77243600.0,
+    "power": 0.000261132
+  },
+  {
+    "transimpedance_db": 43.4583,
+    "bandwidth": 404922000.0,
+    "power": 0.00018049
+  },
+  {
+    "transimpedance_db": 77.1659,
+    "bandwidth": 21822100.0,
+    "power": 0.000144975
+  },
+  {
+    "transimpedance_db": 84.5517,
+    "bandwidth": 122682000.0,
+    "power": 0.000295339
+  },
+  {
+    "transimpedance_db": 82.0834,
+    "bandwidth": 64236600.0,
+    "power": 0.000223687
+  },
+  {
+    "transimpedance_db": 76.7197,
+    "bandwidth": 118552000.0,
+    "power": 0.000238591
+  },
+  {
+    "transimpedance_db": 57.6197,
+    "bandwidth": 41700100.0,
+    "power": 0.00013581
+  },
+  {
+    "transimpedance_db": 40.8711,
+    "bandwidth": 715565000.0,
+    "power": 0.000174707
+  },
+  {
+    "transimpedance_db": 50.1925,
+    "bandwidth": 423876000.0,
+    "power": 0.000204729
+  },
+  {
+    "transimpedance_db": 102.134,
+    "bandwidth": 18908300.0,
+    "power": 0.000287304
+  },
+  {
+    "transimpedance_db": 51.2517,
+    "bandwidth": 20050400.0,
+    "power": 0.000135566
+  },
+  {
+    "transimpedance_db": 74.9013,
+    "bandwidth": 60009000.0,
+    "power": 0.000318513
+  },
+  {
+    "transimpedance_db": 43.2936,
+    "bandwidth": 1214390000.0,
+    "power": 0.000424054
+  },
+  {
+    "transimpedance_db": 22.0149,
+    "bandwidth": 863839000.0,
+    "power": 0.000197414
+  },
+  {
+    "transimpedance_db": 51.3209,
+    "bandwidth": 11886800.0,
+    "power": 0.000106836
+  },
+  {
+    "transimpedance_db": 27.9977,
+    "bandwidth": 90261900.0,
+    "power": 7.17046e-05
+  },
+  {
+    "transimpedance_db": 99.1209,
+    "bandwidth": 297731000.0,
+    "power": 0.00148395
+  },
+  {
+    "transimpedance_db": 81.6971,
+    "bandwidth": 15666200.0,
+    "power": 0.000242189
+  },
+  {
+    "transimpedance_db": 48.4064,
+    "bandwidth": 224704000.0,
+    "power": 0.00052599
+  },
+  {
+    "transimpedance_db": 40.3872,
+    "bandwidth": 1103800000.0,
+    "power": 0.000313802
+  },
+  {
+    "transimpedance_db": 49.0024,
+    "bandwidth": 178597000.0,
+    "power": 0.000159773
+  },
+  {
+    "transimpedance_db": 53.111,
+    "bandwidth": 84215500.0,
+    "power": 0.000160279
+  },
+  {
+    "transimpedance_db": 25.8066,
+    "bandwidth": 862935000.0,
+    "power": 0.000161795
+  },
+  {
+    "transimpedance_db": 54.9696,
+    "bandwidth": 186109000.0,
+    "power": 0.000276088
+  },
+  {
+    "transimpedance_db": 100.039,
+    "bandwidth": 10666800.0,
+    "power": 0.000718989
+  },
+  {
+    "transimpedance_db": 66.7846,
+    "bandwidth": 99925400.0,
+    "power": 0.000121614
+  },
+  {
+    "transimpedance_db": 62.4624,
+    "bandwidth": 183836000.0,
+    "power": 0.000209056
+  },
+  {
+    "transimpedance_db": 41.8782,
+    "bandwidth": 641180000.0,
+    "power": 0.000375999
+  },
+  {
+    "transimpedance_db": 106.61,
+    "bandwidth": 14184000.0,
+    "power": 0.000117904
+  },
+  {
+    "transimpedance_db": 64.8996,
+    "bandwidth": 109123000.0,
+    "power": 0.000121244
+  },
+  {
+    "transimpedance_db": 73.7911,
+    "bandwidth": 201426000.0,
+    "power": 0.000289176
+  },
+  {
+    "transimpedance_db": 55.8281,
+    "bandwidth": 168326000.0,
+    "power": 0.000352537
+  },
+  {
+    "transimpedance_db": 78.4959,
+    "bandwidth": 28483900.0,
+    "power": 4.76978e-05
+  },
+  {
+    "transimpedance_db": 90.7915,
+    "bandwidth": 89075400.0,
+    "power": 0.000291506
+  },
+  {
+    "transimpedance_db": 65.4353,
+    "bandwidth": 98497800.0,
+    "power": 0.000126833
+  },
+  {
+    "transimpedance_db": 72.9742,
+    "bandwidth": 17674200.0,
+    "power": 0.000279527
+  },
+  {
+    "transimpedance_db": 65.3683,
+    "bandwidth": 72093300.0,
+    "power": 7.79016e-05
+  },
+  {
+    "transimpedance_db": 83.7863,
+    "bandwidth": 7988500.0,
+    "power": 0.000543458
+  },
+  {
+    "transimpedance_db": 43.2051,
+    "bandwidth": 623924000.0,
+    "power": 0.000292526
+  },
+  {
+    "transimpedance_db": 46.4008,
+    "bandwidth": 162184000.0,
+    "power": 0.000194144
+  },
+  {
+    "transimpedance_db": 78.1911,
+    "bandwidth": 20831500.0,
+    "power": 8.0541e-05
+  },
+  {
+    "transimpedance_db": 51.6175,
+    "bandwidth": 138362000.0,
+    "power": 0.000303631
+  },
+  {
+    "transimpedance_db": 107.288,
+    "bandwidth": 18345700.0,
+    "power": 0.000209008
+  },
+  {
+    "transimpedance_db": 57.0738,
+    "bandwidth": 177695000.0,
+    "power": 0.000136547
+  },
+  {
+    "transimpedance_db": 72.5531,
+    "bandwidth": 95304400.0,
+    "power": 0.000186838
+  },
+  {
+    "transimpedance_db": 33.6291,
+    "bandwidth": 11588700.0,
+    "power": 7.92804e-05
+  },
+  {
+    "transimpedance_db": 70.809,
+    "bandwidth": 89515400.0,
+    "power": 0.000264396
+  },
+  {
+    "transimpedance_db": 56.5997,
+    "bandwidth": 531568000.0,
+    "power": 0.000314709
+  },
+  {
+    "transimpedance_db": 52.5493,
+    "bandwidth": 169132000.0,
+    "power": 0.000679376
+  },
+  {
+    "transimpedance_db": 67.1735,
+    "bandwidth": 11685400.0,
+    "power": 0.000262359
+  },
+  {
+    "transimpedance_db": 62.7773,
+    "bandwidth": 95499200.0,
+    "power": 0.000306538
+  },
+  {
+    "transimpedance_db": 21.8588,
+    "bandwidth": 1574950000.0,
+    "power": 0.000161888
+  },
+  {
+    "transimpedance_db": 51.5174,
+    "bandwidth": 241783000.0,
+    "power": 0.00021832
+  },
+  {
+    "transimpedance_db": 106.424,
+    "bandwidth": 13025200.0,
+    "power": 0.000130084
+  },
+  {
+    "transimpedance_db": 45.0135,
+    "bandwidth": 465116000.0,
+    "power": 0.000503314
+  },
+  {
+    "transimpedance_db": 37.3315,
+    "bandwidth": 67709000.0,
+    "power": 0.000247752
+  },
+  {
+    "transimpedance_db": 33.261,
+    "bandwidth": 173122000.0,
+    "power": 0.00020169
+  },
+  {
+    "transimpedance_db": 83.3547,
+    "bandwidth": 104027000.0,
+    "power": 0.00045242
+  },
+  {
+    "transimpedance_db": 59.4167,
+    "bandwidth": 159358000.0,
+    "power": 0.000266779
+  },
+  {
+    "transimpedance_db": 28.2849,
+    "bandwidth": 742212000.0,
+    "power": 0.000313004
+  },
+  {
+    "transimpedance_db": 72.2578,
+    "bandwidth": 570262000.0,
+    "power": 0.000662898
+  },
+  {
+    "transimpedance_db": 61.036,
+    "bandwidth": 55224200.0,
+    "power": 0.000271431
+  },
+  {
+    "transimpedance_db": 70.8691,
+    "bandwidth": 95117000.0,
+    "power": 0.000364118
+  },
+  {
+    "transimpedance_db": 21.0057,
+    "bandwidth": 748060000.0,
+    "power": 0.000197536
+  },
+  {
+    "transimpedance_db": 43.7488,
+    "bandwidth": 533073000.0,
+    "power": 0.000181733
+  },
+  {
+    "transimpedance_db": 89.4037,
+    "bandwidth": 53190200.0,
+    "power": 0.000348453
+  },
+  {
+    "transimpedance_db": 78.727,
+    "bandwidth": 61162300.0,
+    "power": 0.000163899
+  },
+  {
+    "transimpedance_db": 74.7773,
+    "bandwidth": 36408400.0,
+    "power": 0.000337034
+  },
+  {
+    "transimpedance_db": 13.8781,
+    "bandwidth": 1676620000.0,
+    "power": 0.000131798
+  },
+  {
+    "transimpedance_db": 64.7558,
+    "bandwidth": 56841400.0,
+    "power": 0.000150571
+  },
+  {
+    "transimpedance_db": 23.7526,
+    "bandwidth": 709038000.0,
+    "power": 0.000193586
+  },
+  {
+    "transimpedance_db": 88.9641,
+    "bandwidth": 10693800.0,
+    "power": 0.000148483
+  },
+  {
+    "transimpedance_db": 79.0871,
+    "bandwidth": 311810000.0,
+    "power": 0.000844036
+  },
+  {
+    "transimpedance_db": 29.3312,
+    "bandwidth": 572299000.0,
+    "power": 0.000172424
+  },
+  {
+    "transimpedance_db": 95.7512,
+    "bandwidth": 50452800.0,
+    "power": 0.000171712
+  },
+  {
+    "transimpedance_db": 65.8458,
+    "bandwidth": 113846000.0,
+    "power": 0.000185563
+  },
+  {
+    "transimpedance_db": 86.9844,
+    "bandwidth": 183650000.0,
+    "power": 0.000603023
+  },
+  {
+    "transimpedance_db": 40.8157,
+    "bandwidth": 246460000.0,
+    "power": 0.000218988
+  },
+  {
+    "transimpedance_db": 70.1578,
+    "bandwidth": 54817600.0,
+    "power": 0.000141496
+  },
+  {
+    "transimpedance_db": 48.1038,
+    "bandwidth": 389034000.0,
+    "power": 0.000157311
+  },
+  {
+    "transimpedance_db": 78.4868,
+    "bandwidth": 58516700.0,
+    "power": 0.000156997
+  },
+  {
+    "transimpedance_db": 73.9262,
+    "bandwidth": 52546900.0,
+    "power": 0.000125457
+  },
+  {
+    "transimpedance_db": 82.9396,
+    "bandwidth": 262688000.0,
+    "power": 0.000532751
+  },
+  {
+    "transimpedance_db": 71.1742,
+    "bandwidth": 110947000.0,
+    "power": 0.000375972
+  },
+  {
+    "transimpedance_db": 72.0823,
+    "bandwidth": 28470600.0,
+    "power": 0.000124595
+  },
+  {
+    "transimpedance_db": 93.5987,
+    "bandwidth": 7759960.0,
+    "power": 0.000237448
+  },
+  {
+    "transimpedance_db": 75.0836,
+    "bandwidth": 53249200.0,
+    "power": 0.000109249
+  },
+  {
+    "transimpedance_db": 40.2971,
+    "bandwidth": 850070000.0,
+    "power": 0.000389611
+  },
+  {
+    "transimpedance_db": 91.6252,
+    "bandwidth": 33905100.0,
+    "power": 0.000168039
+  },
+  {
+    "transimpedance_db": 89.9426,
+    "bandwidth": 66804600.0,
+    "power": 0.000229405
+  },
+  {
+    "transimpedance_db": 111.853,
+    "bandwidth": 10511300.0,
+    "power": 0.000137305
+  },
+  {
+    "transimpedance_db": 83.264,
+    "bandwidth": 7373320.0,
+    "power": 0.000160827
+  },
+  {
+    "transimpedance_db": 13.3399,
+    "bandwidth": 524051000.0,
+    "power": 0.00014005
+  },
+  {
+    "transimpedance_db": 87.817,
+    "bandwidth": 139636000.0,
+    "power": 0.000631904
+  },
+  {
+    "transimpedance_db": 61.8255,
+    "bandwidth": 220788000.0,
+    "power": 0.000248581
+  },
+  {
+    "transimpedance_db": 36.594,
+    "bandwidth": 50529800.0,
+    "power": 8.5982e-05
+  },
+  {
+    "transimpedance_db": 73.8861,
+    "bandwidth": 67187500.0,
+    "power": 0.000106298
+  },
+  {
+    "transimpedance_db": 25.4864,
+    "bandwidth": 779022000.0,
+    "power": 0.000273046
+  },
+  {
+    "transimpedance_db": 73.8575,
+    "bandwidth": 44679300.0,
+    "power": 0.00016238
+  },
+  {
+    "transimpedance_db": 58.7215,
+    "bandwidth": 27961600.0,
+    "power": 0.000292962
+  },
+  {
+    "transimpedance_db": 30.0675,
+    "bandwidth": 191776000.0,
+    "power": 0.000187447
+  },
+  {
+    "transimpedance_db": 70.5777,
+    "bandwidth": 17007200.0,
+    "power": 0.000101532
+  },
+  {
+    "transimpedance_db": 79.578,
+    "bandwidth": 165877000.0,
+    "power": 0.00030783
+  },
+  {
+    "transimpedance_db": 78.6039,
+    "bandwidth": 20606500.0,
+    "power": 0.000198326
+  },
+  {
+    "transimpedance_db": 74.4356,
+    "bandwidth": 175876000.0,
+    "power": 0.000656939
+  },
+  {
+    "transimpedance_db": 54.6204,
+    "bandwidth": 371975000.0,
+    "power": 0.000446437
+  },
+  {
+    "transimpedance_db": 45.0086,
+    "bandwidth": 147934000.0,
+    "power": 0.000210242
+  },
+  {
+    "transimpedance_db": 31.0059,
+    "bandwidth": 755138000.0,
+    "power": 0.000214763
+  },
+  {
+    "transimpedance_db": 84.8376,
+    "bandwidth": 69571600.0,
+    "power": 0.000543567
+  },
+  {
+    "transimpedance_db": 46.8201,
+    "bandwidth": 578374000.0,
+    "power": 0.000243356
+  },
+  {
+    "transimpedance_db": 64.5453,
+    "bandwidth": 229324000.0,
+    "power": 0.00022065
+  },
+  {
+    "transimpedance_db": 76.1112,
+    "bandwidth": 6903110.0,
+    "power": 0.000113735
+  },
+  {
+    "transimpedance_db": 71.1043,
+    "bandwidth": 111411000.0,
+    "power": 0.000112448
+  },
+  {
+    "transimpedance_db": 44.0829,
+    "bandwidth": 110508000.0,
+    "power": 7.90051e-05
+  },
+  {
+    "transimpedance_db": 61.7042,
+    "bandwidth": 62954100.0,
+    "power": 0.000498725
+  },
+  {
+    "transimpedance_db": 76.1184,
+    "bandwidth": 87511200.0,
+    "power": 0.000136981
+  },
+  {
+    "transimpedance_db": 38.0204,
+    "bandwidth": 248960000.0,
+    "power": 0.00017403
+  },
+  {
+    "transimpedance_db": 81.2196,
+    "bandwidth": 58706300.0,
+    "power": 9.58116e-05
+  },
+  {
+    "transimpedance_db": 50.7006,
+    "bandwidth": 109706000.0,
+    "power": 0.000103463
+  },
+  {
+    "transimpedance_db": 97.1171,
+    "bandwidth": 7661820.0,
+    "power": 0.000155016
+  },
+  {
+    "transimpedance_db": 80.3084,
+    "bandwidth": 52318800.0,
+    "power": 0.00110148
+  },
+  {
+    "transimpedance_db": 33.7031,
+    "bandwidth": 220550000.0,
+    "power": 0.000100802
+  },
+  {
+    "transimpedance_db": 59.7052,
+    "bandwidth": 168607000.0,
+    "power": 0.000433007
+  },
+  {
+    "transimpedance_db": 96.3969,
+    "bandwidth": 22853900.0,
+    "power": 0.000146296
+  },
+  {
+    "transimpedance_db": 38.296,
+    "bandwidth": 1077700000.0,
+    "power": 0.000342933
+  },
+  {
+    "transimpedance_db": 105.896,
+    "bandwidth": 67807800.0,
+    "power": 0.000572521
+  },
+  {
+    "transimpedance_db": 51.1424,
+    "bandwidth": 174839000.0,
+    "power": 0.00033307
+  },
+  {
+    "transimpedance_db": 44.22,
+    "bandwidth": 227741000.0,
+    "power": 0.000135375
+  },
+  {
+    "transimpedance_db": 67.3292,
+    "bandwidth": 300124000.0,
+    "power": 0.000340195
+  },
+  {
+    "transimpedance_db": 53.1925,
+    "bandwidth": 10129100.0,
+    "power": 7.08599e-05
+  },
+  {
+    "transimpedance_db": 57.4475,
+    "bandwidth": 197179000.0,
+    "power": 0.000206309
+  },
+  {
+    "transimpedance_db": 68.2734,
+    "bandwidth": 51712700.0,
+    "power": 0.000106454
+  },
+  {
+    "transimpedance_db": 34.3725,
+    "bandwidth": 236236000.0,
+    "power": 0.000193313
+  },
+  {
+    "transimpedance_db": 38.8799,
+    "bandwidth": 498185000.0,
+    "power": 0.000219014
+  },
+  {
+    "transimpedance_db": 59.5096,
+    "bandwidth": 31374000.0,
+    "power": 0.000220292
+  },
+  {
+    "transimpedance_db": 49.3192,
+    "bandwidth": 258695000.0,
+    "power": 0.000213876
+  },
+  {
+    "transimpedance_db": 54.6372,
+    "bandwidth": 32834900.0,
+    "power": 0.000223556
+  },
+  {
+    "transimpedance_db": 70.1703,
+    "bandwidth": 6933410.0,
+    "power": 0.000185961
+  },
+  {
+    "transimpedance_db": 76.0801,
+    "bandwidth": 20537800.0,
+    "power": 0.000294022
+  },
+  {
+    "transimpedance_db": 30.0342,
+    "bandwidth": 767695000.0,
+    "power": 0.000186115
+  },
+  {
+    "transimpedance_db": 38.1655,
+    "bandwidth": 197412000.0,
+    "power": 0.000152465
+  },
+  {
+    "transimpedance_db": 51.7696,
+    "bandwidth": 461327000.0,
+    "power": 0.000545759
+  },
+  {
+    "transimpedance_db": 42.5937,
+    "bandwidth": 54398400.0,
+    "power": 9.90634e-05
+  },
+  {
+    "transimpedance_db": 61.1505,
+    "bandwidth": 17215000.0,
+    "power": 4.99254e-05
+  },
+  {
+    "transimpedance_db": 96.5421,
+    "bandwidth": 43241800.0,
+    "power": 0.00040957
+  },
+  {
+    "transimpedance_db": 46.353,
+    "bandwidth": 702977000.0,
+    "power": 0.00021318
+  },
+  {
+    "transimpedance_db": 97.1508,
+    "bandwidth": 8949030.0,
+    "power": 0.000131622
+  },
+  {
+    "transimpedance_db": 31.1158,
+    "bandwidth": 166227000.0,
+    "power": 0.000190638
+  },
+  {
+    "transimpedance_db": 99.4924,
+    "bandwidth": 53902200.0,
+    "power": 0.000276858
+  },
+  {
+    "transimpedance_db": 91.7181,
+    "bandwidth": 19958200.0,
+    "power": 0.000903152
+  },
+  {
+    "transimpedance_db": 99.3917,
+    "bandwidth": 28032100.0,
+    "power": 0.000214851
+  },
+  {
+    "transimpedance_db": 90.806,
+    "bandwidth": 42858600.0,
+    "power": 0.00104244
+  },
+  {
+    "transimpedance_db": 27.3539,
+    "bandwidth": 102832000.0,
+    "power": 0.000115498
+  },
+  {
+    "transimpedance_db": 77.4663,
+    "bandwidth": 117123000.0,
+    "power": 0.000218717
+  },
+  {
+    "transimpedance_db": 41.6281,
+    "bandwidth": 513562000.0,
+    "power": 0.00026146
+  },
+  {
+    "transimpedance_db": 53.1819,
+    "bandwidth": 101210000.0,
+    "power": 0.00035441
+  },
+  {
+    "transimpedance_db": 51.5455,
+    "bandwidth": 500054000.0,
+    "power": 0.000238382
+  },
+  {
+    "transimpedance_db": 80.1991,
+    "bandwidth": 7963620.0,
+    "power": 8.21438e-05
+  },
+  {
+    "transimpedance_db": 22.9804,
+    "bandwidth": 108047000.0,
+    "power": 0.000142581
+  },
+  {
+    "transimpedance_db": 49.9532,
+    "bandwidth": 182843000.0,
+    "power": 0.000180744
+  },
+  {
+    "transimpedance_db": 37.1325,
+    "bandwidth": 282642000.0,
+    "power": 0.000171758
+  },
+  {
+    "transimpedance_db": 79.0546,
+    "bandwidth": 90658700.0,
+    "power": 0.000343358
+  },
+  {
+    "transimpedance_db": 58.8016,
+    "bandwidth": 85841600.0,
+    "power": 0.00021263
+  },
+  {
+    "transimpedance_db": 66.4687,
+    "bandwidth": 158327000.0,
+    "power": 0.000196487
+  },
+  {
+    "transimpedance_db": 85.1822,
+    "bandwidth": 32784300.0,
+    "power": 0.00028123
+  },
+  {
+    "transimpedance_db": 24.2327,
+    "bandwidth": 270552000.0,
+    "power": 0.000138831
+  },
+  {
+    "transimpedance_db": 99.4868,
+    "bandwidth": 7012520.0,
+    "power": 0.000243
+  },
+  {
+    "transimpedance_db": 99.3606,
+    "bandwidth": 9113270.0,
+    "power": 9.1435e-05
+  },
+  {
+    "transimpedance_db": 44.3485,
+    "bandwidth": 475522000.0,
+    "power": 0.000936735
+  },
+  {
+    "transimpedance_db": 81.6222,
+    "bandwidth": 37521500.0,
+    "power": 0.0002401
+  },
+  {
+    "transimpedance_db": 56.5905,
+    "bandwidth": 277069000.0,
+    "power": 0.000195071
+  },
+  {
+    "transimpedance_db": 75.929,
+    "bandwidth": 16938200.0,
+    "power": 0.000108898
+  },
+  {
+    "transimpedance_db": 50.5638,
+    "bandwidth": 142065000.0,
+    "power": 0.000309598
+  },
+  {
+    "transimpedance_db": 59.3256,
+    "bandwidth": 217293000.0,
+    "power": 0.000283949
+  },
+  {
+    "transimpedance_db": 61.4617,
+    "bandwidth": 49017200.0,
+    "power": 9.81926e-05
+  },
+  {
+    "transimpedance_db": 18.2468,
+    "bandwidth": 1690780000.0,
+    "power": 0.000171078
+  },
+  {
+    "transimpedance_db": 101.019,
+    "bandwidth": 17620800.0,
+    "power": 0.000182849
+  },
+  {
+    "transimpedance_db": 62.3159,
+    "bandwidth": 112104000.0,
+    "power": 0.000384
+  },
+  {
+    "transimpedance_db": 103.626,
+    "bandwidth": 7694240.0,
+    "power": 0.000161837
+  },
+  {
+    "transimpedance_db": 38.6409,
+    "bandwidth": 234560000.0,
+    "power": 0.000179974
+  },
+  {
+    "transimpedance_db": 38.8468,
+    "bandwidth": 244717000.0,
+    "power": 0.000121265
+  },
+  {
+    "transimpedance_db": 81.0813,
+    "bandwidth": 21667800.0,
+    "power": 0.000116058
+  },
+  {
+    "transimpedance_db": 70.6037,
+    "bandwidth": 21822300.0,
+    "power": 0.0001638
+  },
+  {
+    "transimpedance_db": 78.9802,
+    "bandwidth": 12973400.0,
+    "power": 0.000252818
+  },
+  {
+    "transimpedance_db": 64.665,
+    "bandwidth": 81088400.0,
+    "power": 0.00013478
+  },
+  {
+    "transimpedance_db": 48.0215,
+    "bandwidth": 396067000.0,
+    "power": 0.000219859
+  },
+  {
+    "transimpedance_db": 22.9687,
+    "bandwidth": 1237540000.0,
+    "power": 0.000152834
+  },
+  {
+    "transimpedance_db": 88.1214,
+    "bandwidth": 22258600.0,
+    "power": 0.000184021
+  },
+  {
+    "transimpedance_db": 58.666,
+    "bandwidth": 66669400.0,
+    "power": 0.000158155
+  },
+  {
+    "transimpedance_db": 62.4227,
+    "bandwidth": 140854000.0,
+    "power": 0.0002195
+  },
+  {
+    "transimpedance_db": 80.8325,
+    "bandwidth": 99121500.0,
+    "power": 0.000266007
+  },
+  {
+    "transimpedance_db": 99.999,
+    "bandwidth": 19125800.0,
+    "power": 0.000149235
+  },
+  {
+    "transimpedance_db": 75.6366,
+    "bandwidth": 212476000.0,
+    "power": 0.000657459
+  },
+  {
+    "transimpedance_db": 43.3333,
+    "bandwidth": 238779000.0,
+    "power": 0.000239557
+  },
+  {
+    "transimpedance_db": 47.4863,
+    "bandwidth": 219790000.0,
+    "power": 0.000262044
+  },
+  {
+    "transimpedance_db": 19.7942,
+    "bandwidth": 433236000.0,
+    "power": 0.000203135
+  },
+  {
+    "transimpedance_db": 55.0376,
+    "bandwidth": 348924000.0,
+    "power": 0.000270204
+  },
+  {
+    "transimpedance_db": 65.7052,
+    "bandwidth": 474908000.0,
+    "power": 0.000418306
+  },
+  {
+    "transimpedance_db": 66.2761,
+    "bandwidth": 275279000.0,
+    "power": 0.000352042
+  },
+  {
+    "transimpedance_db": 98.3743,
+    "bandwidth": 23452000.0,
+    "power": 9.71971e-05
+  },
+  {
+    "transimpedance_db": 80.5919,
+    "bandwidth": 93406600.0,
+    "power": 0.000276422
+  },
+  {
+    "transimpedance_db": 84.7753,
+    "bandwidth": 28496200.0,
+    "power": 0.000217565
+  },
+  {
+    "transimpedance_db": 4.66581,
+    "bandwidth": 488461000.0,
+    "power": 0.000100288
+  },
+  {
+    "transimpedance_db": 95.8044,
+    "bandwidth": 29045200.0,
+    "power": 0.00035347
+  },
+  {
+    "transimpedance_db": 93.7847,
+    "bandwidth": 8698280.0,
+    "power": 0.000232797
+  },
+  {
+    "transimpedance_db": 56.5872,
+    "bandwidth": 142250000.0,
+    "power": 0.000191855
+  },
+  {
+    "transimpedance_db": 36.6783,
+    "bandwidth": 165430000.0,
+    "power": 0.000281993
+  },
+  {
+    "transimpedance_db": 46.8736,
+    "bandwidth": 348418000.0,
+    "power": 0.000282341
+  },
+  {
+    "transimpedance_db": 40.7726,
+    "bandwidth": 361700000.0,
+    "power": 0.000193419
+  },
+  {
+    "transimpedance_db": 37.6107,
+    "bandwidth": 323460000.0,
+    "power": 0.000138665
+  },
+  {
+    "transimpedance_db": 60.1448,
+    "bandwidth": 116484000.0,
+    "power": 0.000155094
+  },
+  {
+    "transimpedance_db": 65.9795,
+    "bandwidth": 8007460.0,
+    "power": 0.000128911
+  },
+  {
+    "transimpedance_db": 55.5894,
+    "bandwidth": 1057200000.0,
+    "power": 0.00159948
+  },
+  {
+    "transimpedance_db": 50.9164,
+    "bandwidth": 256323000.0,
+    "power": 0.000207984
+  },
+  {
+    "transimpedance_db": 62.8048,
+    "bandwidth": 49019500.0,
+    "power": 0.000272497
+  },
+  {
+    "transimpedance_db": 34.1328,
+    "bandwidth": 7047490.0,
+    "power": 0.000157718
+  },
+  {
+    "transimpedance_db": 63.3024,
+    "bandwidth": 96247600.0,
+    "power": 0.000249852
+  },
+  {
+    "transimpedance_db": 76.2883,
+    "bandwidth": 142428000.0,
+    "power": 0.000502249
+  },
+  {
+    "transimpedance_db": 72.8004,
+    "bandwidth": 50130000.0,
+    "power": 0.000115012
+  },
+  {
+    "transimpedance_db": 108.303,
+    "bandwidth": 23545000.0,
+    "power": 0.000299135
+  },
+  {
+    "transimpedance_db": 34.8658,
+    "bandwidth": 336881000.0,
+    "power": 0.000160963
+  },
+  {
+    "transimpedance_db": 36.0825,
+    "bandwidth": 363245000.0,
+    "power": 0.000332982
+  },
+  {
+    "transimpedance_db": 27.9308,
+    "bandwidth": 2134380000.0,
+    "power": 0.000418958
+  },
+  {
+    "transimpedance_db": 74.5477,
+    "bandwidth": 136230000.0,
+    "power": 0.000199415
+  },
+  {
+    "transimpedance_db": 66.6205,
+    "bandwidth": 376848000.0,
+    "power": 0.000560871
+  },
+  {
+    "transimpedance_db": 24.2308,
+    "bandwidth": 332283000.0,
+    "power": 0.000311095
+  },
+  {
+    "transimpedance_db": 52.8036,
+    "bandwidth": 41721200.0,
+    "power": 0.000107887
+  },
+  {
+    "transimpedance_db": 77.4996,
+    "bandwidth": 218794000.0,
+    "power": 0.000349051
+  },
+  {
+    "transimpedance_db": 53.5155,
+    "bandwidth": 392851000.0,
+    "power": 0.000256987
+  },
+  {
+    "transimpedance_db": 74.8481,
+    "bandwidth": 100664000.0,
+    "power": 0.000166136
+  },
+  {
+    "transimpedance_db": 44.749,
+    "bandwidth": 186380000.0,
+    "power": 0.000243652
+  },
+  {
+    "transimpedance_db": 51.1072,
+    "bandwidth": 52186000.0,
+    "power": 0.000213399
+  },
+  {
+    "transimpedance_db": 50.3355,
+    "bandwidth": 404571000.0,
+    "power": 0.00032386
+  },
+  {
+    "transimpedance_db": 92.9069,
+    "bandwidth": 78232500.0,
+    "power": 0.000562152
+  },
+  {
+    "transimpedance_db": 63.7443,
+    "bandwidth": 189112000.0,
+    "power": 0.000264954
+  },
+  {
+    "transimpedance_db": 88.225,
+    "bandwidth": 13203500.0,
+    "power": 0.000166498
+  },
+  {
+    "transimpedance_db": 74.6757,
+    "bandwidth": 41040600.0,
+    "power": 0.000198967
+  },
+  {
+    "transimpedance_db": 48.2315,
+    "bandwidth": 21967400.0,
+    "power": 0.000142647
+  },
+  {
+    "transimpedance_db": 91.6475,
+    "bandwidth": 19415000.0,
+    "power": 0.00015667
+  },
+  {
+    "transimpedance_db": 78.073,
+    "bandwidth": 83870300.0,
+    "power": 0.000194564
+  },
+  {
+    "transimpedance_db": 92.0059,
+    "bandwidth": 18841000.0,
+    "power": 0.000167144
+  },
+  {
+    "transimpedance_db": 56.6157,
+    "bandwidth": 56596400.0,
+    "power": 0.000112651
+  },
+  {
+    "transimpedance_db": 46.4335,
+    "bandwidth": 457535000.0,
+    "power": 0.000282129
+  },
+  {
+    "transimpedance_db": 33.7565,
+    "bandwidth": 867125000.0,
+    "power": 0.000251746
+  },
+  {
+    "transimpedance_db": 46.7936,
+    "bandwidth": 768335000.0,
+    "power": 0.000263412
+  },
+  {
+    "transimpedance_db": 50.2742,
+    "bandwidth": 113553000.0,
+    "power": 0.00022501
+  },
+  {
+    "transimpedance_db": 50.9286,
+    "bandwidth": 137157000.0,
+    "power": 0.000243068
+  },
+  {
+    "transimpedance_db": 46.9278,
+    "bandwidth": 19702700.0,
+    "power": 0.000133564
+  },
+  {
+    "transimpedance_db": 92.3922,
+    "bandwidth": 24060700.0,
+    "power": 0.000310837
+  },
+  {
+    "transimpedance_db": 52.3302,
+    "bandwidth": 265099000.0,
+    "power": 0.000241953
+  },
+  {
+    "transimpedance_db": 48.8481,
+    "bandwidth": 562280000.0,
+    "power": 0.00052895
+  },
+  {
+    "transimpedance_db": 75.4291,
+    "bandwidth": 15954000.0,
+    "power": 0.000490297
+  },
+  {
+    "transimpedance_db": 54.7172,
+    "bandwidth": 285432000.0,
+    "power": 0.000241539
+  },
+  {
+    "transimpedance_db": 75.7829,
+    "bandwidth": 23713300.0,
+    "power": 0.000180604
+  },
+  {
+    "transimpedance_db": 69.1251,
+    "bandwidth": 386677000.0,
+    "power": 0.000345691
+  },
+  {
+    "transimpedance_db": 41.6252,
+    "bandwidth": 806449000.0,
+    "power": 0.000419733
+  },
+  {
+    "transimpedance_db": 48.6902,
+    "bandwidth": 249740000.0,
+    "power": 0.000176722
+  },
+  {
+    "transimpedance_db": 77.3825,
+    "bandwidth": 72390900.0,
+    "power": 0.000410437
+  },
+  {
+    "transimpedance_db": 63.9709,
+    "bandwidth": 135980000.0,
+    "power": 0.000244029
+  },
+  {
+    "transimpedance_db": 70.0509,
+    "bandwidth": 264170000.0,
+    "power": 0.000363564
+  },
+  {
+    "transimpedance_db": 52.7657,
+    "bandwidth": 849855000.0,
+    "power": 0.000847696
+  },
+  {
+    "transimpedance_db": 61.5221,
+    "bandwidth": 7608660.0,
+    "power": 0.000122293
+  },
+  {
+    "transimpedance_db": 97.616,
+    "bandwidth": 11191400.0,
+    "power": 0.000196433
+  },
+  {
+    "transimpedance_db": 31.3923,
+    "bandwidth": 230436000.0,
+    "power": 0.000612282
+  },
+  {
+    "transimpedance_db": 61.8994,
+    "bandwidth": 130377000.0,
+    "power": 0.000222133
+  },
+  {
+    "transimpedance_db": 79.6537,
+    "bandwidth": 86144400.0,
+    "power": 0.000356773
+  },
+  {
+    "transimpedance_db": 82.9497,
+    "bandwidth": 91280800.0,
+    "power": 0.000199697
+  },
+  {
+    "transimpedance_db": 52.7157,
+    "bandwidth": 264787000.0,
+    "power": 0.000296944
+  },
+  {
+    "transimpedance_db": 77.8603,
+    "bandwidth": 43782800.0,
+    "power": 0.000389126
+  },
+  {
+    "transimpedance_db": 14.401,
+    "bandwidth": 2896680000.0,
+    "power": 0.00035083
+  },
+  {
+    "transimpedance_db": 73.5804,
+    "bandwidth": 263469000.0,
+    "power": 0.000637308
+  },
+  {
+    "transimpedance_db": 28.4009,
+    "bandwidth": 637495000.0,
+    "power": 0.000265432
+  },
+  {
+    "transimpedance_db": 49.6184,
+    "bandwidth": 160932000.0,
+    "power": 0.000210809
+  },
+  {
+    "transimpedance_db": 81.9826,
+    "bandwidth": 16206500.0,
+    "power": 0.000189716
+  },
+  {
+    "transimpedance_db": 39.9917,
+    "bandwidth": 41846800.0,
+    "power": 0.000125944
+  },
+  {
+    "transimpedance_db": 90.5825,
+    "bandwidth": 131139000.0,
+    "power": 0.000425174
+  },
+  {
+    "transimpedance_db": 54.1002,
+    "bandwidth": 300276000.0,
+    "power": 0.000236566
+  },
+  {
+    "transimpedance_db": 44.6644,
+    "bandwidth": 23136000.0,
+    "power": 0.000129305
+  },
+  {
+    "transimpedance_db": 53.1237,
+    "bandwidth": 295419000.0,
+    "power": 0.000178694
+  },
+  {
+    "transimpedance_db": 34.3317,
+    "bandwidth": 1167630000.0,
+    "power": 0.000488495
+  },
+  {
+    "transimpedance_db": 43.0404,
+    "bandwidth": 292562000.0,
+    "power": 0.0002708
+  },
+  {
+    "transimpedance_db": 50.0861,
+    "bandwidth": 476152000.0,
+    "power": 0.000256743
+  },
+  {
+    "transimpedance_db": 73.6978,
+    "bandwidth": 11961900.0,
+    "power": 1.90795e-05
+  },
+  {
+    "transimpedance_db": 26.327,
+    "bandwidth": 257664000.0,
+    "power": 0.000219511
+  },
+  {
+    "transimpedance_db": 67.2699,
+    "bandwidth": 36730500.0,
+    "power": 7.07394e-05
+  },
+  {
+    "transimpedance_db": 86.0069,
+    "bandwidth": 62702100.0,
+    "power": 0.000471751
+  },
+  {
+    "transimpedance_db": 48.2278,
+    "bandwidth": 99331700.0,
+    "power": 0.000153378
+  },
+  {
+    "transimpedance_db": 71.8347,
+    "bandwidth": 10835500.0,
+    "power": 6.2953e-05
+  },
+  {
+    "transimpedance_db": 77.38,
+    "bandwidth": 20223600.0,
+    "power": 0.000170391
+  },
+  {
+    "transimpedance_db": 53.9023,
+    "bandwidth": 17092800.0,
+    "power": 2.17704e-05
+  },
+  {
+    "transimpedance_db": 102.523,
+    "bandwidth": 24453900.0,
+    "power": 0.000172617
+  },
+  {
+    "transimpedance_db": 82.1017,
+    "bandwidth": 78963800.0,
+    "power": 0.000158528
+  },
+  {
+    "transimpedance_db": 32.9097,
+    "bandwidth": 745523000.0,
+    "power": 0.000193592
+  },
+  {
+    "transimpedance_db": -6.03318,
+    "bandwidth": 2545800000.0,
+    "power": 0.000320535
+  },
+  {
+    "transimpedance_db": 67.6985,
+    "bandwidth": 24280000.0,
+    "power": 0.000303256
+  },
+  {
+    "transimpedance_db": 81.542,
+    "bandwidth": 64866900.0,
+    "power": 0.000135693
+  },
+  {
+    "transimpedance_db": 59.6632,
+    "bandwidth": 451695000.0,
+    "power": 0.000395922
+  },
+  {
+    "transimpedance_db": 31.0133,
+    "bandwidth": 254339000.0,
+    "power": 0.000223849
+  },
+  {
+    "transimpedance_db": 101.556,
+    "bandwidth": 25011200.0,
+    "power": 0.000296134
+  },
+  {
+    "transimpedance_db": 69.1715,
+    "bandwidth": 20376300.0,
+    "power": 0.000184888
+  },
+  {
+    "transimpedance_db": 115.675,
+    "bandwidth": 17310600.0,
+    "power": 0.000216176
+  },
+  {
+    "transimpedance_db": 45.6464,
+    "bandwidth": 257582000.0,
+    "power": 0.000186347
+  },
+  {
+    "transimpedance_db": 57.3851,
+    "bandwidth": 387211000.0,
+    "power": 0.000209612
+  },
+  {
+    "transimpedance_db": 36.3123,
+    "bandwidth": 167662000.0,
+    "power": 0.000166416
+  },
+  {
+    "transimpedance_db": 91.6039,
+    "bandwidth": 44460100.0,
+    "power": 0.0004439
+  },
+  {
+    "transimpedance_db": 72.5976,
+    "bandwidth": 34955200.0,
+    "power": 0.000533034
+  },
+  {
+    "transimpedance_db": 67.5757,
+    "bandwidth": 221248000.0,
+    "power": 0.00042527
+  },
+  {
+    "transimpedance_db": 46.1342,
+    "bandwidth": 204885000.0,
+    "power": 0.000249286
+  },
+  {
+    "transimpedance_db": 58.9729,
+    "bandwidth": 10007900.0,
+    "power": 0.000179405
+  },
+  {
+    "transimpedance_db": 89.6226,
+    "bandwidth": 13750900.0,
+    "power": 0.000223734
+  },
+  {
+    "transimpedance_db": 18.4696,
+    "bandwidth": 914042000.0,
+    "power": 0.000130097
+  },
+  {
+    "transimpedance_db": 67.4416,
+    "bandwidth": 7952250.0,
+    "power": 0.000166084
+  },
+  {
+    "transimpedance_db": 56.9985,
+    "bandwidth": 216609000.0,
+    "power": 0.000185316
+  },
+  {
+    "transimpedance_db": 92.4602,
+    "bandwidth": 69957000.0,
+    "power": 0.000256453
+  },
+  {
+    "transimpedance_db": 35.7328,
+    "bandwidth": 252320000.0,
+    "power": 0.000207414
+  },
+  {
+    "transimpedance_db": 75.684,
+    "bandwidth": 10557800.0,
+    "power": 0.000190364
+  },
+  {
+    "transimpedance_db": 43.4225,
+    "bandwidth": 173475000.0,
+    "power": 0.000145129
+  },
+  {
+    "transimpedance_db": 40.4328,
+    "bandwidth": 12117100.0,
+    "power": 0.000165703
+  },
+  {
+    "transimpedance_db": 33.0238,
+    "bandwidth": 1019010000.0,
+    "power": 0.000178571
+  },
+  {
+    "transimpedance_db": 51.351,
+    "bandwidth": 9768590.0,
+    "power": 0.000102543
+  },
+  {
+    "transimpedance_db": 58.1582,
+    "bandwidth": 473485000.0,
+    "power": 0.000261984
+  },
+  {
+    "transimpedance_db": 72.2241,
+    "bandwidth": 94453000.0,
+    "power": 0.000320019
+  },
+  {
+    "transimpedance_db": 25.7215,
+    "bandwidth": 829009000.0,
+    "power": 0.000165902
+  },
+  {
+    "transimpedance_db": 68.4754,
+    "bandwidth": 154513000.0,
+    "power": 0.000194197
+  },
+  {
+    "transimpedance_db": 48.0446,
+    "bandwidth": 438585000.0,
+    "power": 0.000366668
+  },
+  {
+    "transimpedance_db": 39.0442,
+    "bandwidth": 361367000.0,
+    "power": 0.000378361
+  },
+  {
+    "transimpedance_db": 74.0263,
+    "bandwidth": 62158900.0,
+    "power": 0.000155136
+  },
+  {
+    "transimpedance_db": 50.661,
+    "bandwidth": 187431000.0,
+    "power": 0.000208302
+  },
+  {
+    "transimpedance_db": 92.2223,
+    "bandwidth": 39228900.0,
+    "power": 0.000234111
+  },
+  {
+    "transimpedance_db": 45.6994,
+    "bandwidth": 478649000.0,
+    "power": 0.000197023
+  },
+  {
+    "transimpedance_db": 76.7013,
+    "bandwidth": 115561000.0,
+    "power": 0.00019022
+  },
+  {
+    "transimpedance_db": 20.4108,
+    "bandwidth": 1197090000.0,
+    "power": 0.000179092
+  },
+  {
+    "transimpedance_db": 70.1202,
+    "bandwidth": 129448000.0,
+    "power": 0.000254484
+  },
+  {
+    "transimpedance_db": 78.5629,
+    "bandwidth": 7116160.0,
+    "power": 5.84107e-05
+  },
+  {
+    "transimpedance_db": 73.0539,
+    "bandwidth": 161943000.0,
+    "power": 0.000383495
+  },
+  {
+    "transimpedance_db": 44.4192,
+    "bandwidth": 205180000.0,
+    "power": 0.000178888
+  },
+  {
+    "transimpedance_db": 77.1645,
+    "bandwidth": 12411400.0,
+    "power": 0.000104032
+  },
+  {
+    "transimpedance_db": 71.8199,
+    "bandwidth": 50020100.0,
+    "power": 0.000131254
+  },
+  {
+    "transimpedance_db": 85.1549,
+    "bandwidth": 14826300.0,
+    "power": 0.000144955
+  },
+  {
+    "transimpedance_db": 48.1466,
+    "bandwidth": 547057000.0,
+    "power": 0.000287811
+  },
+  {
+    "transimpedance_db": 44.5706,
+    "bandwidth": 188313000.0,
+    "power": 0.000347258
+  },
+  {
+    "transimpedance_db": 58.4181,
+    "bandwidth": 126020000.0,
+    "power": 0.000300121
+  },
+  {
+    "transimpedance_db": 86.3835,
+    "bandwidth": 83883900.0,
+    "power": 0.000271989
+  },
+  {
+    "transimpedance_db": 41.4818,
+    "bandwidth": 222292000.0,
+    "power": 0.000208954
+  },
+  {
+    "transimpedance_db": 9.51894,
+    "bandwidth": 1386300000.0,
+    "power": 0.000411061
+  },
+  {
+    "transimpedance_db": 57.1004,
+    "bandwidth": 30651600.0,
+    "power": 0.000238195
+  },
+  {
+    "transimpedance_db": 68.9353,
+    "bandwidth": 56447500.0,
+    "power": 0.000235696
+  },
+  {
+    "transimpedance_db": 61.1842,
+    "bandwidth": 172379000.0,
+    "power": 0.000177616
+  },
+  {
+    "transimpedance_db": 50.0293,
+    "bandwidth": 440303000.0,
+    "power": 0.000241856
+  },
+  {
+    "transimpedance_db": 48.4178,
+    "bandwidth": 222724000.0,
+    "power": 0.000238933
+  },
+  {
+    "transimpedance_db": 74.0138,
+    "bandwidth": 43017900.0,
+    "power": 0.000297478
+  },
+  {
+    "transimpedance_db": 55.8659,
+    "bandwidth": 389065000.0,
+    "power": 0.000306355
+  },
+  {
+    "transimpedance_db": 59.8829,
+    "bandwidth": 41905900.0,
+    "power": 0.000135448
+  },
+  {
+    "transimpedance_db": 73.7684,
+    "bandwidth": 305733000.0,
+    "power": 0.00044282
+  },
+  {
+    "transimpedance_db": 101.808,
+    "bandwidth": 38090800.0,
+    "power": 0.000157902
+  },
+  {
+    "transimpedance_db": 55.9931,
+    "bandwidth": 171776000.0,
+    "power": 0.000212531
+  },
+  {
+    "transimpedance_db": 83.6892,
+    "bandwidth": 29279200.0,
+    "power": 0.000118193
+  },
+  {
+    "transimpedance_db": 61.3878,
+    "bandwidth": 117516000.0,
+    "power": 0.000135592
+  },
+  {
+    "transimpedance_db": 61.631,
+    "bandwidth": 416583000.0,
+    "power": 0.000419157
+  },
+  {
+    "transimpedance_db": 99.7087,
+    "bandwidth": 138698000.0,
+    "power": 0.00181072
+  },
+  {
+    "transimpedance_db": 61.5787,
+    "bandwidth": 47163100.0,
+    "power": 0.000203266
+  },
+  {
+    "transimpedance_db": 85.8916,
+    "bandwidth": 19581800.0,
+    "power": 0.000278969
+  },
+  {
+    "transimpedance_db": 95.645,
+    "bandwidth": 9130750.0,
+    "power": 6.694e-05
+  },
+  {
+    "transimpedance_db": 74.9909,
+    "bandwidth": 10227100.0,
+    "power": 0.000112535
+  },
+  {
+    "transimpedance_db": 45.7628,
+    "bandwidth": 576839000.0,
+    "power": 0.00049371
+  },
+  {
+    "transimpedance_db": 92.813,
+    "bandwidth": 38956200.0,
+    "power": 0.000138629
+  },
+  {
+    "transimpedance_db": 46.7237,
+    "bandwidth": 221350000.0,
+    "power": 0.000294412
+  },
+  {
+    "transimpedance_db": 94.864,
+    "bandwidth": 16327900.0,
+    "power": 0.000106428
+  },
+  {
+    "transimpedance_db": 67.871,
+    "bandwidth": 34430100.0,
+    "power": 0.000357655
+  },
+  {
+    "transimpedance_db": 91.4019,
+    "bandwidth": 50668900.0,
+    "power": 0.000268336
+  },
+  {
+    "transimpedance_db": 58.4874,
+    "bandwidth": 94154500.0,
+    "power": 0.000200022
+  },
+  {
+    "transimpedance_db": 39.3757,
+    "bandwidth": 93483900.0,
+    "power": 0.000171781
+  },
+  {
+    "transimpedance_db": 87.5736,
+    "bandwidth": 55318700.0,
+    "power": 0.000243639
+  },
+  {
+    "transimpedance_db": 55.383,
+    "bandwidth": 212541000.0,
+    "power": 0.000214938
+  },
+  {
+    "transimpedance_db": 63.6166,
+    "bandwidth": 59940500.0,
+    "power": 0.000252519
+  },
+  {
+    "transimpedance_db": 41.5885,
+    "bandwidth": 408505000.0,
+    "power": 0.00025768
+  },
+  {
+    "transimpedance_db": 50.9791,
+    "bandwidth": 321979000.0,
+    "power": 0.000390166
+  },
+  {
+    "transimpedance_db": 51.1912,
+    "bandwidth": 596594000.0,
+    "power": 0.000345672
+  },
+  {
+    "transimpedance_db": 22.3657,
+    "bandwidth": 1572050000.0,
+    "power": 0.000140794
+  },
+  {
+    "transimpedance_db": 26.6024,
+    "bandwidth": 625788000.0,
+    "power": 0.000172233
+  },
+  {
+    "transimpedance_db": 73.9344,
+    "bandwidth": 105565000.0,
+    "power": 0.000222169
+  },
+  {
+    "transimpedance_db": 61.084,
+    "bandwidth": 239038000.0,
+    "power": 0.000230321
+  },
+  {
+    "transimpedance_db": 78.4922,
+    "bandwidth": 16390700.0,
+    "power": 0.000123461
+  },
+  {
+    "transimpedance_db": 66.9049,
+    "bandwidth": 21282000.0,
+    "power": 0.000322429
+  },
+  {
+    "transimpedance_db": 31.0097,
+    "bandwidth": 338837000.0,
+    "power": 0.00021373
+  },
+  {
+    "transimpedance_db": 81.3854,
+    "bandwidth": 6919960.0,
+    "power": 0.000243084
+  },
+  {
+    "transimpedance_db": 39.2987,
+    "bandwidth": 58225100.0,
+    "power": 0.000271625
+  },
+  {
+    "transimpedance_db": 62.3498,
+    "bandwidth": 185652000.0,
+    "power": 0.000152758
+  },
+  {
+    "transimpedance_db": 44.9901,
+    "bandwidth": 360557000.0,
+    "power": 0.000195208
+  },
+  {
+    "transimpedance_db": 70.3328,
+    "bandwidth": 145465000.0,
+    "power": 0.000245713
+  },
+  {
+    "transimpedance_db": 67.2197,
+    "bandwidth": 134344000.0,
+    "power": 0.000223662
+  },
+  {
+    "transimpedance_db": 77.4145,
+    "bandwidth": 16823400.0,
+    "power": 0.000193553
+  },
+  {
+    "transimpedance_db": 26.4367,
+    "bandwidth": 735207000.0,
+    "power": 0.000143051
+  },
+  {
+    "transimpedance_db": 66.5386,
+    "bandwidth": 13924000.0,
+    "power": 0.00014197
+  },
+  {
+    "transimpedance_db": 71.8898,
+    "bandwidth": 21014400.0,
+    "power": 0.000223625
+  },
+  {
+    "transimpedance_db": 73.5256,
+    "bandwidth": 60747700.0,
+    "power": 0.000168725
+  },
+  {
+    "transimpedance_db": 94.5094,
+    "bandwidth": 120481000.0,
+    "power": 0.000421861
+  },
+  {
+    "transimpedance_db": 91.2733,
+    "bandwidth": 34040500.0,
+    "power": 0.00023444
+  },
+  {
+    "transimpedance_db": 91.0317,
+    "bandwidth": 12872300.0,
+    "power": 0.000154219
+  },
+  {
+    "transimpedance_db": 47.3632,
+    "bandwidth": 337633000.0,
+    "power": 0.000168231
+  },
+  {
+    "transimpedance_db": 53.2357,
+    "bandwidth": 357380000.0,
+    "power": 0.000196493
+  },
+  {
+    "transimpedance_db": 35.9018,
+    "bandwidth": 146725000.0,
+    "power": 0.00017053
+  },
+  {
+    "transimpedance_db": 66.2999,
+    "bandwidth": 129960000.0,
+    "power": 0.000146826
+  },
+  {
+    "transimpedance_db": 101.098,
+    "bandwidth": 20153400.0,
+    "power": 0.000505356
+  },
+  {
+    "transimpedance_db": 78.3202,
+    "bandwidth": 152298000.0,
+    "power": 0.000249937
+  },
+  {
+    "transimpedance_db": 78.0202,
+    "bandwidth": 122093000.0,
+    "power": 0.000259535
+  },
+  {
+    "transimpedance_db": 96.5531,
+    "bandwidth": 15967100.0,
+    "power": 0.000246357
+  },
+  {
+    "transimpedance_db": 53.1252,
+    "bandwidth": 105051000.0,
+    "power": 0.000159097
+  },
+  {
+    "transimpedance_db": 48.2212,
+    "bandwidth": 339488000.0,
+    "power": 0.000236791
+  },
+  {
+    "transimpedance_db": 53.1425,
+    "bandwidth": 79781800.0,
+    "power": 0.00016753
+  },
+  {
+    "transimpedance_db": 91.5907,
+    "bandwidth": 9241770.0,
+    "power": 0.000216354
+  },
+  {
+    "transimpedance_db": 69.7812,
+    "bandwidth": 8738790.0,
+    "power": 0.000133953
+  },
+  {
+    "transimpedance_db": 54.6628,
+    "bandwidth": 440933000.0,
+    "power": 0.000299305
+  },
+  {
+    "transimpedance_db": 68.5689,
+    "bandwidth": 322146000.0,
+    "power": 0.000558031
+  },
+  {
+    "transimpedance_db": 75.371,
+    "bandwidth": 252812000.0,
+    "power": 0.000404645
+  },
+  {
+    "transimpedance_db": 41.941,
+    "bandwidth": 41797600.0,
+    "power": 0.000103618
+  },
+  {
+    "transimpedance_db": 1.4809,
+    "bandwidth": 1111470000.0,
+    "power": 0.000159036
+  },
+  {
+    "transimpedance_db": 68.646,
+    "bandwidth": 177061000.0,
+    "power": 0.000385596
+  },
+  {
+    "transimpedance_db": 39.2351,
+    "bandwidth": 1037830000.0,
+    "power": 0.00035449
+  },
+  {
+    "transimpedance_db": 40.6732,
+    "bandwidth": 120025000.0,
+    "power": 0.000143198
+  },
+  {
+    "transimpedance_db": 50.8719,
+    "bandwidth": 360327000.0,
+    "power": 0.000681827
+  },
+  {
+    "transimpedance_db": 57.2846,
+    "bandwidth": 284527000.0,
+    "power": 0.000285968
+  },
+  {
+    "transimpedance_db": 62.6855,
+    "bandwidth": 149974000.0,
+    "power": 0.000210527
+  },
+  {
+    "transimpedance_db": 54.4198,
+    "bandwidth": 13978400.0,
+    "power": 9.10779e-05
+  },
+  {
+    "transimpedance_db": 83.0583,
+    "bandwidth": 22277700.0,
+    "power": 0.000170482
+  },
+  {
+    "transimpedance_db": 78.7378,
+    "bandwidth": 135096000.0,
+    "power": 0.000269706
+  },
+  {
+    "transimpedance_db": 93.9119,
+    "bandwidth": 19298500.0,
+    "power": 7.35741e-05
+  },
+  {
+    "transimpedance_db": 61.2793,
+    "bandwidth": 76788800.0,
+    "power": 0.000306673
+  },
+  {
+    "transimpedance_db": 85.7925,
+    "bandwidth": 121294000.0,
+    "power": 0.000291362
+  },
+  {
+    "transimpedance_db": 35.0297,
+    "bandwidth": 2132620000.0,
+    "power": 0.000496889
+  },
+  {
+    "transimpedance_db": 46.8447,
+    "bandwidth": 155413000.0,
+    "power": 0.000155013
+  },
+  {
+    "transimpedance_db": 69.1957,
+    "bandwidth": 35832900.0,
+    "power": 0.000210178
+  },
+  {
+    "transimpedance_db": 86.7544,
+    "bandwidth": 92823700.0,
+    "power": 0.000355812
+  },
+  {
+    "transimpedance_db": 90.54,
+    "bandwidth": 53914400.0,
+    "power": 0.000510911
+  },
+  {
+    "transimpedance_db": 89.4204,
+    "bandwidth": 9354760.0,
+    "power": 4.8579e-05
+  },
+  {
+    "transimpedance_db": 38.624,
+    "bandwidth": 747594000.0,
+    "power": 0.00021715
+  },
+  {
+    "transimpedance_db": 80.1319,
+    "bandwidth": 10473100.0,
+    "power": 0.000261763
+  },
+  {
+    "transimpedance_db": 31.0481,
+    "bandwidth": 463336000.0,
+    "power": 0.000302616
+  },
+  {
+    "transimpedance_db": 82.0813,
+    "bandwidth": 45792100.0,
+    "power": 0.000102968
+  },
+  {
+    "transimpedance_db": 66.9498,
+    "bandwidth": 48032900.0,
+    "power": 0.000158096
+  },
+  {
+    "transimpedance_db": 93.0627,
+    "bandwidth": 14412400.0,
+    "power": 0.000400738
+  },
+  {
+    "transimpedance_db": 59.4407,
+    "bandwidth": 132165000.0,
+    "power": 0.000322365
+  },
+  {
+    "transimpedance_db": 45.5569,
+    "bandwidth": 245591000.0,
+    "power": 0.00037947
+  },
+  {
+    "transimpedance_db": 78.841,
+    "bandwidth": 33355400.0,
+    "power": 0.000308722
+  },
+  {
+    "transimpedance_db": 34.6992,
+    "bandwidth": 346660000.0,
+    "power": 0.000187618
+  },
+  {
+    "transimpedance_db": 74.7399,
+    "bandwidth": 84844400.0,
+    "power": 0.000501516
+  },
+  {
+    "transimpedance_db": 67.2143,
+    "bandwidth": 200566000.0,
+    "power": 0.000227315
+  },
+  {
+    "transimpedance_db": 69.9059,
+    "bandwidth": 11245400.0,
+    "power": 0.00011386
+  },
+  {
+    "transimpedance_db": 35.9576,
+    "bandwidth": 66702600.0,
+    "power": 3.73089e-05
+  },
+  {
+    "transimpedance_db": 44.479,
+    "bandwidth": 504897000.0,
+    "power": 0.000703878
+  },
+  {
+    "transimpedance_db": 64.3411,
+    "bandwidth": 169142000.0,
+    "power": 0.000549358
+  },
+  {
+    "transimpedance_db": 76.4911,
+    "bandwidth": 13026400.0,
+    "power": 0.000242055
+  },
+  {
+    "transimpedance_db": 56.7407,
+    "bandwidth": 204699000.0,
+    "power": 0.000323489
+  },
+  {
+    "transimpedance_db": 81.5451,
+    "bandwidth": 12524800.0,
+    "power": 0.000175314
+  },
+  {
+    "transimpedance_db": 32.6084,
+    "bandwidth": 291703000.0,
+    "power": 0.000196543
+  },
+  {
+    "transimpedance_db": 72.0868,
+    "bandwidth": 18902000.0,
+    "power": 0.000136033
+  },
+  {
+    "transimpedance_db": 61.2338,
+    "bandwidth": 223804000.0,
+    "power": 0.000521425
+  },
+  {
+    "transimpedance_db": 97.8157,
+    "bandwidth": 46262700.0,
+    "power": 0.000250571
+  },
+  {
+    "transimpedance_db": 68.2314,
+    "bandwidth": 14880700.0,
+    "power": 8.55065e-05
+  },
+  {
+    "transimpedance_db": 20.6664,
+    "bandwidth": 1710850000.0,
+    "power": 0.000224949
+  },
+  {
+    "transimpedance_db": 9.54591,
+    "bandwidth": 96955500.0,
+    "power": 0.000165336
+  },
+  {
+    "transimpedance_db": 62.3603,
+    "bandwidth": 290451000.0,
+    "power": 0.000316324
+  },
+  {
+    "transimpedance_db": 22.4081,
+    "bandwidth": 110993000.0,
+    "power": 0.000140725
+  },
+  {
+    "transimpedance_db": 15.6855,
+    "bandwidth": 1763160000.0,
+    "power": 0.000206183
+  },
+  {
+    "transimpedance_db": 39.6376,
+    "bandwidth": 558854000.0,
+    "power": 0.000147171
+  },
+  {
+    "transimpedance_db": 87.1974,
+    "bandwidth": 9627640.0,
+    "power": 6.69612e-05
+  },
+  {
+    "transimpedance_db": 46.6905,
+    "bandwidth": 7431260.0,
+    "power": 0.000127558
+  },
+  {
+    "transimpedance_db": 29.1465,
+    "bandwidth": 2696940000.0,
+    "power": 0.000511672
+  },
+  {
+    "transimpedance_db": 18.4422,
+    "bandwidth": 268658000.0,
+    "power": 0.00015406
+  },
+  {
+    "transimpedance_db": 70.7808,
+    "bandwidth": 198589000.0,
+    "power": 0.000328561
+  },
+  {
+    "transimpedance_db": 63.3494,
+    "bandwidth": 34832300.0,
+    "power": 0.000321394
+  },
+  {
+    "transimpedance_db": 67.3027,
+    "bandwidth": 36962500.0,
+    "power": 0.000332646
+  },
+  {
+    "transimpedance_db": 20.6749,
+    "bandwidth": 917411000.0,
+    "power": 0.000220072
+  },
+  {
+    "transimpedance_db": 43.4079,
+    "bandwidth": 133973000.0,
+    "power": 0.000221498
+  },
+  {
+    "transimpedance_db": 64.0509,
+    "bandwidth": 161582000.0,
+    "power": 0.000175707
+  },
+  {
+    "transimpedance_db": 83.7844,
+    "bandwidth": 53434700.0,
+    "power": 0.000157796
+  },
+  {
+    "transimpedance_db": 110.001,
+    "bandwidth": 9081250.0,
+    "power": 0.000136012
+  },
+  {
+    "transimpedance_db": 73.5727,
+    "bandwidth": 12534000.0,
+    "power": 0.000131478
+  },
+  {
+    "transimpedance_db": 12.8808,
+    "bandwidth": 1485800000.0,
+    "power": 0.000155409
+  },
+  {
+    "transimpedance_db": 93.0018,
+    "bandwidth": 73344000.0,
+    "power": 0.000204454
+  },
+  {
+    "transimpedance_db": 56.5872,
+    "bandwidth": 143308000.0,
+    "power": 9.44116e-05
+  },
+  {
+    "transimpedance_db": 77.9098,
+    "bandwidth": 8174710.0,
+    "power": 0.000182722
+  },
+  {
+    "transimpedance_db": 44.9813,
+    "bandwidth": 8368810.0,
+    "power": 0.000109673
+  },
+  {
+    "transimpedance_db": 31.3826,
+    "bandwidth": 223590000.0,
+    "power": 0.00037417
+  },
+  {
+    "transimpedance_db": 78.2012,
+    "bandwidth": 34961800.0,
+    "power": 0.000125613
+  },
+  {
+    "transimpedance_db": 64.4597,
+    "bandwidth": 47826400.0,
+    "power": 0.000148396
+  },
+  {
+    "transimpedance_db": 110.727,
+    "bandwidth": 13596700.0,
+    "power": 0.000172982
+  },
+  {
+    "transimpedance_db": 18.5411,
+    "bandwidth": 1442440000.0,
+    "power": 0.00023453
+  },
+  {
+    "transimpedance_db": 10.8399,
+    "bandwidth": 163172000.0,
+    "power": 0.000245234
+  },
+  {
+    "transimpedance_db": 68.5568,
+    "bandwidth": 13878400.0,
+    "power": 0.000110587
+  },
+  {
+    "transimpedance_db": 65.3876,
+    "bandwidth": 215685000.0,
+    "power": 0.000196624
+  },
+  {
+    "transimpedance_db": 41.7858,
+    "bandwidth": 422390000.0,
+    "power": 0.000186015
+  },
+  {
+    "transimpedance_db": 50.1557,
+    "bandwidth": 436407000.0,
+    "power": 0.000227041
+  },
+  {
+    "transimpedance_db": 9.41666,
+    "bandwidth": 1358160000.0,
+    "power": 0.000170257
+  },
+  {
+    "transimpedance_db": 99.9878,
+    "bandwidth": 7850560.0,
+    "power": 0.000113101
+  },
+  {
+    "transimpedance_db": 57.7922,
+    "bandwidth": 101224000.0,
+    "power": 0.000421782
+  },
+  {
+    "transimpedance_db": 65.2142,
+    "bandwidth": 73237700.0,
+    "power": 0.000140974
+  },
+  {
+    "transimpedance_db": 43.2312,
+    "bandwidth": 1111370000.0,
+    "power": 0.000704938
+  },
+  {
+    "transimpedance_db": 45.0378,
+    "bandwidth": 457286000.0,
+    "power": 0.00013206
+  },
+  {
+    "transimpedance_db": 13.0603,
+    "bandwidth": 196714000.0,
+    "power": 0.000173414
+  }
+]

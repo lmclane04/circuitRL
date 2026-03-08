@@ -1,0 +1,50 @@
+# Buck DC-DC Converter (Step-Down)
+# Fixed topology: Vin=5V, D=0.66 (Vout~3.3V), fsw=1MHz, Rload=5 ohm
+# Sizing problem: choose L_ind and C_out to minimize output ripple
+# and inductor current ripple simultaneously.
+#
+# Design equations (CCM):
+#   delta_iL  = Vin * D * (1-D) / (L * fsw)    -- only L controls current ripple
+#   delta_vC  = delta_iL / (8 * C * fsw)        -- both L and C control voltage ripple
+#
+# Agent must discover: increase L to reduce current ripple AND increase C to
+# further reduce voltage ripple beyond what L alone provides.
+
+netlist: ../envs/buck_converter_template.sp
+
+parameters:
+  L_ind:  # Output filter inductor (H)
+    min: 1.0e-6
+    max: 20.0e-6
+    default: 5.0e-6       # ~index 8 / 38 levels; starting ripple ~224mA, ~28mV
+    step: 0.5e-6          # 0.5µH increments → 39 levels
+  C_out:  # Output filter capacitor (F)
+    min: 0.1e-6
+    max: 5.0e-6
+    default: 1.0e-6       # ~index 9 / 49 levels
+    step: 0.1e-6          # 0.1µF increments → 50 levels
+
+# Spec pool: run `python generate_specs.py --config circuitrl/configs/buck_converter.yaml --n 500`
+# to create this file before training.
+target_spec_file: buck_converter_specs_pool.json
+
+target_specs:
+  ripple_mv:
+    tolerance: 3.0        # 3 mV tolerance (~10% of midrange target)
+    direction: min        # lower output voltage ripple is better
+  il_ripple_a:
+    tolerance: 0.02       # 20 mA tolerance (~10% of midrange target)
+    direction: min        # lower inductor current ripple is better
+
+env:
+  max_steps: 50
+  sim_timeout: 30         # transient sim with switching can be slower
+  randomize_start: false
+
+ppo:
+  learning_rate: 3.0e-4
+  n_steps: 1024
+  batch_size: 64
+  n_epochs: 10
+  gamma: 0.99
+  total_timesteps: 100000

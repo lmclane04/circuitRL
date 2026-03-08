@@ -1,0 +1,83 @@
+# Three-Stage TIA
+# Current-input transimpedance amplifier using three cascaded CS stages.
+
+netlist: ../envs/three_stage_tia_template.sp
+
+parameters:
+  W1:
+    min: 1.0e-6
+    max: 80.0e-6
+    default: 20.0e-6
+    step: 1.0e-6
+  L1:
+    min: 0.18e-6
+    max: 3.0e-6
+    default: 1.0e-6
+    step: 0.1e-6
+  RD1:
+    min: 1000
+    max: 50000
+    default: 20000
+    step: 500
+  W2:
+    min: 1.0e-6
+    max: 80.0e-6
+    default: 20.0e-6
+    step: 1.0e-6
+  L2:
+    min: 0.18e-6
+    max: 3.0e-6
+    default: 1.0e-6
+    step: 0.1e-6
+  RD2:
+    min: 1000
+    max: 50000
+    default: 20000
+    step: 500
+  W3:
+    min: 1.0e-6
+    max: 80.0e-6
+    default: 20.0e-6
+    step: 1.0e-6
+  L3:
+    min: 0.18e-6
+    max: 3.0e-6
+    default: 1.0e-6
+    step: 0.1e-6
+  RD3:
+    min: 1000
+    max: 50000
+    default: 20000
+    step: 500
+  Rin:
+    min: 100
+    max: 5000
+    default: 1000
+    step: 100
+
+# Spec pool: run `python generate_specs.py --config circuitrl/configs/three_stage_tia.yaml --n 500`
+target_spec_file: three_stage_tia_specs_pool.json
+
+target_specs:
+  transimpedance_db:
+    tolerance: 2.0
+    direction: max
+  bandwidth:
+    tolerance: 1.0e6
+    direction: max
+  power:
+    tolerance: 0.2e-3
+    direction: min
+
+env:
+  max_steps: 100
+  sim_timeout: 25
+  randomize_start: false
+
+ppo:
+  learning_rate: 2.0e-4
+  n_steps: 1024
+  batch_size: 64
+  n_epochs: 10
+  gamma: 0.99
+  total_timesteps: 200000
