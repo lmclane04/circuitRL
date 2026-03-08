@@ -27,12 +27,48 @@ pip install -r requirements.txt
 - Three-Stage Transimpendance Amplifier: 10 parameters, 3 specs (`three_stage_tia.yaml`)
 - PMOS Low-Dropout Regulator: 6 parameters, 3 specs (`ldo.yaml`)
 
-Configurations inside `circuitrl/configs/`
+Configurations are inside `circuitrl/configs/`
+There are structured as follows:
+
+```yaml
+netlist: ../envs/your_template.sp # relative path to the SPICE template
+
+parameters:
+  PARAM1:
+    min: 1.0e-6
+    max: 10.0e-6
+    default: 5.0e-6
+    step: 1.0e-6
+
+target_spec_file: your_specs_pool.json
+
+target_specs:
+  metric_name:
+    tolerance: 1.0
+    direction: max
+
+env:
+  max_steps: 100
+  sim_timeout: 30
+  sequential: false
+  action_deltas: [-1, 0, 1] # Change this to give the agent more flexible step sizes ie. [-2, -1, 0, 1, 2] 
+  # note: ppo-seq is hardcoded to [-1, 0, 1]. 
+
+ppo:
+  learning_rate: 3.0e-4
+  n_steps: 1024
+  batch_size: 64
+  n_epochs: 10
+  gamma: 0.99
+  total_timesteps: 100000
+```
+
 
 ## Agents
 
-- Shared-trunk PPO actor-critic (`ppo`)
-- Non-shared policy/value PPO (`ppo_non_shared`)
+- `ppo`: shared-trunk PPO actor-critic with simultaneous parameter updates
+- `ppo_non_shared`: separate actor/critic PPO, with simultaneous parameter updates
+- `ppo-seq`: shared-trunk sequential PPO, one parameter update per step
 
 ## Commands
 

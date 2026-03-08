@@ -3,6 +3,7 @@ import argparse
 import csv
 import os
 
+import numpy as np
 import torch
 import yaml
 
@@ -26,9 +27,25 @@ def find_original_config(run_dir: str) -> str | None:
     return None
 
 
+def _resolve_agent_name(agent: str, checkpoint: dict) -> str:
+    if agent != "auto":
+        return agent
+    if "seq_network" in checkpoint:
+        return "ppo-seq"
+    if "actor_network" in checkpoint:
+        return "ppo_non_shared"
+    if "network" in checkpoint:
+        return "ppo"
+    raise ValueError("Unable to auto-detect agent type from checkpoint keys")
+
+
 def load_agent(agent: str, run_dir: str, spec_pool_test: str, config_override: str | None = None):
-    """Load config and network from a run directory."""
+    """Load config and actor network from a run directory."""
     checkpoint_path = os.path.join(run_dir, "model.pt")
+    checkpoint = torch.load(checkpoint_path, weights_only=True)
+
+    chosen_agent = _resolve_agent_name(agent, checkpoint)
+    is_sequential = chosen_agent == "ppo-seq"
 
     # Use original config for correct netlist path resolution
     config_path = config_override or find_original_config(run_dir)
@@ -40,24 +57,34 @@ def load_agent(agent: str, run_dir: str, spec_pool_test: str, config_override: s
     with open(config_path) as f:
         config = yaml.safe_load(f)
 
-    env = CircuitEnv(config_path=config_path)
+    env = CircuitEnv(config_path=config_path, sequential=is_sequential)
 
     # If specified spec pool to test on, set the new spec pool
     if spec_pool_test:
         env.set_spec_pool(spec_pool_test)
 
-    if agent == "ppo":
-        from circuitrl.agents.ppo_agent import PPOAgent
-        agent = PPOAgent(env, config)
-    elif agent == "ppo_non_shared":
-        from circuitrl.agents.ppo_agent_non_shared import PPOAgentNonShared
-        agent = PPOAgentNonShared(env, config)
+    obs_dim = env.observation_space.shape[0]
+    n_params = len(config["parameters"])
+
+    if chosen_agent == "ppo":
+        from circuitrl.agents.ppo_agent import ActorCritic
+        actions_per_param = checkpoint["network"]["policy_heads.0.weight"].shape[0]
+        network = ActorCritic(obs_dim, n_params, actions_per_param=actions_per_param)
+        network.load_state_dict(checkpoint["network"])
+    elif chosen_agent == "ppo_non_shared":
+        from circuitrl.agents.ppo_agent_non_shared import Actor
+        actions_per_param = checkpoint["actor_network"]["policy_heads.0.weight"].shape[0]
+        network = Actor(obs_dim, n_params, actions_per_param=actions_per_param)
+        network.load_state_dict(checkpoint["actor_network"])
+    elif chosen_agent == "ppo-seq":
+        from circuitrl.agents.ppo_agent import SeqActorCritic
+        network = SeqActorCritic(obs_dim)
+        network.load_state_dict(checkpoint["seq_network"])
     else:
-        raise ValueError(f"Unknown agent: {agent}")
+        raise ValueError(f"Unknown agent: {chosen_agent}")
 
-    network = agent.load_actor_network(checkpoint_path)
-
-    return env, network, config
+    network.eval()
+    return env, network, config, is_sequential, chosen_agent
 
 
 def spec_met(metric_val: float, target: float, tolerance: float, direction: str) -> bool:
@@ -70,26 +97,39 @@ def spec_met(metric_val: float, target: float, tolerance: float, direction: str)
         return abs(metric_val - target) <= tolerance
 
 
-def run_episode(env, network):
+def greedy_action(network, obs_t, is_sequential):
+    """Return greedy (argmax) action for either agent type."""
+    with torch.no_grad():
+        if is_sequential:
+            h = network.trunk(obs_t)
+            return int(network.policy_head(h).argmax(dim=-1).item())
+        logits_list = network.get_logits_list(obs_t)
+        actions = torch.stack([l.argmax(dim=-1) for l in logits_list], dim=-1)
+        return actions.squeeze(0).numpy()
+
+
+def _action_to_list(action):
+    if np.isscalar(action):
+        return [int(action)]
+    return np.asarray(action).astype(int).tolist()
+
+
+def run_episode(env, network, is_sequential):
     """Run one greedy episode. Returns (steps, total_reward, success, episode_targets)."""
     obs, info = env.reset()
-    episode_targets = info["targets"]  # targets sampled for this episode
+    episode_targets = info["targets"]
     steps = []
     total_reward = 0.0
 
     for _ in range(env._max_steps):
         obs_t = torch.FloatTensor(obs).unsqueeze(0)
-        with torch.no_grad():
-            logits_list = network.get_logits_list(obs_t)
-
-        actions = torch.stack([logits.argmax(dim=-1) for logits in logits_list], dim=-1)
-        action = actions.squeeze(0).numpy()
+        action = greedy_action(network, obs_t, is_sequential)
         obs, reward, terminated, truncated, info = env.step(action)
         total_reward += reward
 
         steps.append({
             "step": len(steps) + 1,
-            "action": action.tolist(),
+            "action": _action_to_list(action),
             "reward": reward,
             "params": info.get("params", {}),
             "metrics": info.get("metrics", {}),
@@ -114,17 +154,20 @@ def main():
     parser.add_argument("--seed", type=int, default=0,
                         help="RNG seed for target sampling")
     parser.add_argument("--spec_pool_test", type=str, help="Spec pool to evaluate on")
-    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "ppo_non_shared"], help="Agent to evaluate on")
+    parser.add_argument("--agent", type=str, default="auto", choices=["auto", "ppo", "ppo_non_shared", "ppo-seq"],
+                        help="Agent type (auto detects from checkpoint)")
     args = parser.parse_args()
 
-    env, network, config = load_agent(args.agent, args.run_dir, args.spec_pool_test, config_override=args.config)
+    env, network, config, is_sequential, chosen_agent = load_agent(
+        args.agent, args.run_dir, args.spec_pool_test, config_override=args.config
+    )
     env.reset(seed=args.seed)  # seed env's np_random for reproducible target sampling
 
     spec_names = list(config["target_specs"].keys())
     tolerances = {name: float(spec["tolerance"]) for name, spec in config["target_specs"].items()}
     directions = {name: spec.get("direction", "equal") for name, spec in config["target_specs"].items()}
 
-    print(f"Loaded agent from {args.run_dir}")
+    print(f"Loaded {chosen_agent} agent from {args.run_dir}")
     print(f"Evaluating {args.episodes} episodes  (seed={args.seed})")
     print()
 
@@ -135,7 +178,7 @@ def main():
     csv_rows = []
 
     for ep in range(args.episodes):
-        steps, total_reward, success, episode_targets = run_episode(env, network)
+        steps, total_reward, success, episode_targets = run_episode(env, network, is_sequential)
         all_rewards.append(total_reward)
         all_successes.append(success)
         all_steps.append(len(steps))
