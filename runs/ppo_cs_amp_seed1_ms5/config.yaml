@@ -39,7 +39,7 @@ env:
   max_steps: 50
   sim_timeout: 10
   randomize_start: false
-  action_deltas: [-2, -1, 0, 1, 2]
+  action_deltas: [-5, -1, 0, 1, 5]
 
 ppo:
   learning_rate: 3.0e-4

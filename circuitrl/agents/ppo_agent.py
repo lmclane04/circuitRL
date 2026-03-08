@@ -133,7 +133,8 @@ class PPOAgent:
         self.gae_lambda = 0.95
         self.max_grad_norm = 0.5
 
-        self.network = ActorCritic(obs_dim, n_params)
+        actions_per_param = env.n_actions_per_param
+        self.network = ActorCritic(obs_dim, n_params, actions_per_param=actions_per_param)
         self.optimizer = torch.optim.Adam(self.network.parameters(), lr=self.lr)
         self.buffer = RolloutBuffer(self.n_steps, obs_dim, n_params)
 

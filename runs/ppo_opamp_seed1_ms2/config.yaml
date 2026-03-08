@@ -79,7 +79,7 @@ env:
   max_steps: 100
   sim_timeout: 30
   randomize_start: false
-  action_deltas: [-5, -1, 0, 1, 5]
+  action_deltas: [-2, -1, 0, 1, 2]
 
 # ppo hyperparameters
 ppo:

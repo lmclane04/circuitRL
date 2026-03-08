@@ -25,7 +25,8 @@ class CircuitEnv(gym.Env):
 
     metadata = {"render_modes": []}
 
-    def __init__(self, config_path: str = "circuitrl/configs/opamp.yaml", sequential: bool | None = None):
+    def __init__(self, config_path: str = "circuitrl/configs/opamp.yaml", sequential: bool | None = None,
+                 action_deltas: list[int] | None = None):
         super().__init__()
 
         with open(config_path) as f:
@@ -83,6 +84,10 @@ class CircuitEnv(gym.Env):
         self._sequential = sequential if sequential is not None else cfg["env"].get("sequential", False)
         self._active_param_idx = 0  # only used in sequential mode
 
+        # Action deltas: kwarg > YAML > default [-1, 0, 1]
+        _deltas = action_deltas or cfg["env"].get("action_deltas", [-1, 0, 1])
+        self._action_deltas = np.array(_deltas, dtype=np.int64)
+
         # Gym spaces
         obs_dim = self._n_params + self._n_metrics + self._n_metrics
         if self._sequential:
@@ -90,10 +95,12 @@ class CircuitEnv(gym.Env):
         self.observation_space = gym.spaces.Box(
             low=-np.inf, high=np.inf, shape=(obs_dim,), dtype=np.float32
         )
+        n_actions = len(self._action_deltas)
+        self.n_actions_per_param = n_actions
         if self._sequential:
             self.action_space = gym.spaces.Discrete(3)
         else:
-            self.action_space = gym.spaces.MultiDiscrete([3] * self._n_params)
+            self.action_space = gym.spaces.MultiDiscrete([n_actions] * self._n_params)
         self._param_indices = None
         self._metrics = None
         self._step_count = 0
@@ -144,8 +151,8 @@ class CircuitEnv(gym.Env):
             )
             self._active_param_idx = (self._active_param_idx + 1) % self._n_params
         else:
-            # Decode action: 0=decrease, 1=no-op, 2=increase (per param)
-            deltas = np.asarray(action) - 1
+            # Decode action indices → delta steps via lookup
+            deltas = self._action_deltas[np.asarray(action)]
             self._param_indices = np.clip(self._param_indices + deltas, 0, self._max_indices)
 
         self._metrics = self._simulate()

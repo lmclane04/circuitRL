@@ -68,11 +68,13 @@ def load_agent(agent: str, run_dir: str, spec_pool_test: str, config_override: s
 
     if chosen_agent == "ppo":
         from circuitrl.agents.ppo_agent import ActorCritic
-        network = ActorCritic(obs_dim, n_params)
+        actions_per_param = checkpoint["network"]["policy_heads.0.weight"].shape[0]
+        network = ActorCritic(obs_dim, n_params, actions_per_param=actions_per_param)
         network.load_state_dict(checkpoint["network"])
     elif chosen_agent == "ppo_non_shared":
         from circuitrl.agents.ppo_agent_non_shared import Actor
-        network = Actor(obs_dim, n_params)
+        actions_per_param = checkpoint["actor_network"]["policy_heads.0.weight"].shape[0]
+        network = Actor(obs_dim, n_params, actions_per_param=actions_per_param)
         network.load_state_dict(checkpoint["actor_network"])
     elif chosen_agent == "ppo-seq":
         from circuitrl.agents.ppo_agent import SeqActorCritic
