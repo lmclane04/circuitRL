@@ -7,7 +7,6 @@ import torch
 import yaml
 
 from circuitrl.envs.circuit_env import CircuitEnv
-from circuitrl.agents.ppo_agent import ActorCritic
 
 
 def find_original_config(run_dir: str) -> str | None:
@@ -27,7 +26,7 @@ def find_original_config(run_dir: str) -> str | None:
     return None
 
 
-def load_agent(run_dir: str, spec_pool_test: str, config_override: str | None = None):
+def load_agent(agent: str, run_dir: str, spec_pool_test: str, config_override: str | None = None):
     """Load config and network from a run directory."""
     checkpoint_path = os.path.join(run_dir, "model.pt")
 
@@ -47,14 +46,16 @@ def load_agent(run_dir: str, spec_pool_test: str, config_override: str | None = 
     if spec_pool_test:
         env.set_spec_pool(spec_pool_test)
 
-    obs_dim = env.observation_space.shape[0]
-    n_params = len(config["parameters"])
+    if agent == "ppo":
+        from circuitrl.agents.ppo_agent import PPOAgent
+        agent = PPOAgent(env, config)
+    elif agent == "ppo_non_shared":
+        from circuitrl.agents.ppo_agent_non_shared import PPOAgentNonShared
+        agent = PPOAgentNonShared(env, config)
+    else:
+        raise ValueError(f"Unknown agent: {agent}")
 
-    network = ActorCritic(obs_dim, n_params)
-    checkpoint = torch.load(checkpoint_path, weights_only=True)
-    network.load_state_dict(checkpoint["network"])
-    network.eval()
-
+    network = agent.load_actor_network(checkpoint_path)
     return env, network, config
 
 
@@ -78,7 +79,7 @@ def run_episode(env, network, seed, target_idx):
     for _ in range(env._max_steps):
         obs_t = torch.FloatTensor(obs).unsqueeze(0)
         with torch.no_grad():
-            logits_list, _ = network(obs_t)
+            logits_list = network.get_logits_list(obs_t)
 
         actions = torch.stack([logits.argmax(dim=-1) for logits in logits_list], dim=-1)
         action = actions.squeeze(0).numpy()
@@ -110,9 +111,10 @@ def main():
     parser.add_argument("--seed", type=int, default=0,
                         help="RNG seed for env sampling")
     parser.add_argument("--spec_pool_test", type=str, help="Spec pool to evaluate on")
+    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "ppo_non_shared"], help="Agent to evaluate on")
     args = parser.parse_args()
 
-    env, network, config = load_agent(args.run_dir, args.spec_pool_test, config_override=args.config)
+    env, network, config = load_agent(args.agent, args.run_dir, args.spec_pool_test, config_override=args.config)
     env.reset_with_target_idx(seed=args.seed, target_idx=0)  # seed env's np_random for reproducible target sampling
 
     spec_names = list(config["target_specs"].keys())

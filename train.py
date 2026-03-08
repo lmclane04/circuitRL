@@ -64,7 +64,7 @@ def make_callback(run_dir: str, circuit_name: str):
 
 def main():
     parser = argparse.ArgumentParser(description="Train a CircuitRL agent")
-    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo"])
+    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "ppo_non_shared"])
     parser.add_argument("--config", type=str, default="circuitrl/configs/opamp_default.yaml")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--run-name", type=str, default=None)
@@ -113,6 +113,9 @@ def main():
     if args.agent == "ppo":
         from circuitrl.agents.ppo_agent import PPOAgent
         agent = PPOAgent(env, config)
+    elif args.agent == "ppo_non_shared":
+        from circuitrl.agents.ppo_agent_non_shared import PPOAgentNonShared
+        agent = PPOAgentNonShared(env, config)
     else:
         raise ValueError(f"Unknown agent: {args.agent}")
 
