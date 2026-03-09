@@ -80,6 +80,10 @@ def load_agent(agent: str, run_dir: str, spec_pool_test: str, config_override: s
         from circuitrl.agents.ppo_agent import SeqActorCritic
         network = SeqActorCritic(obs_dim)
         network.load_state_dict(checkpoint["seq_network"])
+    elif chosen_agent == "grpo":
+        from circuitrl.agents.grpo_agent import Actor
+        network = Actor(obs_dim, n_params)
+        network.load_state_dict(checkpoint["actor_network"])
     else:
         raise ValueError(f"Unknown agent: {chosen_agent}")
 
@@ -152,7 +156,7 @@ def main():
     parser.add_argument("--seed", type=int, default=0,
                         help="RNG seed for env sampling")
     parser.add_argument("--spec_pool_test", type=str, help="Spec pool to evaluate on")
-    parser.add_argument("--agent", type=str, default="auto", choices=["auto", "ppo", "ppo_non_shared", "ppo-seq"],
+    parser.add_argument("--agent", type=str, default="auto", choices=["auto", "ppo", "ppo_non_shared", "ppo-seq", "grpo"],
                         help="Agent type (auto detects from checkpoint)")
     args = parser.parse_args()
 

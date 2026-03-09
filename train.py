@@ -64,7 +64,7 @@ def make_callback(run_dir: str, circuit_name: str):
 
 def main():
     parser = argparse.ArgumentParser(description="Train a CircuitRL agent")
-    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "ppo_non_shared", "ppo-seq"])
+    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "ppo_non_shared", "ppo-seq", "grpo"])
     parser.add_argument("--config", type=str, default="circuitrl/configs/opamp_default.yaml")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--run-name", type=str, default=None)
@@ -120,6 +120,9 @@ def main():
     elif args.agent == "ppo-seq":
         from circuitrl.agents.ppo_agent import PPOSeqAgent
         agent = PPOSeqAgent(env, config)
+    elif args.agent == "grpo":
+        from circuitrl.agents.grpo_agent import GRPOAgent
+        agent = GRPOAgent(env, config)
     else:
         raise ValueError(f"Unknown agent: {args.agent}")
 
