@@ -184,7 +184,8 @@ class PPOAgentNonShared:
         self.max_grad_norm = 0.5
 
         # Set up the Actor and Critic networks and their optimizers
-        self.actor_network = Actor(obs_dim, n_params)
+        actions_per_param = env.n_actions_per_param
+        self.actor_network = Actor(obs_dim, n_params, actions_per_param=actions_per_param)
         self.critic_network = Critic(obs_dim)
         self.actor_optimizer = torch.optim.Adam(self.actor_network.parameters(), lr=self.lr)
         self.critic_optimizer = torch.optim.Adam(self.critic_network.parameters(), lr=self.lr)
