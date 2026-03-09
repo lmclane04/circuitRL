@@ -141,7 +141,8 @@ class GRPOAgent:
         self.max_grad_norm = 0.5
 
         # Set up Actor network and optimizer
-        self.network = Actor(obs_dim, n_params)
+        actions_per_param = env.n_actions_per_param
+        self.network = Actor(obs_dim, n_params, actions_per_param=actions_per_param)
         self.optimizer = torch.optim.Adam(self.network.parameters(), lr=self.lr)
         self.buffer = RolloutBuffer(self.n_steps, self.group_size, obs_dim, n_params)
 

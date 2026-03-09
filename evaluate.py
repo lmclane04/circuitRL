@@ -82,7 +82,8 @@ def load_agent(agent: str, run_dir: str, spec_pool_test: str, config_override: s
         network.load_state_dict(checkpoint["seq_network"])
     elif chosen_agent == "grpo":
         from circuitrl.agents.grpo_agent import Actor
-        network = Actor(obs_dim, n_params)
+        actions_per_param = checkpoint["actor_network"]["policy_heads.0.weight"].shape[0]
+        network = Actor(obs_dim, n_params, actions_per_param=actions_per_param)
         network.load_state_dict(checkpoint["actor_network"])
     else:
         raise ValueError(f"Unknown agent: {chosen_agent}")
