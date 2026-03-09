@@ -63,22 +63,8 @@ def load_agent(agent: str, run_dir: str, spec_pool_test: str, config_override: s
     if spec_pool_test:
         env.set_spec_pool(spec_pool_test)
 
-<<<<<<< HEAD
-    if agent == "ppo":
-        from circuitrl.agents.ppo_agent import PPOAgent
-        agent = PPOAgent(env, config)
-    elif agent == "ppo_non_shared":
-        from circuitrl.agents.ppo_agent_non_shared import PPOAgentNonShared
-        agent = PPOAgentNonShared(env, config)
-    elif agent == "grpo":
-        from circuitrl.agents.grpo_agent import GRPOAgent
-        agent = GRPOAgent(env, config)
-    else:
-        raise ValueError(f"Unknown agent: {agent}")
-=======
     obs_dim = env.observation_space.shape[0]
     n_params = len(config["parameters"])
->>>>>>> origin/master
 
     if chosen_agent == "ppo":
         from circuitrl.agents.ppo_agent import ActorCritic
@@ -166,12 +152,8 @@ def main():
     parser.add_argument("--seed", type=int, default=0,
                         help="RNG seed for env sampling")
     parser.add_argument("--spec_pool_test", type=str, help="Spec pool to evaluate on")
-<<<<<<< HEAD
-    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "ppo_non_shared", "grpo"], help="Agent to evaluate on")
-=======
     parser.add_argument("--agent", type=str, default="auto", choices=["auto", "ppo", "ppo_non_shared", "ppo-seq"],
                         help="Agent type (auto detects from checkpoint)")
->>>>>>> origin/master
     args = parser.parse_args()
 
     env, network, config, is_sequential, chosen_agent = load_agent(
