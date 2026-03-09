@@ -88,3 +88,11 @@ ppo:
   n_epochs: 5
   gamma: 0.99
   total_timesteps: 200000
+
+grpo:
+  learning_rate: 1.0e-4
+  n_steps: 1024
+  group_size: 3
+  batch_size: 64
+  n_epochs: 5
+  total_timesteps: 200000
