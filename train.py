@@ -3,6 +3,7 @@ import csv
 import os
 import shutil
 import time
+from collections import deque
 
 import numpy as np
 import torch
@@ -16,14 +17,19 @@ CSV_FIELDS = [
 ]
 
 
-def make_callback(run_dir: str, circuit_name: str):
+def make_callback(run_dir: str, circuit_name: str, agent=None,
+                   checkpoint_best: bool = False, checkpoint_window: int = 10):
     start_time = time.time()
     csv_path = os.path.join(run_dir, "metrics.csv")
     csv_file = open(csv_path, "w", newline="")
     writer = csv.DictWriter(csv_file, fieldnames=CSV_FIELDS)
     writer.writeheader()
 
+    best_smoothed = -float("inf")
+    reward_window = deque(maxlen=checkpoint_window)
+
     def callback(timesteps_done, episode_stats, loss_stats):
+        nonlocal best_smoothed
         if not episode_stats:
             return
         elapsed = time.time() - start_time
@@ -55,6 +61,15 @@ def make_callback(run_dir: str, circuit_name: str):
         })
         csv_file.flush()
 
+        if checkpoint_best and agent is not None:
+            reward_window.append(mean_reward)
+            smoothed = sum(reward_window) / len(reward_window)
+            if smoothed > best_smoothed:
+                best_smoothed = smoothed
+                best_path = os.path.join(run_dir, "model_best.pt")
+                agent.save(best_path)
+                print(f"  >> best checkpoint saved (smoothed reward: {smoothed:.3f})")
+
     def close():
         csv_file.close()
 
@@ -64,12 +79,16 @@ def make_callback(run_dir: str, circuit_name: str):
 
 def main():
     parser = argparse.ArgumentParser(description="Train a CircuitRL agent")
-    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "ppo_non_shared", "ppo-seq"])
+    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "ppo_non_shared", "ppo-seq", "grpo", "bo"])
     parser.add_argument("--config", type=str, default="circuitrl/configs/opamp_default.yaml")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--run-name", type=str, default=None)
     parser.add_argument("--timesteps", type=int, default=None,
                         help="Override total_timesteps from config")
+    parser.add_argument("--checkpoint-best", action="store_true",
+                        help="Save model_best.pt whenever mean reward improves")
+    parser.add_argument("--checkpoint-window", type=int, default=10,
+                        help="Sliding window size for smoothing reward before checkpointing (default: 10)")
     args = parser.parse_args()
 
     with open(args.config) as f:
@@ -97,9 +116,13 @@ def main():
         with open(os.path.join(run_dir, "config.yaml"), "r") as f:
             first_line = f.readline().strip()
             dup_config = yaml.safe_load(f)
-        dup_config["ppo"]["total_timesteps"] = args.timesteps
+        # Update the right config section for the agent
+        cfg_key = {"ppo": "ppo", "ppo_non_shared": "ppo", "ppo-seq": "ppo",
+                   "grpo": "grpo", "bo": "bo"}[args.agent]
+        if cfg_key in dup_config:
+            dup_config[cfg_key]["total_timesteps"] = args.timesteps
         with open(os.path.join(run_dir, "config.yaml"), "w") as f:
-            # Need to keep first comment because the eval scripts 
+            # Need to keep first comment because the eval scripts
             # use it to find the original config
             f.write(first_line + "\n")
             yaml.dump(dup_config, f, sort_keys=False)
@@ -120,6 +143,12 @@ def main():
     elif args.agent == "ppo-seq":
         from circuitrl.agents.ppo_agent import PPOSeqAgent
         agent = PPOSeqAgent(env, config)
+    elif args.agent == "grpo":
+        from circuitrl.agents.grpo_agent import GRPOAgent
+        agent = GRPOAgent(env, config)
+    elif args.agent == "bo":
+        from circuitrl.agents.bo_agent import BOAgent
+        agent = BOAgent(env, config)
     else:
         raise ValueError(f"Unknown agent: {args.agent}")
 
@@ -127,9 +156,13 @@ def main():
     print(f"Checkpoint dir: {run_dir}/")
     print()
 
-    ppo_key = "ppo"  # both ppo and ppo-seq share the [ppo] config section
-    total = args.timesteps or int(config[ppo_key]["total_timesteps"])
-    cb = make_callback(run_dir, circuit_name)
+    # Map agent to its config section for total_timesteps
+    cfg_key = {"ppo": "ppo", "ppo_non_shared": "ppo", "ppo-seq": "ppo",
+               "grpo": "grpo", "bo": "bo"}[args.agent]
+    total = args.timesteps or int(config[cfg_key]["total_timesteps"])
+    cb = make_callback(run_dir, circuit_name, agent=agent,
+                       checkpoint_best=args.checkpoint_best,
+                       checkpoint_window=args.checkpoint_window)
     agent.train(total_timesteps=total, callback=cb)
     cb.close()
 

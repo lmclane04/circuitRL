@@ -1,0 +1,60 @@
+# Common-Source Amplifier
+netlist: ../envs/cs_amp_template.sp
+parameters:
+  W1:
+    min: 1.0e-06
+    max: 5.0e-05
+    default: 2.5e-05
+    step: 1.0e-06
+  L1:
+    min: 1.8e-07
+    max: 5.0e-06
+    default: 2.5e-06
+    step: 1.0e-07
+  RD:
+    min: 1000
+    max: 50000
+    default: 25000
+    step: 500
+target_spec_file: cs_amp_specs_pool.json
+target_specs:
+  gain_db:
+    tolerance: 2.0
+    direction: max
+  bandwidth:
+    tolerance: 10000000.0
+    direction: max
+  power:
+    tolerance: 5.0e-05
+    direction: min
+env:
+  max_steps: 50
+  sim_timeout: 10
+  randomize_start: false
+  action_deltas:
+  - -2
+  - -1
+  - 0
+  - 1
+  - 2
+ppo:
+  learning_rate: 0.0003
+  n_steps: 1024
+  batch_size: 64
+  n_epochs: 10
+  gamma: 0.99
+  total_timesteps: 100000
+grpo:
+  learning_rate: 0.0003
+  group_size: 8
+  clip_eps: 0.2
+  n_epochs: 4
+  ent_coef: 0.05
+  max_grad_norm: 0.5
+  total_timesteps: 5000
+bo:
+  n_initial: 20
+  kappa: 2.576
+  n_candidates: 1000
+  gp_update_freq: 5
+  total_timesteps: 300

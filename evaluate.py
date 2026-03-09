@@ -27,24 +27,46 @@ def find_original_config(run_dir: str) -> str | None:
     return None
 
 
-def _resolve_agent_name(agent: str, checkpoint: dict) -> str:
+def _resolve_agent_name(agent: str, run_dir: str, checkpoint: dict | None) -> str:
     if agent != "auto":
         return agent
+    # BO saves as .pkl, not .pt
+    if os.path.exists(os.path.join(run_dir, "model.pkl")):
+        return "bo"
+    if checkpoint is None:
+        raise ValueError("Unable to auto-detect agent type: no checkpoint found")
     if "seq_network" in checkpoint:
         return "ppo-seq"
     if "actor_network" in checkpoint:
         return "ppo_non_shared"
+    # GRPO and PPO both save "network" key — check run dir name as hint
     if "network" in checkpoint:
+        run_name = os.path.basename(run_dir.rstrip("/"))
+        if run_name.startswith("grpo"):
+            return "grpo"
         return "ppo"
     raise ValueError("Unable to auto-detect agent type from checkpoint keys")
 
 
-def load_agent(agent: str, run_dir: str, spec_pool_test: str, config_override: str | None = None):
+def load_agent(agent: str, run_dir: str, spec_pool_test: str,
+               config_override: str | None = None,
+               checkpoint_name: str | None = None):
     """Load config and actor network from a run directory."""
-    checkpoint_path = os.path.join(run_dir, "model.pt")
-    checkpoint = torch.load(checkpoint_path, weights_only=True)
+    ckpt_name = checkpoint_name or "model.pt"
+    checkpoint_path = os.path.join(run_dir, ckpt_name)
+    pkl_path = os.path.join(run_dir, "model.pkl")
+    checkpoint = None
+    if os.path.exists(checkpoint_path):
+        checkpoint = torch.load(checkpoint_path, weights_only=True)
 
-    chosen_agent = _resolve_agent_name(agent, checkpoint)
+    chosen_agent = _resolve_agent_name(agent, run_dir, checkpoint)
+
+    if chosen_agent != "bo" and checkpoint is None:
+        raise FileNotFoundError(
+            f"No {ckpt_name} found in {run_dir}. "
+            "Did train.py auto-increment the run dir? Check runs/ for the actual directory."
+        )
+
     is_sequential = chosen_agent == "ppo-seq"
 
     # Use original config for correct netlist path resolution
@@ -65,6 +87,22 @@ def load_agent(agent: str, run_dir: str, spec_pool_test: str, config_override: s
 
     obs_dim = env.observation_space.shape[0]
     n_params = len(config["parameters"])
+
+    # BO agent: no neural network, always load from model.pkl
+    if chosen_agent == "bo":
+        from circuitrl.agents.bo_agent import BOAgent
+        bo_agent = BOAgent(env, config)
+        bo_agent.load(pkl_path)
+        return env, bo_agent, config, False, chosen_agent
+
+    # GRPO agent: same ActorCritic architecture as PPO
+    if chosen_agent == "grpo":
+        from circuitrl.agents.ppo_agent import ActorCritic
+        actions_per_param = checkpoint["network"]["policy_heads.0.weight"].shape[0]
+        network = ActorCritic(obs_dim, n_params, actions_per_param=actions_per_param)
+        network.load_state_dict(checkpoint["network"])
+        network.eval()
+        return env, network, config, False, chosen_agent
 
     if chosen_agent == "ppo":
         from circuitrl.agents.ppo_agent import ActorCritic
@@ -154,12 +192,16 @@ def main():
     parser.add_argument("--seed", type=int, default=0,
                         help="RNG seed for target sampling")
     parser.add_argument("--spec_pool_test", type=str, help="Spec pool to evaluate on")
-    parser.add_argument("--agent", type=str, default="auto", choices=["auto", "ppo", "ppo_non_shared", "ppo-seq"],
+    parser.add_argument("--agent", type=str, default="auto",
+                        choices=["auto", "ppo", "ppo_non_shared", "ppo-seq", "grpo", "bo"],
                         help="Agent type (auto detects from checkpoint)")
+    parser.add_argument("--checkpoint", type=str, default=None,
+                        help="Checkpoint filename to load (default: model.pt)")
     args = parser.parse_args()
 
-    env, network, config, is_sequential, chosen_agent = load_agent(
-        args.agent, args.run_dir, args.spec_pool_test, config_override=args.config
+    env, network_or_agent, config, is_sequential, chosen_agent = load_agent(
+        args.agent, args.run_dir, args.spec_pool_test, config_override=args.config,
+        checkpoint_name=args.checkpoint,
     )
     env.reset(seed=args.seed)  # seed env's np_random for reproducible target sampling
 
@@ -177,49 +219,96 @@ def main():
     spec_successes = {name: [] for name in spec_names}
     csv_rows = []
 
-    for ep in range(args.episodes):
-        steps, total_reward, success, episode_targets = run_episode(env, network, is_sequential)
-        all_rewards.append(total_reward)
-        all_successes.append(success)
-        all_steps.append(len(steps))
+    # BO agent uses its own evaluate method (deterministic best point)
+    if chosen_agent == "bo":
+        bo_results = network_or_agent.evaluate(n_episodes=args.episodes)
+        for ep, res in enumerate(bo_results):
+            total_reward = res["reward"]
+            final_metrics = res["final_metrics"]
+            episode_targets = res["ep_targets"]
+            # Check if all specs met
+            success = True
+            per_spec = {}
+            for name in spec_names:
+                if name in final_metrics:
+                    met = spec_met(final_metrics[name], episode_targets[name],
+                                   tolerances[name], directions[name])
+                    per_spec[name] = met
+                    spec_successes[name].append(met)
+                    if not met:
+                        success = False
 
-        final_metrics = steps[-1].get("metrics", {})
-        per_spec = {}
-        for name in spec_names:
-            if name in final_metrics:
-                met = spec_met(final_metrics[name], episode_targets[name],
-                               tolerances[name], directions[name])
-                per_spec[name] = met
-                spec_successes[name].append(met)
+            all_rewards.append(total_reward)
+            all_successes.append(success)
+            all_steps.append(1)
 
-        row = {"total_reward": total_reward, "success": int(success), "n_steps": len(steps)}
-        for name in spec_names:
-            row[f"target_{name}"] = episode_targets.get(name, float("nan"))
-            row[f"final_{name}"] = final_metrics.get(name, float("nan"))
-        csv_rows.append(row)
+            row = {"total_reward": total_reward, "success": int(success), "n_steps": 1}
+            for name in spec_names:
+                row[f"target_{name}"] = episode_targets.get(name, float("nan"))
+                row[f"final_{name}"] = final_metrics.get(name, float("nan"))
+            csv_rows.append(row)
 
-        # Always print episode summary; verbose adds per-step trace
-        if args.verbose:
-            for s in steps:
-                action_labels = ["dec", "nop", "inc"]
-                actions_str = " ".join(action_labels[a] for a in s["action"])
-                print(f"  step {s['step']:>3d}  [{actions_str}]  reward: {s['reward']:>8.3f}")
+            targets_str = "  ".join(f"{n}={episode_targets[n]:.3g}" for n in spec_names if n in episode_targets)
+            print(f"Episode {ep + 1:>3d}:  steps={1:>3d}  "
+                  f"reward={total_reward:>8.3f}  "
+                  f"{'SUCCESS' if success else 'FAIL   '}  "
+                  f"targets: [{targets_str}]")
+            for name in spec_names:
+                if name in final_metrics:
+                    val = final_metrics[name]
+                    tgt = episode_targets[name]
+                    tol = tolerances[name]
+                    met = per_spec.get(name, False)
+                    print(f"    {name}: {val:.4g}  (target: {tgt:.4g}, tol: {tol:.3g})  "
+                          f"[{'OK  ' if met else 'MISS'}]")
+            print()
+    else:
+        network = network_or_agent
 
-        targets_str = "  ".join(f"{n}={episode_targets[n]:.3g}" for n in spec_names)
-        print(f"Episode {ep + 1:>3d}:  steps={len(steps):>3d}  "
-              f"reward={total_reward:>8.3f}  "
-              f"{'SUCCESS' if success else 'FAIL   '}  "
-              f"targets: [{targets_str}]")
+    if chosen_agent != "bo":
+        for ep in range(args.episodes):
+            steps, total_reward, success, episode_targets = run_episode(env, network, is_sequential)
+            all_rewards.append(total_reward)
+            all_successes.append(success)
+            all_steps.append(len(steps))
 
-        for name in spec_names:
-            if name in final_metrics:
-                val = final_metrics[name]
-                tgt = episode_targets[name]
-                tol = tolerances[name]
-                met = per_spec.get(name, False)
-                print(f"    {name}: {val:.4g}  (target: {tgt:.4g}, tol: {tol:.3g})  "
-                      f"[{'OK  ' if met else 'MISS'}]")
-        print()
+            final_metrics = steps[-1].get("metrics", {})
+            per_spec = {}
+            for name in spec_names:
+                if name in final_metrics:
+                    met = spec_met(final_metrics[name], episode_targets[name],
+                                   tolerances[name], directions[name])
+                    per_spec[name] = met
+                    spec_successes[name].append(met)
+
+            row = {"total_reward": total_reward, "success": int(success), "n_steps": len(steps)}
+            for name in spec_names:
+                row[f"target_{name}"] = episode_targets.get(name, float("nan"))
+                row[f"final_{name}"] = final_metrics.get(name, float("nan"))
+            csv_rows.append(row)
+
+            # Always print episode summary; verbose adds per-step trace
+            if args.verbose:
+                for s in steps:
+                    action_labels = ["dec", "nop", "inc"]
+                    actions_str = " ".join(action_labels[a] for a in s["action"])
+                    print(f"  step {s['step']:>3d}  [{actions_str}]  reward: {s['reward']:>8.3f}")
+
+            targets_str = "  ".join(f"{n}={episode_targets[n]:.3g}" for n in spec_names)
+            print(f"Episode {ep + 1:>3d}:  steps={len(steps):>3d}  "
+                  f"reward={total_reward:>8.3f}  "
+                  f"{'SUCCESS' if success else 'FAIL   '}  "
+                  f"targets: [{targets_str}]")
+
+            for name in spec_names:
+                if name in final_metrics:
+                    val = final_metrics[name]
+                    tgt = episode_targets[name]
+                    tol = tolerances[name]
+                    met = per_spec.get(name, False)
+                    print(f"    {name}: {val:.4g}  (target: {tgt:.4g}, tol: {tol:.3g})  "
+                          f"[{'OK  ' if met else 'MISS'}]")
+            print()
 
     # Save eval results CSV for plot.py --eval
     if csv_rows:

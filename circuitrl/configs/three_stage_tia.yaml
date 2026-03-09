@@ -81,3 +81,19 @@ ppo:
   n_epochs: 10
   gamma: 0.99
   total_timesteps: 200000
+
+grpo:
+  learning_rate: 2.0e-4
+  group_size: 8
+  clip_eps: 0.2
+  n_epochs: 4
+  ent_coef: 0.05
+  max_grad_norm: 0.5
+  total_timesteps: 200000
+
+bo:
+  n_initial: 30
+  kappa: 2.576
+  n_candidates: 1000
+  gp_update_freq: 5
+  total_timesteps: 500

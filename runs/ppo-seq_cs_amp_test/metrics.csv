@@ -1,0 +1,6 @@
+timestep,elapsed,episodes,circuit,mean_reward,mean_len,policy_loss,value_loss,entropy
+1024,12.9,34,Common-Source Amplifier,-4.3808,29.1,-0.0000,9.3255,1.0875
+2048,25.5,23,Common-Source Amplifier,-11.4008,43.8,-0.0065,7.1359,1.0812
+3072,38.3,37,Common-Source Amplifier,-3.3312,26.7,-0.0026,9.7155,1.0680
+4096,50.9,32,Common-Source Amplifier,-3.9647,31.3,-0.0040,8.1227,1.0704
+5120,63.6,30,Common-Source Amplifier,-6.3076,33.5,-0.0040,8.8633,1.0758
