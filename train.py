@@ -38,7 +38,7 @@ def make_callback(run_dir: str, circuit_name: str):
             f"mean_reward: {mean_reward:>8.3f}  "
             f"mean_len: {mean_len:>5.1f}  "
             f"policy_loss: {loss_stats['policy_loss']:.4f}  "
-            # f"value_loss: {loss_stats['value_loss']:.4f}  "
+            f"value_loss: {loss_stats['value_loss']:.4f}  "
             f"entropy: {loss_stats['entropy']:.4f}"
         )
 
@@ -50,7 +50,7 @@ def make_callback(run_dir: str, circuit_name: str):
             "mean_reward": f"{mean_reward:.4f}",
             "mean_len": f"{mean_len:.1f}",
             "policy_loss": f"{loss_stats['policy_loss']:.4f}",
-            # "value_loss": f"{loss_stats['value_loss']:.4f}",
+            "value_loss": f"{loss_stats['value_loss']:.4f}",
             "entropy": f"{loss_stats['entropy']:.4f}",
         })
         csv_file.flush()
