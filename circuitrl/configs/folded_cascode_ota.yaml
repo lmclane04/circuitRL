@@ -1,0 +1,74 @@
+# Folded Cascode OTA
+# Topology: NMOS diff pair + PMOS current source load + NMOS current mirror output
+# 7 parameters: W1/L1 (input pair), W3/L3 (PMOS CS), W5/L5 (NMOS mirror+tail), Ib
+# Expected defaults: ~76 dB gain, ~71 MHz UGBW, ~85 deg PM, ~72 uW power
+
+netlist: ../envs/folded_cascode_ota_template.sp
+
+parameters:
+  W1:  # NMOS input differential pair width
+    min: 1.0e-6
+    max: 100.0e-6
+    default: 10.0e-6      # moderate W/L for reasonable gm
+    step: 1.0e-6          # 1um increments -> 100 levels
+  L1:  # NMOS input differential pair length
+    min: 0.18e-6
+    max: 5.0e-6
+    default: 1.0e-6       # short for speed, long for better matching
+    step: 0.1e-6          # 100nm increments -> 49 levels
+  W3:  # PMOS current source width (M_bp, M3, M4 share W3/L3)
+    min: 1.0e-6
+    max: 200.0e-6
+    default: 50.0e-6      # large PMOS for good current source output resistance
+    step: 1.0e-6          # 1um increments -> 200 levels
+  L3:  # PMOS current source length
+    min: 0.18e-6
+    max: 5.0e-6
+    default: 0.5e-6       # short default; agent can increase for higher Rout
+    step: 0.1e-6          # 100nm increments -> 49 levels
+  W5:  # NMOS mirror and tail width (M_bn, M_tail, M5, M6 share W5/L5)
+    min: 1.0e-6
+    max: 100.0e-6
+    default: 50.0e-6      # large for low overdrive and good mirroring
+    step: 1.0e-6          # 1um increments -> 100 levels
+  L5:  # NMOS mirror and tail length
+    min: 0.18e-6
+    max: 5.0e-6
+    default: 0.5e-6       # short default; agent can increase for higher Rout
+    step: 0.1e-6          # 100nm increments -> 49 levels
+  Ib:  # Bias current (sets all branch currents via mirroring)
+    min: 1.0e-6
+    max: 100.0e-6
+    default: 10.0e-6      # 10uA -> 4 branches -> ~72uW total power at 1.8V
+    step: 1.0e-6          # 1uA increments -> 100 levels
+
+# Spec pool: run `python generate_specs.py --config circuitrl/configs/folded_cascode_ota.yaml --n 1000`
+# to create this file before training.
+target_spec_file: folded_cascode_ota_specs_pool.json
+
+target_specs:
+  gain_db:
+    tolerance: 2.0        # dB
+    direction: max        # higher gain is better
+  ugbw:
+    tolerance: 5.0e6      # Hz
+    direction: max        # wider bandwidth is better
+  phase_margin:
+    tolerance: 5.0        # degrees
+    direction: max        # higher phase margin is better
+  power:
+    tolerance: 25.0e-6    # watts (25 uW)
+    direction: min        # lower power is better
+
+env:
+  max_steps: 100
+  sim_timeout: 30
+  randomize_start: false
+
+ppo:
+  learning_rate: 1.0e-4
+  n_steps: 1024
+  batch_size: 64
+  n_epochs: 5
+  gamma: 0.99
+  total_timesteps: 200000

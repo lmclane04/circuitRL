@@ -39,20 +39,11 @@ env:
   max_steps: 50
   sim_timeout: 10
   randomize_start: false
-  action_deltas: [-2, -1, 0, 1, 2]
 
 ppo:
   learning_rate: 3.0e-4
   n_steps: 1024
-  batch_size: 64 
-  n_epochs: 10
-  gamma: 0.99
-  total_timesteps: 100000
-
-grpo:
-  learning_rate: 3.0e-4
-  n_steps: 1024
-  group_size: 3
   batch_size: 64
   n_epochs: 10
+  gamma: 0.99
   total_timesteps: 100000

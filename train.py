@@ -64,7 +64,7 @@ def make_callback(run_dir: str, circuit_name: str):
 
 def main():
     parser = argparse.ArgumentParser(description="Train a CircuitRL agent")
-    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "ppo_non_shared", "grpo"])
+    parser.add_argument("--agent", type=str, default="ppo", choices=["ppo", "ppo_non_shared", "ppo-seq"])
     parser.add_argument("--config", type=str, default="circuitrl/configs/opamp_default.yaml")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--run-name", type=str, default=None)
@@ -107,7 +107,8 @@ def main():
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
 
-    env = CircuitEnv(config_path=args.config)
+    sequential = args.agent == "ppo-seq"
+    env = CircuitEnv(config_path=args.config, sequential=sequential)
     env.reset(seed=args.seed)  # seeds env's np_random for _sample_targets
     
     if args.agent == "ppo":
@@ -116,9 +117,9 @@ def main():
     elif args.agent == "ppo_non_shared":
         from circuitrl.agents.ppo_agent_non_shared import PPOAgentNonShared
         agent = PPOAgentNonShared(env, config)
-    elif args.agent == "grpo":
-        from circuitrl.agents.grpo_agent import GRPOAgent
-        agent = GRPOAgent(env, config)
+    elif args.agent == "ppo-seq":
+        from circuitrl.agents.ppo_agent import PPOSeqAgent
+        agent = PPOSeqAgent(env, config)
     else:
         raise ValueError(f"Unknown agent: {args.agent}")
 
@@ -126,7 +127,8 @@ def main():
     print(f"Checkpoint dir: {run_dir}/")
     print()
 
-    total = args.timesteps or int(config[args.agent]["total_timesteps"])
+    ppo_key = "ppo"  # both ppo and ppo-seq share the [ppo] config section
+    total = args.timesteps or int(config[ppo_key]["total_timesteps"])
     cb = make_callback(run_dir, circuit_name)
     agent.train(total_timesteps=total, callback=cb)
     cb.close()
