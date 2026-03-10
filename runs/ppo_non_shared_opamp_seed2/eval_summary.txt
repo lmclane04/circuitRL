@@ -1,0 +1,10 @@
+============================================================
+Summary over full spec pool:
+  Success rate:      463/500  (92.6%)
+  Mean total reward: -3.902
+  Mean episode len:  22.0
+  Per-spec success rates:
+    gain_db: 93.6%
+    ugbw: 93.6%
+    phase_margin: 100.0%
+    power: 100.0%
