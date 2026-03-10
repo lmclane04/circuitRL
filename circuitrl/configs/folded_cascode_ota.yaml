@@ -44,7 +44,7 @@ parameters:
 
 # Spec pool: run `python generate_specs.py --config circuitrl/configs/folded_cascode_ota.yaml --n 1000`
 # to create this file before training.
-target_spec_file: folded_cascode_ota_specs_pool.json
+target_spec_file: folded_cascode_ota_specs_pool_train_500.json
 
 target_specs:
   gain_db:
@@ -64,6 +64,7 @@ env:
   max_steps: 100
   sim_timeout: 30
   randomize_start: false
+  action_deltas: [-2, -1, 0, 1, 2]
 
 ppo:
   learning_rate: 1.0e-4
@@ -71,4 +72,4 @@ ppo:
   batch_size: 64
   n_epochs: 5
   gamma: 0.99
-  total_timesteps: 200000
+  total_timesteps: 50000

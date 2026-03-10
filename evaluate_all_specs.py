@@ -221,6 +221,7 @@ def main():
 
     # Save eval results CSV for plot.py --eval
     if csv_rows:
+        os.makedirs(args.run_dir, exist_ok=True)
         csv_path = os.path.join(args.run_dir, "eval_results.csv")
         with open(csv_path, "w", newline="") as f:
             writer = csv.DictWriter(f, fieldnames=csv_rows[0].keys())

@@ -1,0 +1,61 @@
+# Two-Stage Cascaded Common-Source Amplifier (AC-Coupled)
+netlist: ../envs/cascaded_amp_template.sp
+parameters:
+  W1:
+    min: 1.0e-06
+    max: 5.0e-05
+    default: 2.5e-05
+    step: 1.0e-06
+  L1:
+    min: 1.8e-07
+    max: 5.0e-06
+    default: 2.5e-06
+    step: 1.0e-07
+  RD1:
+    min: 1000
+    max: 50000
+    default: 25000
+    step: 500
+  W2:
+    min: 1.0e-06
+    max: 5.0e-05
+    default: 2.5e-05
+    step: 1.0e-06
+  L2:
+    min: 1.8e-07
+    max: 5.0e-06
+    default: 2.5e-06
+    step: 1.0e-07
+  RD2:
+    min: 1000
+    max: 50000
+    default: 25000
+    step: 500
+target_spec_file: cascaded_amp_specs_pool.json
+target_specs:
+  gain_db:
+    tolerance: 2.0
+    direction: max
+  bandwidth:
+    tolerance: 2.0e6
+    direction: max
+  power:
+    tolerance: 5.0e-05
+    direction: min
+env:
+  max_steps: 75
+  sim_timeout: 15
+  randomize_start: false
+  action_deltas:
+  - -2
+  - -1
+  - 0
+  - 1
+  - 2
+ppo:
+  learning_rate: 0.0003
+  n_steps: 1024
+  batch_size: 64
+  n_epochs: 10
+  gamma: 0.99
+  total_timesteps: 50000

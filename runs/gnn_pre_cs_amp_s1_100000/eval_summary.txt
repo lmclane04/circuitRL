@@ -1,0 +1,1009 @@
+Episode   1: steps= 23  reward=   4.210  SUCCESS  targets: [gain_db=-5.19  bandwidth=1.59e+08  power=8.07e-05]
+    gain_db: -1.355  (target: -5.188, tol: 2)  [OK  ]
+    bandwidth: 1.593e+08  (target: 1.586e+08, tol: 1e+07)  [OK  ]
+    power: 7.725e-05  (target: 8.071e-05, tol: 5e-05)  [OK  ]
+
+Episode   2: steps= 26  reward=   3.073  SUCCESS  targets: [gain_db=-6.29  bandwidth=2.63e+08  power=0.00012]
+    gain_db: -7.348  (target: -6.292, tol: 2)  [OK  ]
+    bandwidth: 3.181e+08  (target: 2.627e+08, tol: 1e+07)  [OK  ]
+    power: 7.737e-05  (target: 0.0001199, tol: 5e-05)  [OK  ]
+
+Episode   3: steps= 18  reward=   5.557  SUCCESS  targets: [gain_db=3.81  bandwidth=5.2e+07  power=6.2e-05]
+    gain_db: 9.388  (target: 3.806, tol: 2)  [OK  ]
+    bandwidth: 4.588e+07  (target: 5.199e+07, tol: 1e+07)  [OK  ]
+    power: 7.663e-05  (target: 6.204e-05, tol: 5e-05)  [OK  ]
+
+Episode   4: steps= 23  reward=   4.701  SUCCESS  targets: [gain_db=0.459  bandwidth=1.2e+08  power=0.000105]
+    gain_db: -1.355  (target: 0.4595, tol: 2)  [OK  ]
+    bandwidth: 1.593e+08  (target: 1.203e+08, tol: 1e+07)  [OK  ]
+    power: 7.725e-05  (target: 0.000105, tol: 5e-05)  [OK  ]
+
+Episode   5: steps= 50  reward= -14.829  FAIL     targets: [gain_db=-10  bandwidth=2.07e+08  power=6.5e-05]
+    gain_db: 9.836  (target: -10.03, tol: 2)  [OK  ]
+    bandwidth: 3.57e+07  (target: 2.075e+08, tol: 1e+07)  [MISS]
+    power: 6.28e-05  (target: 6.498e-05, tol: 5e-05)  [OK  ]
+
+Episode   6: steps=  3  reward=   9.862  SUCCESS  targets: [gain_db=22.7  bandwidth=1.4e+07  power=0.000109]
+    gain_db: 20.88  (target: 22.74, tol: 2)  [OK  ]
+    bandwidth: 1.185e+07  (target: 1.399e+07, tol: 1e+07)  [OK  ]
+    power: 7.433e-05  (target: 0.0001087, tol: 5e-05)  [OK  ]
+
+Episode   7: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=3.2  bandwidth=1.82e+07  power=1.5e-05]
+    gain_db: 18.36  (target: 3.203, tol: 2)  [OK  ]
+    bandwidth: 1.367e+07  (target: 1.824e+07, tol: 1e+07)  [OK  ]
+    power: 6.413e-05  (target: 1.495e-05, tol: 5e-05)  [OK  ]
+
+Episode   8: steps= 50  reward= -13.281  FAIL     targets: [gain_db=23.3  bandwidth=2.59e+07  power=0.000216]
+    gain_db: 2.173  (target: 23.35, tol: 2)  [MISS]
+    bandwidth: 5.906e+07  (target: 2.594e+07, tol: 1e+07)  [OK  ]
+    power: 6.054e-05  (target: 0.0002162, tol: 5e-05)  [OK  ]
+
+Episode   9: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=22  bandwidth=1.91e+07  power=0.000135]
+    gain_db: 20.3  (target: 21.95, tol: 2)  [OK  ]
+    bandwidth: 1.273e+07  (target: 1.908e+07, tol: 1e+07)  [OK  ]
+    power: 7.463e-05  (target: 0.0001354, tol: 5e-05)  [OK  ]
+
+Episode  10: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=10.5  bandwidth=2.3e+07  power=4.38e-05]
+    gain_db: 19.65  (target: 10.53, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 2.297e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 4.379e-05, tol: 5e-05)  [OK  ]
+
+Episode  11: steps= 50  reward= -14.012  FAIL     targets: [gain_db=-9.27  bandwidth=2.38e+08  power=8.06e-05]
+    gain_db: 9.041  (target: -9.274, tol: 2)  [OK  ]
+    bandwidth: 4.585e+07  (target: 2.383e+08, tol: 1e+07)  [MISS]
+    power: 7.36e-05  (target: 8.065e-05, tol: 5e-05)  [OK  ]
+
+Episode  12: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=20.3  bandwidth=1.7e+07  power=0.0001]
+    gain_db: 19.65  (target: 20.34, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.697e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 0.0001, tol: 5e-05)  [OK  ]
+
+Episode  13: steps= 50  reward= -10.302  FAIL     targets: [gain_db=22.3  bandwidth=8.69e+06  power=6.42e-05]
+    gain_db: 11.52  (target: 22.29, tol: 2)  [MISS]
+    bandwidth: 3.579e+07  (target: 8.693e+06, tol: 1e+07)  [OK  ]
+    power: 7.639e-05  (target: 6.417e-05, tol: 5e-05)  [OK  ]
+
+Episode  14: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=10.5  bandwidth=2.08e+07  power=3.94e-05]
+    gain_db: 19.65  (target: 10.5, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 2.075e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.942e-05, tol: 5e-05)  [OK  ]
+
+Episode  15: steps= 20  reward=   0.992  SUCCESS  targets: [gain_db=0.583  bandwidth=6.38e+07  power=3.87e-05]
+    gain_db: 6.52  (target: 0.5826, tol: 2)  [OK  ]
+    bandwidth: 6.402e+07  (target: 6.377e+07, tol: 1e+07)  [OK  ]
+    power: 7.688e-05  (target: 3.865e-05, tol: 5e-05)  [OK  ]
+
+Episode  16: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=20.2  bandwidth=7.35e+06  power=4.28e-05]
+    gain_db: 19.65  (target: 20.24, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 7.35e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 4.282e-05, tol: 5e-05)  [OK  ]
+
+Episode  17: steps=  2  reward=   8.636  SUCCESS  targets: [gain_db=1.26  bandwidth=2.06e+07  power=1.35e-05]
+    gain_db: 16.68  (target: 1.259, tol: 2)  [OK  ]
+    bandwidth: 1.418e+07  (target: 2.058e+07, tol: 1e+07)  [OK  ]
+    power: 5.481e-05  (target: 1.348e-05, tol: 5e-05)  [OK  ]
+
+Episode  18: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=19.1  bandwidth=1.12e+07  power=5.7e-05]
+    gain_db: 19.65  (target: 19.1, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.115e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 5.703e-05, tol: 5e-05)  [OK  ]
+
+Episode  19: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=15.8  bandwidth=2.1e+07  power=7.34e-05]
+    gain_db: 19.65  (target: 15.81, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 2.098e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 7.341e-05, tol: 5e-05)  [OK  ]
+
+Episode  20: steps= 50  reward= -14.419  FAIL     targets: [gain_db=-8.13  bandwidth=3.17e+08  power=0.000121]
+    gain_db: 8.076  (target: -8.132, tol: 2)  [OK  ]
+    bandwidth: 5.344e+07  (target: 3.173e+08, tol: 1e+07)  [MISS]
+    power: 7.675e-05  (target: 0.0001206, tol: 5e-05)  [OK  ]
+
+Episode  21: steps= 50  reward= -15.656  FAIL     targets: [gain_db=18.6  bandwidth=6.57e+07  power=0.000318]
+    gain_db: 2.173  (target: 18.63, tol: 2)  [MISS]
+    bandwidth: 5.906e+07  (target: 6.568e+07, tol: 1e+07)  [OK  ]
+    power: 6.054e-05  (target: 0.0003179, tol: 5e-05)  [OK  ]
+
+Episode  22: steps=  4  reward=   9.570  SUCCESS  targets: [gain_db=17.5  bandwidth=2.52e+07  power=0.000107]
+    gain_db: 18.56  (target: 17.51, tol: 2)  [OK  ]
+    bandwidth: 1.563e+07  (target: 2.515e+07, tol: 1e+07)  [OK  ]
+    power: 7.512e-05  (target: 0.0001071, tol: 5e-05)  [OK  ]
+
+Episode  23: steps= 26  reward=   3.083  SUCCESS  targets: [gain_db=-10  bandwidth=2.4e+08  power=7.5e-05]
+    gain_db: -7.348  (target: -10.04, tol: 2)  [OK  ]
+    bandwidth: 3.181e+08  (target: 2.398e+08, tol: 1e+07)  [OK  ]
+    power: 7.737e-05  (target: 7.504e-05, tol: 5e-05)  [OK  ]
+
+Episode  24: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=7.87  bandwidth=2.21e+07  power=3.1e-05]
+    gain_db: 19.65  (target: 7.868, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 2.211e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.1e-05, tol: 5e-05)  [OK  ]
+
+Episode  25: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=18.4  bandwidth=1.49e+07  power=7.03e-05]
+    gain_db: 19.65  (target: 18.4, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.491e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 7.034e-05, tol: 5e-05)  [OK  ]
+
+Episode  26: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=18.5  bandwidth=8.31e+06  power=3.98e-05]
+    gain_db: 19.65  (target: 18.53, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 8.31e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.977e-05, tol: 5e-05)  [OK  ]
+
+Episode  27: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=17.8  bandwidth=8.39e+06  power=3.68e-05]
+    gain_db: 19.65  (target: 17.78, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 8.392e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.683e-05, tol: 5e-05)  [OK  ]
+
+Episode  28: steps=  5  reward=   7.503  SUCCESS  targets: [gain_db=5.3  bandwidth=2.56e+07  power=2.67e-05]
+    gain_db: 17.17  (target: 5.303, tol: 2)  [OK  ]
+    bandwidth: 1.633e+07  (target: 2.558e+07, tol: 1e+07)  [OK  ]
+    power: 6.685e-05  (target: 2.67e-05, tol: 5e-05)  [OK  ]
+
+Episode  29: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=16.3  bandwidth=2.04e+07  power=7.57e-05]
+    gain_db: 19.65  (target: 16.34, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 2.036e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 7.568e-05, tol: 5e-05)  [OK  ]
+
+Episode  30: steps= 23  reward=   4.584  SUCCESS  targets: [gain_db=-3.15  bandwidth=1.28e+08  power=7.91e-05]
+    gain_db: -1.355  (target: -3.149, tol: 2)  [OK  ]
+    bandwidth: 1.593e+08  (target: 1.276e+08, tol: 1e+07)  [OK  ]
+    power: 7.725e-05  (target: 7.913e-05, tol: 5e-05)  [OK  ]
+
+Episode  31: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=14.6  bandwidth=1.25e+07  power=3.8e-05]
+    gain_db: 19.65  (target: 14.62, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.247e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.804e-05, tol: 5e-05)  [OK  ]
+
+Episode  32: steps= 50  reward= -52.583  FAIL     targets: [gain_db=15.4  bandwidth=7.06e+06  power=2.36e-05]
+    gain_db: -7.348  (target: 15.4, tol: 2)  [MISS]
+    bandwidth: 3.181e+08  (target: 7.062e+06, tol: 1e+07)  [OK  ]
+    power: 7.737e-05  (target: 2.358e-05, tol: 5e-05)  [MISS]
+
+Episode  33: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=14.3  bandwidth=2.23e+07  power=6.6e-05]
+    gain_db: 19.65  (target: 14.34, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 2.234e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 6.601e-05, tol: 5e-05)  [OK  ]
+
+Episode  34: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=21.2  bandwidth=9.78e+06  power=6.35e-05]
+    gain_db: 19.65  (target: 21.18, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 9.777e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 6.35e-05, tol: 5e-05)  [OK  ]
+
+Episode  35: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=12.7  bandwidth=1.84e+07  power=4.5e-05]
+    gain_db: 19.65  (target: 12.68, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.845e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 4.501e-05, tol: 5e-05)  [OK  ]
+
+Episode  36: steps= 50  reward= -14.492  FAIL     targets: [gain_db=-7.12  bandwidth=3.54e+08  power=0.000149]
+    gain_db: 6.52  (target: -7.121, tol: 2)  [OK  ]
+    bandwidth: 6.402e+07  (target: 3.54e+08, tol: 1e+07)  [MISS]
+    power: 7.688e-05  (target: 0.0001489, tol: 5e-05)  [OK  ]
+
+Episode  37: steps= 50  reward= -14.382  FAIL     targets: [gain_db=-25  bandwidth=1.38e+09  power=8.59e-05]
+    gain_db: -7.348  (target: -25, tol: 2)  [OK  ]
+    bandwidth: 3.181e+08  (target: 1.384e+09, tol: 1e+07)  [MISS]
+    power: 7.737e-05  (target: 8.589e-05, tol: 5e-05)  [OK  ]
+
+Episode  38: steps= 14  reward=   7.216  SUCCESS  targets: [gain_db=7.84  bandwidth=3.79e+07  power=6.6e-05]
+    gain_db: 13.2  (target: 7.838, tol: 2)  [OK  ]
+    bandwidth: 2.938e+07  (target: 3.79e+07, tol: 1e+07)  [OK  ]
+    power: 7.615e-05  (target: 6.596e-05, tol: 5e-05)  [OK  ]
+
+Episode  39: steps= 50  reward= -10.541  FAIL     targets: [gain_db=15  bandwidth=4.33e+07  power=0.000137]
+    gain_db: 18.55  (target: 14.96, tol: 2)  [OK  ]
+    bandwidth: 1.563e+07  (target: 4.326e+07, tol: 1e+07)  [MISS]
+    power: 7.496e-05  (target: 0.0001373, tol: 5e-05)  [OK  ]
+
+Episode  40: steps= 50  reward= -11.629  FAIL     targets: [gain_db=-4.87  bandwidth=1.79e+08  power=9.41e-05]
+    gain_db: 6.52  (target: -4.867, tol: 2)  [OK  ]
+    bandwidth: 6.402e+07  (target: 1.791e+08, tol: 1e+07)  [MISS]
+    power: 7.688e-05  (target: 9.407e-05, tol: 5e-05)  [OK  ]
+
+Episode  41: steps=  2  reward=   7.009  SUCCESS  targets: [gain_db=3.88  bandwidth=7.26e+06  power=6.43e-06]
+    gain_db: 16.68  (target: 3.877, tol: 2)  [OK  ]
+    bandwidth: 1.418e+07  (target: 7.26e+06, tol: 1e+07)  [OK  ]
+    power: 5.481e-05  (target: 6.43e-06, tol: 5e-05)  [OK  ]
+
+Episode  42: steps= 22  reward=   0.024  SUCCESS  targets: [gain_db=-6.52  bandwidth=7.07e+07  power=1.89e-05]
+    gain_db: 1.788  (target: -6.519, tol: 2)  [OK  ]
+    bandwidth: 7.089e+07  (target: 7.069e+07, tol: 1e+07)  [OK  ]
+    power: 4.937e-05  (target: 1.892e-05, tol: 5e-05)  [OK  ]
+
+Episode  43: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=17.4  bandwidth=2.18e+07  power=9.12e-05]
+    gain_db: 19.65  (target: 17.37, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 2.179e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 9.121e-05, tol: 5e-05)  [OK  ]
+
+Episode  44: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=16.5  bandwidth=1.63e+07  power=6.2e-05]
+    gain_db: 19.65  (target: 16.54, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.63e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 6.202e-05, tol: 5e-05)  [OK  ]
+
+Episode  45: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=16.6  bandwidth=1.72e+07  power=6.54e-05]
+    gain_db: 19.65  (target: 16.55, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.716e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 6.539e-05, tol: 5e-05)  [OK  ]
+
+Episode  46: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=15.7  bandwidth=8.79e+06  power=3.03e-05]
+    gain_db: 19.65  (target: 15.68, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 8.787e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.028e-05, tol: 5e-05)  [OK  ]
+
+Episode  47: steps= 50  reward= -17.491  FAIL     targets: [gain_db=-3.35  bandwidth=3.18e+08  power=0.000123]
+    gain_db: -7.348  (target: -3.348, tol: 2)  [MISS]
+    bandwidth: 3.181e+08  (target: 3.184e+08, tol: 1e+07)  [OK  ]
+    power: 7.737e-05  (target: 0.0001227, tol: 5e-05)  [OK  ]
+
+Episode  48: steps= 50  reward= -16.585  FAIL     targets: [gain_db=-22.4  bandwidth=1.85e+09  power=0.000153]
+    gain_db: 21.51  (target: -22.44, tol: 2)  [OK  ]
+    bandwidth: 8.54e+06  (target: 1.853e+09, tol: 1e+07)  [MISS]
+    power: 5.763e-05  (target: 0.0001531, tol: 5e-05)  [OK  ]
+
+Episode  49: steps= 50  reward= -68.653  FAIL     targets: [gain_db=13.9  bandwidth=6.47e+06  power=1.82e-05]
+    gain_db: -7.348  (target: 13.93, tol: 2)  [MISS]
+    bandwidth: 3.181e+08  (target: 6.474e+06, tol: 1e+07)  [OK  ]
+    power: 7.737e-05  (target: 1.825e-05, tol: 5e-05)  [MISS]
+
+Episode  50: steps= 50  reward=  -7.803  FAIL     targets: [gain_db=-2.33  bandwidth=1.26e+08  power=8.43e-05]
+    gain_db: 2.139  (target: -2.33, tol: 2)  [OK  ]
+    bandwidth: 1.064e+08  (target: 1.257e+08, tol: 1e+07)  [MISS]
+    power: 7.712e-05  (target: 8.431e-05, tol: 5e-05)  [OK  ]
+
+Episode  51: steps= 19  reward=   4.980  SUCCESS  targets: [gain_db=5.3  bandwidth=5.81e+07  power=6.07e-05]
+    gain_db: 8.076  (target: 5.299, tol: 2)  [OK  ]
+    bandwidth: 5.344e+07  (target: 5.814e+07, tol: 1e+07)  [OK  ]
+    power: 7.675e-05  (target: 6.066e-05, tol: 5e-05)  [OK  ]
+
+Episode  52: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=20.2  bandwidth=9.58e+06  power=5.53e-05]
+    gain_db: 19.65  (target: 20.16, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 9.584e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 5.532e-05, tol: 5e-05)  [OK  ]
+
+Episode  53: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=9.28  bandwidth=1.95e+07  power=3.21e-05]
+    gain_db: 19.65  (target: 9.28, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.946e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.21e-05, tol: 5e-05)  [OK  ]
+
+Episode  54: steps= 50  reward= -63.755  FAIL     targets: [gain_db=-15.3  bandwidth=1.27e+08  power=1.23e-05]
+    gain_db: 15.2  (target: -15.33, tol: 2)  [OK  ]
+    bandwidth: 1.476e+07  (target: 1.271e+08, tol: 1e+07)  [MISS]
+    power: 4.813e-05  (target: 1.233e-05, tol: 5e-05)  [OK  ]
+
+Episode  55: steps= 50  reward= -12.754  FAIL     targets: [gain_db=-4.96  bandwidth=2.12e+08  power=6.8e-05]
+    gain_db: -7.348  (target: -4.957, tol: 2)  [MISS]
+    bandwidth: 3.181e+08  (target: 2.122e+08, tol: 1e+07)  [OK  ]
+    power: 7.737e-05  (target: 6.796e-05, tol: 5e-05)  [OK  ]
+
+Episode  56: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=15.7  bandwidth=7.31e+06  power=2.52e-05]
+    gain_db: 19.65  (target: 15.7, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 7.306e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 2.525e-05, tol: 5e-05)  [OK  ]
+
+Episode  57: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=18.6  bandwidth=2.35e+07  power=0.000114]
+    gain_db: 19.65  (target: 18.63, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 2.346e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 0.0001136, tol: 5e-05)  [OK  ]
+
+Episode  58: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=19.8  bandwidth=1.29e+07  power=7.15e-05]
+    gain_db: 19.65  (target: 19.77, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.294e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 7.147e-05, tol: 5e-05)  [OK  ]
+
+Episode  59: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=10.8  bandwidth=2.14e+07  power=4.19e-05]
+    gain_db: 19.65  (target: 10.75, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 2.145e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 4.192e-05, tol: 5e-05)  [OK  ]
+
+Episode  60: steps= 50  reward=  -5.128  FAIL     targets: [gain_db=22.9  bandwidth=9.33e+06  power=7.36e-05]
+    gain_db: 15.79  (target: 22.87, tol: 2)  [MISS]
+    bandwidth: 2.168e+07  (target: 9.334e+06, tol: 1e+07)  [OK  ]
+    power: 7.567e-05  (target: 7.359e-05, tol: 5e-05)  [OK  ]
+
+Episode  61: steps=  3  reward=   2.280  SUCCESS  targets: [gain_db=-0.05  bandwidth=8.39e+06  power=4.73e-06]
+    gain_db: 14.92  (target: -0.05001, tol: 2)  [OK  ]
+    bandwidth: 1.475e+07  (target: 8.388e+06, tol: 1e+07)  [OK  ]
+    power: 4.66e-05  (target: 4.727e-06, tol: 5e-05)  [OK  ]
+
+Episode  62: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=2.7  bandwidth=2.36e+07  power=1.83e-05]
+    gain_db: 18.36  (target: 2.698, tol: 2)  [OK  ]
+    bandwidth: 1.367e+07  (target: 2.364e+07, tol: 1e+07)  [OK  ]
+    power: 6.413e-05  (target: 1.828e-05, tol: 5e-05)  [OK  ]
+
+Episode  63: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=20.7  bandwidth=9.47e+06  power=5.79e-05]
+    gain_db: 19.65  (target: 20.66, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 9.471e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 5.794e-05, tol: 5e-05)  [OK  ]
+
+Episode  64: steps= 23  reward=   4.554  SUCCESS  targets: [gain_db=-3.62  bandwidth=1.29e+08  power=7.63e-05]
+    gain_db: -1.355  (target: -3.616, tol: 2)  [OK  ]
+    bandwidth: 1.593e+08  (target: 1.287e+08, tol: 1e+07)  [OK  ]
+    power: 7.725e-05  (target: 7.632e-05, tol: 5e-05)  [OK  ]
+
+Episode  65: steps=  2  reward=   7.722  SUCCESS  targets: [gain_db=5.76  bandwidth=7.44e+06  power=8.19e-06]
+    gain_db: 16.68  (target: 5.762, tol: 2)  [OK  ]
+    bandwidth: 1.418e+07  (target: 7.439e+06, tol: 1e+07)  [OK  ]
+    power: 5.481e-05  (target: 8.186e-06, tol: 5e-05)  [OK  ]
+
+Episode  66: steps= 16  reward=   7.391  SUCCESS  targets: [gain_db=12  bandwidth=4.3e+07  power=9.67e-05]
+    gain_db: 11.52  (target: 11.97, tol: 2)  [OK  ]
+    bandwidth: 3.579e+07  (target: 4.299e+07, tol: 1e+07)  [OK  ]
+    power: 7.639e-05  (target: 9.67e-05, tol: 5e-05)  [OK  ]
+
+Episode  67: steps= 50  reward=  -9.559  FAIL     targets: [gain_db=-2.41  bandwidth=1.57e+08  power=0.000104]
+    gain_db: 2.139  (target: -2.41, tol: 2)  [OK  ]
+    bandwidth: 1.064e+08  (target: 1.567e+08, tol: 1e+07)  [MISS]
+    power: 7.712e-05  (target: 0.0001043, tol: 5e-05)  [OK  ]
+
+Episode  68: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=16.2  bandwidth=1e+07  power=3.67e-05]
+    gain_db: 19.65  (target: 16.21, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.002e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.672e-05, tol: 5e-05)  [OK  ]
+
+Episode  69: steps=  2  reward=   6.500  SUCCESS  targets: [gain_db=-1.58  bandwidth=1.18e+07  power=5.58e-06]
+    gain_db: 16.68  (target: -1.58, tol: 2)  [OK  ]
+    bandwidth: 1.418e+07  (target: 1.18e+07, tol: 1e+07)  [OK  ]
+    power: 5.481e-05  (target: 5.576e-06, tol: 5e-05)  [OK  ]
+
+Episode  70: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=15.6  bandwidth=1.25e+07  power=4.28e-05]
+    gain_db: 19.65  (target: 15.63, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.25e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 4.284e-05, tol: 5e-05)  [OK  ]
+
+Episode  71: steps= 22  reward=   3.961  SUCCESS  targets: [gain_db=-2.38  bandwidth=9.7e+07  power=6.48e-05]
+    gain_db: 2.139  (target: -2.376, tol: 2)  [OK  ]
+    bandwidth: 1.064e+08  (target: 9.701e+07, tol: 1e+07)  [OK  ]
+    power: 7.712e-05  (target: 6.479e-05, tol: 5e-05)  [OK  ]
+
+Episode  72: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=16.4  bandwidth=1.81e+07  power=6.77e-05]
+    gain_db: 19.65  (target: 16.38, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.81e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 6.766e-05, tol: 5e-05)  [OK  ]
+
+Episode  73: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=13.8  bandwidth=1.27e+07  power=3.51e-05]
+    gain_db: 19.65  (target: 13.78, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.269e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.514e-05, tol: 5e-05)  [OK  ]
+
+Episode  74: steps= 50  reward= -16.407  FAIL     targets: [gain_db=-20.5  bandwidth=8.47e+08  power=8.67e-05]
+    gain_db: 19.99  (target: -20.5, tol: 2)  [OK  ]
+    bandwidth: 1.321e+07  (target: 8.472e+08, tol: 1e+07)  [MISS]
+    power: 7.479e-05  (target: 8.672e-05, tol: 5e-05)  [OK  ]
+
+Episode  75: steps= 50  reward= -15.727  FAIL     targets: [gain_db=-13.6  bandwidth=4.26e+08  power=9.21e-05]
+    gain_db: 13.58  (target: -13.59, tol: 2)  [OK  ]
+    bandwidth: 2.587e+07  (target: 4.258e+08, tol: 1e+07)  [MISS]
+    power: 7e-05  (target: 9.207e-05, tol: 5e-05)  [OK  ]
+
+Episode  76: steps= 21  reward=   3.985  SUCCESS  targets: [gain_db=-1.17  bandwidth=8.19e+07  power=6.13e-05]
+    gain_db: 4.61  (target: -1.174, tol: 2)  [OK  ]
+    bandwidth: 7.99e+07  (target: 8.185e+07, tol: 1e+07)  [OK  ]
+    power: 7.7e-05  (target: 6.129e-05, tol: 5e-05)  [OK  ]
+
+Episode  77: steps= 19  reward=   6.103  SUCCESS  targets: [gain_db=3.83  bandwidth=6.06e+07  power=7.25e-05]
+    gain_db: 8.076  (target: 3.833, tol: 2)  [OK  ]
+    bandwidth: 5.344e+07  (target: 6.06e+07, tol: 1e+07)  [OK  ]
+    power: 7.675e-05  (target: 7.25e-05, tol: 5e-05)  [OK  ]
+
+Episode  78: steps= 14  reward=   7.806  SUCCESS  targets: [gain_db=11.3  bandwidth=3.84e+07  power=9.33e-05]
+    gain_db: 13.2  (target: 11.31, tol: 2)  [OK  ]
+    bandwidth: 2.938e+07  (target: 3.845e+07, tol: 1e+07)  [OK  ]
+    power: 7.615e-05  (target: 9.33e-05, tol: 5e-05)  [OK  ]
+
+Episode  79: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=11.7  bandwidth=1.7e+07  power=3.7e-05]
+    gain_db: 19.65  (target: 11.7, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.696e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.697e-05, tol: 5e-05)  [OK  ]
+
+Episode  80: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=17.9  bandwidth=9.63e+06  power=4.27e-05]
+    gain_db: 19.65  (target: 17.86, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 9.63e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 4.268e-05, tol: 5e-05)  [OK  ]
+
+Episode  81: steps= 18  reward=   6.644  SUCCESS  targets: [gain_db=8.09  bandwidth=5.55e+07  power=9.89e-05]
+    gain_db: 9.388  (target: 8.094, tol: 2)  [OK  ]
+    bandwidth: 4.588e+07  (target: 5.545e+07, tol: 1e+07)  [OK  ]
+    power: 7.663e-05  (target: 9.887e-05, tol: 5e-05)  [OK  ]
+
+Episode  82: steps= 20  reward=   5.939  SUCCESS  targets: [gain_db=7.64  bandwidth=7.1e+07  power=0.000121]
+    gain_db: 6.52  (target: 7.642, tol: 2)  [OK  ]
+    bandwidth: 6.402e+07  (target: 7.096e+07, tol: 1e+07)  [OK  ]
+    power: 7.688e-05  (target: 0.0001212, tol: 5e-05)  [OK  ]
+
+Episode  83: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=11.2  bandwidth=2.22e+07  power=4.59e-05]
+    gain_db: 19.65  (target: 11.24, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 2.221e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 4.59e-05, tol: 5e-05)  [OK  ]
+
+Episode  84: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=16.8  bandwidth=1.92e+07  power=7.57e-05]
+    gain_db: 19.65  (target: 16.85, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.919e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 7.569e-05, tol: 5e-05)  [OK  ]
+
+Episode  85: steps= 50  reward= -19.832  FAIL     targets: [gain_db=-2.9  bandwidth=1.8e+08  power=0.000114]
+    gain_db: -7.348  (target: -2.898, tol: 2)  [MISS]
+    bandwidth: 3.181e+08  (target: 1.797e+08, tol: 1e+07)  [OK  ]
+    power: 7.737e-05  (target: 0.0001142, tol: 5e-05)  [OK  ]
+
+Episode  86: steps= 21  reward=   4.397  SUCCESS  targets: [gain_db=0.0105  bandwidth=7.51e+07  power=6.29e-05]
+    gain_db: 4.61  (target: 0.01045, tol: 2)  [OK  ]
+    bandwidth: 7.99e+07  (target: 7.514e+07, tol: 1e+07)  [OK  ]
+    power: 7.7e-05  (target: 6.291e-05, tol: 5e-05)  [OK  ]
+
+Episode  87: steps= 50  reward= -21.078  FAIL     targets: [gain_db=13.2  bandwidth=1.62e+08  power=0.000418]
+    gain_db: 2.173  (target: 13.2, tol: 2)  [MISS]
+    bandwidth: 5.906e+07  (target: 1.616e+08, tol: 1e+07)  [MISS]
+    power: 6.054e-05  (target: 0.0004185, tol: 5e-05)  [OK  ]
+
+Episode  88: steps=  2  reward=   7.854  SUCCESS  targets: [gain_db=0.82  bandwidth=1.39e+07  power=8.64e-06]
+    gain_db: 16.68  (target: 0.8202, tol: 2)  [OK  ]
+    bandwidth: 1.418e+07  (target: 1.386e+07, tol: 1e+07)  [OK  ]
+    power: 5.481e-05  (target: 8.637e-06, tol: 5e-05)  [OK  ]
+
+Episode  89: steps= 50  reward= -13.495  FAIL     targets: [gain_db=23.5  bandwidth=2.81e+07  power=0.000237]
+    gain_db: 2.173  (target: 23.45, tol: 2)  [MISS]
+    bandwidth: 5.906e+07  (target: 2.812e+07, tol: 1e+07)  [OK  ]
+    power: 6.054e-05  (target: 0.0002372, tol: 5e-05)  [OK  ]
+
+Episode  90: steps= 50  reward= -16.471  FAIL     targets: [gain_db=-20.9  bandwidth=1.13e+09  power=0.000111]
+    gain_db: 19.99  (target: -20.88, tol: 2)  [OK  ]
+    bandwidth: 1.321e+07  (target: 1.128e+09, tol: 1e+07)  [MISS]
+    power: 7.479e-05  (target: 0.0001107, tol: 5e-05)  [OK  ]
+
+Episode  91: steps= 16  reward=   4.016  SUCCESS  targets: [gain_db=4.97  bandwidth=4.57e+07  power=4.59e-05]
+    gain_db: 11.52  (target: 4.966, tol: 2)  [OK  ]
+    bandwidth: 3.579e+07  (target: 4.567e+07, tol: 1e+07)  [OK  ]
+    power: 7.639e-05  (target: 4.586e-05, tol: 5e-05)  [OK  ]
+
+Episode  92: steps= 50  reward= -36.638  FAIL     targets: [gain_db=-1.68  bandwidth=2.12e+08  power=9.92e-05]
+    gain_db: -7.348  (target: -1.68, tol: 2)  [MISS]
+    bandwidth: 3.181e+08  (target: 2.124e+08, tol: 1e+07)  [OK  ]
+    power: 7.737e-05  (target: 9.921e-05, tol: 5e-05)  [OK  ]
+
+Episode  93: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=16.9  bandwidth=1.31e+07  power=5.2e-05]
+    gain_db: 19.65  (target: 16.93, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.305e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 5.197e-05, tol: 5e-05)  [OK  ]
+
+Episode  94: steps=  6  reward=   9.260  SUCCESS  targets: [gain_db=14.4  bandwidth=2.7e+07  power=8e-05]
+    gain_db: 17.74  (target: 14.37, tol: 2)  [OK  ]
+    bandwidth: 1.722e+07  (target: 2.7e+07, tol: 1e+07)  [OK  ]
+    power: 7.53e-05  (target: 8.001e-05, tol: 5e-05)  [OK  ]
+
+Episode  95: steps= 50  reward= -53.226  FAIL     targets: [gain_db=8.79  bandwidth=1.57e+07  power=2.44e-05]
+    gain_db: -7.348  (target: 8.792, tol: 2)  [MISS]
+    bandwidth: 3.181e+08  (target: 1.565e+07, tol: 1e+07)  [OK  ]
+    power: 7.737e-05  (target: 2.441e-05, tol: 5e-05)  [MISS]
+
+Episode  96: steps= 23  reward=   3.881  SUCCESS  targets: [gain_db=-5.19  bandwidth=1.39e+08  power=7.06e-05]
+    gain_db: -1.355  (target: -5.188, tol: 2)  [OK  ]
+    bandwidth: 1.593e+08  (target: 1.388e+08, tol: 1e+07)  [OK  ]
+    power: 7.725e-05  (target: 7.062e-05, tol: 5e-05)  [OK  ]
+
+Episode  97: steps=  6  reward=   9.247  SUCCESS  targets: [gain_db=13.7  bandwidth=2.7e+07  power=7.44e-05]
+    gain_db: 17.74  (target: 13.75, tol: 2)  [OK  ]
+    bandwidth: 1.722e+07  (target: 2.696e+07, tol: 1e+07)  [OK  ]
+    power: 7.53e-05  (target: 7.44e-05, tol: 5e-05)  [OK  ]
+
+Episode  98: steps= 50  reward= -15.154  FAIL     targets: [gain_db=-2.06  bandwidth=3.31e+08  power=0.000228]
+    gain_db: 11.52  (target: -2.059, tol: 2)  [OK  ]
+    bandwidth: 3.579e+07  (target: 3.308e+08, tol: 1e+07)  [MISS]
+    power: 7.639e-05  (target: 0.0002277, tol: 5e-05)  [OK  ]
+
+Episode  99: steps= 50  reward= -16.194  FAIL     targets: [gain_db=-14.4  bandwidth=3.57e+08  power=7.07e-05]
+    gain_db: 15.22  (target: -14.42, tol: 2)  [OK  ]
+    bandwidth: 2.319e+07  (target: 3.57e+08, tol: 1e+07)  [MISS]
+    power: 7.579e-05  (target: 7.07e-05, tol: 5e-05)  [OK  ]
+
+Episode 100: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=21.4  bandwidth=8.76e+06  power=5.81e-05]
+    gain_db: 19.65  (target: 21.37, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 8.758e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 5.814e-05, tol: 5e-05)  [OK  ]
+
+Episode 101: steps= 50  reward= -11.990  FAIL     targets: [gain_db=13.8  bandwidth=5.39e+07  power=0.000149]
+    gain_db: 18.55  (target: 13.77, tol: 2)  [OK  ]
+    bandwidth: 1.563e+07  (target: 5.393e+07, tol: 1e+07)  [MISS]
+    power: 7.496e-05  (target: 0.0001492, tol: 5e-05)  [OK  ]
+
+Episode 102: steps= 50  reward= -12.493  FAIL     targets: [gain_db=22.3  bandwidth=8.26e+06  power=6.1e-05]
+    gain_db: 9.388  (target: 22.3, tol: 2)  [MISS]
+    bandwidth: 4.588e+07  (target: 8.264e+06, tol: 1e+07)  [OK  ]
+    power: 7.663e-05  (target: 6.102e-05, tol: 5e-05)  [OK  ]
+
+Episode 103: steps= 50  reward= -16.440  FAIL     targets: [gain_db=-14.7  bandwidth=3.56e+08  power=6.85e-05]
+    gain_db: 15.22  (target: -14.71, tol: 2)  [OK  ]
+    bandwidth: 2.319e+07  (target: 3.565e+08, tol: 1e+07)  [MISS]
+    power: 7.579e-05  (target: 6.845e-05, tol: 5e-05)  [OK  ]
+
+Episode 104: steps= 50  reward= -16.043  FAIL     targets: [gain_db=-15  bandwidth=5.6e+08  power=0.000104]
+    gain_db: 15.22  (target: -14.99, tol: 2)  [OK  ]
+    bandwidth: 2.319e+07  (target: 5.602e+08, tol: 1e+07)  [MISS]
+    power: 7.579e-05  (target: 0.0001044, tol: 5e-05)  [OK  ]
+
+Episode 105: steps= 14  reward=   4.224  SUCCESS  targets: [gain_db=5.69  bandwidth=3.76e+07  power=4.1e-05]
+    gain_db: 13.2  (target: 5.686, tol: 2)  [OK  ]
+    bandwidth: 2.938e+07  (target: 3.763e+07, tol: 1e+07)  [OK  ]
+    power: 7.615e-05  (target: 4.105e-05, tol: 5e-05)  [OK  ]
+
+Episode 106: steps= 21  reward=   4.657  SUCCESS  targets: [gain_db=-0.139  bandwidth=8.04e+07  power=6.64e-05]
+    gain_db: 4.61  (target: -0.1386, tol: 2)  [OK  ]
+    bandwidth: 7.99e+07  (target: 8.038e+07, tol: 1e+07)  [OK  ]
+    power: 7.7e-05  (target: 6.636e-05, tol: 5e-05)  [OK  ]
+
+Episode 107: steps= 25  reward=   3.323  SUCCESS  targets: [gain_db=-6.51  bandwidth=1.59e+08  power=7.09e-05]
+    gain_db: -3.84  (target: -6.508, tol: 2)  [OK  ]
+    bandwidth: 2.122e+08  (target: 1.587e+08, tol: 1e+07)  [OK  ]
+    power: 7.731e-05  (target: 7.092e-05, tol: 5e-05)  [OK  ]
+
+Episode 108: steps= 50  reward= -16.463  FAIL     targets: [gain_db=-18.1  bandwidth=1.24e+09  power=0.000164]
+    gain_db: 18.93  (target: -18.13, tol: 2)  [OK  ]
+    bandwidth: 1.494e+07  (target: 1.236e+09, tol: 1e+07)  [MISS]
+    power: 7.485e-05  (target: 0.0001641, tol: 5e-05)  [OK  ]
+
+Episode 109: steps= 50  reward= -16.608  FAIL     targets: [gain_db=-22.7  bandwidth=2.59e+09  power=0.000207]
+    gain_db: 21.91  (target: -22.7, tol: 2)  [OK  ]
+    bandwidth: 8.561e+06  (target: 2.586e+09, tol: 1e+07)  [MISS]
+    power: 6.044e-05  (target: 0.0002074, tol: 5e-05)  [OK  ]
+
+Episode 110: steps= 17  reward=   6.989  SUCCESS  targets: [gain_db=9.49  bandwidth=4.94e+07  power=8.35e-05]
+    gain_db: 10.52  (target: 9.492, tol: 2)  [OK  ]
+    bandwidth: 4.02e+07  (target: 4.941e+07, tol: 1e+07)  [OK  ]
+    power: 7.651e-05  (target: 8.354e-05, tol: 5e-05)  [OK  ]
+
+Episode 111: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=7.9  bandwidth=1.36e+07  power=1.92e-05]
+    gain_db: 18.36  (target: 7.898, tol: 2)  [OK  ]
+    bandwidth: 1.367e+07  (target: 1.364e+07, tol: 1e+07)  [OK  ]
+    power: 6.413e-05  (target: 1.92e-05, tol: 5e-05)  [OK  ]
+
+Episode 112: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=17.3  bandwidth=1.77e+07  power=7.3e-05]
+    gain_db: 19.65  (target: 17.26, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.766e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 7.301e-05, tol: 5e-05)  [OK  ]
+
+Episode 113: steps= 50  reward= -16.029  FAIL     targets: [gain_db=23.2  bandwidth=6.87e+06  power=5.63e-05]
+    gain_db: 6.52  (target: 23.19, tol: 2)  [MISS]
+    bandwidth: 6.402e+07  (target: 6.874e+06, tol: 1e+07)  [OK  ]
+    power: 7.688e-05  (target: 5.627e-05, tol: 5e-05)  [OK  ]
+
+Episode 114: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=20.4  bandwidth=1.58e+07  power=9.4e-05]
+    gain_db: 19.65  (target: 20.44, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.577e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 9.4e-05, tol: 5e-05)  [OK  ]
+
+Episode 115: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=19.3  bandwidth=1.83e+07  power=9.56e-05]
+    gain_db: 19.65  (target: 19.3, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.829e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 9.564e-05, tol: 5e-05)  [OK  ]
+
+Episode 116: steps= 16  reward=   4.900  SUCCESS  targets: [gain_db=5.95  bandwidth=4.57e+07  power=5.14e-05]
+    gain_db: 11.52  (target: 5.948, tol: 2)  [OK  ]
+    bandwidth: 3.579e+07  (target: 4.571e+07, tol: 1e+07)  [OK  ]
+    power: 7.639e-05  (target: 5.138e-05, tol: 5e-05)  [OK  ]
+
+Episode 117: steps= 50  reward= -32.631  FAIL     targets: [gain_db=-1.15  bandwidth=1.81e+08  power=0.000136]
+    gain_db: -7.348  (target: -1.147, tol: 2)  [MISS]
+    bandwidth: 3.181e+08  (target: 1.814e+08, tol: 1e+07)  [OK  ]
+    power: 7.737e-05  (target: 0.0001362, tol: 5e-05)  [OK  ]
+
+Episode 118: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=21.3  bandwidth=1.42e+07  power=9.37e-05]
+    gain_db: 19.65  (target: 21.35, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.416e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 9.371e-05, tol: 5e-05)  [OK  ]
+
+Episode 119: steps= 12  reward=   8.245  SUCCESS  targets: [gain_db=12.5  bandwidth=3.4e+07  power=8.08e-05]
+    gain_db: 14.6  (target: 12.46, tol: 2)  [OK  ]
+    bandwidth: 2.494e+07  (target: 3.397e+07, tol: 1e+07)  [OK  ]
+    power: 7.591e-05  (target: 8.08e-05, tol: 5e-05)  [OK  ]
+
+Episode 120: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=20.9  bandwidth=1.84e+07  power=0.000116]
+    gain_db: 20.3  (target: 20.92, tol: 2)  [OK  ]
+    bandwidth: 1.273e+07  (target: 1.844e+07, tol: 1e+07)  [OK  ]
+    power: 7.463e-05  (target: 0.0001162, tol: 5e-05)  [OK  ]
+
+Episode 121: steps= 50  reward= -65.401  FAIL     targets: [gain_db=12.7  bandwidth=7.87e+06  power=1.92e-05]
+    gain_db: -7.348  (target: 12.68, tol: 2)  [MISS]
+    bandwidth: 3.181e+08  (target: 7.874e+06, tol: 1e+07)  [OK  ]
+    power: 7.737e-05  (target: 1.922e-05, tol: 5e-05)  [MISS]
+
+Episode 122: steps= 17  reward=   7.160  SUCCESS  targets: [gain_db=8.28  bandwidth=4.6e+07  power=8.35e-05]
+    gain_db: 10.52  (target: 8.279, tol: 2)  [OK  ]
+    bandwidth: 4.02e+07  (target: 4.602e+07, tol: 1e+07)  [OK  ]
+    power: 7.651e-05  (target: 8.35e-05, tol: 5e-05)  [OK  ]
+
+Episode 123: steps=  3  reward=  -5.185  SUCCESS  targets: [gain_db=-5.56  bandwidth=8.37e+06  power=2.5e-06]
+    gain_db: 14.92  (target: -5.565, tol: 2)  [OK  ]
+    bandwidth: 1.475e+07  (target: 8.373e+06, tol: 1e+07)  [OK  ]
+    power: 4.66e-05  (target: 2.501e-06, tol: 5e-05)  [OK  ]
+
+Episode 124: steps= 17  reward=   5.903  SUCCESS  targets: [gain_db=7.03  bandwidth=4.93e+07  power=6.27e-05]
+    gain_db: 10.52  (target: 7.029, tol: 2)  [OK  ]
+    bandwidth: 4.02e+07  (target: 4.927e+07, tol: 1e+07)  [OK  ]
+    power: 7.651e-05  (target: 6.273e-05, tol: 5e-05)  [OK  ]
+
+Episode 125: steps= 23  reward=   0.765  SUCCESS  targets: [gain_db=-3.77  bandwidth=1.27e+08  power=4.68e-05]
+    gain_db: -1.355  (target: -3.768, tol: 2)  [OK  ]
+    bandwidth: 1.593e+08  (target: 1.273e+08, tol: 1e+07)  [OK  ]
+    power: 7.725e-05  (target: 4.677e-05, tol: 5e-05)  [OK  ]
+
+Episode 126: steps= 50  reward= -13.783  FAIL     targets: [gain_db=17.1  bandwidth=5.02e+07  power=0.000203]
+    gain_db: 2.173  (target: 17.07, tol: 2)  [MISS]
+    bandwidth: 5.906e+07  (target: 5.023e+07, tol: 1e+07)  [OK  ]
+    power: 6.054e-05  (target: 0.0002033, tol: 5e-05)  [OK  ]
+
+Episode 127: steps=  2  reward=   7.845  SUCCESS  targets: [gain_db=3.49  bandwidth=1.01e+07  power=8.59e-06]
+    gain_db: 16.68  (target: 3.493, tol: 2)  [OK  ]
+    bandwidth: 1.418e+07  (target: 1.014e+07, tol: 1e+07)  [OK  ]
+    power: 5.481e-05  (target: 8.592e-06, tol: 5e-05)  [OK  ]
+
+Episode 128: steps= 50  reward= -13.561  FAIL     targets: [gain_db=-8.15  bandwidth=2.3e+08  power=8.71e-05]
+    gain_db: 8.076  (target: -8.154, tol: 2)  [OK  ]
+    bandwidth: 5.344e+07  (target: 2.297e+08, tol: 1e+07)  [MISS]
+    power: 7.675e-05  (target: 8.71e-05, tol: 5e-05)  [OK  ]
+
+Episode 129: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=8.2  bandwidth=1.94e+07  power=2.83e-05]
+    gain_db: 19.65  (target: 8.198, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.943e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 2.831e-05, tol: 5e-05)  [OK  ]
+
+Episode 130: steps= 50  reward=  -9.851  FAIL     targets: [gain_db=16.5  bandwidth=3.43e+07  power=0.00013]
+    gain_db: 19.28  (target: 16.53, tol: 2)  [OK  ]
+    bandwidth: 1.432e+07  (target: 3.431e+07, tol: 1e+07)  [MISS]
+    power: 7.473e-05  (target: 0.0001304, tol: 5e-05)  [OK  ]
+
+Episode 131: steps= 50  reward= -69.992  FAIL     targets: [gain_db=13  bandwidth=7.1e+06  power=1.8e-05]
+    gain_db: -7.348  (target: 12.99, tol: 2)  [MISS]
+    bandwidth: 3.181e+08  (target: 7.099e+06, tol: 1e+07)  [OK  ]
+    power: 7.737e-05  (target: 1.796e-05, tol: 5e-05)  [MISS]
+
+Episode 132: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=16  bandwidth=9.57e+06  power=3.41e-05]
+    gain_db: 19.65  (target: 15.96, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 9.57e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.407e-05, tol: 5e-05)  [OK  ]
+
+Episode 133: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=17.9  bandwidth=1.01e+07  power=4.48e-05]
+    gain_db: 19.65  (target: 17.88, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.007e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 4.475e-05, tol: 5e-05)  [OK  ]
+
+Episode 134: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=19.1  bandwidth=1.46e+07  power=7.48e-05]
+    gain_db: 19.65  (target: 19.11, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.462e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 7.485e-05, tol: 5e-05)  [OK  ]
+
+Episode 135: steps= 19  reward=   0.718  SUCCESS  targets: [gain_db=0.733  bandwidth=5.8e+07  power=3.58e-05]
+    gain_db: 8.076  (target: 0.7326, tol: 2)  [OK  ]
+    bandwidth: 5.344e+07  (target: 5.797e+07, tol: 1e+07)  [OK  ]
+    power: 7.675e-05  (target: 3.575e-05, tol: 5e-05)  [OK  ]
+
+Episode 136: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=18.8  bandwidth=1.19e+07  power=5.88e-05]
+    gain_db: 19.65  (target: 18.77, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.195e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 5.879e-05, tol: 5e-05)  [OK  ]
+
+Episode 137: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=20.2  bandwidth=1.1e+07  power=6.36e-05]
+    gain_db: 19.65  (target: 20.15, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.102e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 6.359e-05, tol: 5e-05)  [OK  ]
+
+Episode 138: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=18.9  bandwidth=7.74e+06  power=3.86e-05]
+    gain_db: 19.65  (target: 18.9, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 7.735e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.864e-05, tol: 5e-05)  [OK  ]
+
+Episode 139: steps= 50  reward= -15.798  FAIL     targets: [gain_db=1.58  bandwidth=1.53e+08  power=0.000148]
+    gain_db: 2.139  (target: 1.585, tol: 2)  [OK  ]
+    bandwidth: 1.064e+08  (target: 1.525e+08, tol: 1e+07)  [MISS]
+    power: 7.712e-05  (target: 0.000148, tol: 5e-05)  [OK  ]
+
+Episode 140: steps= 50  reward=  -5.999  FAIL     targets: [gain_db=22.8  bandwidth=9.08e+06  power=7.14e-05]
+    gain_db: 15.79  (target: 22.84, tol: 2)  [MISS]
+    bandwidth: 2.168e+07  (target: 9.08e+06, tol: 1e+07)  [OK  ]
+    power: 7.567e-05  (target: 7.141e-05, tol: 5e-05)  [OK  ]
+
+Episode 141: steps= 14  reward=   7.760  SUCCESS  targets: [gain_db=11.9  bandwidth=3.93e+07  power=0.000101]
+    gain_db: 13.2  (target: 11.93, tol: 2)  [OK  ]
+    bandwidth: 2.938e+07  (target: 3.929e+07, tol: 1e+07)  [OK  ]
+    power: 7.615e-05  (target: 0.0001012, tol: 5e-05)  [OK  ]
+
+Episode 142: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=13.8  bandwidth=1.04e+07  power=2.91e-05]
+    gain_db: 19.65  (target: 13.84, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.044e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 2.913e-05, tol: 5e-05)  [OK  ]
+
+Episode 143: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=15.4  bandwidth=2.1e+07  power=7.03e-05]
+    gain_db: 19.65  (target: 15.44, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 2.096e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 7.033e-05, tol: 5e-05)  [OK  ]
+
+Episode 144: steps=  2  reward=   5.996  SUCCESS  targets: [gain_db=0.423  bandwidth=8.28e+06  power=4.93e-06]
+    gain_db: 16.68  (target: 0.4234, tol: 2)  [OK  ]
+    bandwidth: 1.418e+07  (target: 8.281e+06, tol: 1e+07)  [OK  ]
+    power: 5.481e-05  (target: 4.928e-06, tol: 5e-05)  [OK  ]
+
+Episode 145: steps= 50  reward= -19.102  FAIL     targets: [gain_db=22.3  bandwidth=7.28e+06  power=5.37e-05]
+    gain_db: 2.139  (target: 22.3, tol: 2)  [MISS]
+    bandwidth: 1.064e+08  (target: 7.276e+06, tol: 1e+07)  [OK  ]
+    power: 7.712e-05  (target: 5.375e-05, tol: 5e-05)  [OK  ]
+
+Episode 146: steps= 22  reward=   4.961  SUCCESS  targets: [gain_db=-0.669  bandwidth=1.07e+08  power=8.38e-05]
+    gain_db: 2.139  (target: -0.669, tol: 2)  [OK  ]
+    bandwidth: 1.064e+08  (target: 1.067e+08, tol: 1e+07)  [OK  ]
+    power: 7.712e-05  (target: 8.38e-05, tol: 5e-05)  [OK  ]
+
+Episode 147: steps= 50  reward=  -7.654  FAIL     targets: [gain_db=11  bandwidth=5.85e+07  power=0.000117]
+    gain_db: 6.52  (target: 10.98, tol: 2)  [MISS]
+    bandwidth: 6.402e+07  (target: 5.852e+07, tol: 1e+07)  [OK  ]
+    power: 7.688e-05  (target: 0.0001175, tol: 5e-05)  [OK  ]
+
+Episode 148: steps= 50  reward= -12.832  FAIL     targets: [gain_db=23.5  bandwidth=2.11e+07  power=0.000178]
+    gain_db: 2.173  (target: 23.48, tol: 2)  [MISS]
+    bandwidth: 5.906e+07  (target: 2.11e+07, tol: 1e+07)  [OK  ]
+    power: 6.054e-05  (target: 0.0001785, tol: 5e-05)  [OK  ]
+
+Episode 149: steps= 50  reward= -13.202  FAIL     targets: [gain_db=-3.16  bandwidth=3.21e+08  power=0.000199]
+    gain_db: 2.139  (target: -3.164, tol: 2)  [OK  ]
+    bandwidth: 1.064e+08  (target: 3.215e+08, tol: 1e+07)  [MISS]
+    power: 7.712e-05  (target: 0.0001991, tol: 5e-05)  [OK  ]
+
+Episode 150: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=8.3  bandwidth=2.21e+07  power=3.26e-05]
+    gain_db: 19.65  (target: 8.297, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 2.212e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.259e-05, tol: 5e-05)  [OK  ]
+
+Episode 151: steps= 50  reward= -12.211  FAIL     targets: [gain_db=5.87  bandwidth=1.28e+08  power=0.000143]
+    gain_db: 2.139  (target: 5.868, tol: 2)  [MISS]
+    bandwidth: 1.064e+08  (target: 1.28e+08, tol: 1e+07)  [MISS]
+    power: 7.712e-05  (target: 0.0001425, tol: 5e-05)  [OK  ]
+
+Episode 152: steps= 50  reward= -19.644  FAIL     targets: [gain_db=22.6  bandwidth=6.91e+06  power=5.27e-05]
+    gain_db: 2.139  (target: 22.57, tol: 2)  [MISS]
+    bandwidth: 1.064e+08  (target: 6.914e+06, tol: 1e+07)  [OK  ]
+    power: 7.712e-05  (target: 5.267e-05, tol: 5e-05)  [OK  ]
+
+Episode 153: steps= 12  reward=   8.242  SUCCESS  targets: [gain_db=13.2  bandwidth=3.4e+07  power=8.86e-05]
+    gain_db: 14.6  (target: 13.25, tol: 2)  [OK  ]
+    bandwidth: 2.494e+07  (target: 3.402e+07, tol: 1e+07)  [OK  ]
+    power: 7.591e-05  (target: 8.864e-05, tol: 5e-05)  [OK  ]
+
+Episode 154: steps= 50  reward= -14.004  FAIL     targets: [gain_db=23.1  bandwidth=3.74e+07  power=0.000302]
+    gain_db: 2.173  (target: 23.09, tol: 2)  [MISS]
+    bandwidth: 5.906e+07  (target: 3.739e+07, tol: 1e+07)  [OK  ]
+    power: 6.054e-05  (target: 0.0003024, tol: 5e-05)  [OK  ]
+
+Episode 155: steps= 24  reward=   3.855  SUCCESS  targets: [gain_db=-4.43  bandwidth=1.85e+08  power=0.000102]
+    gain_db: -3.84  (target: -4.426, tol: 2)  [OK  ]
+    bandwidth: 2.122e+08  (target: 1.854e+08, tol: 1e+07)  [OK  ]
+    power: 7.731e-05  (target: 0.0001016, tol: 5e-05)  [OK  ]
+
+Episode 156: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=5.14  bandwidth=1.56e+07  power=1.6e-05]
+    gain_db: 18.36  (target: 5.137, tol: 2)  [OK  ]
+    bandwidth: 1.367e+07  (target: 1.56e+07, tol: 1e+07)  [OK  ]
+    power: 6.413e-05  (target: 1.597e-05, tol: 5e-05)  [OK  ]
+
+Episode 157: steps= 50  reward= -13.521  FAIL     targets: [gain_db=9.13  bandwidth=1.07e+08  power=0.000174]
+    gain_db: 15.79  (target: 9.13, tol: 2)  [OK  ]
+    bandwidth: 2.168e+07  (target: 1.07e+08, tol: 1e+07)  [MISS]
+    power: 7.567e-05  (target: 0.0001735, tol: 5e-05)  [OK  ]
+
+Episode 158: steps= 50  reward= -20.696  FAIL     targets: [gain_db=16.9  bandwidth=1.31e+08  power=0.000518]
+    gain_db: 2.173  (target: 16.9, tol: 2)  [MISS]
+    bandwidth: 5.906e+07  (target: 1.305e+08, tol: 1e+07)  [MISS]
+    power: 6.054e-05  (target: 0.000518, tol: 5e-05)  [OK  ]
+
+Episode 159: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=17.7  bandwidth=7.79e+06  power=3.4e-05]
+    gain_db: 19.65  (target: 17.74, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 7.792e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.404e-05, tol: 5e-05)  [OK  ]
+
+Episode 160: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=22.1  bandwidth=1.86e+07  power=0.000134]
+    gain_db: 20.3  (target: 22.1, tol: 2)  [OK  ]
+    bandwidth: 1.273e+07  (target: 1.857e+07, tol: 1e+07)  [OK  ]
+    power: 7.463e-05  (target: 0.0001341, tol: 5e-05)  [OK  ]
+
+Episode 161: steps= 22  reward=   3.848  SUCCESS  targets: [gain_db=-3.81  bandwidth=1.14e+08  power=6.65e-05]
+    gain_db: 2.139  (target: -3.809, tol: 2)  [OK  ]
+    bandwidth: 1.064e+08  (target: 1.143e+08, tol: 1e+07)  [OK  ]
+    power: 7.712e-05  (target: 6.652e-05, tol: 5e-05)  [OK  ]
+
+Episode 162: steps= 50  reward= -14.809  FAIL     targets: [gain_db=-10  bandwidth=3.24e+08  power=0.000102]
+    gain_db: 9.388  (target: -10.03, tol: 2)  [OK  ]
+    bandwidth: 4.588e+07  (target: 3.243e+08, tol: 1e+07)  [MISS]
+    power: 7.663e-05  (target: 0.0001017, tol: 5e-05)  [OK  ]
+
+Episode 163: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=8.4  bandwidth=1.11e+07  power=1.65e-05]
+    gain_db: 18.36  (target: 8.402, tol: 2)  [OK  ]
+    bandwidth: 1.367e+07  (target: 1.106e+07, tol: 1e+07)  [OK  ]
+    power: 6.413e-05  (target: 1.649e-05, tol: 5e-05)  [OK  ]
+
+Episode 164: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=12.2  bandwidth=1.61e+07  power=3.73e-05]
+    gain_db: 19.65  (target: 12.21, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.613e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.729e-05, tol: 5e-05)  [OK  ]
+
+Episode 165: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=19.9  bandwidth=8.47e+06  power=4.76e-05]
+    gain_db: 19.65  (target: 19.92, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 8.468e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 4.757e-05, tol: 5e-05)  [OK  ]
+
+Episode 166: steps= 21  reward=   4.561  SUCCESS  targets: [gain_db=-0.647  bandwidth=8.45e+07  power=6.65e-05]
+    gain_db: 4.61  (target: -0.6467, tol: 2)  [OK  ]
+    bandwidth: 7.99e+07  (target: 8.448e+07, tol: 1e+07)  [OK  ]
+    power: 7.7e-05  (target: 6.649e-05, tol: 5e-05)  [OK  ]
+
+Episode 167: steps= 50  reward= -15.417  FAIL     targets: [gain_db=-13.1  bandwidth=3.36e+08  power=7.65e-05]
+    gain_db: 13.2  (target: -13.11, tol: 2)  [OK  ]
+    bandwidth: 2.938e+07  (target: 3.363e+08, tol: 1e+07)  [MISS]
+    power: 7.615e-05  (target: 7.647e-05, tol: 5e-05)  [OK  ]
+
+Episode 168: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=17.4  bandwidth=6.54e+06  power=2.75e-05]
+    gain_db: 19.65  (target: 17.41, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 6.538e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 2.752e-05, tol: 5e-05)  [OK  ]
+
+Episode 169: steps= 50  reward= -15.130  FAIL     targets: [gain_db=-29.4  bandwidth=2.06e+09  power=7.78e-05]
+    gain_db: -7.348  (target: -29.39, tol: 2)  [OK  ]
+    bandwidth: 3.181e+08  (target: 2.056e+09, tol: 1e+07)  [MISS]
+    power: 7.737e-05  (target: 7.779e-05, tol: 5e-05)  [OK  ]
+
+Episode 170: steps= 23  reward=   3.099  SUCCESS  targets: [gain_db=-6.87  bandwidth=1.51e+08  power=6.51e-05]
+    gain_db: -1.355  (target: -6.866, tol: 2)  [OK  ]
+    bandwidth: 1.593e+08  (target: 1.509e+08, tol: 1e+07)  [OK  ]
+    power: 7.725e-05  (target: 6.508e-05, tol: 5e-05)  [OK  ]
+
+Episode 171: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=20.5  bandwidth=9.74e+06  power=5.87e-05]
+    gain_db: 19.65  (target: 20.53, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 9.743e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 5.872e-05, tol: 5e-05)  [OK  ]
+
+Episode 172: steps= 50  reward= -51.556  FAIL     targets: [gain_db=14.2  bandwidth=8.3e+06  power=2.41e-05]
+    gain_db: -7.348  (target: 14.19, tol: 2)  [MISS]
+    bandwidth: 3.181e+08  (target: 8.304e+06, tol: 1e+07)  [OK  ]
+    power: 7.737e-05  (target: 2.411e-05, tol: 5e-05)  [MISS]
+
+Episode 173: steps= 50  reward= -58.216  FAIL     targets: [gain_db=14.7  bandwidth=6.97e+06  power=2.14e-05]
+    gain_db: -7.348  (target: 14.67, tol: 2)  [MISS]
+    bandwidth: 3.181e+08  (target: 6.973e+06, tol: 1e+07)  [OK  ]
+    power: 7.737e-05  (target: 2.139e-05, tol: 5e-05)  [MISS]
+
+Episode 174: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=21.4  bandwidth=1.33e+07  power=8.85e-05]
+    gain_db: 19.65  (target: 21.38, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.331e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 8.847e-05, tol: 5e-05)  [OK  ]
+
+Episode 175: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=13.9  bandwidth=2.18e+07  power=6.79e-05]
+    gain_db: 19.65  (target: 13.87, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 2.177e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 6.794e-05, tol: 5e-05)  [OK  ]
+
+Episode 176: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=21  bandwidth=1.17e+07  power=7.41e-05]
+    gain_db: 19.65  (target: 21, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.165e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 7.412e-05, tol: 5e-05)  [OK  ]
+
+Episode 177: steps= 50  reward= -15.121  FAIL     targets: [gain_db=-11.3  bandwidth=2.3e+08  power=6.32e-05]
+    gain_db: 11.28  (target: -11.3, tol: 2)  [OK  ]
+    bandwidth: 2.477e+07  (target: 2.301e+08, tol: 1e+07)  [MISS]
+    power: 5.147e-05  (target: 6.322e-05, tol: 5e-05)  [OK  ]
+
+Episode 178: steps= 50  reward=  -2.305  FAIL     targets: [gain_db=23.3  bandwidth=9.92e+06  power=8.26e-05]
+    gain_db: 19.95  (target: 23.34, tol: 2)  [MISS]
+    bandwidth: 1.321e+07  (target: 9.917e+06, tol: 1e+07)  [OK  ]
+    power: 7.45e-05  (target: 8.26e-05, tol: 5e-05)  [OK  ]
+
+Episode 179: steps= 50  reward= -16.366  FAIL     targets: [gain_db=-18.4  bandwidth=7.77e+08  power=0.0001]
+    gain_db: 19.28  (target: -18.41, tol: 2)  [OK  ]
+    bandwidth: 1.432e+07  (target: 7.773e+08, tol: 1e+07)  [MISS]
+    power: 7.473e-05  (target: 0.0001, tol: 5e-05)  [OK  ]
+
+Episode 180: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=17.1  bandwidth=1.23e+07  power=5.03e-05]
+    gain_db: 19.65  (target: 17.14, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.232e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 5.026e-05, tol: 5e-05)  [OK  ]
+
+Episode 181: steps= 23  reward=   2.489  SUCCESS  targets: [gain_db=-3.33  bandwidth=1.59e+08  power=6.15e-05]
+    gain_db: -1.355  (target: -3.326, tol: 2)  [OK  ]
+    bandwidth: 1.593e+08  (target: 1.592e+08, tol: 1e+07)  [OK  ]
+    power: 7.725e-05  (target: 6.153e-05, tol: 5e-05)  [OK  ]
+
+Episode 182: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=17.9  bandwidth=1.93e+07  power=8.54e-05]
+    gain_db: 19.65  (target: 17.87, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.926e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 8.544e-05, tol: 5e-05)  [OK  ]
+
+Episode 183: steps= 50  reward=-107.939  FAIL     targets: [gain_db=-14.8  bandwidth=9.08e+07  power=9.33e-06]
+    gain_db: 14.81  (target: -14.83, tol: 2)  [OK  ]
+    bandwidth: 2.237e+07  (target: 9.079e+07, tol: 1e+07)  [MISS]
+    power: 6.98e-05  (target: 9.33e-06, tol: 5e-05)  [MISS]
+
+Episode 184: steps= 22  reward=   4.792  SUCCESS  targets: [gain_db=-1.6  bandwidth=1.02e+08  power=7.31e-05]
+    gain_db: 2.139  (target: -1.603, tol: 2)  [OK  ]
+    bandwidth: 1.064e+08  (target: 1.016e+08, tol: 1e+07)  [OK  ]
+    power: 7.712e-05  (target: 7.308e-05, tol: 5e-05)  [OK  ]
+
+Episode 185: steps= 50  reward= -16.487  FAIL     targets: [gain_db=12.1  bandwidth=8.06e+07  power=0.000183]
+    gain_db: 2.173  (target: 12.07, tol: 2)  [MISS]
+    bandwidth: 5.906e+07  (target: 8.062e+07, tol: 1e+07)  [MISS]
+    power: 6.054e-05  (target: 0.0001835, tol: 5e-05)  [OK  ]
+
+Episode 186: steps= 20  reward=   6.183  SUCCESS  targets: [gain_db=3.8  bandwidth=6.39e+07  power=7.62e-05]
+    gain_db: 6.52  (target: 3.797, tol: 2)  [OK  ]
+    bandwidth: 6.402e+07  (target: 6.389e+07, tol: 1e+07)  [OK  ]
+    power: 7.688e-05  (target: 7.618e-05, tol: 5e-05)  [OK  ]
+
+Episode 187: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=10.9  bandwidth=2.22e+07  power=4.43e-05]
+    gain_db: 19.65  (target: 10.94, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 2.22e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 4.435e-05, tol: 5e-05)  [OK  ]
+
+Episode 188: steps= 50  reward= -16.373  FAIL     targets: [gain_db=-13.8  bandwidth=3.2e+08  power=6.76e-05]
+    gain_db: 14.27  (target: -13.8, tol: 2)  [OK  ]
+    bandwidth: 2.591e+07  (target: 3.199e+08, tol: 1e+07)  [MISS]
+    power: 7.597e-05  (target: 6.761e-05, tol: 5e-05)  [OK  ]
+
+Episode 189: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=18.4  bandwidth=1.34e+07  power=6.28e-05]
+    gain_db: 19.65  (target: 18.35, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.339e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 6.278e-05, tol: 5e-05)  [OK  ]
+
+Episode 190: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=16.4  bandwidth=7.01e+06  power=2.64e-05]
+    gain_db: 19.65  (target: 16.45, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 7.007e+06, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 2.639e-05, tol: 5e-05)  [OK  ]
+
+Episode 191: steps= 50  reward= -15.579  FAIL     targets: [gain_db=-27.4  bandwidth=1.53e+09  power=7.25e-05]
+    gain_db: -7.348  (target: -27.4, tol: 2)  [OK  ]
+    bandwidth: 3.181e+08  (target: 1.531e+09, tol: 1e+07)  [MISS]
+    power: 7.737e-05  (target: 7.248e-05, tol: 5e-05)  [OK  ]
+
+Episode 192: steps= 25  reward=   3.142  SUCCESS  targets: [gain_db=-8.87  bandwidth=2.07e+08  power=7.31e-05]
+    gain_db: -3.84  (target: -8.872, tol: 2)  [OK  ]
+    bandwidth: 2.122e+08  (target: 2.072e+08, tol: 1e+07)  [OK  ]
+    power: 7.731e-05  (target: 7.307e-05, tol: 5e-05)  [OK  ]
+
+Episode 193: steps= 50  reward= -13.867  FAIL     targets: [gain_db=6.85  bandwidth=9.15e+07  power=0.000114]
+    gain_db: 2.139  (target: 6.848, tol: 2)  [MISS]
+    bandwidth: 1.064e+08  (target: 9.149e+07, tol: 1e+07)  [OK  ]
+    power: 7.712e-05  (target: 0.0001141, tol: 5e-05)  [OK  ]
+
+Episode 194: steps= 20  reward=   5.878  SUCCESS  targets: [gain_db=3.98  bandwidth=7.29e+07  power=8.84e-05]
+    gain_db: 6.52  (target: 3.984, tol: 2)  [OK  ]
+    bandwidth: 6.402e+07  (target: 7.29e+07, tol: 1e+07)  [OK  ]
+    power: 7.688e-05  (target: 8.844e-05, tol: 5e-05)  [OK  ]
+
+Episode 195: steps= 19  reward=   5.648  SUCCESS  targets: [gain_db=3.02  bandwidth=6.12e+07  power=6.78e-05]
+    gain_db: 8.076  (target: 3.015, tol: 2)  [OK  ]
+    bandwidth: 5.344e+07  (target: 6.117e+07, tol: 1e+07)  [OK  ]
+    power: 7.675e-05  (target: 6.781e-05, tol: 5e-05)  [OK  ]
+
+Episode 196: steps= 50  reward= -15.203  FAIL     targets: [gain_db=2.29  bandwidth=3.65e+08  power=0.000378]
+    gain_db: 2.173  (target: 2.291, tol: 2)  [OK  ]
+    bandwidth: 5.906e+07  (target: 3.649e+08, tol: 1e+07)  [MISS]
+    power: 6.054e-05  (target: 0.0003782, tol: 5e-05)  [OK  ]
+
+Episode 197: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=13.7  bandwidth=1.24e+07  power=3.42e-05]
+    gain_db: 19.65  (target: 13.7, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 1.244e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 3.416e-05, tol: 5e-05)  [OK  ]
+
+Episode 198: steps=  1  reward=  10.000  SUCCESS  targets: [gain_db=13.6  bandwidth=2.24e+07  power=6.8e-05]
+    gain_db: 19.65  (target: 13.6, tol: 2)  [OK  ]
+    bandwidth: 1.374e+07  (target: 2.239e+07, tol: 1e+07)  [OK  ]
+    power: 7.486e-05  (target: 6.798e-05, tol: 5e-05)  [OK  ]
+
+Episode 199: steps= 50  reward= -12.731  FAIL     targets: [gain_db=2.89  bandwidth=2.13e+08  power=0.000168]
+    gain_db: 2.139  (target: 2.889, tol: 2)  [OK  ]
+    bandwidth: 1.064e+08  (target: 2.128e+08, tol: 1e+07)  [MISS]
+    power: 7.712e-05  (target: 0.0001682, tol: 5e-05)  [OK  ]
+
+Episode 200: steps= 24  reward=   3.392  SUCCESS  targets: [gain_db=-9.69  bandwidth=2.81e+08  power=9.13e-05]
+    gain_db: -7.348  (target: -9.69, tol: 2)  [OK  ]
+    bandwidth: 3.181e+08  (target: 2.813e+08, tol: 1e+07)  [OK  ]
+    power: 7.737e-05  (target: 9.127e-05, tol: 5e-05)  [OK  ]
+
+============================================================
+Summary over 200 episodes:
+  Success rate:      132/200  (66.0%)
+  Mean total reward: -2.146
+  Mean episode len:  22.1
+  Per-spec success rates:
+    gain_db: 84.0%
+    bandwidth: 80.0%
+    power: 96.0%

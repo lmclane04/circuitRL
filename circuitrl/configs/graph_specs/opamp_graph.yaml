@@ -1,0 +1,47 @@
+# Graph prior for two-stage opamp with component nodes.
+model_feature_dim: 5
+model_feature_names:
+  - active_device
+  - gm_efficiency_prior
+  - ro_prior
+  - parasitic_load_prior
+  - mismatch_sensitivity
+
+components:
+  - name: M1
+    type: nmos
+    parameters: [W1, L1]
+    model_features: [1.0, 0.80, 0.60, 0.55, 0.75]
+
+  - name: M3
+    type: pmos
+    parameters: [W3, L3]
+    model_features: [1.0, 0.70, 0.70, 0.60, 0.70]
+
+  - name: M5
+    type: nmos
+    parameters: [W5, L5]
+    model_features: [1.0, 0.50, 0.90, 0.40, 0.45]
+
+  - name: M7
+    type: nmos
+    parameters: [W7, L7]
+    model_features: [1.0, 0.65, 0.65, 0.70, 0.60]
+
+  - name: Cc
+    type: capacitor
+    parameters: [Cc]
+    model_features: [0.0, 0.00, 0.20, 1.00, 0.10]
+
+  - name: Ibias
+    type: current
+    parameters: [Ib]
+    model_features: [1.0, 0.40, 0.95, 0.35, 0.30]
+
+undirected: true
+edges:
+  - [M1, M3]
+  - [M1, M5]
+  - [M5, M7]
+  - [M7, Cc]
+  - [M5, Ibias]

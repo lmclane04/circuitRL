@@ -1,0 +1,24 @@
+# Graph prior for common-source amplifier.
+# Component-centric nodes inspired by GCN-RL: transistor params are node attributes.
+model_feature_dim: 5
+model_feature_names:
+  - active_device
+  - gm_efficiency_prior
+  - ro_prior
+  - parasitic_load_prior
+  - mismatch_sensitivity
+
+components:
+  - name: M1
+    type: nmos
+    parameters: [W1, L1]
+    model_features: [1.0, 0.80, 0.60, 0.50, 0.70]
+
+  - name: RD1
+    type: resistor
+    parameters: [RD]
+    model_features: [0.0, 0.00, 0.90, 0.10, 0.20]
+
+undirected: true
+edges:
+  - [M1, RD1]

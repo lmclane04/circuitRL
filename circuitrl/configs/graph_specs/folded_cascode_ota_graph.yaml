@@ -1,0 +1,35 @@
+# Graph prior for folded-cascode OTA with component nodes.
+model_feature_dim: 5
+model_feature_names:
+  - active_device
+  - gm_efficiency_prior
+  - ro_prior
+  - parasitic_load_prior
+  - mismatch_sensitivity
+
+components:
+  - name: Min
+    type: nmos
+    parameters: [W1, L1]
+    model_features: [1.0, 0.80, 0.60, 0.55, 0.75]
+
+  - name: Mpcas
+    type: pmos
+    parameters: [W3, L3]
+    model_features: [1.0, 0.60, 0.90, 0.60, 0.65]
+
+  - name: Mncas
+    type: nmos
+    parameters: [W5, L5]
+    model_features: [1.0, 0.55, 0.95, 0.55, 0.60]
+
+  - name: Ibias
+    type: current
+    parameters: [Ib]
+    model_features: [1.0, 0.40, 0.95, 0.35, 0.30]
+
+undirected: true
+edges:
+  - [Min, Mpcas]
+  - [Min, Mncas]
+  - [Mncas, Ibias]

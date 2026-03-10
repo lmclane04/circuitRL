@@ -16,7 +16,22 @@ METRICS = [
 ]
 
 
-def plot_runs(run_dirs: list[str]):
+def _pretty_circuit_name(name: str) -> str:
+    raw = (name or "").strip()
+    low = raw.lower()
+    if "op-amp" in low or "opamp" in low:
+        return "Op-Amp"
+    if "folded cascode" in low and "ota" in low:
+        return "Folded Cascode OTA"
+    if low.endswith(" configuration"):
+        raw = raw[: -len(" configuration")].strip()
+    # Strip trailing parenthetical qualifiers like "(AC-Coupled)"
+    if raw.endswith(")") and "(" in raw:
+        raw = raw[: raw.rfind("(")].strip()
+    return raw
+
+
+def plot_runs(run_dirs: list[str], separate: bool = False):
     fig, axes = plt.subplots(2, 2, figsize=(12, 8))
     axes = axes.flatten()
 
@@ -26,7 +41,7 @@ def plot_runs(run_dirs: list[str]):
             print(f"Warning: {csv_path} not found, skipping")
             continue
         df = pd.read_csv(csv_path)
-        circuit = df["circuit"].iloc[0] if "circuit" in df.columns else ""
+        circuit = _pretty_circuit_name(df["circuit"].iloc[0]) if "circuit" in df.columns else ""
         run_label = os.path.basename(run_dir)
         label = f"{run_label} ({circuit})" if circuit else run_label
 
@@ -45,6 +60,32 @@ def plot_runs(run_dirs: list[str]):
     save_path = os.path.join(run_dirs[0], "training_curves.png")
     fig.savefig(save_path, dpi=150)
     print(f"Saved plot to {save_path}")
+
+    if separate:
+        for col, title in METRICS:
+            fig_s, ax_s = plt.subplots(figsize=(8, 5))
+            for run_dir in run_dirs:
+                csv_path = os.path.join(run_dir, "metrics.csv")
+                if not os.path.exists(csv_path):
+                    continue
+                df = pd.read_csv(csv_path)
+                circuit = _pretty_circuit_name(df["circuit"].iloc[0]) if "circuit" in df.columns else ""
+                run_label = os.path.basename(run_dir)
+                label = f"{run_label} ({circuit})" if circuit else run_label
+                if "timestep" not in df.columns or col not in df.columns:
+                    continue
+                ax_s.plot(df["timestep"], df[col], label=label, alpha=0.9)
+
+            ax_s.set_title(title)
+            ax_s.set_xlabel("Timesteps")
+            ax_s.grid(True, alpha=0.3)
+            handles, labels = ax_s.get_legend_handles_labels()
+            if handles:
+                ax_s.legend()
+            fig_s.tight_layout()
+            metric_save_path = os.path.join(run_dirs[0], f"training_{col}.png")
+            fig_s.savefig(metric_save_path, dpi=150)
+            print(f"Saved separate plot to {metric_save_path}")
 
     plt.show()
 
@@ -168,6 +209,8 @@ def main():
                         help="Path(s) to run directories containing metrics.csv / eval_results.csv")
     parser.add_argument("--eval", action="store_true",
                         help="Plot evaluation results (eval_results.csv) instead of training curves")
+    parser.add_argument("--separate", action="store_true",
+                        help="When plotting training curves, also save one PNG per metric")
     args = parser.parse_args()
 
     if args.eval:
@@ -175,7 +218,7 @@ def main():
             print("Warning: --eval only supports a single run directory; using the first one.")
         plot_eval(args.run_dir[0])
     else:
-        plot_runs(args.run_dir)
+        plot_runs(args.run_dir, separate=args.separate)
 
 
 if __name__ == "__main__":

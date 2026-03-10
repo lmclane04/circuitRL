@@ -57,7 +57,7 @@ parameters:
 
 # Spec pool: run `python generate_specs.py --config circuitrl/configs/opamp.yaml --n 1000`
 # to create this file before training.
-target_spec_file: opamp_specs_pool.json
+target_spec_file: opamp_specs_pool_train_1000.json
 
 # Target specifications
 target_specs:
@@ -79,7 +79,7 @@ env:
   max_steps: 100
   sim_timeout: 30
   randomize_start: false
-  action_deltas: [-5, -1, 0, 1, 5]
+  action_deltas: [-2, -1, 0, 1, 2]
 
 # ppo hyperparameters
 ppo:
@@ -88,4 +88,4 @@ ppo:
   batch_size: 64
   n_epochs: 5
   gamma: 0.99
-  total_timesteps: 200000
+  total_timesteps: 100000
